@@ -3,4 +3,8 @@
 export(Connect)
 export(connect)
 export(content)
+export(renderRscpages)
+export(rscpages)
+export(rscpagesOutput)
+import(htmlwidgets)
 importFrom(utils,capture.output)

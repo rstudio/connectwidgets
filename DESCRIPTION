@@ -18,4 +18,5 @@ Imports:
     R6,
     httr,
     jsonlite,
-    tibble
+    tibble,
+    htmlwidgets
