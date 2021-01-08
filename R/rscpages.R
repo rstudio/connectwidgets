@@ -18,6 +18,11 @@ rscpages <- function(content, width = NULL, height = NULL, elementId = NULL) {
     x,
     width = width,
     height = height,
+    sizingPolicy = htmlwidgets::sizingPolicy(
+      padding = 0,
+      browser.fill = TRUE,
+      knitr.figure = FALSE
+    ),
     package = 'rscpages',
     elementId = elementId
   )

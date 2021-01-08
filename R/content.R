@@ -16,10 +16,13 @@ content <- function(connect) {
     id = as.integer(df$id),
     guid = df$guid,
     owner_guid = df$owner_guid,
+    app_mode = df$app_mode,
+    content_category = df$content_category,
     name = df$name,
     title = df$title,
     description = df$description,
     url = df$content_url,
-    created_time = as.POSIXct(strptime(df$created_time, "%Y-%m-%dT%H:%M:%SZ", tz = "UTC"))
+    created_time = as.POSIXct(strptime(df$created_time, "%Y-%m-%dT%H:%M:%SZ", tz = "UTC")),
+    updated_time = as.POSIXct(strptime(df$last_deployed_time, "%Y-%m-%dT%H:%M:%SZ", tz = "UTC"))
   )
 }
