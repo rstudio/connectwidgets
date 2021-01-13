@@ -1,52 +1,113 @@
-
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-
-# rscpages
+rscpages: Curate your content on RStudio Connect
+================
 
 <!-- badges: start -->
 
 <!-- badges: end -->
 
-The goal of rscpages is to …
+## Overview
+
+You can use the `rscpages` package to curate your content on RStudio
+Connect, helping to create organized groups of content within an
+RMarkdown document or Shiny app.
 
 ## Installation
 
-You can install the released version of rscpages from
-[CRAN](https://CRAN.R-project.org) with:
+**Note:** This package has not been released to CRAN yet and must be
+installed from GitHub
 
 ``` r
+# Install the released version from CRAN:
 install.packages("rscpages")
 ```
 
-## Example
+To install the latest development version, you can install from GitHub:
 
-This is a basic example which shows you how to solve a common problem:
+``` r
+# install.packages("devtools")
+devtools::install_github("rstudio/rscpages")
+```
+
+## Usage
+
+### Fetching Content from RStudio Connect
+
+You can specify the RStudio Connect server and your API key using the
+`connect` function provided by `rscpages`. All methods used for fetching
+content require the returned client from `connect` as the first
+argument, which naturally encourages the use of pipes.
 
 ``` r
 library(rscpages)
-## basic example code
+library(magrittr)
+
+all_content <- connect(host = 'rsconnect.example.com', api_key = 'abcdef123456789') %>% content()
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+Although you can provide `host` and `api_key` to the `connect(...)`
+function directly for quickly getting started, it is recommended to use
+environment variables in production. The environment variables
+`CONNECT_SERVER` and `CONNECT_API_KEY` will be used automatically if
+they are present. These can be conveniently set in an `.Renviron` as
+outlined in this
+[article](https://support.rstudio.com/hc/en-us/articles/360047157094-Managing-R-with-Rprofile-Renviron-Rprofile-site-Renviron-site-rsession-conf-and-repos-conf).
 
 ``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
+library(rscpages)
+
+# You could also have provided these in an .Renviron, but setting here for the sake
+# of example
+Sys.setenv(CONNECT_SERVER = "rsconnect.example.com")
+Sys.setenv(CONNECT_API_KEY = "abcdef1234567890")
+
+all_content <- connect() %>% content()
 ```
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date.
+The `content` method returns a data frame of the content visible to the
+API key being used. You can further use
+[dplyr](https://dplyr.tidyverse.org/) or built-in R functions to filter,
+mutate, and arrange the data frame for your own purposes.
 
-You can also embed plots, for example:
+**Note About Permissions:** If you are using the API key of an
+administrator, all content on the RStudio Connect server will be
+available; however, if you are using a publisher API key, only the
+content visible to that particular publisher will be available.
 
-<img src="man/figures/README-pressure-1.png" width="100%" />
+### Displaying the Content
 
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub\!
+Once you have fetched the content, you can display the content in a rich
+table format using the provided `rscpages` function. This renders an
+[html widget](https://www.htmlwidgets.org/) that can be embedded in
+RMarkdown documents and Shiny web applications.
+
+``` r
+library(rscpages)
+library(magrittr)
+
+all_content <- connect() %>% content()
+
+rscpages(all_content)
+```
+
+<center>
+
+<img src="man/figures/README-table-1.png" width="90%">
+
+</center>
+
+## Example
+
+Create a *page* that shows the 10 most recently updated shiny apps on
+your RStudio Connect server. This example assumes that you have set the
+`CONNECT_SERVER` and `CONNECT_API_KEY` environment variables.
+
+``` r
+library(rscpages)
+library(dplyr)
+library(magrittr)
+
+recent <- connect() %>% content()
+recent %<>% filter(app_mode == 'shiny') %>% arrange(created_time) %>% top_n(10)
+
+rscpages(recent)
+```
