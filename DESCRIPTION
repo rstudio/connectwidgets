@@ -7,7 +7,7 @@ Authors@R:
            role = c("aut", "cre"),
            email = "brian@rstudio.com")
 Description: This package provides both helper functions and htmlwidgets to organize and curate your content within RStudio Connect.
-License: GPL (>= 2)
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
