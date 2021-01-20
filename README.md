@@ -106,8 +106,11 @@ library(rscpages)
 library(dplyr)
 library(magrittr)
 
-recent <- connect() %>% content()
-recent %<>% filter(app_mode == 'shiny') %>% arrange(created_time) %>% top_n(10)
+recent <- connect() %>% 
+  content() %>%
+  filter(app_mode == 'shiny') %>% 
+  arrange(created_time) %>% 
+  top_n(10)
 
 rscpages(recent)
 ```
