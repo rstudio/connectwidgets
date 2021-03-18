@@ -19,4 +19,9 @@ Imports:
     httr,
     jsonlite,
     tibble,
-    htmlwidgets
+    htmlwidgets,
+    reactable,
+    dplyr,
+    magrittr,
+    htmltools,
+    glue

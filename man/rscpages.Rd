@@ -4,7 +4,10 @@
 \alias{rscpages}
 \title{<Add Title>}
 \usage{
-rscpages(content, width = NULL, height = NULL, elementId = NULL)
+rscpages(content)
+}
+\arguments{
+\item{content}{The tibble of content provided by rscpages::content()}
 }
 \description{
 <Add Description>

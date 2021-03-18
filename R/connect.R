@@ -20,17 +20,17 @@
 Connect <- R6::R6Class(
   "Connect",
   public = list(
-    host = NULL,
+    server = NULL,
     api_key = NULL,
 
-    initialize = function(host, api_key) {
-      self$host <- host
+    initialize = function(server, api_key) {
+      self$server <- server
       self$api_key <- api_key
     },
 
     print = function(...) {
       cat("RStudio Connect API Client: \n")
-      cat("  Server: ", self$host, "\n", sep = "")
+      cat("  Server: ", self$server, "\n", sep = "")
       cat("  API Key: ", paste0(strrep("*", 11), substr(self$api_key, nchar(self$api_key) - 3, nchar(self$api_key))), "\n", sep = "")
       invisible(self)
     },
@@ -52,7 +52,7 @@ Connect <- R6::R6Class(
     },
 
     GET = function(path, writer = httr::write_memory(), parser = "text") {
-      url <- paste0(self$host, "/__api__/v1/", path)
+      url <- paste0(self$server, "/__api__/v1/", path)
       res <- httr::GET(
         url,
         self$add_auth(),
@@ -66,9 +66,9 @@ Connect <- R6::R6Class(
 
 #' Create a connection to RStudio Connect
 #'
-#' Creates a connection to RStudio Connect using the hostname and an api key.
+#' Creates a connection to RStudio Connect using the server URL and an api key.
 #'
-#' @param host The host URL for accessing RStudio Connect. Defaults to environment
+#' @param server The server URL for accessing RStudio Connect. Defaults to environment
 #'   variable CONNECT_SERVER
 #' @param api_key The API key to authenticate with RStudio Connect. Defaults
 #'   to environment variable CONNECT_API_KEY
@@ -78,8 +78,8 @@ Connect <- R6::R6Class(
 #' @rdname connect
 #' @export
 connect <- function(
-  host = Sys.getenv("CONNECT_SERVER", NA_character_),
+  server = Sys.getenv("CONNECT_SERVER", NA_character_),
   api_key = Sys.getenv("CONNECT_API_KEY", NA_character_)) {
 
-  Connect$new(host = host, api_key = api_key)
+  Connect$new(server = server, api_key = api_key)
 }

@@ -2,56 +2,123 @@
 #'
 #' <Add Description>
 #'
-#' @import htmlwidgets
+#' @param content The tibble of content provided by rscpages::content()
 #'
 #' @export
-rscpages <- function(content, width = NULL, height = NULL, elementId = NULL) {
+rscpages <- function(content) {
+  data <- content %>% dplyr::select(guid, url, name, owner_username, app_mode, content_category, updated_time)
 
-  # forward options using x
-  x = list(
-    content = content
-  )
-
-  # create widget
-  htmlwidgets::createWidget(
-    name = 'rscpages',
-    x,
-    width = width,
-    height = height,
-    sizingPolicy = htmlwidgets::sizingPolicy(
-      padding = 0,
-      browser.fill = TRUE,
-      knitr.figure = FALSE
+  reactable::reactable(
+    data,
+    searchable = TRUE,
+    highlight = TRUE,
+    minRows = 10,
+    showPageInfo = FALSE,
+    rowStyle = list(cursor = "pointer"),
+    onClick = reactable::JS("function(rowInfo, colInfo) {
+      window.open(rowInfo.row.url, '_blank')
+    }"),
+    columns = list(
+      guid = reactable::colDef(show = FALSE),
+      url = reactable::colDef(show = FALSE),
+      name = reactable::colDef(
+        name = "Name",
+        cell = function(value, index) {
+          app_mode <- data$app_mode[index]
+          content_category <- data$content_category[index]
+          htmltools::tagList(
+            htmltools::img(
+              src = content_type_icon(app_mode, content_category),
+              alt = app_mode,
+              width = 24,
+              height= 24,
+              style = list(
+                verticalAlign = "middle",
+                marginRight = 10
+              )
+            ),
+            htmltools::strong(value)
+          )
+        }
+      ),
+      owner_username = reactable::colDef(
+        name = "Owner",
+        maxWidth = 175
+      ),
+      app_mode = reactable::colDef(
+        name = "Type",
+        cell = function(value, index) {
+          app_mode <- data$app_mode[index]
+          content_category <- data$content_category[index]
+          content_type_label(app_mode, content_category)
+        },
+        maxWidth = 175
+      ),
+      content_category = reactable::colDef(show = FALSE),
+      updated_time = reactable::colDef(
+        name = "Updated",
+        align = "right",
+        cell = function(value) {
+          strftime(value, format = "%b %-d, %Y")
+        },
+        maxWidth = 175
+      )
     ),
-    package = 'rscpages',
-    elementId = elementId
+    language = reactable::reactableLang(
+      searchPlaceholder = "Search",
+      noData = "No content found",
+      pagePrevious = "\u276e",
+      pageNext = "\u276f"
+    ),
+    theme = rscpagesTheme()
   )
 }
 
-#' Shiny bindings for rscpages
-#'
-#' Output and render functions for using rscpages within Shiny
-#' applications and interactive Rmd documents.
-#'
-#' @param outputId output variable to read from
-#' @param width,height Must be a valid CSS unit (like \code{'100\%'},
-#'   \code{'400px'}, \code{'auto'}) or a number, which will be coerced to a
-#'   string and have \code{'px'} appended.
-#' @param expr An expression that generates a rscpages
-#' @param env The environment in which to evaluate \code{expr}.
-#' @param quoted Is \code{expr} a quoted expression (with \code{quote()})? This
-#'   is useful if you want to save an expression in a variable.
-#'
-#' @name rscpages-shiny
-#'
-#' @export
-rscpagesOutput <- function(outputId, width = '100%', height = '400px'){
-  htmlwidgets::shinyWidgetOutput(outputId, 'rscpages', width, height, package = 'rscpages')
+content_type_icon <- function(app_mode, content_category) {
+  rmd <- "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTExIDc5LjE1ODMyNSwgMjAxNS8wOS8xMC0wMToxMDoyMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo2ZDVhMTNhOC1hNzkzLTQ4YzItYjA2OS0yODQ5OTA0NzZiMTkiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NEEyMURCRkVEMTNFMTFFNzhGNDVGQThCNzI2NDA0NEIiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NEEyMURCRkREMTNFMTFFNzhGNDVGQThCNzI2NDA0NEIiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4MzAwYTkwMC05ZDkxLTQ2MzgtYTdhZC05ZDFjOWI0YmZkYmUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NmQ1YTEzYTgtYTc5My00OGMyLWIwNjktMjg0OTkwNDc2YjE5Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+v+ZYEwAAAPVJREFUeNrs27EKwjAUheFGRfDRBF0cBMHBycXJqYujg5OLi5M4CYIIBUHfzDE9eYQYbKz3v3DWwkfSm1tInfe+sFSdwlgB/vfqpT5gtH1mBTw2w++BhWu6w72VifKysqUHSqWMs27p2G2U+Lr0lZsyU+5WmlZAX5WppS4dduNFmVs6lrrKWVlYOocD+qQsLQ0eTjkqK0uTVkAf1MnXlkbLgN4LXVqbpXeNzdK55+TYWZ7PQ8CAAQMGDBgwYMCAAQMGDBgwYMCAAQMGDBgwYMCAAQMGDBgw4N+vjy615L4UzgpHlEv9jadtvwCwwnRpwO2uWoABAOokKP9QvE1lAAAAAElFTkSuQmCC"
+  jupyter <- "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3NpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTQwIDc5LjE2MDQ1MSwgMjAxNy8wNS8wNi0wMTowODoyMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo2ZDVhMTNhOC1hNzkzLTQ4YzItYjA2OS0yODQ5OTA0NzZiMTkiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MTVEQkU5ODg4REI5MTFFODlDQjFCRTM3NEU0NDNCQjEiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MTVEQkU5ODc4REI5MTFFODlDQjFCRTM3NEU0NDNCQjEiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChNYWNpbnRvc2gpIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6YWI2NWE3ZjYtY2I4MS00NDRlLTkzOWEtODY4ZDQ5MzI0OGY4IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjZkNWExM2E4LWE3OTMtNDhjMi1iMDY5LTI4NDk5MDQ3NmIxOSIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PoSdP0IAAAOrSURBVHja7Jt9aE1hHMe/5+Xuvmx3hm3ICrPJJjbmDyT+0KyJxB+TRiGWWkQppf1nSopoySYk8rIsmog1FInUzJaMvIwVmSG2+36de47f8yyT8Md9OdvZznnq2/njnvPtfs7zO7/n9/zOvYKmaTDTEGGyYQGP9CHHa7C8+saQAlyrKtUPmOAGO8MFSKtJN80S0k5SI2nFkIZ0tGEU5+OSRGogrSVdNkvSYtD1pDIzZWkWjedJ68y0LEmk06QNZlqHGfQpUoWZCg+BVEuqNFOlxaBrKJPvNFNpyaAPEfRus9XS+wetlh7qOjnaWt7aLek1lK52KM/v8qPa8xZqwNN/x51uiJlTIE8qgJy3mB+HNfCPp80INtci0v36n5+rnq9cypsW4M5JSONz4CjeCtvM4uEFrHq+wF9fBeXlw6iuYzfGd3YX5Gnz4VpTDdGdbvyOR+TDC3iPrIka9o9HgK5lHszL0MCR7lfwHt8Mte9L/FFCHsyLeRoypDV/L3ynKqH9SkjusZCy50LOyqfElA1x9AQI9mQIDjcESlbsPC1ICvmgfvtIyawTyvsORDpb+HPNPekc5unecQmCa5SxgP1X9kELB2FftB5JhaWQJuZTLST8v0xy9oPzHcH4XCBvEeycUqNQ7kC47QbCLVehfv/EvZPLDxgHWOlq40uKq2wvBJs9zoJRgJQ1A06So2Qbwo8aELxVB4VmXqaIMQSwlJFNwIWJL5bp5tkXlsM2aylCDy7EDZywpCW4UnVdz8XUDDhptrVAn2laPDzUBWeqiYCNWnhYwBawBWwBW8AWsBmAaVNhmEpL8/fpyso6KIGmGuNUWpHPnQjdPwdNCSV2UsmP+XoOroZt2gLjbA/ZTil0/zyCt+uQVLQSSbOX0X44L/Yb+OEFwk+uI/y4EZqvF7aCkrh3SglvALhW7YHncBlC985wianp9CWL+N5WzJzKOx5iyhje8YAkQwt6B6R+74ba8waR98+gvG2F2vv5dximjePehmvxCK40JG86Cu+xjbw1w3pS4bYmgClWT6ebezJvQ2Zp1qpJqTjBZzf+PXA69+LtHyMvS9LE6UjZfhFy7rzYQ4+uZR7MK5FDt0Y861CkbKnDj/YmSmTH//vm4e8IyYFjSQVPUnoM3V+1sC/OxN8tddyF8q6VlrCugVYue0aljEmQJ8+BnD8C3i39XrYKdIexamkL2AK2gEfciClLD/WPwq0ZjqY2j/dvPMPtLwDWDFtZ2gIe3uOnAAMAF9RGuxGtQ9YAAAAASUVORK5CYII="
+  app <- "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTExIDc5LjE1ODMyNSwgMjAxNS8wOS8xMC0wMToxMDoyMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo2ZDVhMTNhOC1hNzkzLTQ4YzItYjA2OS0yODQ5OTA0NzZiMTkiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QUFGRjA3RkVEMTQ0MTFFNzhGNDVGQThCNzI2NDA0NEIiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QUFGRjA3RkREMTQ0MTFFNzhGNDVGQThCNzI2NDA0NEIiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDowMGNlOWQ2Ny1kZWJjLTRkNWMtODMxNC1hZjJmZjUzMTIwYzkiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NmQ1YTEzYTgtYTc5My00OGMyLWIwNjktMjg0OTkwNDc2YjE5Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+hfL5CQAABVNJREFUeNrsm9lvE1cUxj+P9/E48ZrECZCQkATEUiFAKq3UloqWLhQe+lipT1XVlz60T5UAqZXgpaAi/oWq6hMqbeiiqpBUJUKBUhZBQoGgxMEhJN6SzIztGXvGPTZuQkBdnIzxZOJPOpI9kq/v796z3OMZm/L5PFaSGKwwrThgy6Nv9h7+yXCA3x98vebS/6a3yHrJeLK8zo0vzXXvYoEPk/WQ7SLjlsHmcaW5ni7NvSzgwiodWMaee6Dknf8b+GMDhOtH5QBvNwDw9nKA3QYAdtcOHjXgGvDiZGIYrG70YGNXM3IuF1STftbVUolBm1ob8d6uLnB2BpmsghNnhzEdmYRMrw23w6rDgXeea8e2ZhbdfgeeaXLhwxfaEPS6jOnSjR4WQddCxwlwNrQE3MYENis5CLK64JqPtSHkd8FkMhkPOJYUEY4LeDRaXXYz2hrc4Jw24wHncgrGJnkkUrkF15vrnWjyuYwHXNBEnEcslV1wraXejkApcSlUphiOhcPNzk+kzo3W7jVobAtBMc/nAJOZQZ7KnKpROFSkLEUJeGJGwoaAc+4a67DCSYAq1eU9z7Zjd6cPf9ybxcmLYUrteRzatwlbQxzuJNI4fd2DvitheOpY7N4cgigDfTcnIMUSYFRVf8DTs2mEYwJya+tgYR46kc1sQktDPfY+78C7W5vAWRlsCrBo8znhpcXY0vhwtwuLlN8YRB0lui0tbuxo5lDY211dPnz23XVkphL6A1ZpxyLRWUTFBoTc84nqlXVeeBzMgjh6sbX+ic93+lkCZ+nENu/Gm2lBtnU2YCA+DUVR9RXDBU1Rpo4+lrh8j8H+k6zkDY/C/q21QTdYl0OfzUM0ISAyndZ0zFaPA646Vp/AYkpGeIpHKqtqNuY6rx31Xk6fwIV7VvcpjuPprGZjBl1WNPs5WG0WfQBbLGY4KMZMpcx8nzJ1Rs5pupBtlNCWEseaZWmn34O3t60qHhqGpkRcHorgQYzH1QiPjoBLs5XtoDLGURzPJIXqAWdsdnzwcjfe6PYVwXIUtr2dfhz9YRD9Y7PY2e7DqjptztEdFMdrQh6Mh6eqB7x2lQ8vtXvndtFCL16lmpt/cyMmeAlaOrXbZsbqAIdrrB2plFQd4C0eG8zFG+sLa+fuDi+opEJWNQ1jsAQNmxVYBLAmoXV5NI5Tt+JP9sYlfpvGtSBE4SGbLdVz6cIh46uzfyJLwbt/g5+OjxU5sc5pAyXBvLq4RzU0W3tGEPD1mSGc6B/DrVimosCKUmiwqgxcPANLGVy4dBdfnLmNKxNixYBvR0Xk5Wz1gYsD5nIYHx7HoW+v4+e7SSpR2j4lVBjt3EgCajqjD+A5xZM4duoajvVHMDYra9eUCFmcuzUJRg8u/bjsmTR+HbiNz3vv4k5cm86p52YMSmJGf83DXBmQZYwMhvHJqRsYGBeWNNZF+vw354dhURX9AhdkIveTHsTw6cmrOHkjhul0eRMudJh9o7M4+uMQGH5pi2bBU5SF5/HlL4OIxNbgtc0hrPf/d9cjEWzPYBSnL4wgE00ufQ54ylLFFHoH7lCmTWJHewDv72yBLCvwOa3FH/oKmhSziMzIGKSua/heHIPDk5BEbXLAUwcuQucUSOOTOB+fxm9XRtEQrMf6IFdsOnjydknKgp8RkEiKEIV08UdBzbwMVZSakSiJSIgJIvpH6OBCDUFeVYt3LyoWVtCRsnK24t9Re+RhpQLzBmATygG+ZADg38sBPm4A4OPlABcewT2yjGGPlBjKSloHyfaT9ZGJywBSLM11X2nui6rDPSUzjEy1/y3VgGvAy1p/CTAAcDHxToB4xyoAAAAASUVORK5CYII="
+  api <- "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDIxLjEuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCA2MCA2MCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNjAgNjA7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPHN0eWxlIHR5cGU9InRleHQvY3NzIj4KCS5zdDB7ZmlsbDojRkZGRkZGO3N0cm9rZTojNEM4M0I2O3N0cm9rZS13aWR0aDoyO3N0cm9rZS1taXRlcmxpbWl0OjEwO30KCS5zdDF7ZmlsbDojNEM4M0I2O30KPC9zdHlsZT4KPGNpcmNsZSBjbGFzcz0ic3QwIiBjeD0iMzAiIGN5PSIzMCIgcj0iMjEiLz4KPGc+Cgk8cGF0aCBjbGFzcz0ic3QxIiBkPSJNMjAuNCwyMy45aDMuMmwzLjcsMTEuN2gtMi44bC0wLjctMi44aC0zLjZsLTAuNywyLjhoLTIuN0wyMC40LDIzLjl6IE0yMC43LDMwLjhoMi41bC0wLjMtMS4xCgkJYy0wLjMtMS4yLTAuNi0yLjYtMS0zLjhoLTAuMWMtMC4zLDEuMi0wLjYsMi42LTAuOSwzLjhMMjAuNywzMC44eiIvPgoJPHBhdGggY2xhc3M9InN0MSIgZD0iTTI4LjUsMjMuOWg0YzIuNiwwLDQuNywwLjksNC43LDMuOGMwLDIuOC0yLjEsNC00LjYsNGgtMS41djRoLTIuNkMyOC41LDM1LjcsMjguNSwyMy45LDI4LjUsMjMuOXogTTMyLjUsMjkuNQoJCWMxLjUsMCwyLjItMC42LDIuMi0xLjljMC0xLjItMC44LTEuNy0yLjItMS43aC0xLjJ2My41aDEuMlYyOS41eiIvPgoJPHBhdGggY2xhc3M9InN0MSIgZD0iTTM5LjMsMjMuOWgyLjZ2MTEuN2gtMi42VjIzLjl6Ii8+CjwvZz4KPC9zdmc+Cg=="
+  plot <- "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTExIDc5LjE1ODMyNSwgMjAxNS8wOS8xMC0wMToxMDoyMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo2ZDVhMTNhOC1hNzkzLTQ4YzItYjA2OS0yODQ5OTA0NzZiMTkiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MkYyQ0JFMzREMTQ1MTFFNzhGNDVGQThCNzI2NDA0NEIiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MkYyQ0JFMzNEMTQ1MTFFNzhGNDVGQThCNzI2NDA0NEIiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo3ZGFjM2E4ZS01MjBjLTRhMzQtYWE0Zi1mMTZkNmNiYjAyMDYiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NmQ1YTEzYTgtYTc5My00OGMyLWIwNjktMjg0OTkwNDc2YjE5Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+tXq8jgAAARpJREFUeNrs20EOgyAQBVCZcLkmPVKXPVKTHo9WVw2p2AZmmO98EjeueJkPgmIqpSyRmizBGsEEE4zdcn3jen9u0/bjdkG3JVaYYIIJJphgggkmmGCCA4Pfm5vtCgHugcKBP7E9W1e4SPfu0yVKlGHAo6IMAR6NdQ3WwLoFa2HdR1rjzal4ru7pl5aaUXYHtsCuLXvovBVWpcL1GDza3VhiVSNdd/4IbvUtSzSruyJacO0ZWRXciuYe3Lq6KpFudf4b3PqzbNaI8owVlFmFZ0VzChgNO2wMIx2PEKtxCw1GjPKQSCOe9JEoUe6uMOo5rhwF6vKNB8EEE0wwwb8+ltAXGHuPz3AVTr3/Lc1Owr8LIVaYs/TJ2kuAAQCOdXN3POlILwAAAABJRU5ErkJggg=="
+  pin <- "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDIzLjAuNCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCA2MCA2MCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNjAgNjA7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPHN0eWxlIHR5cGU9InRleHQvY3NzIj4KCS5zdDB7ZmlsbDpub25lO3N0cm9rZTojN0I3QjdCO3N0cm9rZS1taXRlcmxpbWl0OjEwO30KCS5zdDF7ZmlsbDojN0I3QjdCO3N0cm9rZTojRkZGRkZGO3N0cm9rZS1taXRlcmxpbWl0OjEwO30KCS5zdDJ7ZmlsbDojN0I3QjdCO30KPC9zdHlsZT4KPGxpbmUgY2xhc3M9InN0MCIgeDE9IjMiIHkxPSIzNCIgeDI9IjQ1IiB5Mj0iMzQiLz4KPGxpbmUgY2xhc3M9InN0MCIgeDE9IjMiIHkxPSIyMiIgeDI9IjQ1IiB5Mj0iMjIiLz4KPGxpbmUgY2xhc3M9InN0MCIgeDE9IjMiIHkxPSIyOCIgeDI9IjQ1IiB5Mj0iMjgiLz4KPGxpbmUgY2xhc3M9InN0MCIgeDE9IjMiIHkxPSIxNiIgeDI9IjQ1IiB5Mj0iMTYiLz4KPGxpbmUgY2xhc3M9InN0MCIgeDE9IjMiIHkxPSI0MCIgeDI9IjQ1IiB5Mj0iNDAiLz4KPGxpbmUgY2xhc3M9InN0MCIgeDE9IjMiIHkxPSI0NiIgeDI9IjQ1IiB5Mj0iNDYiLz4KPGxpbmUgY2xhc3M9InN0MCIgeDE9IjMiIHkxPSI1MiIgeDI9IjQ1IiB5Mj0iNTIiLz4KPGxpbmUgY2xhc3M9InN0MCIgeDE9IjMxIiB5MT0iMTYiIHgyPSIzMSIgeTI9IjUyIi8+CjxsaW5lIGNsYXNzPSJzdDAiIHgxPSIxNyIgeTE9IjE2IiB4Mj0iMTciIHkyPSI1MiIvPgo8bGluZSBjbGFzcz0ic3QwIiB4MT0iMyIgeTE9IjE2IiB4Mj0iMyIgeTI9IjUyIi8+CjxsaW5lIGNsYXNzPSJzdDAiIHgxPSI0NSIgeTE9IjE2IiB4Mj0iNDUiIHkyPSI1MiIvPgo8cG9seWdvbiBjbGFzcz0ic3QxIiBwb2ludHM9IjIyLjcsMzkuMiA0Mi4yLDE1LjMgNDYuNywxOS44ICIvPgo8cGF0aCBjbGFzcz0ic3QyIiBkPSJNNTcuNCwxMS4zbC02LjctNi43Yy0wLjYtMC42LTAuNi0xLjUsMC0yLjFsMCwwYzAuNi0wLjYsMS41LTAuNiwyLjEsMGw2LjcsNi43YzAuNiwwLjYsMC42LDEuNSwwLDIuMWwwLDAKCUM1OC45LDExLjgsNTgsMTEuOCw1Ny40LDExLjN6Ii8+Cjxwb2x5Z29uIGNsYXNzPSJzdDIiIHBvaW50cz0iNTEuNSwxNy41IDQ0LjgsMTAuNyA1MS44LDYuNSA1NS43LDEwLjQgIi8+CjxwYXRoIGNsYXNzPSJzdDEiIGQ9Ik00OC40LDIyLjFsLTkuNS05LjVjLTAuNi0wLjYtMC42LTEuNSwwLTIuMUw0MC4zLDljMC42LTAuNiwxLjUtMC42LDIuMSwwbDkuNSw5LjVjMC42LDAuNiwwLjYsMS41LDAsMi4xCglsLTEuNCwxLjRDNDkuOSwyMi43LDQ5LDIyLjcsNDguNCwyMi4xeiIvPgo8L3N2Zz4K"
+  tf <- "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDIyLjAuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHZpZXdCb3g9IjAgMCA2MCA2MCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNjAgNjA7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPHN0eWxlIHR5cGU9InRleHQvY3NzIj4KCS5zdDB7ZmlsbDojRkZGRkZGO3N0cm9rZTojNEM4M0I2O3N0cm9rZS13aWR0aDoyO3N0cm9rZS1taXRlcmxpbWl0OjEwO30KCS5zdDF7ZmlsbDojRTU1QjJEO30KPC9zdHlsZT4KPGNpcmNsZSBjbGFzcz0ic3QwIiBjeD0iMzAiIGN5PSIzMCIgcj0iMjEiLz4KPGc+Cgk8cGF0aCBjbGFzcz0ic3QxIiBkPSJNMjQuNSwyNi40aC0zLjJ2LTIuMmg5LjF2Mi4yaC0zLjJ2OS41aC0yLjdWMjYuNHoiLz4KCTxwYXRoIGNsYXNzPSJzdDEiIGQ9Ik0zMi4yLDI0LjJoNy40djIuMmgtNC44djIuN2g0LjF2Mi4yaC00LjF2NC42aC0yLjZWMjQuMnoiLz4KPC9nPgo8L3N2Zz4K"
+  app_doc <- "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADwAAAA8CAYAAAA6/NlyAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA3hpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTExIDc5LjE1ODMyNSwgMjAxNS8wOS8xMC0wMToxMDoyMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo2ZDVhMTNhOC1hNzkzLTQ4YzItYjA2OS0yODQ5OTA0NzZiMTkiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QUFGRjA3RkFEMTQ0MTFFNzhGNDVGQThCNzI2NDA0NEIiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QUFGRjA3RjlEMTQ0MTFFNzhGNDVGQThCNzI2NDA0NEIiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDowMGNlOWQ2Ny1kZWJjLTRkNWMtODMxNC1hZjJmZjUzMTIwYzkiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6NmQ1YTEzYTgtYTc5My00OGMyLWIwNjktMjg0OTkwNDc2YjE5Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+2t9E4wAAAr1JREFUeNrsm19IU1Ecx793m1s6N51zTDbXshm1YvbHgU8SkRKBRUQkQg8R0UtPPgVR0UMP0kMv+dBT1EsQSVKU+dZTEUoRtf5gWnOTIQ636Zyburl+99Z9KCi3mm5353zhy7kP59zDh9/v/M7ZziZks1mwJIEDc2AO/Iu6rj0rKsCTS4fz6q/JE26j0yFJPk4eLtQLVSWegZXkR+QjhXqhZiPS6D+Xi5Y8QO4hPyz3CMsSoe+TT7ICLGfjPfIpVoBFqcl3yKdZAZahb5PPsQIsnR/It8jnWQGWoW9SJe9lBViGvkHQF1gBltW3rgePUjon53uWL5cIc2AOzIE5MAfmwByYA3NgNoEXl9IYfhPEp2CUDeDHI370D/lwffAtwnNJNiIsKjyfwsT0fPkDe5x1EARBev74W1ovpFawtJJZt7mL8nl4a4MR9QadFOGxUAwDL7/iQyACb7MFQ68DsNZWoX1nA95PRrB/lw27m8zKBjYbNsFF0CLw56kYfIEfUR4dD0vtZHgBI19mpGf/TBx9jjZoNWplb0tuh0lq06t/v5+bmk1IVvw+3OI0o0K99vRigRsPzSkX+MGLCfQ/9SFDkW2yGnIaI6Z84mdlV9wavvt8TGrf+WehVgk5jRELWyAch7vRpLwIO8x6qQ1FFxHMcW3GEsuYjiaVmdKXu1vR6qrPa8xyOkNLYFWZwLY6PS6e2IdjbVugEnJLaafFgG22GuVWaV2FGmc73eg96kFNlXbN/of2OrDZYlAusKwDHjuuUIq7rMY/9unyOtG5pxFCgeYs+lXLdnstrvZ4MfjqG0bpdBWhAiVWb7G4HWyxo4Ngc019RQCLMlXrcKZjB7rbmxGJp6AiYIuxko6ThU/AkrpM0+s05Gr+FQ8H5sAcmANzYFb0T/twsX8UziOch5j7CwCPMAfmwMrWdwEGALFq1PgpchxbAAAAAElFTkSuQmCC"
+
+  switch(app_mode,
+    "api" = api,
+    "shiny" = app,
+    "rmd-shiny" = app_doc,
+    "rmd-static" = rmd,
+    "jupyter-static" = jupyter,
+    "static" = switch(content_category,
+      "plot" = plot,
+      "pin" = pin,
+      rmd
+    ),
+    "tensorflow-saved-model" = tf,
+    "python-api" = api,
+    "python-dash" = app,
+    "python-streamlit" = app,
+    "python-bokeh" = app,
+    rmd)
 }
 
-#' @rdname rscpages-shiny
-#' @export
-renderRscpages <- function(expr, env = parent.frame(), quoted = FALSE) {
-  if (!quoted) { expr <- substitute(expr) } # force quoted
-  htmlwidgets::shinyRenderWidget(expr, rscpagesOutput, env, quoted = TRUE)
+content_type_label <- function(app_mode, content_category) {
+  switch(app_mode,
+    "api" = "API",
+    "shiny" = "Application",
+    "rmd-shiny" = "Document",
+    "rmd-static" = "Document",
+    "jupyter-static" = "Document",
+    "static" = switch(content_category,
+      "plot" = "Plot",
+      "pin" = "Pin",
+      "Other"
+    ),
+    "tensorflow-saved-model" = "Model",
+    "python-api" = "API",
+    "python-dash" = "Application",
+    "python-streamlit" = "Application",
+    "python-bokeh" = "Application",
+    "Other")
 }
