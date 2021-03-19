@@ -41,16 +41,18 @@ argument, which naturally encourages the use of pipes.
 library(rscpages)
 library(magrittr)
 
-all_content <- connect(host = 'rsconnect.example.com', api_key = 'abcdef123456789') %>% content()
+all_content <- connect(server = 'rsconnect.example.com', api_key = 'abcdef123456789') %>% content()
 ```
 
-Although you can provide `host` and `api_key` to the `connect(...)`
+Although you can provide `server` and `api_key` to the `connect(...)`
 function directly for quickly getting started, it is recommended to use
 environment variables in production. The environment variables
 `CONNECT_SERVER` and `CONNECT_API_KEY` will be used automatically if
-they are present. These can be conveniently set in an `.Renviron` as
-outlined in this
+they are present. In your development environment, these can be
+conveniently set in an `.Renviron` as outlined in this
 [article](https://support.rstudio.com/hc/en-us/articles/360047157094-Managing-R-with-Rprofile-Renviron-Rprofile-site-Renviron-site-rsession-conf-and-repos-conf).
+When deploying to RStudio Connect, these environment variables will be
+automatically provided - no steps necessary\!
 
 ``` r
 library(rscpages)
@@ -76,9 +78,9 @@ content visible to that particular publisher will be available.
 ### Displaying the Content
 
 Once you have fetched the content, you can display the content in a rich
-table format using the provided `rscpages` function. This renders an
-[html widget](https://www.htmlwidgets.org/) that can be embedded in
-RMarkdown documents and Shiny web applications.
+table format using the provided `rscpages` function. This renders a
+[reactable](https://glin.github.io/reactable/) table that includes
+searching, sorting, paginating, and filtering.
 
 ``` r
 library(rscpages)
@@ -98,18 +100,23 @@ rscpages(all_content)
 ## Example
 
 Create a *page* that shows the 10 most recently updated shiny apps on
-your RStudio Connect server. This example assumes that you have set the
-`CONNECT_SERVER` and `CONNECT_API_KEY` environment variables.
+your RStudio Connect server.
+
+**NOTE**: Don’t forget to ensure that `CONNECT_SERVER` and
+`CONNECT_API_KEY` are set\!
 
 ``` r
 library(rscpages)
 library(dplyr)
 library(magrittr)
 
-recent <- connect() %>% 
-  content() %>%
-  filter(app_mode == 'shiny') %>% 
-  arrange(created_time) %>% 
+recent <- connect() %>% content()
+recent %<>%
+  filter(
+    owner_username == 'brian',
+    app_mode == 'shiny'
+  ) %>%
+  arrange(created_time) %>%
   top_n(10)
 
 rscpages(recent)
