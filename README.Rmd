@@ -22,6 +22,7 @@ knitr::opts_chunk$set(
 
 You can use the `rscpages` package to curate your content on RStudio Connect, helping to create organized groups of content within an RMarkdown document or Shiny app.
 
+**NOTE: This package is still in alpha and is not ready for any production usage. Things will change, things might break, etc**
 
 ## Installation
 
