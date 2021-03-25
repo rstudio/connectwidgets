@@ -1,14 +1,14 @@
 #' Get Content Items
 #'
-#' Returns content items from the Connect server that are visible to the API key's user account
+#' Returns content items from the Connect server as a tibble that are visible to the API key's user account
 #'
-#' @param connect A Connect object
+#' @param client A Client object (see `connect`)
 #'
 #' @return A tibble of content items
 #'
 #' @export
-content <- function(connect) {
-  results <- connect$GET("/content")
+content <- function(client) {
+  results <- client$GET("/content")
 
   df <- jsonlite::fromJSON(results, simplifyDataFrame = T)
 
@@ -28,7 +28,7 @@ content <- function(connect) {
 
   # TODO: Temporary WILDLY INEFFICIENT loading of owners.  This is being replaced by eager-loading
   # additions to the v1 content API
-  owners.df <- do.call(rbind, lapply(unique(content.tbl$owner_guid), function(guid) getOwner(connect, guid)))
+  owners.df <- do.call(rbind, lapply(unique(content.tbl$owner_guid), function(guid) getOwner(client, guid)))
   owners.tbl <- tibble::tibble(
     owner_guid = as.character(owners.df$guid),
     owner_username = as.character(owners.df$username),
@@ -39,7 +39,7 @@ content <- function(connect) {
   content.tbl %>% dplyr::left_join(owners.tbl, by = c("owner_guid"))
 }
 
-getOwner <- function(connect, ownerGuid) {
-  result <- connect$GET(glue::glue('/users/{ownerGuid}'))
+getOwner <- function(client, ownerGuid) {
+  result <- client$GET(glue::glue('/users/{ownerGuid}'))
   data.frame(jsonlite::fromJSON(result))
 }

@@ -4,14 +4,14 @@
 \alias{content}
 \title{Get Content Items}
 \usage{
-content(connect)
+content(client)
 }
 \arguments{
-\item{connect}{A Connect object}
+\item{client}{A Client object (see \code{connect})}
 }
 \value{
 A tibble of content items
 }
 \description{
-Returns content items from the Connect server that are visible to the API key's user account
+Returns content items from the Connect server as a tibble that are visible to the API key's user account
 }

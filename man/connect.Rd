@@ -17,7 +17,7 @@ variable CONNECT_SERVER}
 to environment variable CONNECT_API_KEY}
 }
 \value{
-An RStudio Connect R6 object that can be passed along to methods
+An Client object
 }
 \description{
 Creates a connection to RStudio Connect using the server URL and an api key.

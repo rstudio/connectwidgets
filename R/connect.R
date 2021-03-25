@@ -1,11 +1,6 @@
 #' Class representing a Connect API client
 #'
-#' @name RStudioConnect
-#'
-#' @section Usage:
-#' \preformatted{
-#' client <- Connect$new(host = 'connect.example.com', apiKey = 'mysecretkey')
-#' }
+#' @name Client
 #'
 #' @section Details:
 #'
@@ -15,10 +10,8 @@
 #' @importFrom utils capture.output
 #'
 #' @family R6 classes
-#'
-#' @export
-Connect <- R6::R6Class(
-  "Connect",
+Client <- R6::R6Class(
+  "Client",
   public = list(
     server = NULL,
     api_key = NULL,
@@ -73,13 +66,14 @@ Connect <- R6::R6Class(
 #' @param api_key The API key to authenticate with RStudio Connect. Defaults
 #'   to environment variable CONNECT_API_KEY
 #'
-#' @return An RStudio Connect R6 object that can be passed along to methods
+#' @return An Client object
 #'
 #' @rdname connect
+#'
 #' @export
 connect <- function(
   server = Sys.getenv("CONNECT_SERVER", NA_character_),
   api_key = Sys.getenv("CONNECT_API_KEY", NA_character_)) {
 
-  Connect$new(server = server, api_key = api_key)
+  Client$new(server = server, api_key = api_key)
 }
