@@ -76,12 +76,29 @@ all content on the RStudio Connect server will be available; however, if you are
 using a publisher API key, only the content visible to that particular publisher
 will be available.
 
-### Displaying a Table of Content
+#### Data Dictionary for Content
 
-Once you have fetched the content, you can display the content in a rich table
-format  using the provided `rscpages` function. This renders a
-[reactable](https://glin.github.io/reactable/) table that includes searching,
-sorting, paginating, and filtering.
+* `id` - Auto-incrementing identifier for each content item (legacy)
+* `guid` - Unique identifier for each content item (preferred)
+* `owner_guid` - Unique identifier of the owner of the content item
+* `owner_username` - Username of the owner of teh content item
+* `owner_first_name` - First name of the owner of the content item
+* `owner_last_name` - Last name of the owner of the content item
+* `app_mode` - The type of the content item (examples: `shiny`, `rmd-static`, `static`, `python-dash`, etc.)
+* `content_category` - For `static` app modes, the specific category of content (examples: `site`, `plot`, `pin`, etc.)
+* `name` - The name of the content item as set at initial publishing
+* `title` - The user-provided title of the content item
+* `description` - The user-provided description of the content item
+* `url` - The URL to the content item
+* `created_time` - The timestamp at which the content item was created
+* `updated_time` - The timestamp at which the content item was last updated
+
+### Displaying a Table of the Content
+
+Once you have fetched (and filtered, arranged, etc) the content, you can display
+the content in a rich table format  using the provided `rscpages` function. This
+renders a [reactable](https://glin.github.io/reactable/) table that includes
+searching, sorting, paginating, and filtering.
 
 ``` r
 library(rscpages)
