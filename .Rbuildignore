@@ -1,3 +1,5 @@
+^renv$
+^renv\.lock$
 ^rscpages\.Rproj$
 ^\.Rproj\.user$
 ^LICENSE\.md$
