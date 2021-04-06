@@ -3,6 +3,7 @@ rscpages: Curate your content on RStudio Connect
 
 <!-- badges: start -->
 
+[![R-CMD-check](https://github.com/rstudio/rscpages/workflows/R-CMD-check/badge.svg)](https://github.com/rstudio/rscpages/actions)
 <!-- badges: end -->
 
 ## Overview
