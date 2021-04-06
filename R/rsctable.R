@@ -1,11 +1,11 @@
-#' <Add Title>
+#' Reactable table of the content
 #'
-#' <Add Description>
+#' Renders a reactable table of the provided content items
 #'
 #' @param content The tibble of content provided by rscpages::content()
 #'
 #' @export
-rscpages <- function(content) {
+rsctable <- function(content) {
   data <- content %>% dplyr::select(guid, url, name, owner_username, app_mode, content_category, updated_time)
 
   reactable::reactable(
