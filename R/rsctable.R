@@ -12,7 +12,6 @@ rsctable <- function(content) {
     data,
     searchable = TRUE,
     highlight = TRUE,
-    minRows = 10,
     showPageInfo = FALSE,
     rowStyle = list(cursor = "pointer"),
     onClick = reactable::JS("function(rowInfo, colInfo) {
