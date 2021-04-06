@@ -59,7 +59,7 @@ rsctable <- function(content) {
         name = "Updated",
         align = "right",
         cell = function(value) {
-          strftime(value, format = "%b %-d, %Y")
+          strftime(value, format = "%b %d, %Y")
         },
         maxWidth = 175
       )
