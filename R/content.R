@@ -34,11 +34,11 @@ content <- function(client) {
     id = as.integer(df$id),
     guid = df$guid,
     owner_guid = df$owner_guid,
-    app_mode = df$app_mode,
-    content_category = df$content_category,
     name = df$name,
     title = df$title,
     description = df$description,
+    app_mode = df$app_mode,
+    content_category = df$content_category,
     url = df$content_url,
     created_time = as.POSIXct(strptime(df$created_time, "%Y-%m-%dT%H:%M:%SZ", tz = "UTC")),
     updated_time = as.POSIXct(strptime(df$last_deployed_time, "%Y-%m-%dT%H:%M:%SZ", tz = "UTC"))
@@ -54,7 +54,9 @@ content <- function(client) {
     owner_last_name = as.character(owners.df$last_name)
   )
 
-  content.tbl %>% dplyr::left_join(owners.tbl, by = c("owner_guid"))
+  content.tbl %>%
+    dplyr::left_join(owners.tbl, by = c("owner_guid")) %>%
+    dplyr::relocate(dplyr::starts_with("owner_"), .after = "description")
 }
 
 getOwner <- function(client, ownerGuid) {
