@@ -45,7 +45,7 @@ Client <- R6::R6Class(
     },
 
     GET = function(path, writer = httr::write_memory(), parser = "text") {
-      url <- paste0(self$server, "/__api__/v1/", path)
+      url <- paste0(self$server, "/__api__/v1", path)
       res <- httr::GET(
         url,
         self$add_auth(),
