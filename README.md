@@ -5,6 +5,7 @@ rscpages: Curate your content on RStudio Connect
 
 [![CRAN status](https://www.r-pkg.org/badges/version/rscpages)](https://CRAN.R-project.org/package=rscpages)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![R-CMD-check](https://github.com/rstudio/rscpages/workflows/R-CMD-check/badge.svg)](https://github.com/rstudio/rscpages/actions)
 <!-- badges: end -->
 
 ## Overview
@@ -40,7 +41,6 @@ function. All methods used for fetching data require the returned client from
 
 ``` r
 library(rscpages)
-library(magrittr)
 
 client <- connect(server = 'rsconnect.example.com', api_key = 'abcdef123456789')
 ```
@@ -73,6 +73,18 @@ RStudio Connect server. You can further use
 [dplyr](https://dplyr.tidyverse.org/) or built-in R functions to filter, mutate,
 and arrange the data frame for your own purposes.
 
+``` r
+all_content <- client %>% content()
+```
+
+``` r
+library(dplyr)
+
+recent_content <- all_content %>%
+  arrange(desc(created_time)) %>%
+  top_n(10)
+```
+
 **Note About Permissions:** If you are using the API key of an administrator,
 all content on the RStudio Connect server will be available; however, if you are
 using a publisher API key, only the content visible to that particular publisher
@@ -95,20 +107,17 @@ will be available.
 * `created_time` - The timestamp at which the content item was created
 * `updated_time` - The timestamp at which the content item was last updated
 
-### Displaying a Table of the Content
+## UI Components
+
+### rsctable - Table component for listing content
 
 Once you have fetched (and filtered, arranged, etc) the content, you can display
-the content in a rich table format  using the provided `rscpages` function. This
+the content in a rich table format using the provided `rsctable` function. This
 renders a [reactable](https://glin.github.io/reactable/) table that includes
 searching, sorting, paginating, and filtering.
 
 ``` r
-library(rscpages)
-library(magrittr)
-
-all_content <- connect() %>% content()
-
-rscpages(all_content)
+rsctable(all_content)
 ```
 
 <center>
@@ -151,6 +160,6 @@ recent <- connect() %>%
 John should probably provide some context and introduction to his page here using markdown.
 
 ```{r echo=FALSE, message=FALSE}
-rscpages(recent)
+rsctable(recent)
 ```
 ~~~

@@ -1,18 +1,17 @@
-#' <Add Title>
+#' Reactable table of the content
 #'
-#' <Add Description>
+#' Renders a reactable table of the provided content items
 #'
 #' @param content The tibble of content provided by rscpages::content()
 #'
 #' @export
-rscpages <- function(content) {
-  data <- content %>% dplyr::select(guid, url, name, owner_username, app_mode, content_category, updated_time)
+rsctable <- function(content) {
+  data <- content %>% dplyr::select(guid, url, name, title, owner_username, app_mode, content_category, updated_time)
 
   reactable::reactable(
     data,
     searchable = TRUE,
     highlight = TRUE,
-    minRows = 10,
     showPageInfo = FALSE,
     rowStyle = list(cursor = "pointer"),
     onClick = reactable::JS("function(rowInfo, colInfo) {
@@ -24,6 +23,7 @@ rscpages <- function(content) {
       name = reactable::colDef(
         name = "Name",
         cell = function(value, index) {
+          title <- data$title[index]
           app_mode <- data$app_mode[index]
           content_category <- data$content_category[index]
           htmltools::tagList(
@@ -37,10 +37,11 @@ rscpages <- function(content) {
                 marginRight = 10
               )
             ),
-            htmltools::strong(value)
+            htmltools::strong(ifelse(is.na(title), value, title))
           )
         }
       ),
+      title = reactable::colDef(show = FALSE),
       owner_username = reactable::colDef(
         name = "Owner",
         maxWidth = 175
@@ -59,7 +60,7 @@ rscpages <- function(content) {
         name = "Updated",
         align = "right",
         cell = function(value) {
-          strftime(value, format = "%b %-d, %Y")
+          strftime(value, format = "%b %d, %Y")
         },
         maxWidth = 175
       )
