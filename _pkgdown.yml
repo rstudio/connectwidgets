@@ -1,0 +1,15 @@
+url: https://rstudio.github.io/rscpages
+reference:
+- title: "API Client"
+  desc: >
+    Functions for connecting to the RStudio Connect API and fetching
+    content metadata
+- contents:
+  - Client
+  - connect
+  - content
+- title: "Components"
+  desc: >
+    UI components for constructing Pages
+- contents:
+  - starts_with("rsc")
