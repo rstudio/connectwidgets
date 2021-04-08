@@ -25,3 +25,6 @@ Imports:
     magrittr,
     htmltools,
     glue
+URL: 
+    https://rstudio.github.io/rscpages,
+    https://github.com/rstudio/rscpages
