@@ -10,8 +10,8 @@ connect(
 )
 }
 \arguments{
-\item{server}{The server URL for accessing RStudio Connect. Defaults to environment
-variable CONNECT_SERVER}
+\item{server}{The server URL for accessing RStudio Connect. Defaults to
+environment variable CONNECT_SERVER}
 
 \item{api_key}{The API key to authenticate with RStudio Connect. Defaults
 to environment variable CONNECT_API_KEY}
