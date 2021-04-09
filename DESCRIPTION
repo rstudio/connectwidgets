@@ -24,7 +24,8 @@ Imports:
     dplyr,
     magrittr,
     htmltools,
-    glue
+    glue,
+    rlang
 URL: 
     https://rstudio.github.io/rscpages,
     https://github.com/rstudio/rscpages

@@ -19,14 +19,18 @@ A data frame (tibble) of content items
 \item owner_username - Username of the owner of teh content item
 \item owner_first_name - First name of the owner of the content item
 \item owner_last_name - Last name of the owner of the content item
-\item app_mode - The type of the content item (examples: \code{shiny}, \code{rmd-static}, \code{static}, \code{python-dash}, etc.)
-\item content_category - For \code{static} app modes, the specific category of content (examples: \code{site}, \code{plot}, \code{pin}, etc.)
+\item app_mode - The type of the content item (examples: \code{shiny},
+\code{rmd-static}, \code{static}, \code{python-dash}, etc.)
+\item content_category - For \code{static} app modes, the specific category
+of content (examples: \code{site}, \code{plot}, \code{pin}, etc.)
 \item name - The name of the content item as set at initial publishing
 \item title - The user-provided title of the content item
 \item description - The user-provided description of the content item
 \item url - The URL to the content item
-\item created_time - The timestamp at which the content item was created
-\item updated_time - The timestamp at which the content item was last updated
+\item created_time - The timestamp at which the content item
+was created
+\item updated_time - The timestamp at which the content item
+was last updated
 }
 }
 \description{
