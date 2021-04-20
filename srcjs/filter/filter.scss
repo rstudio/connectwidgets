@@ -1,0 +1,35 @@
+.rscfilter {
+  display: flex;
+  font-family: "Lato", sans-serif;
+  font-size: 14px;
+  position: relative;
+  line-height: 3em;
+
+  & button:focus {
+    outline: none;
+  }
+
+  &__toggle {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1em;
+    line-height: 3em;
+    padding: 0;
+    padding-right: 2em;
+    position: relative;
+  }
+  
+  &__toggle::after {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iNSIgdmlld0JveD0iMCAwIDEwIDUiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0wIC00LjM3MTE0ZS0wN0w1IDVMMTAgMEwwIC00LjM3MTE0ZS0wN1oiIGZpbGw9IiM0NDQ0NDQiLz4KPC9zdmc+Cgo=");
+    background-position: center center;
+    background-repeat: no-repeat;
+    content: " ";
+    height: 3em;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 2em;
+  }
+}

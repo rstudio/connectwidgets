@@ -1,0 +1,156 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Filter /> renders properly, setup state and crosstalk handle 1`] = `
+<ContextProvider
+  value={
+    Object {
+      "crosstalkHandle": Object {
+        "clear": [MockFunction],
+        "set": [MockFunction],
+        "setGroup": [MockFunction] {
+          "calls": Array [
+            Array [
+              "abcd-1234",
+            ],
+          ],
+          "results": Array [
+            Object {
+              "type": "return",
+              "value": undefined,
+            },
+          ],
+        },
+      },
+      "options": Object {
+        "owner": Array [
+          Object {
+            "applicableRows": Array [
+              1,
+              5,
+            ],
+            "filterType": "owner",
+            "index": 0,
+            "isSelected": false,
+            "label": "jzcarpenter",
+            "name": "jzcarpenter",
+          },
+          Object {
+            "applicableRows": Array [
+              2,
+              4,
+              6,
+            ],
+            "filterType": "owner",
+            "index": 1,
+            "isSelected": false,
+            "label": "reporterfrank",
+            "name": "reporterfrank",
+          },
+          Object {
+            "applicableRows": Array [
+              3,
+            ],
+            "filterType": "owner",
+            "index": 2,
+            "isSelected": false,
+            "label": "automata",
+            "name": "automata",
+          },
+          Object {
+            "applicableRows": Array [
+              7,
+            ],
+            "filterType": "owner",
+            "index": 3,
+            "isSelected": false,
+            "label": "autoreporter009",
+            "name": "autoreporter009",
+          },
+          Object {
+            "applicableRows": Array [
+              8,
+            ],
+            "filterType": "owner",
+            "index": 4,
+            "isSelected": false,
+            "label": "brucebowtie",
+            "name": "brucebowtie",
+          },
+        ],
+        "tag": Array [],
+        "type": Array [
+          Object {
+            "applicableRows": Array [
+              1,
+              5,
+            ],
+            "filterType": "type",
+            "index": 0,
+            "isSelected": false,
+            "label": "Document",
+            "name": "Document",
+          },
+          Object {
+            "applicableRows": Array [
+              2,
+              7,
+            ],
+            "filterType": "type",
+            "index": 1,
+            "isSelected": false,
+            "label": "API",
+            "name": "API",
+          },
+          Object {
+            "applicableRows": Array [
+              3,
+              4,
+              8,
+            ],
+            "filterType": "type",
+            "index": 2,
+            "isSelected": false,
+            "label": "Application",
+            "name": "Application",
+          },
+          Object {
+            "applicableRows": Array [
+              6,
+            ],
+            "filterType": "type",
+            "index": 3,
+            "isSelected": false,
+            "label": "Pin",
+            "name": "Pin",
+          },
+        ],
+      },
+      "resetFilters": [Function],
+      "searchFieldOptions": [Function],
+      "selections": Object {
+        "owner": Array [],
+        "tag": Array [],
+        "type": Array [],
+      },
+      "showPane": false,
+      "stateOptionsFor": [Function],
+      "stateSelectionsFor": [Function],
+      "updateSelection": [Function],
+    }
+  }
+>
+  <div
+    className="rscfilter"
+  >
+    <button
+      className="rscfilter__toggle"
+      onClick={[Function]}
+    >
+      Filter
+    </button>
+    <FilterFieldsPane
+      isActive={false}
+    />
+  </div>
+</ContextProvider>
+`;

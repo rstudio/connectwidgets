@@ -1,0 +1,65 @@
+.rscfilter-pane {
+  background: white;
+  border-radius: 3px;
+  box-shadow: 0 0 3px 1px rgba(0,0,0, 0.2);
+  box-sizing: border-box;
+  color: #444;
+  left: 0;
+  line-height: 2.4em;
+  opacity: 0;
+  pointer-events: none;
+  padding: 1em;
+  position: absolute;
+  top: 3em;
+  transform: translateY(-1em);
+  transition: all 0.3s ease;
+  width: 360px;
+  z-index: 100;
+
+  /* Overlay-box's arrow */
+  &::before {
+    background: white;
+    box-shadow: -1px -1px 2px 1px rgba(0,0,0, 0.1);
+    content: " ";
+    height: 1em;
+    left: 2.8em;
+    position: absolute;
+    top: -0.33em;
+    transform: rotate(45deg);
+    width: 1em;
+  }
+  
+  /* Cover shadow of overlay-box's arrow */
+  &::after {
+    background: white;
+    content: " ";
+    height: 1em;
+    left: 2em;
+    position: absolute;
+    top: 0;
+    width: 30px;
+  }
+
+  &--active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0px);
+  }
+  
+  &__actions {
+    border-top: 2px solid #E8E8E8;
+    padding-top: 15px;
+    text-align: right;
+
+    &-reset {
+      border: none;
+      border-radius: 3px;
+      line-height: 36px;
+      padding: 0 16px;
+    }
+
+    &-reset {
+      background: #E8E8E8;
+    }
+  }  
+}
