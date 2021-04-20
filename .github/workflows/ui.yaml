@@ -1,0 +1,25 @@
+on: push
+
+name: UI
+
+jobs:
+  ui:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: extractions/setup-just@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Env
+        uses: actions/setup-node@v2
+        with:
+          node-version: '12'
+
+      - name: Build
+        run: |
+          just deps
+          just build
+
+      - name: Test Unit
+        run: just test

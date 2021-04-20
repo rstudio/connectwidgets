@@ -1,13 +1,15 @@
-#' Placeholder for the custom filtering htmlwidget
+#' Search widget
 #'
-#' <Add Description>
+#' Search for matching content name/title within the shared data object passed.
 #'
-#' @param content The tibble of content provided by rscpages::content()
+#' @param content A shared object from Connect's content
 #' @param width,height Optionally specified width and height of the widget
 #' @param elementId Optional HTML id of the element
 #'
 #' @export
+# nolint start
 rscsearch <- function(content, width = NULL, height = NULL, elementId = NULL) {
+# nolint end
   if (is.SharedData(content)) {
     key <- content$key()
     group <- content$groupName()
@@ -27,16 +29,17 @@ rscsearch <- function(content, width = NULL, height = NULL, elementId = NULL) {
 
   # create widget
   htmlwidgets::createWidget(
-    name = 'rscsearch',
+    name = "rscsearch",
     reactR::reactMarkup(component),
     width = width,
-    height = 'auto',
-    package = 'rscpages',
+    height = "auto",
+    package = "rscpages",
     elementId = elementId,
     dependencies = crosstalk::crosstalkLibs()
   )
 }
 
+# nolint start
 #' Called by HTMLWidgets to produce the widget's root element.
 #' @noRd
 widget_html.rscsearch <- function(id, style, class, ...) {
@@ -76,3 +79,4 @@ renderRscsearch <- function(expr, env = parent.frame(), quoted = FALSE) {
   if (!quoted) { expr <- substitute(expr) } # force quoted
   htmlwidgets::shinyRenderWidget(expr, rscsearchOutput, env, quoted = TRUE)
 }
+# nolint end

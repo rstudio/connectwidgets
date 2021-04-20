@@ -1,12 +1,4 @@
-on:
-  push:
-    branches:
-      - main
-      - master
-  pull_request:
-    branches:
-      - main
-      - master
+on: [push, pull_request]
 
 name: lint
 
@@ -17,8 +9,8 @@ jobs:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
       - uses: actions/checkout@v2
-
       - uses: r-lib/actions/setup-r@v1
+      - uses: extractions/setup-just@v1
 
       - name: Query dependencies
         run: |
@@ -45,5 +37,4 @@ jobs:
         run: R CMD INSTALL .
 
       - name: Lint
-        run: lintr::lint_package()
-        shell: Rscript {0}
+        run: just lint

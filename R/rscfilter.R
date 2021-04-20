@@ -1,13 +1,16 @@
-#' Placeholder for the custom filtering htmlwidget
+#' Filter widget
 #'
-#' <Add Description>
+#' Filter content rows with owner, content type and tags,
+#' from a shared data from Connect's content.
 #'
-#' @param content The tibble of content provided by rscpages::content()
+#' @param content A shared object from Connect's content
 #' @param width,height Optionally specified width and height of the widget
 #' @param elementId Optional HTML id of the element
 #'
 #' @export
+# nolint start
 rscfilter <- function(content, width = NULL, height = NULL, elementId = NULL) {
+# nolint end
   if (is.SharedData(content)) {
     key <- content$key()
     group <- content$groupName()
@@ -27,16 +30,17 @@ rscfilter <- function(content, width = NULL, height = NULL, elementId = NULL) {
 
   # create widget
   htmlwidgets::createWidget(
-    name = 'rscfilter',
+    name = "rscfilter",
     reactR::reactMarkup(component),
     width = width,
-    height = 'auto',
-    package = 'rscpages',
+    height = "auto",
+    package = "rscpages",
     elementId = elementId,
     dependencies = crosstalk::crosstalkLibs()
   )
 }
 
+# nolint start
 #' Called by HTMLWidgets to produce the widget's root element.
 #' @noRd
 widget_html.rscfilter <- function(id, style, class, ...) {
@@ -76,3 +80,4 @@ renderRscfilter <- function(expr, env = parent.frame(), quoted = FALSE) {
   if (!quoted) { expr <- substitute(expr) } # force quoted
   htmlwidgets::shinyRenderWidget(expr, rscfilterOutput, env, quoted = TRUE)
 }
+# nolint end
