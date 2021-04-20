@@ -25,7 +25,9 @@ Imports:
     magrittr,
     htmltools,
     glue,
-    rlang
-URL: 
+    rlang,
+    crosstalk,
+    reactR
+URL:
     https://rstudio.github.io/rscpages,
     https://github.com/rstudio/rscpages
