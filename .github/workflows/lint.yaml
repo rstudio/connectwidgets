@@ -1,4 +1,4 @@
-on: [push, pull_request]
+on: push
 
 name: lint
 
@@ -37,4 +37,6 @@ jobs:
         run: R CMD INSTALL .
 
       - name: Lint
-        run: just lint
+        run: |
+          just deps
+          just lint
