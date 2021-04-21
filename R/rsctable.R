@@ -8,17 +8,13 @@
 #'
 #' @export
 rsctable <- function(content) {
-  data <- content %>% dplyr::select(.data$guid,
-                                    .data$url,
-                                    .data$name,
-                                    .data$title,
-                                    .data$owner_username,
-                                    .data$app_mode,
-                                    .data$content_category,
-                                    .data$updated_time)
+  if (!is.SharedData(content)) {
+    ctalk_group <- digest::digest(toString(content), "md5")
+    content <- crosstalk::SharedData$new(content, group = ctalk_group)
+  }
 
   reactable::reactable(
-    data,
+    content,
     searchable = TRUE,
     highlight = TRUE,
     showPageInfo = FALSE,

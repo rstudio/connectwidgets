@@ -8,16 +8,15 @@
 #' @param elementId Optional HTML id of the element
 #'
 #' @export
-# nolint start
-rscfilter <- function(content, width = NULL, height = NULL, elementId = NULL) {
-# nolint end
-  if (is.SharedData(content)) {
-    key <- content$key()
-    group <- content$groupName()
-    content <- content$origData()
-  } else {
-    stop("ERROR: rscfilter content must be a crosstalk SharedData instance")
+rscfilter <- function(content, width = NULL, height = NULL) {
+  if (!is.SharedData(content)) {
+    ctalk_group <- digest::digest(toString(content), "md5")
+    content <- crosstalk::SharedData$new(content, group = ctalk_group)
   }
+
+  key <- content$key()
+  group <- content$groupName()
+  content <- content$origData()
 
   component <- reactR::component(
     "Filter",
@@ -35,7 +34,6 @@ rscfilter <- function(content, width = NULL, height = NULL, elementId = NULL) {
     width = width,
     height = "auto",
     package = "rscpages",
-    elementId = elementId,
     dependencies = crosstalk::crosstalkLibs()
   )
 }

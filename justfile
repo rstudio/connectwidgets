@@ -8,6 +8,9 @@ lint:
   Rscript -e 'lintr::lint_package()'
   npm run lint
 
+dev-watch:
+  npm run dev:watch
+
 test:
   npm run test
 
