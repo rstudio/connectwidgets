@@ -65,6 +65,24 @@ content <- function(client) {
     dplyr::relocate(dplyr::starts_with("owner_"), .after = "description")
 }
 
+#' @export
+content_image_uri <- function(client, content_guid) {
+  url <- paste0(client$server, "/__api__/applications/", content_guid, "/image")
+  res <- httr::GET(url, client$add_auth(), httr::write_memory())
+  if (res$status_code != 200) {
+    return("")
+  }
+  # client$raise_error(res)
+  # res$headers["content-type"]
+  img <- httr::content(res, as = "raw")
+  paste0(
+    "data:",
+    res$headers["content-type"],
+    ";base64,",
+    base64enc::base64encode(img)
+  )
+}
+
 get_owner <- function(client, owner_guid) {
   result <- client$GET(glue::glue("/users/{owner_guid}"))
   data.frame(jsonlite::fromJSON(result))

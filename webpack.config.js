@@ -2,6 +2,8 @@ const path = require('path');
 
 module.exports = {
   entry: {
+    rscgrid: path.join(__dirname, 'srcjs/grid', 'index.js'),
+    rsccard: path.join(__dirname, 'srcjs/card', 'index.js'),
     rscfilter: path.join(__dirname, 'srcjs/filter', 'index.js'),
     rscsearch: path.join(__dirname, 'srcjs/search', 'index.js'),
   },

@@ -1,36 +1,27 @@
-#' Search widget
+#' Grid view for content
 #'
-#' Search for matching content name/title within the shared data object passed.
+#' Renders a grid view of the provided content items
 #'
 #' @param content A shared object from Connect's content
 #' @param width,height Optionally specified width and height of the widget
-#' @param elementId Optional HTML id of the element
 #'
 #' @export
-rscsearch <- function(content, width = NULL, height = NULL) {
-  if (!crosstalk::is.SharedData(content)) {
-    ctalk_group <- digest::digest(toString(content), "md5")
-    content <- crosstalk::SharedData$new(content, group = ctalk_group)
-  }
-
-  key <- content$key()
-  group <- content$groupName()
-  content <- content$origData()
+rsccard <- function(client, content, width = NULL, height = NULL) {
+  image <- content_image_uri(client, content["guid"])
 
   component <- reactR::component(
-    "Search",
+    "CardView",
     list(
       data = content,
-      crosstalkKey = key,
-      crosstalkGroup = group
+      image = image
     )
   )
 
   # create widget
   htmlwidgets::createWidget(
-    name = "rscsearch",
+    name = "rsccard",
     reactR::reactMarkup(component),
-    width = width,
+    width = "auto",
     height = "auto",
     package = "rscpages",
     dependencies = crosstalk::crosstalkLibs()
@@ -40,7 +31,7 @@ rscsearch <- function(content, width = NULL, height = NULL) {
 # nolint start
 #' Called by HTMLWidgets to produce the widget's root element.
 #' @noRd
-widget_html.rscsearch <- function(id, style, class, ...) {
+widget_html.rsccard <- function(id, style, class, ...) {
   htmltools::tagList(
     # Necessary for RStudio viewer version < 1.2
     reactR::html_dependency_corejs(),
@@ -50,31 +41,31 @@ widget_html.rscsearch <- function(id, style, class, ...) {
   )
 }
 
-#' Shiny bindings for rscsearch
+#' Shiny bindings for rsccard
 #'
-#' Output and render functions for using rscsearch within Shiny
+#' Output and render functions for using rsccard within Shiny
 #' applications and interactive Rmd documents.
 #'
 #' @param outputId output variable to read from
 #' @param width,height Must be a valid CSS unit (like \code{'100\%'},
 #'   \code{'400px'}, \code{'auto'}) or a number, which will be coerced to a
 #'   string and have \code{'px'} appended.
-#' @param expr An expression that generates a rscsearch
+#' @param expr An expression that generates a rsccard
 #' @param env The environment in which to evaluate \code{expr}.
 #' @param quoted Is \code{expr} a quoted expression (with \code{quote()})? This
 #'   is useful if you want to save an expression in a variable.
 #'
-#' @name rscsearch-shiny
+#' @name rsccard-shiny
 #'
 #' @export
-rscsearchOutput <- function(outputId, width = '100%', height = '400px'){
-  htmlwidgets::shinyWidgetOutput(outputId, 'rscsearch', width, height, package = 'rscpages')
+rsccardOutput <- function(outputId, width = '100%', height = '400px'){
+  htmlwidgets::shinyWidgetOutput(outputId, 'rsccard', width, height, package = 'rscpages')
 }
 
-#' @rdname rscsearch-shiny
+#' @rdname rsccard-shiny
 #' @export
-renderRscsearch <- function(expr, env = parent.frame(), quoted = FALSE) {
+renderRsccard <- function(expr, env = parent.frame(), quoted = FALSE) {
   if (!quoted) { expr <- substitute(expr) } # force quoted
-  htmlwidgets::shinyRenderWidget(expr, rscsearchOutput, env, quoted = TRUE)
+  htmlwidgets::shinyRenderWidget(expr, rsccardOutput, env, quoted = TRUE)
 }
 # nolint end

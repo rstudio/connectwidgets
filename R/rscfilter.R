@@ -9,7 +9,7 @@
 #'
 #' @export
 rscfilter <- function(content, width = NULL, height = NULL) {
-  if (!is.SharedData(content)) {
+  if (!crosstalk::is.SharedData(content)) {
     ctalk_group <- digest::digest(toString(content), "md5")
     content <- crosstalk::SharedData$new(content, group = ctalk_group)
   }
