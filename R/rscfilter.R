@@ -4,12 +4,10 @@
 #' from a shared data from Connect's content.
 #'
 #' @param content A shared object from Connect's content
-#' @param width,height Optionally specified width and height of the widget
-#' @param elementId Optional HTML id of the element
 #'
 #' @export
-rscfilter <- function(content, width = NULL, height = NULL) {
-  if (!is.SharedData(content)) {
+rscfilter <- function(content) {
+  if (!crosstalk::is.SharedData(content)) {
     ctalk_group <- digest::digest(toString(content), "md5")
     content <- crosstalk::SharedData$new(content, group = ctalk_group)
   }
@@ -31,7 +29,7 @@ rscfilter <- function(content, width = NULL, height = NULL) {
   htmlwidgets::createWidget(
     name = "rscfilter",
     reactR::reactMarkup(component),
-    width = width,
+    width = "auto",
     height = "auto",
     package = "rscpages",
     dependencies = crosstalk::crosstalkLibs()

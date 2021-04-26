@@ -3,12 +3,10 @@
 #' Search for matching content name/title within the shared data object passed.
 #'
 #' @param content A shared object from Connect's content
-#' @param width,height Optionally specified width and height of the widget
-#' @param elementId Optional HTML id of the element
 #'
 #' @export
-rscsearch <- function(content, width = NULL, height = NULL) {
-  if (!is.SharedData(content)) {
+rscsearch <- function(content) {
+  if (!crosstalk::is.SharedData(content)) {
     ctalk_group <- digest::digest(toString(content), "md5")
     content <- crosstalk::SharedData$new(content, group = ctalk_group)
   }
@@ -30,7 +28,7 @@ rscsearch <- function(content, width = NULL, height = NULL) {
   htmlwidgets::createWidget(
     name = "rscsearch",
     reactR::reactMarkup(component),
-    width = width,
+    width = "auto",
     height = "auto",
     package = "rscpages",
     dependencies = crosstalk::crosstalkLibs()

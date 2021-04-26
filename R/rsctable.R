@@ -8,7 +8,7 @@
 #'
 #' @export
 rsctable <- function(content) {
-  if (!is.SharedData(content)) {
+  if (!crosstalk::is.SharedData(content)) {
     ctalk_group <- digest::digest(toString(content), "md5")
     content <- crosstalk::SharedData$new(content, group = ctalk_group)
   }

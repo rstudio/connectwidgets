@@ -4,14 +4,10 @@
 \alias{rscsearch}
 \title{Search widget}
 \usage{
-rscsearch(content, width = NULL, height = NULL)
+rscsearch(content)
 }
 \arguments{
 \item{content}{A shared object from Connect's content}
-
-\item{width, height}{Optionally specified width and height of the widget}
-
-\item{elementId}{Optional HTML id of the element}
 }
 \description{
 Search for matching content name/title within the shared data object passed.
