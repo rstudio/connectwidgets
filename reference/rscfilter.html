@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Placeholder for the custom filtering htmlwidget — rscfilter • rscpages</title>
+<title>Filter widget — rscfilter • rscpages</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,9 @@
 
 
 
-<meta property="og:title" content="Placeholder for the custom filtering htmlwidget — rscfilter" />
-<meta property="og:description" content="&amp;lt;Add Description&amp;gt;" />
+<meta property="og:title" content="Filter widget — rscfilter" />
+<meta property="og:description" content="Filter content rows with owner, content type and tags,
+from a shared data from Connect's content." />
 
 
 
@@ -108,31 +109,24 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Placeholder for the custom filtering htmlwidget</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rstudio/rscpages/blob/master/R/filter.R'><code>R/filter.R</code></a></small>
+    <h1>Filter widget</h1>
+    <small class="dont-index">Source: <a href='https://github.com/rstudio/rscpages/blob/master/R/rscfilter.R'><code>R/rscfilter.R</code></a></small>
     <div class="hidden name"><code>rscfilter.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>&lt;Add Description&gt;</p>
+    <p>Filter content rows with owner, content type and tags,
+from a shared data from Connect's content.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>rscfilter</span><span class='op'>(</span><span class='va'>content</span>, width <span class='op'>=</span> <span class='cn'>NULL</span>, height <span class='op'>=</span> <span class='cn'>NULL</span>, elementId <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>rscfilter</span><span class='op'>(</span><span class='va'>content</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>content</th>
-      <td><p>The tibble of content provided by rscpages::content()</p></td>
-    </tr>
-    <tr>
-      <th>width, height</th>
-      <td><p>Optionally specified width and height of the widget</p></td>
-    </tr>
-    <tr>
-      <th>elementId</th>
-      <td><p>Optional HTML id of the element</p></td>
+      <td><p>A shared object from Connect's content</p></td>
     </tr>
     </table>
 
