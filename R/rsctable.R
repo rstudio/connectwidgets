@@ -28,6 +28,7 @@ rsctable <- function(content) {
       name = reactable::colDef(
         name = "Name",
         cell = function(value, index) {
+          data <- content$data()
           title <- data$title[index]
           app_mode <- data$app_mode[index]
           content_category <- data$content_category[index]
@@ -54,6 +55,7 @@ rsctable <- function(content) {
       app_mode = reactable::colDef(
         name = "Type",
         cell = function(value, index) {
+          data <- content$data()
           app_mode <- data$app_mode[index]
           content_category <- data$content_category[index]
           content_type_label(app_mode, content_category)

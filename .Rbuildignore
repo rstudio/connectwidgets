@@ -12,6 +12,7 @@
 ^\.babelrc$
 ^\.eslintrc\.js$
 ^\.github$
+^justfile
 ^node_modules$
 ^package\.json$
 ^package-lock\.json$
