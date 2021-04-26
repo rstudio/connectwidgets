@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FilterField /> renders properly 1`] = `
+<div>
+  <div
+    className="rscfilter-field"
+  >
+    <label
+      className="rscfilter-field__name"
+    >
+      Owner
+    </label>
+    <input
+      className="rscfilter-field__input"
+      name="owner"
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      onKeyUp={[Function]}
+      placeholder="Filter people"
+    />
+    <FilterOptions
+      onCheckboxBlur={[Function]}
+      show={false}
+      type="owner"
+    />
+  </div>
+  <FiltersSelected
+    type="owner"
+  />
+</div>
+`;

@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Search /> renders properly, setup crosstalk handle 1`] = `
+<div
+  className="rscsearch"
+>
+  <input
+    className="rscsearch__input"
+    onChange={[Function]}
+    placeholder="Search content"
+    type="text"
+  />
+</div>
+`;

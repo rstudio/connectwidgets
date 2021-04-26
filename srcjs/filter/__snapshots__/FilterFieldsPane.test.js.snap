@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FilterFieldsPane /> renders properly 1`] = `
+<div
+  className="rscfilter-pane"
+>
+  <FilterField
+    label="Owner"
+    placeholder="Filter people"
+    type="owner"
+  />
+  <FilterField
+    label="Type"
+    placeholder="Select content types"
+    type="type"
+  />
+  <FilterField
+    label="Tags"
+    placeholder="Filter tags"
+    type="tag"
+  />
+  <div
+    className="rscfilter-pane__actions"
+  >
+    <button
+      className="rscfilter-pane__actions-reset"
+      onClick={[Function]}
+    >
+      Reset
+    </button>
+  </div>
+</div>
+`;

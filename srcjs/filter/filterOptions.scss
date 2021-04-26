@@ -1,0 +1,31 @@
+.rscfilter-option {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  line-height: 1em;
+
+  & + & {
+    margin-top: 0.84em;
+  }
+  
+  &:focus {
+    outline: none;
+  }
+
+  &__checkbox {
+    border: 1px solid #B0B0B0;
+    height: 1em;
+    margin-right: 0.7em;
+    width: 1em;
+
+    &--checked {
+      background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTMiIGhlaWdodD0iMTMiIHZpZXdCb3g9IjAgMCAxMyAxMyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8cGF0aCBkPSJNNC44NzUwMSA4Ljc3NDk5TDIuNjAwMDEgNi40OTk5OUwxLjg0MTY3IDcuMjU4MzNMNC44NzUwMSAxMC4yOTE3TDExLjM3NSAzLjc5MTY2TDEwLjYxNjcgMy4wMzMzM0w0Ljg3NTAxIDguNzc0OTlaIiBmaWxsPSJibGFjayIvPgo8L3N2Zz4=");
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+  }
+
+  &:focus &__checkbox {
+    border: 2px solid #4C83B6;
+  }
+}

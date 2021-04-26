@@ -9,3 +9,12 @@
 ^pkgdown$
 ^\.github$
 ^\.lintr$
+^\.babelrc$
+^\.eslintrc\.js$
+^\.github$
+^justfile
+^node_modules$
+^package\.json$
+^package-lock\.json$
+^srcjs$
+^webpack\.config\.js$

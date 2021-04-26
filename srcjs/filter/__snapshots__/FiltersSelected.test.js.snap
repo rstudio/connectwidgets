@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FiltersSelected /> renders properly 1`] = `
+<div
+  className="rscfilter-selections"
+>
+  <div
+    className="rscfilter-selections__item"
+    key="API"
+  >
+    API
+    <button
+      className="rscfilter-selections__item-discard"
+      onClick={[Function]}
+    />
+  </div>
+  <div
+    className="rscfilter-selections__item"
+    key="Application"
+  >
+    Application
+    <button
+      className="rscfilter-selections__item-discard"
+      onClick={[Function]}
+    />
+  </div>
+  <div
+    className="rscfilter-selections__item"
+    key="Document"
+  >
+    Document
+    <button
+      className="rscfilter-selections__item-discard"
+      onClick={[Function]}
+    />
+  </div>
+</div>
+`;
