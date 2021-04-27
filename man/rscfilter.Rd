@@ -4,14 +4,10 @@
 \alias{rscfilter}
 \title{Filter widget}
 \usage{
-rscfilter(content, width = NULL, height = NULL)
+rscfilter(content)
 }
 \arguments{
 \item{content}{A shared object from Connect's content}
-
-\item{width, height}{Optionally specified width and height of the widget}
-
-\item{elementId}{Optional HTML id of the element}
 }
 \description{
 Filter content rows with owner, content type and tags,
