@@ -35,12 +35,23 @@ class Filter extends React.Component {
     };
 
     this.togglePane = this.togglePane.bind(this);
+    this.setupCloseListeners();
+  }
 
-    document.addEventListener('keyup', ev => {
-      if (ev.key && ev.key === "Escape" && this.state.showPane) {
+  setupCloseListeners() {
+    const toggleIfNeeded = ev => {
+      const withEscKey = ev.key && ev.key === 'Escape';
+      const outOfPane = !ev.target.className.includes('rscfilter');
+      if (
+        this.state.showPane &&
+        (withEscKey || outOfPane)
+      ) {
         this.togglePane();
       }
-    });
+    };
+
+    document.addEventListener('keyup', toggleIfNeeded);
+    document.addEventListener('click', toggleIfNeeded);
   }
 
   stateOptionsFor(type) {
@@ -125,6 +136,11 @@ class Filter extends React.Component {
       this.state.crosstalkHandle.set(matchingRows);
     });
   }
+
+  filtersCount() {
+    const count = Object.values(this.state.selections).reduce((res, filt) => res + filt.length, 0);
+    return count > 0 ? count : "";
+  }
   
   resetFilters() {
     this.setState({
@@ -148,6 +164,11 @@ class Filter extends React.Component {
             onClick={this.togglePane}
           >
             Filter
+          <span
+            className="rscfilter__count"
+          >
+            {this.filtersCount()}
+          </span>
           </button>
           <FilterFieldsPane
             isActive={this.state.showPane}

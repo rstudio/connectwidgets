@@ -32,4 +32,20 @@
     top: 0;
     width: 2em;
   }
+
+  &__count {
+    background: #4C83B6;
+    border-radius: 50%;
+    color: white;
+    display: inline-block;
+    font-size: 0.84em;
+    font-weight: 700;
+    line-height: 1.72em;
+    margin-left: 5px;
+    width: 1.72em;
+
+    &:empty {
+      display: none;
+    }
+  }
 }

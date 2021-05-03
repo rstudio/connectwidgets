@@ -1,4 +1,3 @@
-import { expect, it } from '@jest/globals';
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import GridPagination from './GridPagination';

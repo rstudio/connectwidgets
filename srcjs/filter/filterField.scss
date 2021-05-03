@@ -1,7 +1,11 @@
 .rscfilter-field {
-  align-items: center;
-  display: flex;
   position: relative;
+
+  &__input-wrap{
+    align-items: center;
+    display: flex;
+    position: relative;
+  }
 
   &--dropdown::after {
     background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iNSIgdmlld0JveD0iMCAwIDEwIDUiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0wIC00LjM3MTE0ZS0wN0w1IDVMMTAgMEwwIC00LjM3MTE0ZS0wN1oiIGZpbGw9IiM0NDQ0NDQiLz4KPC9zdmc+Cgo=");
@@ -16,7 +20,8 @@
   }
 
   &__name {
-    width: 30%
+    margin: 0;
+    width: 30%;
   }
 
   &__input {
@@ -46,11 +51,11 @@
     top: 2.4em;
     width: 70%;
     z-index: 1;
+  }
 
-    &--show {
-      opacity: 1;
-      pointer-events: auto;
-    }
+  &:focus-within &__options {
+    opacity: 1;
+    pointer-events: auto;
   }
 }
 

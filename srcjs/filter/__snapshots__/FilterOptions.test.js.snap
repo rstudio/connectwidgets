@@ -8,7 +8,6 @@ exports[`<FilterOptions /> renders properly 1`] = `
     aria-checked={false}
     className="rscfilter-option"
     key="API"
-    onBlur={[MockFunction]}
     onClick={[Function]}
     onKeyPress={[Function]}
     onKeyUp={[Function]}
@@ -18,7 +17,9 @@ exports[`<FilterOptions /> renders properly 1`] = `
     <div
       className="rscfilter-option__checkbox"
     />
-    <span>
+    <span
+      className="rscfilter-option__label"
+    >
       API
     </span>
   </div>
@@ -26,7 +27,6 @@ exports[`<FilterOptions /> renders properly 1`] = `
     aria-checked={false}
     className="rscfilter-option"
     key="Application"
-    onBlur={[MockFunction]}
     onClick={[Function]}
     onKeyPress={[Function]}
     onKeyUp={[Function]}
@@ -36,7 +36,9 @@ exports[`<FilterOptions /> renders properly 1`] = `
     <div
       className="rscfilter-option__checkbox"
     />
-    <span>
+    <span
+      className="rscfilter-option__label"
+    >
       Application
     </span>
   </div>
@@ -44,7 +46,6 @@ exports[`<FilterOptions /> renders properly 1`] = `
     aria-checked={false}
     className="rscfilter-option"
     key="Document"
-    onBlur={[MockFunction]}
     onClick={[Function]}
     onKeyPress={[Function]}
     onKeyUp={[Function]}
@@ -54,7 +55,9 @@ exports[`<FilterOptions /> renders properly 1`] = `
     <div
       className="rscfilter-option__checkbox"
     />
-    <span>
+    <span
+      className="rscfilter-option__label"
+    >
       Document
     </span>
   </div>
@@ -62,7 +65,6 @@ exports[`<FilterOptions /> renders properly 1`] = `
     aria-checked={false}
     className="rscfilter-option"
     key="Model"
-    onBlur={[MockFunction]}
     onClick={[Function]}
     onKeyPress={[Function]}
     onKeyUp={[Function]}
@@ -72,7 +74,9 @@ exports[`<FilterOptions /> renders properly 1`] = `
     <div
       className="rscfilter-option__checkbox"
     />
-    <span>
+    <span
+      className="rscfilter-option__label"
+    >
       Model
     </span>
   </div>
@@ -80,7 +84,6 @@ exports[`<FilterOptions /> renders properly 1`] = `
     aria-checked={false}
     className="rscfilter-option"
     key="Pin"
-    onBlur={[MockFunction]}
     onClick={[Function]}
     onKeyPress={[Function]}
     onKeyUp={[Function]}
@@ -90,7 +93,9 @@ exports[`<FilterOptions /> renders properly 1`] = `
     <div
       className="rscfilter-option__checkbox"
     />
-    <span>
+    <span
+      className="rscfilter-option__label"
+    >
       Pin
     </span>
   </div>
