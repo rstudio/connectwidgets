@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<GridPagination /> renders properly 1`] = `
+<nav
+  className="rscgrid-pagination"
+>
+  <ul
+    className="rscgrid-pagination__list"
+  >
+    <li>
+      <button
+        className="rscgrid-pagination__btn"
+        disabled={true}
+        onClick={[Function]}
+      >
+        ❮
+      </button>
+    </li>
+    <li
+      key="0"
+    >
+      <button
+        className="rscgrid-pagination__btn rscgrid-pagination__btn--current"
+        onClick={[Function]}
+      >
+        1
+      </button>
+    </li>
+    <li
+      key="1"
+    >
+      <button
+        className="rscgrid-pagination__btn"
+        onClick={[Function]}
+      >
+        2
+      </button>
+    </li>
+    <li
+      key="2"
+    >
+      <button
+        className="rscgrid-pagination__btn"
+        onClick={[Function]}
+      >
+        3
+      </button>
+    </li>
+    <li
+      key="3"
+    >
+      <button
+        className="rscgrid-pagination__btn"
+        onClick={[Function]}
+      >
+        4
+      </button>
+    </li>
+    <li
+      key="4"
+    >
+      <button
+        className="rscgrid-pagination__btn"
+        onClick={[Function]}
+      >
+        5
+      </button>
+    </li>
+    <li
+      key="5"
+    >
+      <button
+        className="rscgrid-pagination__btn"
+        onClick={[Function]}
+      >
+        6
+      </button>
+    </li>
+    <li>
+      <button
+        className="rscgrid-pagination__btn"
+        disabled={false}
+        onClick={[Function]}
+      >
+        ❯
+      </button>
+    </li>
+  </ul>
+</nav>
+`;

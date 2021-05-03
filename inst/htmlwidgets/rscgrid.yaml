@@ -1,0 +1,7 @@
+dependencies:
+  - name: dayjs
+    version: 1.10.4
+    src: htmlwidgets/lib/dayjs-1.10.4
+    script: 
+      - dayjs.min.js
+      - plugin/localizedFormat.js

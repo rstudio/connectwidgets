@@ -4,12 +4,10 @@
 \alias{rscgrid}
 \title{Grid view for content}
 \usage{
-rscgrid(client, content, width = NULL, height = NULL)
+rscgrid(content)
 }
 \arguments{
 \item{content}{A shared object from Connect's content}
-
-\item{width, height}{Optionally specified width and height of the widget}
 }
 \description{
 Renders a grid view of the provided content items

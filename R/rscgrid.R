@@ -3,10 +3,9 @@
 #' Renders a grid view of the provided content items
 #'
 #' @param content A shared object from Connect's content
-#' @param width,height Optionally specified width and height of the widget
 #'
 #' @export
-rscgrid <- function(client, content, width = NULL, height = NULL) {
+rscgrid <- function(content) {
   if (!crosstalk::is.SharedData(content)) {
     ctalk_group <- digest::digest(toString(content), "md5")
     content <- crosstalk::SharedData$new(content, group = ctalk_group)
@@ -16,16 +15,10 @@ rscgrid <- function(client, content, width = NULL, height = NULL) {
   group <- content$groupName()
   content <- content$origData()
 
-  get_images <- function(row) {
-    content_image_uri(client, row["guid"])
-  }
-  images <- apply(content, 1, get_images)
-
   component <- reactR::component(
     "GridView",
     list(
       data = content,
-      images = images,
       crosstalkKey = key,
       crosstalkGroup = group
     )

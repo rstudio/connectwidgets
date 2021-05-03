@@ -3,7 +3,6 @@
 export("%>%")
 export(connect)
 export(content)
-export(content_image_uri)
 export(renderRsccard)
 export(renderRscfilter)
 export(renderRscgrid)

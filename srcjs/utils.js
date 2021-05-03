@@ -14,3 +14,13 @@ export function debounce(delay, fn) {
     }, delay);
   };
 }
+
+/**
+ * Get the image src url for content
+ * @param {string} contentUrl GUID based content url
+ * @param {string} guid  content GUID
+ * @returns Image src url
+ */
+export function contentImgSrc(contentUrl, guid) {
+  return `${contentUrl.split('/content/')[0]}/__api__/applications/${guid}/image`;
+}

@@ -19,6 +19,8 @@ module.exports = {
     React: "readonly",
     crosstalk: "readonly",
     HTMLWidgets: "readonly",
+    dayjs: "readonly",
+    dayjs_plugin_localizedFormat: "readonly"
   },
   plugins: ["react", "jsx-a11y", "jest"],
   settings: {
