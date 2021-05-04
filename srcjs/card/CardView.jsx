@@ -4,27 +4,32 @@
  */
 
 import PropTypes from 'prop-types';
+import { contentImgSrc } from '@/utils';
 import './card.scss';
 
-function Card({ data, image }) {
+function Card({ data }) {
+  const contentObj = HTMLWidgets.dataframeToD3(data)[0];
+  const imgUrl = contentImgSrc(contentObj.url, contentObj.guid);
+
   return (
     <div className="rsccard">
       <figure
         className="rsccard__img"
-        style={{backgroundImage: `url("${image}")`}}
+        style={{backgroundImage: `url("${imgUrl}")`}}
       />
       <div className="rsccard__meta">
-        <span>{data.owner_username}</span> • <time>{new Date(data.updated_time).toDateString()}</time>
+        <span>{contentObj.owner_username}</span> • <time>{new Date(contentObj.updated_time).toDateString()}</time>
         <h2 className="rsccard__meta-title">
-          {data.title}
+          {contentObj.title || contentObj.name}
         </h2>
         <p className="rsccard__meta-description">
-          {data.description}
+          {contentObj.description}
         </p>
         <a
           className="rsccard__meta-link"
-          href={data.url}
+          href={contentObj.url}
           target="_blank"
+          rel="noreferrer"
         >View content</a>
       </div>
     </div>
@@ -33,7 +38,6 @@ function Card({ data, image }) {
 
 Card.propTypes = {
   data: PropTypes.object,
-  image: PropTypes.string,
 }
 
 export default Card;

@@ -1,19 +1,15 @@
-#' Grid view for content
+#' Card view for content
 #'
-#' Renders a grid view of the provided content items
+#' Renders a card view for the provided content
 #'
-#' @param content A shared object from Connect's content
-#' @param width,height Optionally specified width and height of the widget
+#' @param content Connect's content item
 #'
 #' @export
-rsccard <- function(client, content, width = NULL, height = NULL) {
-  image <- content_image_uri(client, content["guid"])
-
+rsccard <- function(content) {
   component <- reactR::component(
     "CardView",
     list(
-      data = content,
-      image = image
+      data = content
     )
   )
 

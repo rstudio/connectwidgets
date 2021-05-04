@@ -2,15 +2,13 @@
 % Please edit documentation in R/rsccard.R
 \name{rsccard}
 \alias{rsccard}
-\title{Grid view for content}
+\title{Card view for content}
 \usage{
-rsccard(client, content, width = NULL, height = NULL)
+rsccard(content)
 }
 \arguments{
-\item{content}{A shared object from Connect's content}
-
-\item{width, height}{Optionally specified width and height of the widget}
+\item{content}{Connect's content item}
 }
 \description{
-Renders a grid view of the provided content items
+Renders a card view for the provided content
 }

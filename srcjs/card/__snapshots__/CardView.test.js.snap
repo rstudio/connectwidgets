@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CardView /> renders properly 1`] = `
+<div
+  className="rsccard"
+>
+  <figure
+    className="rsccard__img"
+    style={
+      Object {
+        "backgroundImage": "url(\\"https://connect.tester.net/__api__/applications/991f16c5-dc7e-4403-89d0-c54d10968460/image\\")",
+      }
+    }
+  />
+  <div
+    className="rsccard__meta"
+  >
+    <span>
+      Porter_Terry
+    </span>
+     • 
+    <time>
+      Thu Oct 29 2020
+    </time>
+    <h2
+      className="rsccard__meta-title"
+    >
+      methodical synergize
+    </h2>
+    <p
+      className="rsccard__meta-description"
+    >
+      Lorem ipsum dolor sit amet
+    </p>
+    <a
+      className="rsccard__meta-link"
+      href="https://connect.tester.net/content/991f16c5-dc7e-4403-89d0-c54d10968460/"
+      rel="noreferrer"
+      target="_blank"
+    >
+      View content
+    </a>
+  </div>
+</div>
+`;
