@@ -20,7 +20,7 @@ exports[`<CardView /> renders properly 1`] = `
     </span>
      • 
     <time>
-      Thu Oct 29 2020
+      Fri Oct 30 2020
     </time>
     <h2
       className="rsccard__meta-title"

@@ -33,7 +33,7 @@ exports[`<GridView /> renders properly, setup state and crosstalk handle 1`] = `
           Porter.Terry
            • 
           <time>
-            Apr 14, 2021
+            Apr 15, 2021
           </time>
         </span>
       </div>
@@ -95,7 +95,7 @@ exports[`<GridView /> renders properly, setup state and crosstalk handle 1`] = `
           Kimberly_McKenzie
            • 
           <time>
-            Oct 15, 2020
+            Oct 16, 2020
           </time>
         </span>
       </div>
@@ -219,7 +219,7 @@ exports[`<GridView /> renders properly, setup state and crosstalk handle 1`] = `
           Estevan.Metz99
            • 
           <time>
-            Jun 10, 2020
+            Jun 11, 2020
           </time>
         </span>
       </div>

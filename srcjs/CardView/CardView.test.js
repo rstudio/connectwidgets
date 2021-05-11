@@ -10,7 +10,7 @@ const dataExpecetdFormat = {
   title: ['methodical synergize'],
   name: ['methodical-synergize'],
   description: ['Lorem ipsum dolor sit amet'],
-  updated_time: ['Fri Oct 30 2020 06:18:46 GMT'],
+  updated_time: ['Fri Oct 30 2020'],
 }
 
 describe('<CardView />', () => {
