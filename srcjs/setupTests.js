@@ -1,3 +1,4 @@
+import 'regenerator-runtime/runtime';
 import React from 'react';
 import Enzyme from 'enzyme';
 import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
@@ -15,6 +16,22 @@ global.React = React;
  */
 global.dayjs = dayjs;
 global.dayjs_plugin_localizedFormat = localizedFormat;
+
+/**
+ * Mock global fetch.
+ */
+global.fetch = jest.fn();
+global.fetch.mockResolvedValue({
+  status: 200,
+  blob: () => Promise.resolve(new Blob(['hello image'])),
+  json: () => Promise.resolve({}),
+});
+
+/**
+ * Mock global URL.createObjectURL.
+ */
+global.URL.createObjectURL = jest.fn();
+global.URL.createObjectURL.mockReturnValue('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzU4ODJCMiIgZD0iTTEyLDEzYTEuNDksMS40OSwwLDAsMC0xLDIuNjFWMTdhMSwxLDAsMCwwLDIsMFYxNS42MUExLjQ5LDEuNDksMCwwLDAsMTIsMTNabTUtNEg5VjdhMywzLDAsMCwxLDUuMTItMi4xMywzLjA4LDMuMDgsMCwwLDEsLjc4LDEuMzgsMSwxLDAsMSwwLDEuOTQtLjUsNS4wOSw1LjA5LDAsMCwwLTEuMzEtMi4yOUE1LDUsMCwwLDAsNyw3VjlhMywzLDAsMCwwLTMsM3Y3YTMsMywwLDAsMCwzLDNIMTdhMywzLDAsMCwwLDMtM1YxMkEzLDMsMCwwLDAsMTcsOVptMSwxMGExLDEsMCwwLDEtMSwxSDdhMSwxLDAsMCwxLTEtMVYxMmExLDEsMCwwLDEsMS0xSDE3YTEsMSwwLDAsMSwxLDFaIi8+PC9zdmc+');
 
 /**
  * Mock crosstalk and filter handle.
