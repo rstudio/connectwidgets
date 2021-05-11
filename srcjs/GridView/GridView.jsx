@@ -5,7 +5,7 @@
 
 import { cloneDeep } from 'lodash';
 import PropTypes from 'prop-types';
-import ContentImage from '@/image';
+import ContentImage from '@/ContentImage';
 import { contentImgSrc } from '@/utils';
 import GridPagination from './GridPagination';
 import './gridView.scss';
