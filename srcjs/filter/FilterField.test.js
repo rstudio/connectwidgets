@@ -1,7 +1,6 @@
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import FilterField from './FilterField';
-import FilterOptions from './FilterOptions';
 import { FilterType } from './filterType';
 
 jest.useFakeTimers();
