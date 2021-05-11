@@ -11,15 +11,17 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Setup timezone
+        uses: zcong1993/setup-timezone@master
+        with:
+          timezone: America/Los_Angeles
+
       - name: Env
         uses: actions/setup-node@v2
         with:
           node-version: '12'
 
-      - name: Build
+      - name: Test Unit
         run: |
           just deps
-          just build
-
-      - name: Test Unit
-        run: just test
+          just test
