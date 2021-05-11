@@ -5,6 +5,7 @@
 
 import { cloneDeep } from 'lodash';
 import PropTypes from 'prop-types';
+import ContentImage from '@/image';
 import { contentImgSrc } from '@/utils';
 import GridPagination from './GridPagination';
 import './gridView.scss';
@@ -15,11 +16,6 @@ const gridClass = {
   base: 'rscgrid__grid',
   emptyResults: 'rscgrid__grid rscgrid__grid--empty',
 };
-
-// const imgClass = {
-//   base: 'rscgrid-item__img',
-//   noAccess: 'rscgrid-item__img rscgrid-item__img--no-access',
-// };
 
 class GridView extends React.Component {
   constructor(props) {
@@ -72,32 +68,35 @@ class GridView extends React.Component {
     });
   }
 
-  // <span role="img" aria-label="locked content">🔒</span>
   pageItems() {
     const { currentPage, itemsPerPage } = this.state;
     const startIndex = (currentPage - 1) * itemsPerPage;
     const items = this.state.data.slice(startIndex, startIndex + itemsPerPage);
-    return items.map((item, index) => {
+    return items.map(item => {
       const imgUrl = contentImgSrc(item.url, item.guid);
       return (
-        <a
+        <div
         className="rscgrid-item"
-        target="_blank"
-        href={item.url}
-        rel="noreferrer"
-        key={index}
+        key={item.guid || item.name}
         >
-          <figure
-            className="rscgrid-item__img rscgrid-item__img--no-access"
-            style={{backgroundImage: `url("${imgUrl}")`}}
+          <ContentImage
+            imageUrl={imgUrl}
+            contentUrl={item.url}
+            contentType={item.app_mode}
           />
-          <h2 className="rscgrid-item__title">
-            {item.title || item.name}
-          </h2>
+           <a
+              href={item.url}
+              target="_blank"
+              rel="noreferrer"
+          >
+            <h2 className="rscgrid-item__title">
+              {item.title || item.name}
+            </h2>
+          </a>
           <div className="rscgrid-item__meta">
-            <span>{item.owner_username}</span> • <time>{dayjs(item.updated_time).format('ll')}</time>
+            <span>{item.owner_username} • <time>{dayjs(item.updated_time).format('ll')}</time></span>
           </div>
-        </a>
+        </div>
       );
     });
   }

@@ -4,6 +4,7 @@
  */
 
 import PropTypes from 'prop-types';
+import ContentImage from '@/image';
 import { contentImgSrc } from '@/utils';
 import './card.scss';
 
@@ -13,10 +14,15 @@ function Card({ data }) {
 
   return (
     <div className="rsccard">
-      <figure
-        className="rsccard__img"
-        style={{backgroundImage: `url("${imgUrl}")`}}
-      />
+      <div
+        className='rsccard__img'
+      >
+        <ContentImage
+          imageUrl={imgUrl}
+          contentUrl={contentObj.url}
+          contentType={contentObj.app_mode}
+        />
+      </div>
       <div className="rsccard__meta">
         <span>{contentObj.owner_username}</span> • <time>{new Date(contentObj.updated_time).toDateString()}</time>
         <h2 className="rsccard__meta-title">
@@ -30,7 +36,7 @@ function Card({ data }) {
           href={contentObj.url}
           target="_blank"
           rel="noreferrer"
-        >View content</a>
+        >Open Content</a>
       </div>
     </div>
   );
