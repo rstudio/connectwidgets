@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • rscpages</title>
+<title>Shiny bindings for rscgrid — rscgrid-shiny • rscpages</title>
 
 
 <!-- jquery -->
@@ -39,7 +39,9 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Shiny bindings for rscgrid — rscgrid-shiny" />
+<meta property="og:description" content="Output and render functions for using rscgrid within Shiny
+applications and interactive Rmd documents." />
 
 
 
@@ -58,7 +60,7 @@
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -105,127 +107,52 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Shiny bindings for rscgrid</h1>
+    <small class="dont-index">Source: <a href='https://github.com/rstudio/rscpages/blob/master/R/rscgrid.R'><code>R/rscgrid.R</code></a></small>
+    <div class="hidden name"><code>rscgrid-shiny.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    <p>Output and render functions for using rscgrid within Shiny
+applications and interactive Rmd documents.</p>
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
+    <pre class="usage"><span class='fu'>rscgridOutput</span><span class='op'>(</span><span class='va'>outputId</span>, width <span class='op'>=</span> <span class='st'>"100%"</span>, height <span class='op'>=</span> <span class='st'>"400px"</span><span class='op'>)</span>
 
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-api-client" class="hasAnchor"><a href="#section-api-client" class="anchor"></a>API Client</h2>
-          <p class="section-desc"><p>Functions for connecting to the RStudio Connect API and fetching content metadata</p></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="Client.html">Client</a></code> </p>
-        </td>
-        <td><p>Class representing a Connect API client</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="connect.html">connect()</a></code> </p>
-        </td>
-        <td><p>Create a connection to RStudio Connect</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="content.html">content()</a></code> </p>
-        </td>
-        <td><p>Get Content Items</p></td>
-      </tr>
-    </tbody><tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-components" class="hasAnchor"><a href="#section-components" class="anchor"></a>Components</h2>
-          <p class="section-desc"><p>UI components for constructing Pages</p></p>
-        </th>
-      </tr>
-      
-      
-    </tbody><tbody>
-      
-      
-      <tr>
-        
-        <td>
-          <p><code><a href="rsccard-shiny.html">rsccardOutput()</a></code> <code><a href="rsccard-shiny.html">renderRsccard()</a></code> </p>
-        </td>
-        <td><p>Shiny bindings for rsccard</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="rsccard.html">rsccard()</a></code> </p>
-        </td>
-        <td><p>Card view for content</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="rscfilter-shiny.html">rscfilterOutput()</a></code> <code><a href="rscfilter-shiny.html">renderRscfilter()</a></code> </p>
-        </td>
-        <td><p>Shiny bindings for rscfilter</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="rscfilter.html">rscfilter()</a></code> </p>
-        </td>
-        <td><p>Filter widget</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="rscgrid-shiny.html">rscgridOutput()</a></code> <code><a href="rscgrid-shiny.html">renderRscgrid()</a></code> </p>
-        </td>
-        <td><p>Shiny bindings for rscgrid</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="rscgrid.html">rscgrid()</a></code> </p>
-        </td>
-        <td><p>Grid view for content</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="rscpages_theme.html">rscpages_theme()</a></code> </p>
-        </td>
-        <td><p>Default reactable theme for rscpages table</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="rscsearch-shiny.html">rscsearchOutput()</a></code> <code><a href="rscsearch-shiny.html">renderRscsearch()</a></code> </p>
-        </td>
-        <td><p>Shiny bindings for rscsearch</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="rscsearch.html">rscsearch()</a></code> </p>
-        </td>
-        <td><p>Search widget</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="rsctable.html">rsctable()</a></code> </p>
-        </td>
-        <td><p>Reactable table of the content</p></td>
-      </tr>
-    </tbody>
+<span class='fu'>renderRscgrid</span><span class='op'>(</span><span class='va'>expr</span>, env <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sys.parent.html'>parent.frame</a></span><span class='op'>(</span><span class='op'>)</span>, quoted <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
+
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>outputId</th>
+      <td><p>output variable to read from</p></td>
+    </tr>
+    <tr>
+      <th>width, height</th>
+      <td><p>Must be a valid CSS unit (like <code>'100%'</code>,
+<code>'400px'</code>, <code>'auto'</code>) or a number, which will be coerced to a
+string and have <code>'px'</code> appended.</p></td>
+    </tr>
+    <tr>
+      <th>expr</th>
+      <td><p>An expression that generates a rscgrid</p></td>
+    </tr>
+    <tr>
+      <th>env</th>
+      <td><p>The environment in which to evaluate <code>expr</code>.</p></td>
+    </tr>
+    <tr>
+      <th>quoted</th>
+      <td><p>Is <code>expr</code> a quoted expression (with <code><a href='https://rdrr.io/r/base/substitute.html'>quote()</a></code>)? This
+is useful if you want to save an expression in a variable.</p></td>
+    </tr>
     </table>
-  </div>
 
+
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
       <h2 data-toc-skip>Contents</h2>

@@ -7,6 +7,9 @@
     <loc>https://rstudio.github.io/rscpages/reference/Client.html</loc>
   </url>
   <url>
+    <loc>https://rstudio.github.io/rscpages/reference/bscols.html</loc>
+  </url>
+  <url>
     <loc>https://rstudio.github.io/rscpages/reference/connect.html</loc>
   </url>
   <url>
@@ -16,10 +19,22 @@
     <loc>https://rstudio.github.io/rscpages/reference/pipe.html</loc>
   </url>
   <url>
+    <loc>https://rstudio.github.io/rscpages/reference/rsccard-shiny.html</loc>
+  </url>
+  <url>
+    <loc>https://rstudio.github.io/rscpages/reference/rsccard.html</loc>
+  </url>
+  <url>
     <loc>https://rstudio.github.io/rscpages/reference/rscfilter-shiny.html</loc>
   </url>
   <url>
     <loc>https://rstudio.github.io/rscpages/reference/rscfilter.html</loc>
+  </url>
+  <url>
+    <loc>https://rstudio.github.io/rscpages/reference/rscgrid-shiny.html</loc>
+  </url>
+  <url>
+    <loc>https://rstudio.github.io/rscpages/reference/rscgrid.html</loc>
   </url>
   <url>
     <loc>https://rstudio.github.io/rscpages/reference/rscpages_theme.html</loc>
