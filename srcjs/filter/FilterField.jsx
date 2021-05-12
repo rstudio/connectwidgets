@@ -7,8 +7,8 @@ import { FilterContext } from './stateUtils';
 import './filterField.scss';
 
 const fieldClass = {
-  base: 'rscfilter-field',
-  dropdown: 'rscfilter-field rscfilter-field--dropdown',
+  base: 'rscfilter-field__input-wrap',
+  dropdown: 'rscfilter-field__input-wrap rscfilter-field__input-wrap--dropdown',
 };
 
 function FilterField({ label, placeholder, type }) {
@@ -16,16 +16,6 @@ function FilterField({ label, placeholder, type }) {
 
   const context = React.useContext(FilterContext);
   const isDropdown = type === FilterType.type;
-
-  const [optionsVisibile, updateOptionsVisibile] = React.useState(false);
-
-  const blurHandler = ev => {
-    const focusOnCheckbox = ev.relatedTarget?.classList.contains('rscfilter-option');
-    const inputFromOtherField = ev.relatedTarget?.name && ev.relatedTarget.name !== type;
-    if (!focusOnCheckbox || inputFromOtherField) {
-      updateOptionsVisibile(false);
-    }
-  };
 
   const prefilteringHandler = ev => {
     const prefix = ev.target.value.trim();
@@ -40,7 +30,7 @@ function FilterField({ label, placeholder, type }) {
   }
 
   return (
-    <div>
+    <div className="rscfilter-field">
       <div className={isDropdown ? fieldClass.dropdown : fieldClass.base}>
         <label className="rscfilter-field__name">{label}</label>
         <input
@@ -49,19 +39,11 @@ function FilterField({ label, placeholder, type }) {
           name={type}
           placeholder={placeholder}
           onChange={debounce(300, prefilteringHandler)}
-          onFocus={() => updateOptionsVisibile(true)}
           onKeyUp={handleEsc}
-          onBlur={blurHandler}
         />
-        <FilterOptions
-          type={type}
-          show={optionsVisibile}
-          onCheckboxBlur={blurHandler}
-        />
+        <FilterOptions type={type} />
       </div>
-      <FiltersSelected
-        type={type}
-      />
+      <FiltersSelected type={type} />
     </div>
   );
 }

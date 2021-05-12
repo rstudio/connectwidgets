@@ -16,10 +16,7 @@ jobs:
         with:
           node-version: '12'
 
-      - name: Build
+      - name: Test Unit
         run: |
           just deps
-          just build
-
-      - name: Test Unit
-        run: just test
+          just test

@@ -6,6 +6,7 @@ exports[`<Filter /> renders properly, setup state and crosstalk handle 1`] = `
     Object {
       "crosstalkHandle": Object {
         "clear": [MockFunction],
+        "on": [MockFunction],
         "set": [MockFunction],
         "setGroup": [MockFunction] {
           "calls": Array [
@@ -147,6 +148,9 @@ exports[`<Filter /> renders properly, setup state and crosstalk handle 1`] = `
       onClick={[Function]}
     >
       Filter
+      <span
+        className="rscfilter__count"
+      />
     </button>
     <FilterFieldsPane
       isActive={false}

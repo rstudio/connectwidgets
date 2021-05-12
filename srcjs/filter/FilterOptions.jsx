@@ -2,20 +2,14 @@ import PropTypes from 'prop-types';
 import { FilterContext } from './stateUtils';
 import './filterOptions.scss';
 
-const optionsClass = {
-  base: 'rscfilter-field__options',
-  show: 'rscfilter-field__options rscfilter-field__options--show',
-};
-
 const checkboxClass = {
   base: 'rscfilter-option__checkbox',
   checked: 'rscfilter-option__checkbox rscfilter-option__checkbox--checked',
 };
 
-function FilterOptions({ type, show, onCheckboxBlur }) {
+function FilterOptions({ type }) {
   const context = React.useContext(FilterContext);
   const options = context.stateOptionsFor(type);
-  const componentClass = show ? optionsClass.show : optionsClass.base;
 
   const handleCheckbox = (ev, index) => {
     // Space key press is the standard to toggle checkboxes
@@ -36,7 +30,7 @@ function FilterOptions({ type, show, onCheckboxBlur }) {
   }
 
   return (
-    <div className={componentClass}>
+    <div className="rscfilter-field__options">
       {
         options.map((option, index) => {
           const chClass = option.isSelected ? checkboxClass.checked : checkboxClass.base;
@@ -47,13 +41,12 @@ function FilterOptions({ type, show, onCheckboxBlur }) {
               onClick={ev => handleCheckbox(ev, index)}
               onKeyUp={handleEsc}
               onKeyPress={ev => handleCheckbox(ev, index)}
-              onBlur={onCheckboxBlur}
               role="checkbox"
               aria-checked={option.isSelected}
               tabIndex="0"
             >
               <div className={chClass} />
-              <span>
+              <span className="rscfilter-option__label">
                 {option.label}
               </span>
             </div>
@@ -66,8 +59,6 @@ function FilterOptions({ type, show, onCheckboxBlur }) {
 
 FilterOptions.propTypes = {
   type: PropTypes.string,
-  show: PropTypes.bool,
-  onCheckboxBlur: PropTypes.func,
 }
 
 export default FilterOptions;

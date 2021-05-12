@@ -10,6 +10,7 @@
     "lint": "eslint srcjs/"
   },
   "dependencies": {
+    "dayjs": "^1.10.4",
     "lodash": "^4.17.21",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
@@ -37,8 +38,10 @@
     "jest": "^26.6.3",
     "node-sass": "^5.0.0",
     "postcss-loader": "^5.2.0",
+    "regenerator-runtime": "^0.13.7",
     "sass-loader": "^11.0.1",
     "style-loader": "^2.0.0",
+    "url-loader": "^4.1.1",
     "webpack": "^5.28.0",
     "webpack-cli": "^4.5.0"
   },
@@ -51,8 +54,9 @@
       "<rootDir>/srcjs/setupTests.js"
     ],
     "moduleNameMapper": {
-      "^@/(.*)$": "<rootDir>/srcjs/$1",
-      "^.+\\.(css|scss)$": "babel-jest"
+      "^.+\\.(png|svg|jpg|jpeg|gif)$": "babel-jest",
+      "^.+\\.(css|scss)$": "babel-jest",
+      "^@/(.*)$": "<rootDir>/srcjs/$1"
     }
   }
 }

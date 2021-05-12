@@ -2,8 +2,10 @@ const path = require('path');
 
 module.exports = {
   entry: {
-    rscfilter: path.join(__dirname, 'srcjs/filter', 'index.js'),
-    rscsearch: path.join(__dirname, 'srcjs/search', 'index.js'),
+    rscgrid: path.join(__dirname, 'srcjs/GridView', 'index.js'),
+    rsccard: path.join(__dirname, 'srcjs/CardView', 'index.js'),
+    rscfilter: path.join(__dirname, 'srcjs/Filter', 'index.js'),
+    rscsearch: path.join(__dirname, 'srcjs/Search', 'index.js'),
   },
   output: {
     filename: '[name].js',
@@ -36,6 +38,10 @@ module.exports = {
             }
           }
         ]
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        loader: 'url-loader'
       }
     ]
   },

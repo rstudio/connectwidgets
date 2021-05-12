@@ -1,3 +1,10 @@
+import ApiImg from '@/images/api.svg';
+import AppImg from '@/images/app.svg';
+import DocImg from '@/images/doc.svg';
+import ModelImg from '@/images/model.svg';
+import PinImg from '@/images/pin.svg';
+import PlotImg from '@/images/plot.svg';
+
 const appsModeMap = {
   // internal types to type name
   'api': 'API',
@@ -35,5 +42,33 @@ export const appTypeOf = (id, category) => {
   if (category) {
     type = type[category];
   }
+  // static type with no sub-category
+  if (typeof type !== 'string') {
+    type = 'Other';
+  }
   return type || 'Other';
+};
+
+/**
+ * Get the default image for a given content app mode.
+ * @param {string} appMode The content app mode.
+ * @returns The default image.
+ */
+export const appModeImg = appMode => {
+  const type = appTypeOf(appMode);
+
+  switch (type) {
+    case 'API':
+      return ApiImg;
+    case 'Document':
+      return DocImg;
+    case 'Plot':
+      return PlotImg;
+    case 'Pin':
+      return PinImg;
+    case 'Model':
+      return ModelImg;
+    default:
+      return AppImg;
+  }
 };

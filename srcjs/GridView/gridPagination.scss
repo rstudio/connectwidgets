@@ -1,0 +1,40 @@
+/*
+  Meant to be styled to match rsctable (reactable) pagination
+*/
+.rscgrid-pagination {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  &__list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+  }
+
+  &__btn {
+    border-radius: 50%;
+    border: none;
+    height: 32px;
+    margin-right: 5px;
+    width: 32px;
+  
+    &--current {
+      background: #EDF6FF;
+      color: #5882B2;
+      font-weight: 700;
+      pointer-events: none;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  
+    &:hover {
+      background: #EBEBEB;
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      pointer-events: none;
+    }
+  }
+}

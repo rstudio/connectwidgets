@@ -1,0 +1,60 @@
+.rscgrid {
+  font-family: "Lato", sans-serif;
+  font-size: 14px;
+  width: 100%;
+
+  &__grid {
+    display: flex;
+    flex-wrap: wrap;
+
+    &--empty {
+      border-bottom: 1px solid #F0F0F0;
+      border-top: 1px solid #F0F0F0;
+      justify-content: center;
+      margin-bottom: 1.44em;
+      padding: 1.44em 0;
+    }
+  }
+
+  &-item {
+    border-radius: 3px;
+    box-shadow: 0 0 3px 1px rgba(0,0,0, 0.2);
+    color: #303030;
+    margin-bottom: 3%;
+    margin-right: 3%;
+    overflow: hidden;
+    transition: all 0.2s ease;
+    width: 22.75%;
+  
+    &:hover {
+      box-shadow: 0 0 12px 2px rgba(0,0,0, 0.2);
+      transform: scale(1.05);
+    }
+  
+    &:hover,
+    &:focus {
+      color: #303030;
+      text-decoration: none;
+    }
+  
+    &:nth-of-type(4n) {
+      margin-right: 0;
+    }
+  
+    &__title {
+      font-size: 1.2em;
+      font-weight: 700;
+      line-height: 1.44em;
+      margin: 0.4em 0 0 0;
+      padding: 0 0.7em;
+    }
+    
+    &__meta {
+      color: #858585;
+      display: flex;
+      flex-direction: column;
+      font-size: 0.8em;
+      padding: 0 1em 1em 1em;
+    }
+  }
+}

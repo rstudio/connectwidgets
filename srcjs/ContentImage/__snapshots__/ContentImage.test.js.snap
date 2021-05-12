@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ContentImage /> forbidden images uses default image and request access label shows 1`] = `
+<a
+  className="rscimage rscimage--no-access"
+  href="https://science.rstudio.com/content/7e4bdcb4-c809-40da-9717-be86625ee690"
+  rel="noreferrer"
+  target="_blank"
+>
+  <figure
+    className="rscimage__img"
+    style={
+      Object {
+        "backgroundImage": "url(\\"default-img-url\\")",
+      }
+    }
+  />
+  <span
+    className="rscimage__request-access"
+  >
+    REQUEST ACCESS
+  </span>
+</a>
+`;
+
+exports[`<ContentImage /> non existent images uses default image and request access label shows 1`] = `
+<a
+  className="rscimage"
+  href="https://science.rstudio.com/content/7e4bdcb4-c809-40da-9717-be86625ee690"
+  rel="noreferrer"
+  target="_blank"
+>
+  <figure
+    className="rscimage__img"
+    style={
+      Object {
+        "backgroundImage": "url(\\"default-img-url\\")",
+      }
+    }
+  />
+  <span
+    className="rscimage__request-access"
+  >
+    REQUEST ACCESS
+  </span>
+</a>
+`;
+
+exports[`<ContentImage /> renders properly 1`] = `
+<a
+  className="rscimage"
+  href="https://science.rstudio.com/content/7e4bdcb4-c809-40da-9717-be86625ee690"
+  rel="noreferrer"
+  target="_blank"
+>
+  <figure
+    className="rscimage__img"
+    style={
+      Object {
+        "backgroundImage": "url(\\"data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZmlsbD0iIzU4ODJCMiIgZD0iTTEyLDEzYTEuNDksMS40OSwwLDAsMC0xLDIuNjFWMTdhMSwxLDAsMCwwLDIsMFYxNS42MUExLjQ5LDEuNDksMCwwLDAsMTIsMTNabTUtNEg5VjdhMywzLDAsMCwxLDUuMTItMi4xMywzLjA4LDMuMDgsMCwwLDEsLjc4LDEuMzgsMSwxLDAsMSwwLDEuOTQtLjUsNS4wOSw1LjA5LDAsMCwwLTEuMzEtMi4yOUE1LDUsMCwwLDAsNyw3VjlhMywzLDAsMCwwLTMsM3Y3YTMsMywwLDAsMCwzLDNIMTdhMywzLDAsMCwwLDMtM1YxMkEzLDMsMCwwLDAsMTcsOVptMSwxMGExLDEsMCwwLDEtMSwxSDdhMSwxLDAsMCwxLTEtMVYxMmExLDEsMCwwLDEsMS0xSDE3YTEsMSwwLDAsMSwxLDFaIi8+PC9zdmc+\\")",
+      }
+    }
+  />
+  <span
+    className="rscimage__request-access"
+  >
+    REQUEST ACCESS
+  </span>
+</a>
+`;

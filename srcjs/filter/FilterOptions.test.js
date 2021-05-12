@@ -30,7 +30,6 @@ const data = [
     isSelected: false,
   },
 ];
-const onCheckboxBlurMock = jest.fn();
 const fakeContext = {
   options: { [FilterType.type]: data },
   stateOptionsFor: jest.fn().mockImplementation(() => data),
@@ -40,7 +39,6 @@ jest.spyOn(React, 'useContext').mockReturnValue(fakeContext);
 
 const mkWrapper = () => shallow(<FilterOptions
   type={FilterType.type}
-  onCheckboxBlur={onCheckboxBlurMock}
 />);
 
 describe('<FilterOptions />', () => {
