@@ -22,5 +22,5 @@ export function debounce(delay, fn) {
  * @returns Image src url
  */
 export function contentImgSrc(contentUrl, guid) {
-  return `${contentUrl.split('/content/')[0]}/__api__/applications/${guid}/image`;
+  return `${contentUrl.split('/content/')[0]}/__api__/applications/${guid}/image?strict=1`;
 }

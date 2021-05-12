@@ -9,7 +9,7 @@ exports[`<CardView /> renders properly 1`] = `
   >
     <ContentImage
       contentUrl="https://connect.tester.net/content/991f16c5-dc7e-4403-89d0-c54d10968460/"
-      imageUrl="https://connect.tester.net/__api__/applications/991f16c5-dc7e-4403-89d0-c54d10968460/image"
+      imageUrl="https://connect.tester.net/__api__/applications/991f16c5-dc7e-4403-89d0-c54d10968460/image?strict=1"
     />
   </div>
   <div
