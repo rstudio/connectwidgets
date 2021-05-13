@@ -114,8 +114,7 @@ will be available.
 
 Once you have fetched (and filtered, arranged, etc) the content, you can display
 the content in a rich table format using the provided `rsctable` function. This
-renders a [reactable](https://glin.github.io/reactable/) table that includes
-searching, sorting, paginating, and filtering.
+renders a [reactable](https://glin.github.io/reactable/) table that includes sorting and pagination.
 
 ``` r
 rsctable(all_content)
@@ -126,6 +125,88 @@ rsctable(all_content)
 <img src="man/figures/README-table-1.png" width="100%">
 
 </center>
+
+### rscsearch and rscfilter - Search and Filter components
+
+What about searching and filtering content? Well, that's where `rscsearch` and `rscfilter`
+come in. In the next example, rscsearch and rscfilter are used within `bscols()`,
+a provided function that helps you to easily arrange this components in columns.
+
+```
+bscols(
+  rscsearch(all_content),
+  rscfilter(all_content),
+  widths = c(3,3)
+)
+rsctable(all_content)
+```
+
+<center>
+
+<img src="man/figures/README-search-filter-1.png" width="100%">
+
+</center>
+
+The `rscfilter` component allows to filter content by **owner**, **content type** and **tag(s)**
+
+<center>
+
+<img src="man/figures/README-search-filter-2.png" width="100%">
+
+</center>
+
+It is important to note that in order for `rsctable`, `rscsearch` and `rscfilter` components to work together,
+the exact same collection of data needs to be passed along, in this case the `all_content` data frame.
+
+### rscgrid - Grid view for content
+
+If you aren't in the mood for a table to showcase your content, what about a grid view? 
+
+```
+bscols(
+  rscsearch(all_content),
+  rscfilter(all_content),
+  widths = c(3,3)
+)
+rscgrid(all_content)
+```
+
+<center>
+
+<img src="man/figures/README-grid-1.png" width="100%">
+
+</center>
+
+As you can see in the above example, the `rscgrid` component works just like `rsctable` but with
+a different approach on displaying the content. It uses the content images specified in Connect and,
+if no image is found, default images are used depending on the content type. Note that while on the IDE
+only default images are used.
+
+### rsccard - Card component
+
+`rsccard` is a good option for those cases when you need to highlight specific content.
+
+```
+# This component looks within the content for:
+# - title
+# - url
+# - owner_username
+# - description
+# - updated_time
+
+rsccard(all_content[21,])
+```
+
+<center>
+
+<img src="man/figures/README-card-1.png" width="100%">
+
+</center>
+
+### bscols() - Layout utility function
+
+`bscols()` is a function that helps you to quickly organize components with columns and rows by leveraging on
+Bootstrap. In previous examples you can see we used `bscols()` to easily set the search and filter components side by side.
 
 ## Example RMarkdown Page
 
@@ -161,6 +242,11 @@ recent <- connect() %>%
 John should probably provide some context and introduction to his page here using markdown.
 
 ```{r echo=FALSE, message=FALSE}
+bscols(
+  rscsearch(recent),
+  rscfilter(recent),
+  widths = c(3,3)
+)
 rsctable(recent)
 ```
 ~~~
