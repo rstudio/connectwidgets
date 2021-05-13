@@ -19,11 +19,16 @@ class Search extends React.Component {
       crosstalkHandle,
     };
 
-    this.search = this.search.bind(this);
+    this.search = debounce(300, this.search.bind(this));
+    this.onInputChange = this.onInputChange.bind(this);
   }
 
-  search(ev) {
+  onInputChange(ev) {
     const prefix = ev.target.value.trim();
+    this.search(prefix);
+  }
+
+  search(prefix) {
     if (prefix === "") {
       this.state.crosstalkHandle.clear();
       return;
@@ -48,7 +53,7 @@ class Search extends React.Component {
           className="rscsearch__input"
           type="text"
           placeholder="Search content"
-          onChange={debounce(300, this.search)}
+          onChange={this.onInputChange}
         />
       </div>
     );
