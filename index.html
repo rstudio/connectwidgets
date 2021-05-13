@@ -163,12 +163,67 @@
 <div id="rsctable---table-component-for-listing-content" class="section level3">
 <h3 class="hasAnchor">
 <a href="#rsctable---table-component-for-listing-content" class="anchor"></a>rsctable - Table component for listing content</h3>
-<p>Once you have fetched (and filtered, arranged, etc) the content, you can display the content in a rich table format using the provided <code>rsctable</code> function. This renders a <a href="https://glin.github.io/reactable/">reactable</a> table that includes searching, sorting, paginating, and filtering.</p>
+<p>Once you have fetched (and filtered, arranged, etc) the content, you can display the content in a rich table format using the provided <code>rsctable</code> function. This renders a <a href="https://glin.github.io/reactable/">reactable</a> table that includes sorting and pagination.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/rsctable.html">rsctable</a></span><span class="op">(</span><span class="va">all_content</span><span class="op">)</span></code></pre></div>
 <center>
 <p><img src="reference/figures/README-table-1.png" width="100%"></p>
 </center>
+</div>
+<div id="rscsearch-and-rscfilter---search-and-filter-components" class="section level3">
+<h3 class="hasAnchor">
+<a href="#rscsearch-and-rscfilter---search-and-filter-components" class="anchor"></a>rscsearch and rscfilter - Search and Filter components</h3>
+<p>What about searching and filtering content? Well, that’s where <code>rscsearch</code> and <code>rscfilter</code> come in. In the next example, rscsearch and rscfilter are used within <code><a href="reference/bscols.html">bscols()</a></code>, a provided function that helps you to easily arrange this components in columns.</p>
+<pre><code><a href="reference/bscols.html">bscols(
+  rscsearch(all_content),
+  rscfilter(all_content),
+  widths = c(3,3)
+)
+rsctable(all_content)</a></code></pre>
+<center>
+<p><img src="reference/figures/README-search-filter-1.png" width="100%"></p>
+</center>
+<p>The <code>rscfilter</code> component allows to filter content by <strong>owner</strong>, <strong>content type</strong> and <strong>tag(s)</strong></p>
+<center>
+<p><img src="reference/figures/README-search-filter-2.png" width="100%"></p>
+</center>
+<p>It is important to note that in order for <code>rsctable</code>, <code>rscsearch</code> and <code>rscfilter</code> components to work together, the exact same collection of data needs to be passed along, in this case the <code>all_content</code> data frame.</p>
+</div>
+<div id="rscgrid---grid-view-for-content" class="section level3">
+<h3 class="hasAnchor">
+<a href="#rscgrid---grid-view-for-content" class="anchor"></a>rscgrid - Grid view for content</h3>
+<p>If you aren’t in the mood for a table to showcase your content, what about a grid view?</p>
+<pre><code><a href="reference/bscols.html">bscols(
+  rscsearch(all_content),
+  rscfilter(all_content),
+  widths = c(3,3)
+)
+rscgrid(all_content)</a></code></pre>
+<center>
+<p><img src="reference/figures/README-grid-1.png" width="100%"></p>
+</center>
+<p>As you can see in the above example, the <code>rscgrid</code> component works just like <code>rsctable</code> but with a different approach on displaying the content. It uses the content images specified in Connect and, if no image is found, default images are used depending on the content type. Note that while on the IDE only default images are used.</p>
+</div>
+<div id="rsccard---card-component" class="section level3">
+<h3 class="hasAnchor">
+<a href="#rsccard---card-component" class="anchor"></a>rsccard - Card component</h3>
+<p><code>rsccard</code> is a good option for those cases when you need to highlight specific content.</p>
+<pre><code><a href="reference/rsccard.html"># This component looks within the content for:
+# - title
+# - url
+# - owner_username
+# - description
+# - updated_time
+
+rsccard(all_content[21,])</a></code></pre>
+<center>
+<p><img src="reference/figures/README-card-1.png" width="100%"></p>
+</center>
+</div>
+<div id="bscols---layout-utility-function" class="section level3">
+<h3 class="hasAnchor">
+<a href="#bscols---layout-utility-function" class="anchor"></a>bscols() - Layout utility function</h3>
+<p><code><a href="reference/bscols.html">bscols()</a></code> is a function that helps you to quickly organize components with columns and rows by leveraging on Bootstrap. In previous examples you can see we used <code><a href="reference/bscols.html">bscols()</a></code> to easily set the search and filter components side by side.</p>
 </div>
 </div>
 <div id="example-rmarkdown-page" class="section level2">
@@ -201,6 +256,11 @@ recent &lt;- connect() %&gt;%
 John should probably provide some context and introduction to his page here using markdown.
 
 ```{r echo=FALSE, message=FALSE}
+bscols(
+  rscsearch(recent),
+  rscfilter(recent),
+  widths = c(3,3)
+)
 rsctable(recent)
 ```</code></pre>
 </div>
