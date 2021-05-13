@@ -68,7 +68,7 @@ API. Authentication is done by providing an API key.
 \if{latex}{\out{\hypertarget{method-GET}{}}}
 \subsection{Method \code{GET()}}{
 \subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Client$GET(path, writer = httr::write_memory(), parser = "text")}\if{html}{\out{</div>}}
+\if{html}{\out{<div class="r">}}\preformatted{Client$GET(path, ..., writer = httr::write_memory(), parser = "text")}\if{html}{\out{</div>}}
 }
 
 }
