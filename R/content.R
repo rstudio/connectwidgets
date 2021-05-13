@@ -30,39 +30,27 @@
 #'
 #' @export
 content <- function(client) {
-  results <- client$GET("/content")
+  results <- client$GET("/content", query = list(include = "tags,owner"))
 
   df <- jsonlite::fromJSON(results, simplifyDataFrame = T)
 
   content_tbl <- tibble::tibble(
     id = as.integer(df$id),
     guid = df$guid,
-    owner_guid = df$owner_guid,
     name = df$name,
     title = df$title,
     description = df$description,
     app_mode = df$app_mode,
     content_category = df$content_category,
     url = df$content_url,
+    owner_guid = df$owner$guid,
+    owner_username = df$owner$username,
+    owner_first_name = df$owner$first_name,
+    owner_last_name = df$owner$last_name,
+    tags = df$tags,
     created_time = as.POSIXct(format_iso8601(df$created_time)),
     updated_time = as.POSIXct(format_iso8601(df$last_deployed_time))
   )
-
-  # TODO: Temporary WILDLY INEFFICIENT loading of owners.  This is being
-  # replaced by eager-loading additions to the v1 content API
-  owners_df <-
-    do.call(rbind, lapply(unique(content_tbl$owner_guid), function(guid)
-      get_owner(client, guid)))
-  owners_tbl <- tibble::tibble(
-    owner_guid = as.character(owners_df$guid),
-    owner_username = as.character(owners_df$username),
-    owner_first_name = as.character(owners_df$first_name),
-    owner_last_name = as.character(owners_df$last_name)
-  )
-
-  content_tbl %>%
-    dplyr::left_join(owners_tbl, by = c("owner_guid")) %>%
-    dplyr::relocate(dplyr::starts_with("owner_"), .after = "description")
 }
 
 #' Arrange HTML elements or widgets in Bootstrap columns
@@ -113,11 +101,6 @@ content <- function(client) {
 #' @export
 bscols <- function(..., widths = NA, device = c("xs", "sm", "md", "lg")) {
   crosstalk::bscols(..., widths = widths, device = device)
-}
-
-get_owner <- function(client, owner_guid) {
-  result <- client$GET(glue::glue("/users/{owner_guid}"))
-  data.frame(jsonlite::fromJSON(result))
 }
 
 format_iso8601 <- function(str) {
