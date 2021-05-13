@@ -4,6 +4,8 @@ import {
   parseDataToFilters,
 } from './stateUtils';
 
+// TODO: Test with tags
+
 const rawData = {
   "id":[13,12,11,10,9,8,7,6,2],
   "guid":["e9a0cac2-9016-4b8f-83bf-81c286204ae8","e0e4041e-3ea7-4926-a0dd-757781debe31","e59e9210-ee04-4c35-990a-f124b72b038b","dc541f92-24f8-4c7d-bf5e-146d5313b9dd","abe93e0a-00b8-4a26-90e5-2344415a6915","2417ae52-1179-413e-a42e-3b6b7eada7cb","effd9816-5fc4-46ce-9683-2c1bd05723d0","c1e0e744-4f53-43ea-9d87-a55b672aa311","2152c987-1704-4086-ab48-052d4b7dfa19"],
@@ -13,6 +15,7 @@ const rawData = {
   "name":["Static----1617992248356","PY3-stocks-1617310449079","Python-Dash-1617309986384","Param-Repppp-1617225769236","Shiny-App-1617224406672","Python-Dash-1617224345888","RMD-test-1615331957502","Plot-1615331919236","Param-RMD-1613668823058"],
   "title":["Pinned CSV","PY3 stocks","Python Dash","Param Report 2020","Shiny App","Python Dash","RMD One","Plot Twist","Param RMD"],
   "description":["","","","","","","","",""],
+  "tags":[null,null,null,null,null,null,null,null,null],
   "url":["https://test.js.io/content/e9a0cac2-9016-4b8f-83bf-81c286204ae8/","https://test.js.io/content/e0e4041e-3ea7-4926-a0dd-757781debe31/","https://test.js.io/content/e59e9210-ee04-4c35-990a-f124b72b038b/","https://test.js.io/content/dc541f92-24f8-4c7d-bf5e-146d5313b9dd/","https://test.js.io/content/abe93e0a-00b8-4a26-90e5-2344415a6915/","https://test.js.io/content/2417ae52-1179-413e-a42e-3b6b7eada7cb/","https://test.js.io/content/effd9816-5fc4-46ce-9683-2c1bd05723d0/","https://test.js.io/content/c1e0e744-4f53-43ea-9d87-a55b672aa311/","https://test.js.io/content/2152c987-1704-4086-ab48-052d4b7dfa19/"],"created_time":["2021-04-09T18:17:28Z","2021-04-01T20:54:09Z","2021-04-01T20:46:26Z","2021-03-31T21:22:49Z","2021-03-31T21:00:06Z","2021-03-31T20:59:05Z","2021-03-09T23:19:17Z","2021-03-09T23:18:39Z","2021-02-18T17:20:23Z"],
   "updated_time":["2021-04-09T18:17:28Z","2021-04-01T20:54:09Z","2021-04-01T20:46:26Z","2021-03-31T21:22:49Z","2021-03-31T21:00:06Z","2021-03-31T20:59:05Z","2021-03-09T23:19:17Z","2021-03-09T23:18:39Z","2021-03-09T17:54:48Z"],
   "owner_username":["jzcarpenter","reporterfrank","automata","reporterfrank","jzcarpenter","reporterfrank","autoreporter009","brucebowtie","brucebowtie"],

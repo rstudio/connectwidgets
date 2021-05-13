@@ -22,10 +22,14 @@ function FiltersSelected({ type }) {
             className="rscfilter-selections__item"
           >
             { selection.label }
-            <button
+            {/* TODO:  use proper role and key handler or :focus-within work-around */}
+            {/* eslint-disable */}
+            <span
               className="rscfilter-selections__item-discard"
               onClick={() => onDiscard(selection)}
+              role="button"
             />
+            {/* eslint-enable */}
           </div>
         ))
       }      

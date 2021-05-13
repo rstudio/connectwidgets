@@ -9,9 +9,10 @@ exports[`<FiltersSelected /> renders properly 1`] = `
     key="API"
   >
     API
-    <button
+    <span
       className="rscfilter-selections__item-discard"
       onClick={[Function]}
+      role="button"
     />
   </div>
   <div
@@ -19,9 +20,10 @@ exports[`<FiltersSelected /> renders properly 1`] = `
     key="Application"
   >
     Application
-    <button
+    <span
       className="rscfilter-selections__item-discard"
       onClick={[Function]}
+      role="button"
     />
   </div>
   <div
@@ -29,9 +31,10 @@ exports[`<FiltersSelected /> renders properly 1`] = `
     key="Document"
   >
     Document
-    <button
+    <span
       className="rscfilter-selections__item-discard"
       onClick={[Function]}
+      role="button"
     />
   </div>
 </div>
