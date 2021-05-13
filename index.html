@@ -130,14 +130,6 @@
 <li>
 <code>guid</code> - Unique identifier for each content item (preferred)</li>
 <li>
-<code>owner_guid</code> - Unique identifier of the owner of the content item</li>
-<li>
-<code>owner_username</code> - Username of the owner of teh content item</li>
-<li>
-<code>owner_first_name</code> - First name of the owner of the content item</li>
-<li>
-<code>owner_last_name</code> - Last name of the owner of the content item</li>
-<li>
 <code>app_mode</code> - The type of the content item (examples: <code>shiny</code>, <code>rmd-static</code>, <code>static</code>, <code>python-dash</code>, etc.)</li>
 <li>
 <code>content_category</code> - For <code>static</code> app modes, the specific category of content (examples: <code>site</code>, <code>plot</code>, <code>pin</code>, etc.)</li>
@@ -150,11 +142,28 @@
 <li>
 <code>url</code> - The URL to the content item</li>
 <li>
+<code>owner_guid</code> - Unique identifier of the owner of the content item</li>
+<li>
+<code>owner_username</code> - Username of the owner of teh content item</li>
+<li>
+<code>owner_first_name</code> - First name of the owner of the content item</li>
+<li>
+<code>owner_last_name</code> - Last name of the owner of the content item</li>
+<li>
+<code>tags</code> - A data frame of the tags associated with the content item, with the following columns: <code>id</code>, <code>name</code>, <code>parent_id</code>, <code>created_time</code>, <code>updated_time</code>.</li>
+<li>
 <code>created_time</code> - The timestamp at which the content item was created</li>
 <li>
 <code>updated_time</code> - The timestamp at which the content item was last updated</li>
 </ul>
 </div>
+</div>
+<div id="filtering-content" class="section level3">
+<h3 class="hasAnchor">
+<a href="#filtering-content" class="anchor"></a>Filtering Content</h3>
+<p>We provide helper functions to filter by both owners and tags, using <code>by_owner</code> and <code>by_tag</code> respectively. You can also simply do filtering manually using <a href="https://dplyr.tidyverse.org/">dplyr</a>, built-in R functions, or your favorite data frame package.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">filtered_content</span> <span class="op">&lt;-</span> <span class="va">all_content</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/by_owner.html">by_owner</a></span><span class="op">(</span><span class="st">'brian'</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/by_tag.html">by_tag</a></span><span class="op">(</span><span class="st">'finance'</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
 <div id="ui-components" class="section level2">
@@ -164,7 +173,7 @@
 <h3 class="hasAnchor">
 <a href="#rsctable---table-component-for-listing-content" class="anchor"></a>rsctable - Table component for listing content</h3>
 <p>Once you have fetched (and filtered, arranged, etc) the content, you can display the content in a rich table format using the provided <code>rsctable</code> function. This renders a <a href="https://glin.github.io/reactable/">reactable</a> table that includes sorting and pagination.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/rsctable.html">rsctable</a></span><span class="op">(</span><span class="va">all_content</span><span class="op">)</span></code></pre></div>
 <center>
 <p><img src="reference/figures/README-table-1.png" width="100%"></p>

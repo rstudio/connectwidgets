@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get Content Items — content • rscpages</title>
+<title>Filter content by tag(s) — by_tag • rscpages</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,8 @@
 
 
 
-<meta property="og:title" content="Get Content Items — content" />
-<meta property="og:description" content="Returns content items as a data frame from the Connect server. It will only
-return content that is visible to the API key's user account." />
+<meta property="og:title" content="Filter content by tag(s) — by_tag" />
+<meta property="og:description" content="Returns content items that have the specified tag name(s)" />
 
 
 
@@ -109,53 +108,33 @@ return content that is visible to the API key's user account." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get Content Items</h1>
+    <h1>Filter content by tag(s)</h1>
     <small class="dont-index">Source: <a href='https://github.com/rstudio/rscpages/blob/master/R/content.R'><code>R/content.R</code></a></small>
-    <div class="hidden name"><code>content.Rd</code></div>
+    <div class="hidden name"><code>by_tag.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Returns content items as a data frame from the Connect server. It will only
-return content that is visible to the API key's user account.</p>
+    <p>Returns content items that have the specified tag name(s)</p>
     </div>
 
-    <pre class="usage"><span class='fu'>content</span><span class='op'>(</span><span class='va'>client</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>by_tag</span><span class='op'>(</span><span class='va'>content</span>, <span class='va'>tagname</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>client</th>
-      <td><p>A Client object (see <code>connect</code>)</p></td>
+      <th>content</th>
+      <td><p>Content data frame from <code><a href='content.html'>content(...)</a></code></p></td>
+    </tr>
+    <tr>
+      <th>tagname</th>
+      <td><p>The name of the tag</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A data frame (tibble) of content items</p>
-<ul>
-<li><p>id - Auto-incrementing identifier for each content item (legacy)</p></li>
-<li><p>guid - Unique identifier for each content item (preferred)</p></li>
-<li><p>app_mode - The type of the content item (examples: <code>shiny</code>,
-<code>rmd-static</code>, <code>static</code>, <code>python-dash</code>, etc.)</p></li>
-<li><p>content_category - For <code>static</code> app modes, the specific category
-of content (examples: <code>site</code>, <code>plot</code>, <code>pin</code>, etc.)</p></li>
-<li><p>name - The name of the content item as set at initial publishing</p></li>
-<li><p>title - The user-provided title of the content item</p></li>
-<li><p>description - The user-provided description of the content item</p></li>
-<li><p>url - The URL to the content item</p></li>
-<li><p>owner_guid - Unique identifier of the owner of the content item</p></li>
-<li><p>owner_username - Username of the owner of teh content item</p></li>
-<li><p>owner_first_name - First name of the owner of the content item</p></li>
-<li><p>owner_last_name - Last name of the owner of the content item</p></li>
-<li><p>tags - A data frame of the tags associated with the content item,
-with format: (id, name, parent_id, created_time, updated_time)</p></li>
-<li><p>created_time - The timestamp at which the content item
-was created</p></li>
-<li><p>updated_time - The timestamp at which the content item
-was last updated</p></li>
-</ul>
-
+    <p>The filtered content data frame</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
