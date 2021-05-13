@@ -41,12 +41,13 @@ Client <- R6::R6Class( # nolint
     add_auth = function() {
       httr::add_headers(Authorization = paste0("Key ", self$api_key))
     },
-    GET = function(path, writer = httr::write_memory(), parser = "text") {
+    GET = function(path, ..., writer = httr::write_memory(), parser = "text") {
       url <- paste0(self$server, "/__api__/v1", path)
       res <- httr::GET(
         url,
         self$add_auth(),
-        writer
+        writer,
+        ...
       )
       self$raise_error(res)
       httr::content(res, as = parser)
