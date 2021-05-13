@@ -49,14 +49,14 @@ describe('<FiltersSelected />', () => {
     const selections = wrapper.find('.rscfilter-selections__item');
     
     expect(fakeContext.updateSelection).not.toHaveBeenCalled();
-    selections.at(1).find('button').simulate('click', {});
+    selections.at(1).find('.rscfilter-selections__item-discard').simulate('click', {});
     expect(fakeContext.updateSelection).toHaveBeenCalledWith({
       name: 'Application',
       label: 'Application',
       isSelected: false,
     });
 
-    selections.at(2).find('button').simulate('click', {});
+    selections.at(2).find('.rscfilter-selections__item-discard').simulate('click', {});
     expect(fakeContext.updateSelection).toHaveBeenCalledWith({
       name: 'Document',
       label: 'Document',

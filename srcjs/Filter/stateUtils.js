@@ -45,8 +45,24 @@ export const parseDataToFilters = allData => {
     return filtersReducer(type)(collection, label, index);
   };
 
+  const tagsReducer = type => (collection, item, index) => {
+    if (!item) {
+      return collection;
+    }
+    item.name.forEach(tagInTree => {
+      collection = filtersReducer(type)(collection, tagInTree, index);
+    });
+    return collection;
+  };
+
   const dataToUniqueFilters = (columnData, type) => {
-    const reducer = type === FilterType.type ? appModeReducer : filtersReducer;
+    let reducer = filtersReducer;
+    if (type === FilterType.type) {
+      reducer = appModeReducer;
+    }
+    if (type === FilterType.tag) {
+      reducer = tagsReducer;
+    }
     const uniqueFilters = columnData.reduce(reducer(type), {});
     return Object.values(uniqueFilters)
                   .map((fltr, index) => {
@@ -58,7 +74,7 @@ export const parseDataToFilters = allData => {
   return {
     [FilterType.owner]: dataToUniqueFilters(allData.owner_username, FilterType.owner),
     [FilterType.type]: dataToUniqueFilters(allData.app_mode, FilterType.type),
-    [FilterType.tag]: [], // [ ...new Set(data.tags)].map(item => filterOptionFactory(FilterType.tag, item)),
+    [FilterType.tag]: dataToUniqueFilters(allData.tags, FilterType.tag),
   };
 };
 

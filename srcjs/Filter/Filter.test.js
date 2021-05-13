@@ -4,6 +4,8 @@ import Filter from './Filter';
 import FilterFieldsPane from './FilterFieldsPane';
 import { FilterType } from './filterType';
 
+// TODO: use tags
+
 const testFrameData = {
   // Filter component only needs this columns data.
   owner_username: [
@@ -35,7 +37,7 @@ const testFrameData = {
     'pin',
     '',
   ],
-  // tags: [], Not provided, yet.
+  tags: [],
 };
 
 /**
