@@ -109,6 +109,17 @@ will be available.
 * `created_time` - The timestamp at which the content item was created
 * `updated_time` - The timestamp at which the content item was last updated
 
+### Filtering Content
+
+We provide helper functions to filter by both owners and tags, using `by_owner`
+and `by_tag` respectively. You can also simply do filtering manually using
+[dplyr](https://dplyr.tidyverse.org/), built-in R functions, or your favorite
+data frame package.
+
+``` r
+filtered_content <- all_content %>% by_owner('brian') %>% by_tag('finance')
+```
+
 ## UI Components
 
 ### rsctable - Table component for listing content

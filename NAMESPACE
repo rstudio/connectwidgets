@@ -2,6 +2,8 @@
 
 export("%>%")
 export(bscols)
+export(by_owner)
+export(by_tag)
 export(connect)
 export(content)
 export(renderRsccard)

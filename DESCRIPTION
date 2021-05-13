@@ -28,7 +28,8 @@ Imports:
     rlang,
     digest,
     crosstalk,
-    reactR
+    reactR,
+    purrr
 URL:
     https://rstudio.github.io/rscpages,
     https://github.com/rstudio/rscpages
