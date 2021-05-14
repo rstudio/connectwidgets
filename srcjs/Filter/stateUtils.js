@@ -49,9 +49,13 @@ export const parseDataToFilters = allData => {
     if (!item) {
       return collection;
     }
-    item.name.forEach(tagInTree => {
-      collection = filtersReducer(type)(collection, tagInTree, index);
-    });
+    if (Array.isArray(item.name)) {
+      item.name.forEach(tagInTree => {
+        collection = filtersReducer(type)(collection, tagInTree, index);
+      });
+    } else {
+      collection = filtersReducer(type)(collection, item.name, index);
+    }
     return collection;
   };
 
