@@ -2,7 +2,7 @@ pandoc: 2.7.3
 pkgdown: 1.6.1
 pkgdown_sha: ~
 articles: {}
-last_built: 2021-05-14T17:57Z
+last_built: 2021-05-14T18:13Z
 urls:
   reference: https://rstudio.github.io/rscpages/reference
   article: https://rstudio.github.io/rscpages/articles
