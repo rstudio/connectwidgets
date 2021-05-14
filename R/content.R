@@ -57,28 +57,38 @@ content <- function(client) {
 
 #' Filter content by tag(s)
 #'
-#' Returns content items that have the specified tag name(s)
+#' Returns content items that have the specified tag(s) (by tag name)
 #'
 #' @param content Content data frame from `content(...)`
-#' @param tagname The name of the tag
+#' @param tagnames The name of the tag, or a list of names if multiple
 #'
 #' @return The filtered content data frame
 #'
 #' @export
-by_tag <- function(content, tagname) {
-  content %>% dplyr::filter(purrr::map_lgl(content$tags, function(x) { tagname %in% x$name }))
+by_tags <- function(content, tagnames) {
+  tagname <- as.list(tagnames)
+  content %>% dplyr::filter(purrr::map_lgl(content$tags, function(x) { any(tagnames %in% x$name) }))
 }
+
+#' @rdname by_tags
+#' @export
+by_tag <- by_tags
 
 #' Filter content by owner(s)
 #'
 #' Returns content items owned by the specified user(s) (by username)
 #'
 #' @param content Content data frame from `content(...)`
-#' @param username The username of the owner
+#' @param usernames The username of the owner, or a list of usernames if multiple
 #'
 #' @return The filtered content data frame
 #'
 #' @export
-by_owner <- function(content, username) {
-  content %>% dplyr::filter(owner_username == username)
+by_owners <- function(content, usernames) {
+  usernames <- as.list(usernames)
+  content %>% dplyr::filter(owner_username %in% usernames)
 }
+
+#' @rdname by_owners
+#' @export
+by_owner <- by_owners

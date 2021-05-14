@@ -111,14 +111,25 @@ will be available.
 
 ### Filtering Content
 
-We provide helper functions to filter by both owners and tags, using `by_owner`
-and `by_tag` respectively. You can also simply do filtering manually using
-[dplyr](https://dplyr.tidyverse.org/), built-in R functions, or your favorite
-data frame package.
+We provide helper functions to filter by both owners and tags.
+
+- `by_tags(...)` - Filters the data frame to only include content that has been
+tagged with the specified tag name(s).  You can pass a single tag name or a list
+of tag names. `by_tag` is provided as an alias for readability when using a
+single tag.
+
+- `by_owners(...)` - Filters the data frame to only include content with the
+specified owner(s) by username.  You can pass a single username or a list of
+usernames. `by_owner` is provided as an alias for readability when using a
+single tag.
 
 ``` r
-filtered_content <- all_content %>% by_owner('brian') %>% by_tag('finance')
+filtered_content <- client %>% content() %>% by_owner('brian') %>% by_tags(c('finance','marketing','sales'))
 ```
+
+You can also simply do filtering manually using
+[dplyr](https://dplyr.tidyverse.org/), built-in R functions, or your favorite
+data frame package.
 
 ## UI Components
 
@@ -222,15 +233,11 @@ Bootstrap. In previous examples you can see we used `bscols()` to easily set the
 
 ## Example RMarkdown Page
 
-Create an RMarkdown *page* that includes the most recently published Shiny apps
-created by "john".
-
-**NOTE**: Don’t forget to ensure that `CONNECT_SERVER` and `CONNECT_API_KEY` are
-set\!
+Here is an RMarkdown document that includes John's most recent daily finance reports. We are using the `by_owner` and `by_tags` filtering to only include content published by "john" that has been tagged with `finance`
 
 ~~~
 ---
-title: "John's Shiny Apps"
+title: "John's Finance Reports"
 output: html_document
 ---
 
@@ -239,26 +246,28 @@ library(rscpages)
 library(magrittr)
 library(dplyr)
 
-recent <- connect() %>%
+client <- connect(
+  server = Sys.getenv("CONNECT_SERVER"),
+  api_key = Sys.getenv("CONNECT_API_KEY")
+)
+
+reports <- client %>%
   content() %>%
-  filter(
-    owner_username == 'john',
-    app_mode == 'shiny'
-  ) %>%
-  arrange(desc(created_time)) %>%
-  top_n(10)
+    by_owner('john') %>%
+    by_tag('finance') %>%
+    arrange(desc(created_time)) %>%
+    top_n(10)
 ```
 
-![John's Great Hero Image](hero.png)
-
-John should probably provide some context and introduction to his page here using markdown.
+The most recent finance reports for Acme, Inc.  Please direct any questions to [john@example.com](mailto:john@example.com)
 
 ```{r echo=FALSE, message=FALSE}
 bscols(
-  rscsearch(recent),
-  rscfilter(recent),
+  rscsearch(reports),
+  rscfilter(reports),
   widths = c(3,3)
 )
-rsctable(recent)
+
+rsctable(reports)
 ```
 ~~~
