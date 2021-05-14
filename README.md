@@ -24,8 +24,8 @@ This package has not been released to CRAN yet and must be installed from
 GitHub:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("rstudio/rscpages")
+# install.packages("remotes")
+remotes::install_github("rstudio/rscpages")
 ```
 
 ## Usage
@@ -37,8 +37,8 @@ organization of content on RStudio Connect.
 ### Connecting to RStudio Connect
 
 You can specify the RStudio Connect server and your API key using the `connect`
-function. All methods used for fetching data require the returned client from
-`connect` as the first argument, which naturally encourages the use of pipes.
+function. For instructions on creating an API key, see
+<https://docs.rstudio.com/connect/user/api-keys/#api-keys-creating>.
 
 ``` r
 library(rscpages)
@@ -56,34 +56,13 @@ outlined in this
 When deploying to RStudio Connect, these environment variables will be
 automatically provided - no steps necessary\!
 
-``` r
-library(rscpages)
-
-# You could also have provided these in an .Renviron, but setting here for the sake
-# of example
-Sys.setenv(CONNECT_SERVER = "rsconnect.example.com")
-Sys.setenv(CONNECT_API_KEY = "abcdef1234567890")
-
-client <- connect()
-```
-
 ### Fetching Content
 
 The `content` method returns a data frame of the content available on the
-RStudio Connect server. You can further use
-[dplyr](https://dplyr.tidyverse.org/) or built-in R functions to filter, mutate,
-and arrange the data frame for your own purposes.
+RStudio Connect server.
 
 ``` r
 all_content <- client %>% content()
-```
-
-``` r
-library(dplyr)
-
-recent_content <- all_content %>%
-  arrange(desc(created_time)) %>%
-  top_n(10)
 ```
 
 **Note About Permissions:** If you are using the API key of an administrator,
@@ -131,6 +110,14 @@ You can also simply do filtering manually using
 [dplyr](https://dplyr.tidyverse.org/), built-in R functions, or your favorite
 data frame package.
 
+``` r
+library(dplyr)
+
+recent_content <- client %>% content() %>%
+  arrange(desc(created_time)) %>%
+  top_n(10)
+```
+
 ## UI Components
 
 ### rsctable - Table component for listing content
@@ -148,38 +135,6 @@ rsctable(all_content)
 <img src="man/figures/README-table-1.png" width="100%">
 
 </center>
-
-### rscsearch and rscfilter - Search and Filter components
-
-What about searching and filtering content? Well, that's where `rscsearch` and `rscfilter`
-come in. In the next example, rscsearch and rscfilter are used within `bscols()`,
-a provided function that helps you to easily arrange this components in columns.
-
-```
-bscols(
-  rscsearch(all_content),
-  rscfilter(all_content),
-  widths = c(3,3)
-)
-rsctable(all_content)
-```
-
-<center>
-
-<img src="man/figures/README-search-filter-1.png" width="100%">
-
-</center>
-
-The `rscfilter` component allows to filter content by **owner**, **content type** and **tag(s)**
-
-<center>
-
-<img src="man/figures/README-search-filter-2.png" width="100%">
-
-</center>
-
-It is important to note that in order for `rsctable`, `rscsearch` and `rscfilter` components to work together,
-the exact same collection of data needs to be passed along, in this case the `all_content` data frame.
 
 ### rscgrid - Grid view for content
 
@@ -226,12 +181,44 @@ rsccard(all_content[21,])
 
 </center>
 
+### rscsearch and rscfilter - Search and Filter components
+
+What about searching and filtering content? Well, that's where `rscsearch` and `rscfilter`
+come in. In the next example, rscsearch and rscfilter are used within `bscols()`,
+a provided function that helps you to easily arrange this components in columns.
+
+```
+bscols(
+  rscsearch(all_content),
+  rscfilter(all_content),
+  widths = c(3,3)
+)
+rsctable(all_content)
+```
+
+<center>
+
+<img src="man/figures/README-search-filter-1.png" width="100%">
+
+</center>
+
+The `rscfilter` component allows to filter content by **owner**, **content type** and **tag(s)**
+
+<center>
+
+<img src="man/figures/README-search-filter-2.png" width="100%">
+
+</center>
+
+It is important to note that in order for `rsctable`, `rscsearch` and `rscfilter` components to work together,
+the exact same collection of data needs to be passed along, in this case the `all_content` data frame.
+
 ### bscols() - Layout utility function
 
 `bscols()` is a function that helps you to quickly organize components with columns and rows by leveraging on
 Bootstrap. In previous examples you can see we used `bscols()` to easily set the search and filter components side by side.
 
-## Example RMarkdown Page
+## Example Page
 
 Here is an RMarkdown document that includes John's most recent daily finance reports. We are using the `by_owner` and `by_tags` filtering to only include content published by "john" that has been tagged with `finance`
 
