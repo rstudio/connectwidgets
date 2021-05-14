@@ -143,8 +143,7 @@ If you aren't in the mood for a table to showcase your content, what about a gri
 ```
 bscols(
   rscsearch(all_content),
-  rscfilter(all_content),
-  widths = c(3,3)
+  rscfilter(all_content)
 )
 rscgrid(all_content)
 ```
@@ -190,8 +189,7 @@ a provided function that helps you to easily arrange this components in columns.
 ```
 bscols(
   rscsearch(all_content),
-  rscfilter(all_content),
-  widths = c(3,3)
+  rscfilter(all_content)
 )
 rsctable(all_content)
 ```
@@ -251,8 +249,7 @@ The most recent finance reports for Acme, Inc.  Please direct any questions to [
 ```{r echo=FALSE, message=FALSE}
 bscols(
   rscsearch(reports),
-  rscfilter(reports),
-  widths = c(3,3)
+  rscfilter(reports)
 )
 
 rsctable(reports)

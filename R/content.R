@@ -66,8 +66,10 @@ content <- function(client) {
 #'
 #' @export
 by_tags <- function(content, tagnames) {
-  tagname <- as.list(tagnames)
-  content %>% dplyr::filter(purrr::map_lgl(content$tags, function(x) { any(tagnames %in% x$name) }))
+  tagnames <- as.list(tagnames)
+  content %>% dplyr::filter(purrr::map_lgl(content$tags, function(x) {
+    any(tagnames %in% x$name)
+  }))
 }
 
 #' @rdname by_tags
@@ -79,14 +81,15 @@ by_tag <- by_tags
 #' Returns content items owned by the specified user(s) (by username)
 #'
 #' @param content Content data frame from `content(...)`
-#' @param usernames The username of the owner, or a list of usernames if multiple
+#' @param usernames The username of the owner, or a list of usernames if
+#'   multiple
 #'
 #' @return The filtered content data frame
 #'
 #' @export
 by_owners <- function(content, usernames) {
   usernames <- as.list(usernames)
-  content %>% dplyr::filter(owner_username %in% usernames)
+  content %>% dplyr::filter(.data$owner_username %in% usernames)
 }
 
 #' @rdname by_owners

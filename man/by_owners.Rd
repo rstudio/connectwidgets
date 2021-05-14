@@ -12,7 +12,8 @@ by_owner(content, usernames)
 \arguments{
 \item{content}{Content data frame from \code{content(...)}}
 
-\item{usernames}{The username of the owner, or a list of usernames if multiple}
+\item{usernames}{The username of the owner, or a list of usernames if
+multiple}
 }
 \value{
 The filtered content data frame
