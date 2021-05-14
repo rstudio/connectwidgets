@@ -161,9 +161,14 @@
 <div id="filtering-content" class="section level3">
 <h3 class="hasAnchor">
 <a href="#filtering-content" class="anchor"></a>Filtering Content</h3>
-<p>We provide helper functions to filter by both owners and tags, using <code>by_owner</code> and <code>by_tag</code> respectively. You can also simply do filtering manually using <a href="https://dplyr.tidyverse.org/">dplyr</a>, built-in R functions, or your favorite data frame package.</p>
+<p>We provide helper functions to filter by both owners and tags.</p>
+<ul>
+<li><p><code><a href="reference/by_tags.html">by_tags(...)</a></code> - Filters the data frame to only include content that has been tagged with the specified tag name(s). You can pass a single tag name or a list of tag names. <code>by_tag</code> is provided as an alias for readability when using a single tag.</p></li>
+<li><p><code><a href="reference/by_owners.html">by_owners(...)</a></code> - Filters the data frame to only include content with the specified owner(s) by username. You can pass a single username or a list of usernames. <code>by_owner</code> is provided as an alias for readability when using a single tag.</p></li>
+</ul>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">filtered_content</span> <span class="op">&lt;-</span> <span class="va">all_content</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/by_owner.html">by_owner</a></span><span class="op">(</span><span class="st">'brian'</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/by_tag.html">by_tag</a></span><span class="op">(</span><span class="st">'finance'</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="va">filtered_content</span> <span class="op">&lt;-</span> <span class="va">client</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/content.html">content</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/by_owners.html">by_owner</a></span><span class="op">(</span><span class="st">'brian'</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/by_tags.html">by_tags</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'finance'</span>,<span class="st">'marketing'</span>,<span class="st">'sales'</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<p>You can also simply do filtering manually using <a href="https://dplyr.tidyverse.org/">dplyr</a>, built-in R functions, or your favorite data frame package.</p>
 </div>
 </div>
 <div id="ui-components" class="section level2">
@@ -238,10 +243,9 @@ rsccard(all_content[21,])</a></code></pre>
 <div id="example-rmarkdown-page" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example-rmarkdown-page" class="anchor"></a>Example RMarkdown Page</h2>
-<p>Create an RMarkdown <em>page</em> that includes the most recently published Shiny apps created by “john”.</p>
-<p><strong>NOTE</strong>: Don’t forget to ensure that <code>CONNECT_SERVER</code> and <code>CONNECT_API_KEY</code> are set!</p>
+<p>Here is an RMarkdown document that includes John’s most recent daily finance reports. We are using the <code>by_owner</code> and <code>by_tags</code> filtering to only include content published by “john” that has been tagged with <code>finance</code></p>
 <pre><code>---
-title: "John's Shiny Apps"
+title: "John's Finance Reports"
 output: html_document
 ---
 
@@ -250,27 +254,29 @@ library(rscpages)
 library(magrittr)
 library(dplyr)
 
-recent &lt;- connect() %&gt;%
+client &lt;- connect(
+  server = Sys.getenv("CONNECT_SERVER"),
+  api_key = Sys.getenv("CONNECT_API_KEY")
+)
+
+reports &lt;- client %&gt;%
   content() %&gt;%
-  filter(
-    owner_username == 'john',
-    app_mode == 'shiny'
-  ) %&gt;%
-  arrange(desc(created_time)) %&gt;%
-  top_n(10)
+    by_owner('john') %&gt;%
+    by_tag('finance') %&gt;%
+    arrange(desc(created_time)) %&gt;%
+    top_n(10)
 ```
 
-![John's Great Hero Image](hero.png)
-
-John should probably provide some context and introduction to his page here using markdown.
+The most recent finance reports for Acme, Inc.  Please direct any questions to [john@example.com](mailto:john@example.com)
 
 ```{r echo=FALSE, message=FALSE}
 bscols(
-  rscsearch(recent),
-  rscfilter(recent),
+  rscsearch(reports),
+  rscfilter(reports),
   widths = c(3,3)
 )
-rsctable(recent)
+
+rsctable(reports)
 ```</code></pre>
 </div>
 </div>
