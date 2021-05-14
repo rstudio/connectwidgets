@@ -120,10 +120,12 @@ recent_content <- client %>% content() %>%
 
 ## UI Components
 
-### rsctable - Table component for listing content
-
 Once you have fetched (and filtered, arranged, etc) the content, you can display
-the content in a rich table format using the provided `rsctable` function. This
+the content using one or more of the presentation components: Table, Grid, and Card.
+
+### Table view component - `rsctable`
+
+A rich table format is provided through the `rsctable` function. This
 renders a [reactable](https://glin.github.io/reactable/) table that includes sorting and pagination.
 
 ``` r
@@ -136,7 +138,7 @@ rsctable(all_content)
 
 </center>
 
-### rscgrid - Grid view for content
+### Grid view component - `rscgrid`
 
 If you aren't in the mood for a table to showcase your content, what about a grid view? 
 
@@ -159,7 +161,7 @@ a different approach on displaying the content. It uses the content images speci
 if no image is found, default images are used depending on the content type. Note that while on the IDE
 only default images are used.
 
-### rsccard - Card component
+### Card component - `rsccard`
 
 `rsccard` is a good option for those cases when you need to highlight specific content.
 
@@ -180,7 +182,7 @@ rsccard(all_content[21,])
 
 </center>
 
-### rscsearch and rscfilter - Search and Filter components
+### Search and Filter components - `rscsearch` and `rscfilter`
 
 What about searching and filtering content? Well, that's where `rscsearch` and `rscfilter`
 come in. In the next example, rscsearch and rscfilter are used within `bscols()`,
@@ -211,7 +213,7 @@ The `rscfilter` component allows to filter content by **owner**, **content type*
 It is important to note that in order for `rsctable`, `rscsearch` and `rscfilter` components to work together,
 the exact same collection of data needs to be passed along, in this case the `all_content` data frame.
 
-### bscols() - Layout utility function
+### Layout utility function - `bscols()`
 
 `bscols()` is a function that helps you to quickly organize components with columns and rows by leveraging on
 Bootstrap. In previous examples you can see we used `bscols()` to easily set the search and filter components side by side.
