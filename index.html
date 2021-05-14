@@ -181,8 +181,7 @@
 <p>If you aren’t in the mood for a table to showcase your content, what about a grid view?</p>
 <pre><code><a href="reference/bscols.html">bscols(
   rscsearch(all_content),
-  rscfilter(all_content),
-  widths = c(3,3)
+  rscfilter(all_content)
 )
 rscgrid(all_content)</a></code></pre>
 <center>
@@ -212,8 +211,7 @@ rsccard(all_content[21,])</a></code></pre>
 <p>What about searching and filtering content? Well, that’s where <code>rscsearch</code> and <code>rscfilter</code> come in. In the next example, rscsearch and rscfilter are used within <code><a href="reference/bscols.html">bscols()</a></code>, a provided function that helps you to easily arrange this components in columns.</p>
 <pre><code><a href="reference/bscols.html">bscols(
   rscsearch(all_content),
-  rscfilter(all_content),
-  widths = c(3,3)
+  rscfilter(all_content)
 )
 rsctable(all_content)</a></code></pre>
 <center>
@@ -263,8 +261,7 @@ The most recent finance reports for Acme, Inc.  Please direct any questions to [
 ```{r echo=FALSE, message=FALSE}
 bscols(
   rscsearch(reports),
-  rscfilter(reports),
-  widths = c(3,3)
+  rscfilter(reports)
 )
 
 rsctable(reports)
