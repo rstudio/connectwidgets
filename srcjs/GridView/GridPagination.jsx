@@ -8,11 +8,33 @@ const btnClass = {
 };
 
 function GridPagination({ total, perPage, currentPage, onChange }) {
+  const sep = '...';
   const totalPages = Math.ceil(total / perPage);
 
+  function genPagingRange() {
+    if (totalPages < 7) {
+      return range(1, totalPages + 1);
+    }
+    if (totalPages - currentPage < 3) {
+      return [1, sep, ...range(totalPages - 3, totalPages + 1)];
+    }
+    if (currentPage > 4) {
+      return [1, sep, ...range(currentPage - 1, currentPage + 2), sep, totalPages];
+    }
+    return [...range(1, 6), sep, totalPages];
+  }
+
   function pageButtons() {
-    return range(totalPages).map(index => {
-      const pageNum = index + 1;
+    return genPagingRange().map((pageNum, index) => {
+      if (pageNum === sep) {
+        return (
+          <li
+            className="rscgrid-pagination__sep"
+            key={index}
+            role="separator"
+          >...</li>
+        );
+      }
       return (
         <li
           key={index}
@@ -22,7 +44,7 @@ function GridPagination({ total, perPage, currentPage, onChange }) {
             onClick={() => gotoPage(pageNum)}
           >{pageNum}</button>
         </li>
-      )
+      );
     });
   }
 
