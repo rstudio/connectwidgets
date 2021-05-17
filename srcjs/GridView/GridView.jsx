@@ -83,6 +83,7 @@ class GridView extends React.Component {
             imageUrl={imgUrl}
             contentUrl={item.url}
             contentType={item.app_mode}
+            contentCategory={item.content_category}
           />
            <a
               href={item.url}
