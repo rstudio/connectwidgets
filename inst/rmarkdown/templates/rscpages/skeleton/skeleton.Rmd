@@ -1,0 +1,66 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+```{r include=FALSE}
+library(rscpages)
+library(dplyr)
+
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+
+client <- connect(
+  # server  = Sys.getenv("CONNECT_SERVER"),
+  # api_key = Sys.getenv("CONNECT_API_KEY")
+  )
+
+all_content <- client %>%
+  content()
+
+sample_content <- all_content %>% slice_sample(prop = .3)
+```
+
+
+![](https://source.unsplash.com/ugnrXk1129g/1920x1080 "A random forest.")
+
+## Components
+
+### card
+
+Highlight a single piece of content:
+
+```{r}
+sample_content %>%
+  slice(1) %>%
+  rsccard()
+```
+
+### grid
+
+Show a grid of content:
+
+```{r}
+sample_content %>%
+  rscgrid()
+```
+
+### table
+
+Show a table of content:
+
+```{r}
+sample_content %>%
+  rsctable()
+```
+
+### search & filter
+
+To enable searching and filtering (via [Crosstalk](https://rstudio.github.io/crosstalk/)), pass the same data frame to the
+search, filter, table, or grid components.
+
+```{r}
+bscols(rscsearch(all_content), rscfilter(all_content), widths = c(2, 2))
+rsctable(all_content)
+```
+
+
