@@ -3,6 +3,8 @@
 #' Renders a reactable table of the provided content items
 #'
 #' @param content The tibble of content provided by rscpages::content()
+#' Requires the columns "guid", "url", "title", "app_mode",
+#' "owner_username" and "updated_time".
 #'
 #' @importFrom rlang .data
 #'

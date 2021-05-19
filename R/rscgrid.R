@@ -2,7 +2,10 @@
 #'
 #' Renders a grid view of the provided content items
 #'
-#' @param content A shared object from Connect's content
+#' @param content A data frame from Connect's content. Requires the
+#' following columns "guid", "url", "title", "app_mode", "owner_username".
+#' And, although optional, expects an "updated_time" column.
+#'
 #'
 #' @export
 rscgrid <- function(content) {

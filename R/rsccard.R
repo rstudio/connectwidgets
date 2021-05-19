@@ -2,7 +2,10 @@
 #'
 #' Renders a card view for the provided content
 #'
-#' @param content Connect's content item
+#' @param content A data frame from Connect's content. Requires the
+#' following columns "guid," "url", "title".
+#' And, although optional, expects an "owner_username", "description"
+#' and "updated_time" columns.
 #'
 #' @export
 rsccard <- function(content) {
@@ -15,7 +18,7 @@ rsccard <- function(content) {
   evaluate_widget_input(
     "rsccard()",
     cols,
-    c("title", "url")
+    c("guid", "title", "url")
   )
   warning_widget_input(
     "rsccard()",

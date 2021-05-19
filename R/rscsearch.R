@@ -1,6 +1,7 @@
 #' Search widget
 #'
 #' Search for matching content name/title within the shared data object passed.
+#' Expects the exact same frame passed to the view widget being filtered.
 #'
 #' @param content A shared object from Connect's content
 #'
