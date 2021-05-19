@@ -11,7 +11,9 @@ rscsearch <- function(content) {
   }
 
   if (nrow(content) == 0) {
-    warning("rscsearch() was called with an empty data frame. Searching won't trigger any search results.")
+    warning(
+      "rscsearch() called with an empty data.frame. Nothing to search on."
+    )
   }
 
   if (!crosstalk::is.SharedData(content)) {

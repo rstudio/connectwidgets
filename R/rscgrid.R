@@ -14,8 +14,16 @@ rscgrid <- function(content) {
     warning("rscgrid() was called with an empty data frame.")
   } else {
     cols <- colnames(content)
-    evaluate_widget_input("rscgrid()", cols, c("guid", "url", "title", "app_mode", "owner_username"))
-    warning_widget_input("rscgrid()", cols, c("updated_time"))
+    evaluate_widget_input(
+      "rscgrid()",
+      cols,
+      c("guid", "url", "title", "app_mode", "owner_username")
+    )
+    warning_widget_input(
+      "rscgrid()",
+      cols,
+      c("updated_time")
+    )
   }
 
   if (!crosstalk::is.SharedData(content)) {

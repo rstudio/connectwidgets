@@ -12,8 +12,16 @@ rsccard <- function(content) {
   }
 
   cols <- colnames(content)
-  evaluate_widget_input("rsccard()", cols, c("title", "url"))
-  warning_widget_input("rsccard()", cols, c("owner_username", "description", "updated_time"))
+  evaluate_widget_input(
+    "rsccard()",
+    cols,
+    c("title", "url")
+  )
+  warning_widget_input(
+    "rsccard()",
+    cols,
+    c("owner_username", "description", "updated_time")
+  )
 
   component <- reactR::component(
     "CardView",

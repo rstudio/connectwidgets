@@ -12,7 +12,11 @@ rscfilter <- function(content) {
   }
 
   cols <- colnames(content)
-  warning_widget_input("rscfilter()", cols, c("owner_username", "app_mode", "tags"))
+  warning_widget_input(
+    "rscfilter()",
+    cols,
+    c("owner_username", "app_mode", "tags")
+  )
 
   if (!crosstalk::is.SharedData(content)) {
     ctalk_group <- digest::digest(toString(content), "md5")
