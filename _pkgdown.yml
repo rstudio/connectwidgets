@@ -5,11 +5,22 @@ reference:
     Functions for connecting to the RStudio Connect API and fetching
     content metadata
 - contents:
-  - Client
   - connect
   - content
+  - starts_with("by")
 - title: "Components"
   desc: >
     UI components for constructing Pages
 - contents:
-  - starts_with("rsc")
+  - rsccard
+  - rscgrid
+  - rsctable
+  - rscsearch
+  - rscfilter
+  - bscols
+- title: "Shiny"
+  desc: >
+    Shiny bindings for Pages components
+- contents:
+  - contains("Output")
+  - contains("render")

@@ -1,0 +1,38 @@
+---
+title: "Publishing"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Publishing}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---   
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+Once your Pages are built and [published](https://docs.rstudio.com/connect/user/publishing/#publishing-documents),
+you have a few options for keeping them up to date:
+
+## Scheduled RMarkdown
+
+Publish the page with source, and [schedule it](https://docs.rstudio.com/connect/user/scheduling/#schedule-type)
+to update periodically.
+
+## `runtime: shiny`
+
+If you want your page to reflect changes to your content whenever it is visited,
+you can add `runtime: shiny` to the yaml frontmatter of your RMarkdown document.
+
+``` {.yaml}
+title: an example page
+ouput: html_document
+runtime: shiny
+```
+
+## Shiny App
+
+Since Pages components are htmlwidgets, you can use them to build a shiny app.
