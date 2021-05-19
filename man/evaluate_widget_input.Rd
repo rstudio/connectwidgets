@@ -11,7 +11,7 @@ evaluate_widget_input(widget, colnames, required)
 
 \item{colnames}{Column names provided from the widget content input}
 
-\item{required}{List of required columns to look for in the widget content input}
+\item{required}{List of required columns to look for in the widget's input}
 }
 \description{
 Evaluates required columns for widget's input

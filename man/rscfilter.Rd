@@ -7,9 +7,10 @@
 rscfilter(content)
 }
 \arguments{
-\item{content}{A shared object from Connect's content}
+\item{content}{A data frame from Connect's content. Although optional,
+expects an "owner_username", "app_mode" and "tags" columns.}
 }
 \description{
 Filter content rows with owner, content type and tags,
-from a shared data from Connect's content.
+expects the exact same frame passed to the view widget being filtered.
 }

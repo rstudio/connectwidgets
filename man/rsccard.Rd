@@ -7,7 +7,10 @@
 rsccard(content)
 }
 \arguments{
-\item{content}{Connect's content item}
+\item{content}{A data frame from Connect's content. Requires the
+following columns "guid," "url", "title".
+And, although optional, expects an "owner_username", "description"
+and "updated_time" columns.}
 }
 \description{
 Renders a card view for the provided content

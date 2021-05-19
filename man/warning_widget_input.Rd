@@ -11,7 +11,7 @@ warning_widget_input(widget, colnames, expected)
 
 \item{colnames}{Column names provided from the widget content input}
 
-\item{required}{List of expected columns to look for in the widget content input}
+\item{expected}{List of expected columns to look for in the widget's input}
 }
 \description{
 Show warnings of expected columns for widget's input
