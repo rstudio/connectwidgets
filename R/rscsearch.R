@@ -6,6 +6,14 @@
 #'
 #' @export
 rscsearch <- function(content) {
+  if (missing(content) || !is.data.frame(content)) {
+    stop("rscsearch() expects a data frame.")
+  }
+
+  if (nrow(content) == 0) {
+    warning("rscsearch() was called with an empty data frame. Searching won't trigger any search results.")
+  }
+
   if (!crosstalk::is.SharedData(content)) {
     ctalk_group <- digest::digest(toString(content), "md5")
     content <- crosstalk::SharedData$new(content, group = ctalk_group)

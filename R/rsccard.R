@@ -6,6 +6,15 @@
 #'
 #' @export
 rsccard <- function(content) {
+  # content should have at least one row
+  if (missing(content) || !is.data.frame(content) || nrow(content) == 0) {
+    stop("rsccard() expects a data frame with at least one record.")
+  }
+
+  cols <- colnames(content)
+  evaluate_widget_input("rsccard()", cols, c("title", "url"))
+  warning_widget_input("rsccard()", cols, c("owner_username", "description", "updated_time"))
+
   component <- reactR::component(
     "CardView",
     list(

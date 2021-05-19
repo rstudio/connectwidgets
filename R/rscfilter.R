@@ -7,6 +7,13 @@
 #'
 #' @export
 rscfilter <- function(content) {
+  if (missing(content) || !is.data.frame(content)) {
+    stop("rscfilter() expects a data frame.")
+  }
+
+  cols <- colnames(content)
+  warning_widget_input("rscfilter()", cols, c("owner_username", "app_mode", "tags"))
+
   if (!crosstalk::is.SharedData(content)) {
     ctalk_group <- digest::digest(toString(content), "md5")
     content <- crosstalk::SharedData$new(content, group = ctalk_group)
