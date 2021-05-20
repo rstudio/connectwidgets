@@ -10,12 +10,18 @@
     padding: 0;
   }
 
+  &__sep {
+    line-height: 2.4em;
+    margin-right: 5px;
+  }
+
   &__btn {
-    border-radius: 50%;
+    border-radius: 16px;
     border: none;
     height: 32px;
     margin-right: 5px;
-    width: 32px;
+    min-width: 32px;
+    padding: 0 0.8em;
   
     &--current {
       background: #EDF6FF;

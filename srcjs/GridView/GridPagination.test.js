@@ -7,11 +7,11 @@ const onChangeFn = jest.fn().mockImplementation(page => {
   wrapper.setProps({ currentPage: page });
 });
 
-const mkWrapper = () => {
+const mkWrapper = (totalItems = 63, currentPage = 1) => {
   wrapper = shallow(<GridPagination
-    total={63}
+    total={totalItems}
     perPage={12}
-    currentPage={1}
+    currentPage={currentPage}
     onChange={onChangeFn}
   />);
 };
@@ -60,5 +60,29 @@ describe('<GridPagination />', () => {
     expect(pagesBtns().at(0).prop('disabled')).toBe(false);
     expect(pagesBtns().at(7).prop('disabled')).toBe(true);
     expect(pagesBtns().at(6).hasClass('rscgrid-pagination__btn--current')).toBe(true);
+  });
+
+  describe('for too many pages', () => {
+    it('displays compact pagination controls', () => {
+      mkWrapper(1300);
+      expect(toJson(wrapper)).toMatchSnapshot();
+      expect(wrapper.text()).toBe('❮12345...109❯')
+
+      mkWrapper(1300, 54);
+      expect(toJson(wrapper)).toMatchSnapshot();
+      expect(wrapper.text()).toBe('❮1...535455...109❯')
+
+      mkWrapper(1300, 6);
+      expect(toJson(wrapper)).toMatchSnapshot();
+      expect(wrapper.text()).toBe('❮1...567...109❯')
+
+      mkWrapper(1300, 106);
+      expect(toJson(wrapper)).toMatchSnapshot();
+      expect(wrapper.text()).toBe('❮1...105106107...109❯')
+      
+      mkWrapper(1300, 109);
+      expect(toJson(wrapper)).toMatchSnapshot();
+      expect(wrapper.text()).toBe('❮1...106107108109❯')
+    });
   });
 });

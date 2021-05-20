@@ -52,10 +52,11 @@ export const appTypeOf = (id, category) => {
 /**
  * Get the default image for a given content app mode.
  * @param {string} appMode The content app mode.
+ * @param {string} contentCategory Connect's internal sub-type content type id. E.g "pin".
  * @returns The default image.
  */
-export const appModeImg = appMode => {
-  const type = appTypeOf(appMode);
+export const appModeImg = (appMode, contentCategory) => {
+  const type = appTypeOf(appMode, contentCategory);
 
   switch (type) {
     case 'API':
