@@ -46,6 +46,18 @@
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="articles/publishing.html">Publishing</a>
+    </li>
+  </ul>
+</li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
@@ -71,12 +83,6 @@
 <a href="#rscpages-curate-your-content-on-rstudio-connect" class="anchor"></a>rscpages: Curate your content on RStudio Connect</h1></div>
 <!-- badges: start -->
 
-<div id="overview" class="section level2">
-<h2 class="hasAnchor">
-<a href="#overview" class="anchor"></a>Overview</h2>
-<p>You can use the <code>rscpages</code> package to curate your content on RStudio Connect, helping to create organized groups of content within an RMarkdown document or Shiny app.</p>
-<p><strong>NOTE: This package is still in alpha and is not ready for any production usage. Things will change, things might break, etc</strong></p>
-</div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
@@ -85,30 +91,123 @@
 <code class="sourceCode R"><span class="co"># install.packages("remotes")</span>
 <span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"rstudio/rscpages"</span><span class="op">)</span></code></pre></div>
 </div>
-<div id="usage" class="section level2">
+<div id="example" class="section level2">
 <h2 class="hasAnchor">
-<a href="#usage" class="anchor"></a>Usage</h2>
-<p><a href="https://rstudio.github.io/rscpages">rscpages</a> provides UI components (see <a href="https://www.htmlwidgets.org/">htmlwidgets</a>) to help publishers provide curated organization of content on RStudio Connect.</p>
-<div id="connecting-to-rstudio-connect" class="section level3">
+<a href="#example" class="anchor"></a>Example</h2>
+<p>Use the template:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>rmarkdown<span class="op">::</span><span class="kw">draft</span>(<span class="st">"example-page.Rmd"</span>, <span class="dt">template =</span> <span class="st">"rscpages"</span>, <span class="dt">package =</span> <span class="st">"rscpages"</span>)<span class="st">`</span></span></code></pre></div>
+<p>You can also copy and knit the following example, or read on for more details:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1"></a>---</span>
+<span id="cb3-2"><a href="#cb3-2"></a>title: an example page</span>
+<span id="cb3-3"><a href="#cb3-3"></a>output: html_document</span>
+<span id="cb3-4"><a href="#cb3-4"></a>---</span>
+<span id="cb3-5"><a href="#cb3-5"></a></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="bn">```{r setup, include=FALSE}</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="bn">library(rscpages)</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="bn">library(dplyr)</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a></span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="bn">knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a></span>
+<span id="cb3-12"><a href="#cb3-12"></a><span class="bn">client &lt;- connect(</span></span>
+<span id="cb3-13"><a href="#cb3-13"></a><span class="bn">  # server  = Sys.getenv("CONNECT_SERVER"),</span></span>
+<span id="cb3-14"><a href="#cb3-14"></a><span class="bn">  # api_key = Sys.getenv("CONNECT_API_KEY")</span></span>
+<span id="cb3-15"><a href="#cb3-15"></a><span class="bn">  )</span></span>
+<span id="cb3-16"><a href="#cb3-16"></a></span>
+<span id="cb3-17"><a href="#cb3-17"></a><span class="bn">all_content &lt;- client %&gt;%</span></span>
+<span id="cb3-18"><a href="#cb3-18"></a><span class="bn">  content()</span></span>
+<span id="cb3-19"><a href="#cb3-19"></a></span>
+<span id="cb3-20"><a href="#cb3-20"></a><span class="bn">sample_content &lt;- all_content %&gt;% slice_sample(prop = .3)</span></span>
+<span id="cb3-21"><a href="#cb3-21"></a><span class="bn">```</span></span>
+<span id="cb3-22"><a href="#cb3-22"></a></span>
+<span id="cb3-23"><a href="#cb3-23"></a>![](https://source.unsplash.com/1920x1080/?forest "A random forest.")</span>
+<span id="cb3-24"><a href="#cb3-24"></a></span>
+<span id="cb3-25"><a href="#cb3-25"></a><span class="fu">## Components</span></span>
+<span id="cb3-26"><a href="#cb3-26"></a></span>
+<span id="cb3-27"><a href="#cb3-27"></a><span class="fu">### card</span></span>
+<span id="cb3-28"><a href="#cb3-28"></a></span>
+<span id="cb3-29"><a href="#cb3-29"></a><span class="bn">```{r card}</span></span>
+<span id="cb3-30"><a href="#cb3-30"></a><span class="bn">sample_content %&gt;%</span></span>
+<span id="cb3-31"><a href="#cb3-31"></a><span class="bn">  slice(1) %&gt;%</span></span>
+<span id="cb3-32"><a href="#cb3-32"></a><span class="bn">  rsccard()</span></span>
+<span id="cb3-33"><a href="#cb3-33"></a><span class="bn">```</span></span>
+<span id="cb3-34"><a href="#cb3-34"></a></span>
+<span id="cb3-35"><a href="#cb3-35"></a><span class="fu">### grid</span></span>
+<span id="cb3-36"><a href="#cb3-36"></a></span>
+<span id="cb3-37"><a href="#cb3-37"></a><span class="bn">```{r grid}</span></span>
+<span id="cb3-38"><a href="#cb3-38"></a><span class="bn">sample_content %&gt;%</span></span>
+<span id="cb3-39"><a href="#cb3-39"></a><span class="bn">  rscgrid()</span></span>
+<span id="cb3-40"><a href="#cb3-40"></a><span class="bn">```</span></span>
+<span id="cb3-41"><a href="#cb3-41"></a></span>
+<span id="cb3-42"><a href="#cb3-42"></a><span class="fu">### table</span></span>
+<span id="cb3-43"><a href="#cb3-43"></a></span>
+<span id="cb3-44"><a href="#cb3-44"></a><span class="bn">```{r table}</span></span>
+<span id="cb3-45"><a href="#cb3-45"></a><span class="bn">sample_content %&gt;%</span></span>
+<span id="cb3-46"><a href="#cb3-46"></a><span class="bn">  rsctable()</span></span>
+<span id="cb3-47"><a href="#cb3-47"></a><span class="bn">```</span></span>
+<span id="cb3-48"><a href="#cb3-48"></a></span>
+<span id="cb3-49"><a href="#cb3-49"></a><span class="fu">### search &amp; filter</span></span>
+<span id="cb3-50"><a href="#cb3-50"></a></span>
+<span id="cb3-51"><a href="#cb3-51"></a><span class="bn">```{r search-and-filter}</span></span>
+<span id="cb3-52"><a href="#cb3-52"></a><span class="bn">bscols(rscsearch(all_content), rscfilter(all_content), widths = c(2, 2))</span></span>
+<span id="cb3-53"><a href="#cb3-53"></a><span class="bn">rsctable(all_content)</span></span>
+<span id="cb3-54"><a href="#cb3-54"></a><span class="bn">```</span></span></code></pre></div>
+<div id="setup" class="section level3">
 <h3 class="hasAnchor">
-<a href="#connecting-to-rstudio-connect" class="anchor"></a>Connecting to RStudio Connect</h3>
-<p>You can specify the RStudio Connect server and your API key using the <code>connect</code> function. For instructions on creating an API key, see <a href="https://docs.rstudio.com/connect/user/api-keys/#api-keys-creating" class="uri">https://docs.rstudio.com/connect/user/api-keys/#api-keys-creating</a>.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<a href="#setup" class="anchor"></a>Setup</h3>
+<p>the client object:</p>
+<ul>
+<li>validates your API key with the Connect server</li>
+<li>ensures you are running a recent enough version of Connect</li>
+<li>warns if you will be unable to see content images while you are developing your page</li>
+</ul>
+<p>Use an <code>.Renviron</code> file to set the <code>CONNECT_SERVER</code> and <code>CONNECT_API_KEY</code> environment variables. RStudio Connect will <a href="https://docs.rstudio.com/connect/news/#rstudio-connect-188">automatically apply</a> values for these at document run time, so there is no need to include them in your code:</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rstudio.github.io/rscpages">rscpages</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; Attaching package: 'dplyr'</span>
+<span class="co">#&gt; The following objects are masked from 'package:stats':</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     filter, lag</span>
+<span class="co">#&gt; The following objects are masked from 'package:base':</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt;     intersect, setdiff, setequal, union</span>
 
-<span class="va">client</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/connect.html">connect</a></span><span class="op">(</span>server <span class="op">=</span> <span class="st">'rsconnect.example.com'</span>, api_key <span class="op">=</span> <span class="st">'abcdef123456789'</span><span class="op">)</span></code></pre></div>
-<p>Although you can provide <code>server</code> and <code>api_key</code> to the <code><a href="reference/connect.html">connect(...)</a></code> function directly for quickly getting started, it is recommended to use environment variables in production. The environment variables <code>CONNECT_SERVER</code> and <code>CONNECT_API_KEY</code> will be used automatically if they are present. In your development environment, these can be conveniently set in an <code>.Renviron</code> as outlined in this <a href="https://support.rstudio.com/hc/en-us/articles/360047157094-Managing-R-with-Rprofile-Renviron-Rprofile-site-Renviron-site-rsession-conf-and-repos-conf">article</a>. When deploying to RStudio Connect, these environment variables will be automatically provided - no steps necessary!</p>
-</div>
-<div id="fetching-content" class="section level3">
-<h3 class="hasAnchor">
-<a href="#fetching-content" class="anchor"></a>Fetching Content</h3>
-<p>The <code>content</code> method returns a data frame of the content available on the RStudio Connect server.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">all_content</span> <span class="op">&lt;-</span> <span class="va">client</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/content.html">content</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
-<p><strong>Note About Permissions:</strong> If you are using the API key of an administrator, all content on the RStudio Connect server will be available; however, if you are using a publisher API key, only the content visible to that particular publisher will be available.</p>
-<div id="data-dictionary-for-content" class="section level4">
+<span class="fu">knitr</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/knitr/man/opts_chunk.html">opts_chunk</a></span><span class="op">$</span><span class="fu">set</span><span class="op">(</span>echo <span class="op">=</span> <span class="cn">FALSE</span>, message <span class="op">=</span> <span class="cn">FALSE</span>, warning <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
+
+<span class="va">client</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/connect.html">connect</a></span><span class="op">(</span>
+  <span class="co"># server  = Sys.getenv("CONNECT_SERVER"),</span>
+  <span class="co"># api_key = Sys.getenv("CONNECT_API_KEY")</span>
+  <span class="op">)</span>
+
+<span class="va">all_content</span> <span class="op">&lt;-</span> <span class="va">client</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="reference/content.html">content</a></span><span class="op">(</span><span class="op">)</span>
+
+<span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">all_content</span><span class="op">)</span>
+<span class="co">#&gt; Rows: 1,234</span>
+<span class="co">#&gt; Columns: 15</span>
+<span class="co">#&gt; $ id               &lt;int&gt; 4954, 4953, 3979, 4603, 4602, 4925, 4922, 4917, 4901,…</span>
+<span class="co">#&gt; $ guid             &lt;chr&gt; "194de38f-bcd9-4116-918d-dfa7c5fe1aa6", "c1660506-677…</span>
+<span class="co">#&gt; $ name             &lt;chr&gt; "dashboard", "pages-readme", "github-issues-connect",…</span>
+<span class="co">#&gt; $ title            &lt;chr&gt; "dashboard", "pages-readme", NA, "group-info", "user-…</span>
+<span class="co">#&gt; $ description      &lt;chr&gt; "", "", "A table pin with 19421 rows and 10 columns."…</span>
+<span class="co">#&gt; $ app_mode         &lt;chr&gt; "rmd-shiny", "rmd-shiny", "static", "static", "static…</span>
+<span class="co">#&gt; $ content_category &lt;chr&gt; "", "", "pin", "pin", "pin", "", "", "", "api", "", "…</span>
+<span class="co">#&gt; $ url              &lt;chr&gt; "https://rsc.radixu.com/content/194de38f-bcd9-4116-91…</span>
+<span class="co">#&gt; $ owner_guid       &lt;chr&gt; "05d349d3-4549-44af-94ff-054b7855c085", "05d349d3-454…</span>
+<span class="co">#&gt; $ owner_username   &lt;chr&gt; "david", "david", "brian", "kelly.obriant", "kelly.ob…</span>
+<span class="co">#&gt; $ owner_first_name &lt;chr&gt; "E. David", "E. David", "Brian", "Kelly", "Kelly", "T…</span>
+<span class="co">#&gt; $ owner_last_name  &lt;chr&gt; "Aja", "Aja", "Smith", "@RStudio", "@RStudio", "Mock"…</span>
+<span class="co">#&gt; $ tags             &lt;list&gt; &lt;NULL&gt;, &lt;NULL&gt;, [&lt;data.frame[2 x 5]&gt;], [&lt;data.frame[…</span>
+<span class="co">#&gt; $ created_time     &lt;dttm&gt; 2021-05-20 15:29:00, 2021-05-20 13:30:47, 2020-04-03…</span>
+<span class="co">#&gt; $ updated_time     &lt;dttm&gt; 2021-05-20 15:35:59, 2021-05-20 13:30:57, 2021-05-20…</span>
+
+<span class="va">sample_content</span> <span class="op">&lt;-</span> <span class="va">all_content</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_sample</a></span><span class="op">(</span>prop <span class="op">=</span> <span class="fl">.3</span><span class="op">)</span></code></pre></div>
+<div id="content" class="section level4">
 <h4 class="hasAnchor">
-<a href="#data-dictionary-for-content" class="anchor"></a>Data Dictionary for Content</h4>
+<a href="#content" class="anchor"></a><code>content()</code>
+</h4>
+<p><code><a href="reference/content.html">content()</a></code> returns a data frame with the following columns:</p>
 <ul>
 <li>
 <code>id</code> - Auto-incrementing identifier for each content item (legacy)</li>
@@ -142,136 +241,76 @@
 <code>updated_time</code> - The timestamp at which the content item was last updated</li>
 </ul>
 </div>
-</div>
-<div id="filtering-content" class="section level3">
-<h3 class="hasAnchor">
-<a href="#filtering-content" class="anchor"></a>Filtering Content</h3>
+<div id="filtering-content" class="section level4">
+<h4 class="hasAnchor">
+<a href="#filtering-content" class="anchor"></a>Filtering Content</h4>
 <p>We provide helper functions to filter by both owners and tags.</p>
 <ul>
-<li><p><code><a href="reference/by_tags.html">by_tags(...)</a></code> - Filters the data frame to only include content that has been tagged with the specified tag name(s). You can pass a single tag name or a list of tag names. <code>by_tag</code> is provided as an alias for readability when using a single tag.</p></li>
-<li><p><code><a href="reference/by_owners.html">by_owners(...)</a></code> - Filters the data frame to only include content with the specified owner(s) by username. You can pass a single username or a list of usernames. <code>by_owner</code> is provided as an alias for readability when using a single tag.</p></li>
+<li><p><code><a href="reference/by_tags.html">by_tags()</a></code> - Filters the data frame to only include content that has been tagged with the specified tag name(s). You can pass a single tag name or a vector of tag names. <code>by_tag</code> is provided as an alias for readability when using a single tag.</p></li>
+<li><p><code><a href="reference/by_owners.html">by_owners()</a></code> - Filters the data frame to only include content with the specified owner(s) by username. You can pass a single username or a vector of usernames. <code>by_owner</code> is provided as an alias for readability when using a single username.</p></li>
 </ul>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">filtered_content</span> <span class="op">&lt;-</span> <span class="va">client</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/content.html">content</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/by_owners.html">by_owner</a></span><span class="op">(</span><span class="st">'brian'</span><span class="op">)</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/by_tags.html">by_tags</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">'finance'</span>,<span class="st">'marketing'</span>,<span class="st">'sales'</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<p>You can also simply do filtering manually using <a href="https://dplyr.tidyverse.org/">dplyr</a>, built-in R functions, or your favorite data frame package.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
-
-<span class="va">recent_content</span> <span class="op">&lt;-</span> <span class="va">client</span> <span class="op">%&gt;%</span> <span class="fu"><a href="reference/content.html">content</a></span><span class="op">(</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">created_time</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/top_n.html">top_n</a></span><span class="op">(</span><span class="fl">10</span><span class="op">)</span></code></pre></div>
+<!-- --><div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">#&gt; # A tibble: 6 x 15</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="co">#&gt;      id guid  name  title description app_mode content_category url   owner_guid</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="co">#&gt;   &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt;            &lt;chr&gt; &lt;chr&gt;     </span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="co">#&gt; 1  4875 7cbd… Audi… Audi… ""          rmd-sta… ""               http… 0fc96747-…</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="co">#&gt; 2  4619 b191… tag-… tag-… ""          rmd-sta… ""               http… 0fc96747-…</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="co">#&gt; 3  4618 4348… acl-… acl-… ""          rmd-sta… ""               http… 0fc96747-…</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="co">#&gt; 4  4597 6a8f… cont… cont… ""          rmd-sta… ""               http… 0fc96747-…</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="co">#&gt; 5  4596 3f7a… vani… vani… ""          rmd-sta… ""               http… 0fc96747-…</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="co">#&gt; 6  4595 5687… envi… envi… "R and Pyt… rmd-sta… ""               http… 0fc96747-…</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a><span class="co">#&gt; # … with 6 more variables: owner_username &lt;chr&gt;, owner_first_name &lt;chr&gt;,</span></span>
+<span id="cb5-11"><a href="#cb5-11"></a><span class="co">#&gt; #   owner_last_name &lt;chr&gt;, tags &lt;list&gt;, created_time &lt;dttm&gt;,</span></span>
+<span id="cb5-12"><a href="#cb5-12"></a><span class="co">#&gt; #   updated_time &lt;dttm&gt;</span></span></code></pre></div>
+<p>Since <code>all_content</code> is a <code><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble()</a></code>, you can also manipulate it with dplyr:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co">#&gt; # A tibble: 41 x 15</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="co">#&gt;       id guid    name    title   description   app_mode content_category url    </span></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="co">#&gt;    &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;         &lt;chr&gt;    &lt;chr&gt;            &lt;chr&gt;  </span></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="co">#&gt;  1  1890 be63ca… rmd     rmd4    "This rmd is… rmd-sta… ""               https:…</span></span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="co">#&gt;  2  3724 b5e57e… team-d… Team-d… ""            static   ""               https:…</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="co">#&gt;  3  3979 ca22a1… github… &lt;NA&gt;    "A table pin… static   "pin"            https:…</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="co">#&gt;  4  4364 9ffbbd… shiny-… shiny-… ""            shiny    ""               https:…</span></span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="co">#&gt;  5  4602 e21598… user-i… user-i… "Results pul… static   "pin"            https:…</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a><span class="co">#&gt;  6  4603 e7c266… group-… group-… "Results pul… static   "pin"            https:…</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="co">#&gt;  7  4630 f12eb8… top-5-… top-5-… ""            python-… ""               https:…</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a><span class="co">#&gt;  8  4631 68c9b2… top-5-… top-5-… ""            python-… ""               https:…</span></span>
+<span id="cb6-12"><a href="#cb6-12"></a><span class="co">#&gt;  9  4650 ebdea3… reticu… reticu… ""            static   ""               https:…</span></span>
+<span id="cb6-13"><a href="#cb6-13"></a><span class="co">#&gt; 10  4651 321bba… rsc_sp… RSC: S… ""            static   ""               https:…</span></span>
+<span id="cb6-14"><a href="#cb6-14"></a><span class="co">#&gt; # … with 31 more rows, and 7 more variables: owner_guid &lt;chr&gt;,</span></span>
+<span id="cb6-15"><a href="#cb6-15"></a><span class="co">#&gt; #   owner_username &lt;chr&gt;, owner_first_name &lt;chr&gt;, owner_last_name &lt;chr&gt;,</span></span>
+<span id="cb6-16"><a href="#cb6-16"></a><span class="co">#&gt; #   tags &lt;list&gt;, created_time &lt;dttm&gt;, updated_time &lt;dttm&gt;</span></span></code></pre></div>
 </div>
 </div>
-<div id="ui-components" class="section level2">
-<h2 class="hasAnchor">
-<a href="#ui-components" class="anchor"></a>UI Components</h2>
-<p>Once you have fetched (and filtered, arranged, etc) the content, you can display the content using one or more of the presentation components: Table, Grid, and Card.</p>
-<div id="table-view-component---rsctable" class="section level3">
+<div id="components" class="section level3">
 <h3 class="hasAnchor">
-<a href="#table-view-component---rsctable" class="anchor"></a>Table view component - <code>rsctable</code>
-</h3>
-<p>A rich table format is provided through the <code>rsctable</code> function. This renders a <a href="https://glin.github.io/reactable/">reactable</a> table that includes sorting and pagination.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/rsctable.html">rsctable</a></span><span class="op">(</span><span class="va">all_content</span><span class="op">)</span></code></pre></div>
-<center>
-<p><img src="reference/figures/README-table-1.png" width="100%"></p>
-</center>
+<a href="#components" class="anchor"></a>Components</h3>
+<p>Once your content data are filtered, <code>rscpages</code> provides components for displaying information about them. The title, description, and preview image can be set <a href="https://docs.rstudio.com/connect/user/content-settings/#content-metadata">from the Connect dashboard.</a> For content deployed to Connect where no image has been supplied, a default image will be used.</p>
+<p><em>Note:</em> In many cases, you will only see default images until your content is deployed.</p>
+<div id="card" class="section level4">
+<h4 class="hasAnchor">
+<a href="#card" class="anchor"></a>card</h4>
+<p>Use a card to highlight an individual piece of content:</p>
+<p><img src="reference/figures/README-card-1.png" alt="a sample card"></p>
 </div>
-<div id="grid-view-component---rscgrid" class="section level3">
-<h3 class="hasAnchor">
-<a href="#grid-view-component---rscgrid" class="anchor"></a>Grid view component - <code>rscgrid</code>
-</h3>
-<p>If you aren’t in the mood for a table to showcase your content, what about a grid view?</p>
-<pre><code><a href="reference/bscols.html">bscols(
-  rscsearch(all_content),
-  rscfilter(all_content)
-)
-rscgrid(all_content)</a></code></pre>
-<center>
-<p><img src="reference/figures/README-grid-1.png" width="100%"></p>
-</center>
-<p>As you can see in the above example, the <code>rscgrid</code> component works just like <code>rsctable</code> but with a different approach on displaying the content. It uses the content images specified in Connect and, if no image is found, default images are used depending on the content type. Note that while on the IDE only default images are used.</p>
+<div id="grid" class="section level4">
+<h4 class="hasAnchor">
+<a href="#grid" class="anchor"></a>grid</h4>
+<p>Display multiple content items via a grid:</p>
+<p><img src="reference/figures/README-grid-1.png" alt="a sample grid"></p>
 </div>
-<div id="card-component---rsccard" class="section level3">
-<h3 class="hasAnchor">
-<a href="#card-component---rsccard" class="anchor"></a>Card component - <code>rsccard</code>
-</h3>
-<p><code>rsccard</code> is a good option for those cases when you need to highlight specific content.</p>
-<pre><code><a href="reference/rsccard.html"># This component looks within the content for:
-# - title
-# - url
-# - owner_username
-# - description
-# - updated_time
-
-rsccard(all_content[21,])</a></code></pre>
-<center>
-<p><img src="reference/figures/README-card-1.png" width="100%"></p>
-</center>
+<div id="table" class="section level4">
+<h4 class="hasAnchor">
+<a href="#table" class="anchor"></a>table</h4>
+<p>Provide a more detailed view with table:</p>
+<p><img src="reference/figures/README-table-1.png" alt="a sample table"></p>
 </div>
-<div id="search-and-filter-components---rscsearch-and-rscfilter" class="section level3">
-<h3 class="hasAnchor">
-<a href="#search-and-filter-components---rscsearch-and-rscfilter" class="anchor"></a>Search and Filter components - <code>rscsearch</code> and <code>rscfilter</code>
-</h3>
-<p>What about searching and filtering content? Well, that’s where <code>rscsearch</code> and <code>rscfilter</code> come in. In the next example, rscsearch and rscfilter are used within <code><a href="reference/bscols.html">bscols()</a></code>, a provided function that helps you to easily arrange this components in columns.</p>
-<pre><code><a href="reference/bscols.html">bscols(
-  rscsearch(all_content),
-  rscfilter(all_content)
-)
-rsctable(all_content)</a></code></pre>
-<center>
-<p><img src="reference/figures/README-search-filter-1.png" width="100%"></p>
-</center>
-<p>The <code>rscfilter</code> component allows to filter content by <strong>owner</strong>, <strong>content type</strong> and <strong>tag(s)</strong></p>
-<center>
-<p><img src="reference/figures/README-search-filter-2.png" width="100%"></p>
-</center>
-<p>It is important to note that in order for <code>rsctable</code>, <code>rscsearch</code> and <code>rscfilter</code> components to work together, the exact same collection of data needs to be passed along, in this case the <code>all_content</code> data frame.</p>
-</div>
-<div id="layout-utility-function---bscols" class="section level3">
-<h3 class="hasAnchor">
-<a href="#layout-utility-function---bscols" class="anchor"></a>Layout utility function - <code>bscols()</code>
-</h3>
-<p><code><a href="reference/bscols.html">bscols()</a></code> is a function that helps you to quickly organize components with columns and rows by leveraging on Bootstrap. In previous examples you can see we used <code><a href="reference/bscols.html">bscols()</a></code> to easily set the search and filter components side by side.</p>
+<div id="search--filter" class="section level4">
+<h4 class="hasAnchor">
+<a href="#search--filter" class="anchor"></a>search &amp; filter</h4>
+<p>The search and filter components help viewers find the content they are most interested in. You must pass the same content data frame to <code><a href="reference/rscsearch.html">rscsearch()</a></code>, <code><a href="reference/rscfilter.html">rscfilter()</a></code>, and <code><a href="reference/rsctable.html">rsctable()</a></code> or <code><a href="reference/rscgrid.html">rscgrid()</a></code> in order for filter and search to work. You can also create your own <code><a href="https://rdrr.io/pkg/crosstalk/man/SharedData.html">crosstalk::SharedData()</a></code> object to pass to the components if you want more control over searching and filtering.</p>
+<p><img src="reference/figures/README-search-filter-2.png" alt="search and filter widgets"></p>
+<p>Once you’re happy with the look of your page, Publish it to Connect. Read more at <code><a href="articles/publishing.html">vignette("publishing")</a></code>.</p>
 </div>
 </div>
-<div id="example-page" class="section level2">
-<h2 class="hasAnchor">
-<a href="#example-page" class="anchor"></a>Example Page</h2>
-<p>Here is an RMarkdown document that includes John’s most recent daily finance reports. We are using the <code>by_owner</code> and <code>by_tags</code> filtering to only include content published by “john” that has been tagged with <code>finance</code></p>
-<pre><code>---
-title: "John's Finance Reports"
-output: html_document
----
-
-```{r include=FALSE}
-library(rscpages)
-library(magrittr)
-library(dplyr)
-
-client &lt;- connect(
-  server = Sys.getenv("CONNECT_SERVER"),
-  api_key = Sys.getenv("CONNECT_API_KEY")
-)
-
-reports &lt;- client %&gt;%
-  content() %&gt;%
-    by_owner('john') %&gt;%
-    by_tag('finance') %&gt;%
-    arrange(desc(created_time)) %&gt;%
-    top_n(10)
-```
-
-The most recent finance reports for Acme, Inc.  Please direct any questions to [john@example.com](mailto:john@example.com)
-
-```{r echo=FALSE, message=FALSE}
-bscols(
-  rscsearch(reports),
-  rscfilter(reports)
-)
-
-rsctable(reports)
-```</code></pre>
 </div>
 </div>
   </div>

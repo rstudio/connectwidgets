@@ -46,6 +46,9 @@
     <loc>https://rstudio.github.io/rscpages/reference/rscgrid.html</loc>
   </url>
   <url>
+    <loc>https://rstudio.github.io/rscpages/reference/rscpages.html</loc>
+  </url>
+  <url>
     <loc>https://rstudio.github.io/rscpages/reference/rscpages_theme.html</loc>
   </url>
   <url>
@@ -59,5 +62,8 @@
   </url>
   <url>
     <loc>https://rstudio.github.io/rscpages/reference/warning_widget_input.html</loc>
+  </url>
+  <url>
+    <loc>https://rstudio.github.io/rscpages/articles/publishing.html</loc>
   </url>
 </urlset>

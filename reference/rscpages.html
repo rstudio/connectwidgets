@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get Content Items — content • rscpages</title>
+<title>rscpages: Curate your content on RStudio Connect — rscpages • rscpages</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,8 @@
 
 
 
-<meta property="og:title" content="Get Content Items — content" />
-<meta property="og:description" content="Returns content items as a data frame from the Connect server. It will only
-return content that is visible to the API key's user account." />
+<meta property="og:title" content="rscpages: Curate your content on RStudio Connect — rscpages" />
+<meta property="og:description" content="rscpages provides UI components to help publishers provide curated organization of content on RStudio Connect." />
 
 
 
@@ -121,51 +120,34 @@ return content that is visible to the API key's user account." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get Content Items</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rstudio/rscpages/blob/master/R/content.R'><code>R/content.R</code></a></small>
-    <div class="hidden name"><code>content.Rd</code></div>
+    <h1>rscpages: Curate your content on RStudio Connect</h1>
+    <small class="dont-index">Source: <a href='https://github.com/rstudio/rscpages/blob/master/R/rscpages.R'><code>R/rscpages.R</code></a></small>
+    <div class="hidden name"><code>rscpages.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Returns content items as a data frame from the Connect server. It will only
-return content that is visible to the API key's user account.</p>
+    <p>rscpages provides UI components to help publishers provide curated organization of content on RStudio Connect.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>content</span><span class='op'>(</span><span class='va'>client</span><span class='op'>)</span></pre>
 
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>client</th>
-      <td><p>A Client object (see <code>connect</code>)</p></td>
-    </tr>
-    </table>
 
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <h2 class="hasAnchor" id="connection"><a class="anchor" href="#connection"></a>Connection</h2>
 
-    <p>A data frame (tibble) of content items</p>
-<ul>
-<li><p>id - Auto-incrementing identifier for each content item (legacy)</p></li>
-<li><p>guid - Unique identifier for each content item (preferred)</p></li>
-<li><p>app_mode - The type of the content item (examples: <code>shiny</code>,
-<code>rmd-static</code>, <code>static</code>, <code>python-dash</code>, etc.)</p></li>
-<li><p>content_category - For <code>static</code> app modes, the specific category
-of content (examples: <code>site</code>, <code>plot</code>, <code>pin</code>, etc.)</p></li>
-<li><p>name - The name of the content item as set at initial publishing</p></li>
-<li><p>title - The user-provided title of the content item</p></li>
-<li><p>description - The user-provided description of the content item</p></li>
-<li><p>url - The URL to the content item</p></li>
-<li><p>owner_guid - Unique identifier of the owner of the content item</p></li>
-<li><p>owner_username - Username of the owner of teh content item</p></li>
-<li><p>owner_first_name - First name of the owner of the content item</p></li>
-<li><p>owner_last_name - Last name of the owner of the content item</p></li>
-<li><p>tags - A data frame of the tags associated with the content item,
-with format: (id, name, parent_id, created_time, updated_time)</p></li>
-<li><p>created_time - The timestamp at which the content item
-was created</p></li>
-<li><p>updated_time - The timestamp at which the content item
-was last updated</p></li>
+    
+
+<p>Set <code>CONNECT_SERVER</code> and <code>CONNECT_API_KEY</code> environment variables and <code><a href='connect.html'>connect()</a></code>.
+Fetch a <code>tibble</code> listing server content with <code><a href='content.html'>content()</a></code>.
+use the <code><a href='by_owners.html'>by_owner()</a></code> and <code><a href='by_tags.html'>by_tags()</a></code> filter helpers to narrow your search.</p>
+    <h2 class="hasAnchor" id="components"><a class="anchor" href="#components"></a>Components</h2>
+
+    
+
+<p>Present your content with different components:</p><ul>
+<li><p><code><a href='rsccard.html'>rsccard()</a></code> for highlighting individual content items</p></li>
+<li><p><code><a href='rscgrid.html'>rscgrid()</a></code> for groups of cards</p></li>
+<li><p><code><a href='rsctable.html'>rsctable()</a></code> for a tabular view</p></li>
+<li><p><code><a href='rscsearch.html'>rscsearch()</a></code> a text input for searching grids and tables</p></li>
+<li><p><code><a href='rscfilter.html'>rscfilter()</a></code> an input to filter grids or tables by owner, type, or tag</p></li>
 </ul>
 
 
