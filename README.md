@@ -1,259 +1,270 @@
-rscpages: Curate your content on RStudio Connect
-================================================
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+# rscpages: Curate your content on RStudio Connect
 
 <!-- badges: start -->
 
-[![CRAN status](https://www.r-pkg.org/badges/version/rscpages)](https://CRAN.R-project.org/package=rscpages)
-[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/rscpages)](https://CRAN.R-project.org/package=rscpages)
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
 [![R-CMD-check](https://github.com/rstudio/rscpages/workflows/R-CMD-check/badge.svg)](https://github.com/rstudio/rscpages/actions)
 [![lint](https://github.com/rstudio/rscpages/actions/workflows/lint.yaml/badge.svg)](https://github.com/rstudio/rscpages/actions/workflows/lint.yaml)
 <!-- badges: end -->
 
-## Overview
-
-You can use the `rscpages` package to curate your content on RStudio Connect,
-helping to create organized groups of content within an RMarkdown document or
-Shiny app.
-
-**NOTE: This package is still in alpha and is not ready for any production
-usage. Things will change, things might break, etc**
-
 ## Installation
 
-This package has not been released to CRAN yet and must be installed from
-GitHub:
+This package has not been released to CRAN yet and must be installed
+from GitHub:
 
 ``` r
 # install.packages("remotes")
 remotes::install_github("rstudio/rscpages")
 ```
 
-## Usage
+## Example
 
-`{rscpages}` provides UI components (see
-[htmlwidgets](https://www.htmlwidgets.org/)) to help publishers provide curated
-organization of content on RStudio Connect.
-
-### Connecting to RStudio Connect
-
-You can specify the RStudio Connect server and your API key using the `connect`
-function. For instructions on creating an API key, see
-<https://docs.rstudio.com/connect/user/api-keys/#api-keys-creating>.
+Use the template:
 
 ``` r
-library(rscpages)
-
-client <- connect(server = 'rsconnect.example.com', api_key = 'abcdef123456789')
+rmarkdown::draft("example-page.Rmd", template = "rscpages", package = "rscpages")`
 ```
 
-Although you can provide `server` and `api_key` to the `connect(...)` function
-directly for quickly getting started, it is recommended to use environment
-variables in production. The environment variables `CONNECT_SERVER` and
-`CONNECT_API_KEY` will be used automatically if they are present. In your
-development environment, these can be conveniently set in an `.Renviron` as
-outlined in this
-[article](https://support.rstudio.com/hc/en-us/articles/360047157094-Managing-R-with-Rprofile-Renviron-Rprofile-site-Renviron-site-rsession-conf-and-repos-conf).
-When deploying to RStudio Connect, these environment variables will be
-automatically provided - no steps necessary\!
+You can also copy and knit the following example, or read on for more
+details:
 
-### Fetching Content
-
-The `content` method returns a data frame of the content available on the
-RStudio Connect server.
-
-``` r
-all_content <- client %>% content()
-```
-
-**Note About Permissions:** If you are using the API key of an administrator,
-all content on the RStudio Connect server will be available; however, if you are
-using a publisher API key, only the content visible to that particular publisher
-will be available.
-
-#### Data Dictionary for Content
-
-* `id` - Auto-incrementing identifier for each content item (legacy)
-* `guid` - Unique identifier for each content item (preferred)
-* `app_mode` - The type of the content item (examples: `shiny`, `rmd-static`, `static`, `python-dash`, etc.)
-* `content_category` - For `static` app modes, the specific category of content (examples: `site`, `plot`, `pin`, etc.)
-* `name` - The name of the content item as set at initial publishing
-* `title` - The user-provided title of the content item
-* `description` - The user-provided description of the content item
-* `url` - The URL to the content item
-* `owner_guid` - Unique identifier of the owner of the content item
-* `owner_username` - Username of the owner of teh content item
-* `owner_first_name` - First name of the owner of the content item
-* `owner_last_name` - Last name of the owner of the content item
-* `tags` - A data frame of the tags associated with the content item, with the following columns: `id`, `name`, `parent_id`, `created_time`, `updated_time`.
-* `created_time` - The timestamp at which the content item was created
-* `updated_time` - The timestamp at which the content item was last updated
-
-### Filtering Content
-
-We provide helper functions to filter by both owners and tags.
-
-- `by_tags(...)` - Filters the data frame to only include content that has been
-tagged with the specified tag name(s).  You can pass a single tag name or a list
-of tag names. `by_tag` is provided as an alias for readability when using a
-single tag.
-
-- `by_owners(...)` - Filters the data frame to only include content with the
-specified owner(s) by username.  You can pass a single username or a list of
-usernames. `by_owner` is provided as an alias for readability when using a
-single tag.
-
-``` r
-filtered_content <- client %>% content() %>% by_owner('brian') %>% by_tags(c('finance','marketing','sales'))
-```
-
-You can also simply do filtering manually using
-[dplyr](https://dplyr.tidyverse.org/), built-in R functions, or your favorite
-data frame package.
-
-``` r
-library(dplyr)
-
-recent_content <- client %>% content() %>%
-  arrange(desc(created_time)) %>%
-  top_n(10)
-```
-
-## UI Components
-
-Once you have fetched (and filtered, arranged, etc) the content, you can display
-the content using one or more of the presentation components: Table, Grid, and Card.
-
-### Table view component - `rsctable`
-
-A rich table format is provided through the `rsctable` function. This
-renders a [reactable](https://glin.github.io/reactable/) table that includes sorting and pagination.
-
-``` r
-rsctable(all_content)
-```
-
-<center>
-
-<img src="man/figures/README-table-1.png" width="100%">
-
-</center>
-
-### Grid view component - `rscgrid`
-
-If you aren't in the mood for a table to showcase your content, what about a grid view? 
-
-```
-bscols(
-  rscsearch(all_content),
-  rscfilter(all_content)
-)
-rscgrid(all_content)
-```
-
-<center>
-
-<img src="man/figures/README-grid-1.png" width="100%">
-
-</center>
-
-As you can see in the above example, the `rscgrid` component works just like `rsctable` but with
-a different approach on displaying the content. It uses the content images specified in Connect and,
-if no image is found, default images are used depending on the content type. Note that while on the IDE
-only default images are used.
-
-### Card component - `rsccard`
-
-`rsccard` is a good option for those cases when you need to highlight specific content.
-
-```
-# This component looks within the content for:
-# - title
-# - url
-# - owner_username
-# - description
-# - updated_time
-
-rsccard(all_content[21,])
-```
-
-<center>
-
-<img src="man/figures/README-card-1.png" width="100%">
-
-</center>
-
-### Search and Filter components - `rscsearch` and `rscfilter`
-
-What about searching and filtering content? Well, that's where `rscsearch` and `rscfilter`
-come in. In the next example, rscsearch and rscfilter are used within `bscols()`,
-a provided function that helps you to easily arrange this components in columns.
-
-```
-bscols(
-  rscsearch(all_content),
-  rscfilter(all_content)
-)
-rsctable(all_content)
-```
-
-<center>
-
-<img src="man/figures/README-search-filter-1.png" width="100%">
-
-</center>
-
-The `rscfilter` component allows to filter content by **owner**, **content type** and **tag(s)**
-
-<center>
-
-<img src="man/figures/README-search-filter-2.png" width="100%">
-
-</center>
-
-It is important to note that in order for `rsctable`, `rscsearch` and `rscfilter` components to work together,
-the exact same collection of data needs to be passed along, in this case the `all_content` data frame.
-
-### Layout utility function - `bscols()`
-
-`bscols()` is a function that helps you to quickly organize components with columns and rows by leveraging on
-Bootstrap. In previous examples you can see we used `bscols()` to easily set the search and filter components side by side.
-
-## Example Page
-
-Here is an RMarkdown document that includes John's most recent daily finance reports. We are using the `by_owner` and `by_tags` filtering to only include content published by "john" that has been tagged with `finance`
-
-~~~
+```` markdown
 ---
-title: "John's Finance Reports"
+title: an example page
 output: html_document
 ---
 
-```{r include=FALSE}
+```{r setup, include=FALSE}
 library(rscpages)
-library(magrittr)
 library(dplyr)
 
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+
 client <- connect(
-  server = Sys.getenv("CONNECT_SERVER"),
-  api_key = Sys.getenv("CONNECT_API_KEY")
-)
+  # server  = Sys.getenv("CONNECT_SERVER"),
+  # api_key = Sys.getenv("CONNECT_API_KEY")
+  )
 
-reports <- client %>%
-  content() %>%
-    by_owner('john') %>%
-    by_tag('finance') %>%
-    arrange(desc(created_time)) %>%
-    top_n(10)
+all_content <- client %>%
+  content()
+
+sample_content <- all_content %>% slice_sample(prop = .3)
 ```
 
-The most recent finance reports for Acme, Inc.  Please direct any questions to [john@example.com](mailto:john@example.com)
+![](https://source.unsplash.com/1920x1080/?forest "A random forest.")
 
-```{r echo=FALSE, message=FALSE}
-bscols(
-  rscsearch(reports),
-  rscfilter(reports)
-)
+## Components
 
-rsctable(reports)
+### card
+
+```{r card}
+sample_content %>%
+  slice(1) %>%
+  rsccard()
 ```
-~~~
+
+### grid
+
+```{r grid}
+sample_content %>%
+  rscgrid()
+```
+
+### table
+
+```{r table}
+sample_content %>%
+  rsctable()
+```
+
+### search & filter
+
+```{r search-and-filter}
+bscols(rscsearch(all_content), rscfilter(all_content), widths = c(2, 2))
+rsctable(all_content)
+```
+````
+
+### Setup
+
+the client object:
+
+-   validates your API key with the Connect server
+-   ensures you are running a recent enough version of Connect
+-   warns if you will be unable to see content images while you are
+    developing your page
+
+Use an `.Renviron` file to set the `CONNECT_SERVER` and
+`CONNECT_API_KEY` environment variables. RStudio Connect will
+[automatically
+apply](https://docs.rstudio.com/connect/news/#rstudio-connect-188)
+values for these at document run time, so there is no need to include
+them in your code:
+
+``` r
+library(rscpages)
+library(dplyr)
+#> 
+#> Attaching package: 'dplyr'
+#> The following objects are masked from 'package:stats':
+#> 
+#>     filter, lag
+#> The following objects are masked from 'package:base':
+#> 
+#>     intersect, setdiff, setequal, union
+
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+
+client <- connect(
+  # server  = Sys.getenv("CONNECT_SERVER"),
+  # api_key = Sys.getenv("CONNECT_API_KEY")
+  )
+
+all_content <- client %>%
+  content()
+
+glimpse(all_content)
+#> Rows: 1,234
+#> Columns: 15
+#> $ id               <int> 4954, 4953, 3979, 4603, 4602, 4925, 4922, 4917, 4901,…
+#> $ guid             <chr> "194de38f-bcd9-4116-918d-dfa7c5fe1aa6", "c1660506-677…
+#> $ name             <chr> "dashboard", "pages-readme", "github-issues-connect",…
+#> $ title            <chr> "dashboard", "pages-readme", NA, "group-info", "user-…
+#> $ description      <chr> "", "", "A table pin with 19421 rows and 10 columns."…
+#> $ app_mode         <chr> "rmd-shiny", "rmd-shiny", "static", "static", "static…
+#> $ content_category <chr> "", "", "pin", "pin", "pin", "", "", "", "api", "", "…
+#> $ url              <chr> "https://rsc.radixu.com/content/194de38f-bcd9-4116-91…
+#> $ owner_guid       <chr> "05d349d3-4549-44af-94ff-054b7855c085", "05d349d3-454…
+#> $ owner_username   <chr> "david", "david", "brian", "kelly.obriant", "kelly.ob…
+#> $ owner_first_name <chr> "E. David", "E. David", "Brian", "Kelly", "Kelly", "T…
+#> $ owner_last_name  <chr> "Aja", "Aja", "Smith", "@RStudio", "@RStudio", "Mock"…
+#> $ tags             <list> <NULL>, <NULL>, [<data.frame[2 x 5]>], [<data.frame[…
+#> $ created_time     <dttm> 2021-05-20 15:29:00, 2021-05-20 13:30:47, 2020-04-03…
+#> $ updated_time     <dttm> 2021-05-20 15:35:59, 2021-05-20 13:30:57, 2021-05-20…
+
+sample_content <- all_content %>% slice_sample(prop = .3)
+```
+
+#### `content()`
+
+`content()` returns a data frame with the following columns:
+
+-   `id` - Auto-incrementing identifier for each content item (legacy)
+-   `guid` - Unique identifier for each content item (preferred)
+-   `app_mode` - The type of the content item (examples: `shiny`,
+    `rmd-static`, `static`, `python-dash`, etc.)
+-   `content_category` - For `static` app modes, the specific category
+    of content (examples: `site`, `plot`, `pin`, etc.)
+-   `name` - The name of the content item as set at initial publishing
+-   `title` - The user-provided title of the content item
+-   `description` - The user-provided description of the content item
+-   `url` - The URL to the content item
+-   `owner_guid` - Unique identifier of the owner of the content item
+-   `owner_username` - Username of the owner of teh content item
+-   `owner_first_name` - First name of the owner of the content item
+-   `owner_last_name` - Last name of the owner of the content item
+-   `tags` - A data frame of the tags associated with the content item,
+    with the following columns: `id`, `name`, `parent_id`,
+    `created_time`, `updated_time`.
+-   `created_time` - The timestamp at which the content item was created
+-   `updated_time` - The timestamp at which the content item was last
+    updated
+
+#### Filtering Content
+
+We provide helper functions to filter by both owners and tags.
+
+-   `by_tags()` - Filters the data frame to only include content that
+    has been tagged with the specified tag name(s). You can pass a
+    single tag name or a vector of tag names. `by_tag` is provided as an
+    alias for readability when using a single tag.
+
+-   `by_owners()` - Filters the data frame to only include content with
+    the specified owner(s) by username. You can pass a single username
+    or a vector of usernames. `by_owner` is provided as an alias for
+    readability when using a single username.
+
+<!-- -->
+
+    #> # A tibble: 6 x 15
+    #>      id guid  name  title description app_mode content_category url   owner_guid
+    #>   <int> <chr> <chr> <chr> <chr>       <chr>    <chr>            <chr> <chr>     
+    #> 1  4875 7cbd… Audi… Audi… ""          rmd-sta… ""               http… 0fc96747-…
+    #> 2  4619 b191… tag-… tag-… ""          rmd-sta… ""               http… 0fc96747-…
+    #> 3  4618 4348… acl-… acl-… ""          rmd-sta… ""               http… 0fc96747-…
+    #> 4  4597 6a8f… cont… cont… ""          rmd-sta… ""               http… 0fc96747-…
+    #> 5  4596 3f7a… vani… vani… ""          rmd-sta… ""               http… 0fc96747-…
+    #> 6  4595 5687… envi… envi… "R and Pyt… rmd-sta… ""               http… 0fc96747-…
+    #> # … with 6 more variables: owner_username <chr>, owner_first_name <chr>,
+    #> #   owner_last_name <chr>, tags <list>, created_time <dttm>,
+    #> #   updated_time <dttm>
+
+Since `all_content` is a `tibble()`, you can also manipulate it with
+dplyr:
+
+    #> # A tibble: 41 x 15
+    #>       id guid    name    title   description   app_mode content_category url    
+    #>    <int> <chr>   <chr>   <chr>   <chr>         <chr>    <chr>            <chr>  
+    #>  1  1890 be63ca… rmd     rmd4    "This rmd is… rmd-sta… ""               https:…
+    #>  2  3724 b5e57e… team-d… Team-d… ""            static   ""               https:…
+    #>  3  3979 ca22a1… github… <NA>    "A table pin… static   "pin"            https:…
+    #>  4  4364 9ffbbd… shiny-… shiny-… ""            shiny    ""               https:…
+    #>  5  4602 e21598… user-i… user-i… "Results pul… static   "pin"            https:…
+    #>  6  4603 e7c266… group-… group-… "Results pul… static   "pin"            https:…
+    #>  7  4630 f12eb8… top-5-… top-5-… ""            python-… ""               https:…
+    #>  8  4631 68c9b2… top-5-… top-5-… ""            python-… ""               https:…
+    #>  9  4650 ebdea3… reticu… reticu… ""            static   ""               https:…
+    #> 10  4651 321bba… rsc_sp… RSC: S… ""            static   ""               https:…
+    #> # … with 31 more rows, and 7 more variables: owner_guid <chr>,
+    #> #   owner_username <chr>, owner_first_name <chr>, owner_last_name <chr>,
+    #> #   tags <list>, created_time <dttm>, updated_time <dttm>
+
+### Components
+
+Once your content data are filtered, `rscpages` provides components for
+displaying information about them. The title, description, and preview
+image can be set [from the Connect
+dashboard.](https://docs.rstudio.com/connect/user/content-settings/#content-metadata)
+For content deployed to Connect where no image has been supplied, a
+default image will be used.
+
+*Note:* In many cases, you will only see default images until your
+content is deployed.
+
+#### card
+
+Use a card to highlight an individual piece of content:
+
+![a sample card](man/figures/README-card-1.png)
+
+#### grid
+
+Display multiple content items via a grid:
+
+![a sample grid](man/figures/README-grid-1.png)
+
+#### table
+
+Provide a more detailed view with table:
+
+![a sample table](man/figures/README-table-1.png)
+
+#### search & filter
+
+The search and filter components help viewers find the content they are
+most interested in. You must pass the same content data frame to
+`rscsearch()`, `rscfilter()`, and `rsctable()` or `rscgrid()` in order
+for filter and search to work. You can also create your own
+`crosstalk::SharedData()` object to pass to the components if you want
+more control over searching and filtering.
+
+![search and filter widgets](man/figures/README-search-filter-2.png)
+
+Once you’re happy with the look of your page, Publish it to Connect.
+Read more at `vignette("publishing")`.

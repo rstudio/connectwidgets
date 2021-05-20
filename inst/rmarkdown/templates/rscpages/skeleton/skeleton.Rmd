@@ -21,7 +21,7 @@ sample_content <- all_content %>% slice_sample(prop = .3)
 ```
 
 
-![](https://source.unsplash.com/ugnrXk1129g/1920x1080 "A random forest.")
+![](https://source.unsplash.com/1920x1080/?forest "A random forest.")
 
 ## Components
 
