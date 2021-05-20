@@ -1,8 +1,140 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<CardView /> renders properly 1`] = `
+exports[`<CardView /> mutliple items render properly 1`] = `
+Array [
+  <div
+    className="rsccard__card"
+    key="0"
+  >
+    <div
+      className="rsccard__img"
+    >
+      <ContentImage
+        contentUrl="https://connect.tester.net/content/991f16c5-dc7e-4403-89d0-c54d10968460/"
+        imageUrl="https://connect.tester.net/__api__/applications/991f16c5-dc7e-4403-89d0-c54d10968460/image?strict=1"
+      />
+    </div>
+    <div
+      className="rsccard__meta"
+    >
+      <span>
+        Porter_Terry
+      </span>
+       • 
+      <time>
+        Oct 30, 2020
+      </time>
+      <h2
+        className="rsccard__meta-title"
+      >
+        methodical synergize
+      </h2>
+      <p
+        className="rsccard__meta-description"
+      >
+        Lorem ipsum dolor sit amet
+      </p>
+      <a
+        className="rsccard__meta-link"
+        href="https://connect.tester.net/content/991f16c5-dc7e-4403-89d0-c54d10968460/"
+        rel="noreferrer"
+        target="_blank"
+      >
+        Open Content
+      </a>
+    </div>
+  </div>,
+  <div
+    className="rsccard__card"
+    key="1"
+  >
+    <div
+      className="rsccard__img"
+    >
+      <ContentImage
+        contentUrl="https://connect.tester.net/content/c2bd6807-cb2f-4683-865b-107cf37eddf6/"
+        imageUrl="https://connect.tester.net/__api__/applications/c2bd6807-cb2f-4683-865b-107cf37eddf6/image?strict=1"
+      />
+    </div>
+    <div
+      className="rsccard__meta"
+    >
+      <span>
+        Navarro.BigBand
+      </span>
+       • 
+      <time>
+        Sep 16, 2020
+      </time>
+      <h2
+        className="rsccard__meta-title"
+      >
+        incredible peanuts
+      </h2>
+      <p
+        className="rsccard__meta-description"
+      >
+        Maecenas more than ipsum and three dogs
+      </p>
+      <a
+        className="rsccard__meta-link"
+        href="https://connect.tester.net/content/c2bd6807-cb2f-4683-865b-107cf37eddf6/"
+        rel="noreferrer"
+        target="_blank"
+      >
+        Open Content
+      </a>
+    </div>
+  </div>,
+  <div
+    className="rsccard__card"
+    key="2"
+  >
+    <div
+      className="rsccard__img"
+    >
+      <ContentImage
+        contentUrl="https://connect.tester.net/content/ea731b93-458f-4552-becf-b2e0ce552e3d/"
+        imageUrl="https://connect.tester.net/__api__/applications/ea731b93-458f-4552-becf-b2e0ce552e3d/image?strict=1"
+      />
+    </div>
+    <div
+      className="rsccard__meta"
+    >
+      <span>
+        Bob.C.Martin
+      </span>
+       • 
+      <time>
+        Sep 21, 2020
+      </time>
+      <h2
+        className="rsccard__meta-title"
+      >
+        clean coder
+      </h2>
+      <p
+        className="rsccard__meta-description"
+      >
+        a book on the shelve
+      </p>
+      <a
+        className="rsccard__meta-link"
+        href="https://connect.tester.net/content/ea731b93-458f-4552-becf-b2e0ce552e3d/"
+        rel="noreferrer"
+        target="_blank"
+      >
+        Open Content
+      </a>
+    </div>
+  </div>,
+]
+`;
+
+exports[`<CardView /> single item render properly 1`] = `
 <div
-  className="rsccard"
+  className="rsccard__card"
+  key="0"
 >
   <div
     className="rsccard__img"
@@ -20,7 +152,7 @@ exports[`<CardView /> renders properly 1`] = `
     </span>
      • 
     <time>
-      Fri Oct 30 2020
+      Oct 30, 2020
     </time>
     <h2
       className="rsccard__meta-title"

@@ -69,6 +69,9 @@ export const parseDataToFilters = allData => {
     }
     const uniqueFilters = columnData.reduce(reducer(type), {});
     return Object.values(uniqueFilters)
+                  .sort((a, b) => {
+                    return a.label.localeCompare(b.label, 'en', { sensitivity: 'base' });
+                  })
                   .map((fltr, index) => {
                     fltr.index = index;
                     return fltr;

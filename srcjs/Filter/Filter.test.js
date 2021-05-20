@@ -4,8 +4,6 @@ import Filter from './Filter';
 import FilterFieldsPane from './FilterFieldsPane';
 import { FilterType } from './filterType';
 
-// TODO: use tags
-
 const testFrameData = {
   // Filter component only needs this columns data.
   owner_username: [
@@ -37,13 +35,23 @@ const testFrameData = {
     'pin',
     '',
   ],
-  tags: [],
+  tags: [
+    { name: ["vegetables", "carrot", "vitamin D"] },
+    { name: "orange" },
+    { name: ["fruits", "orange"] },
+    { name: ["nutrition", "vitamin B", "vitamin D"] },
+    { name: "watermelon" },
+    { name: ["fruits", "strawberry"] },
+    { name: ["other", "minerals", "zinc"] },
+    { name: ["distros", "alpine"] },
+  ],
 };
 
 /**
  * Expected filter options provided by parsed data
- * owner: ['jzcarpenter' 'reporterfrank' 'automata' 'autoreporter009' 'brucebowtie']
+ * owner: ['automata' 'autoreporter009' 'brucebowtie' 'jzcarpenter' 'reporterfrank']
  * type: ['Document', 'API', 'Application', 'Pin']
+ * tag: ['alpine' 'carrot' 'distros' 'fruits' 'minerals' 'nutrition' 'orange' 'other' 'strawberry' 'vegetables' 'vitamin B' 'vitamin D' 'watermelon' 'zinc']
  */
 
 const mkWrapper = () => shallow(<Filter data={testFrameData} crosstalkGroup="abcd-1234" />);
@@ -79,12 +87,13 @@ describe('<Filter />', () => {
     const optsState = type => wrapper.state().stateOptionsFor(type);
     const ownerOptsState = () => optsState(FilterType.owner);
     const typeOptsState = () => optsState(FilterType.type);
+    const tagsOptsState = () => optsState(FilterType.tag);
 
     wrapper.instance().searchFieldOptions(FilterType.owner, 'ter');
     expect(ownerOptsState().length).toBe(3);
-    expect(ownerOptsState()[0].name).toBe('jzcarpenter');
-    expect(ownerOptsState()[1].name).toBe('reporterfrank');
-    expect(ownerOptsState()[2].name).toBe('autoreporter009');
+    expect(ownerOptsState()[0].name).toBe('autoreporter009');
+    expect(ownerOptsState()[1].name).toBe('jzcarpenter');
+    expect(ownerOptsState()[2].name).toBe('reporterfrank');
     
     wrapper.instance().searchFieldOptions(FilterType.owner, 'auto');
     expect(ownerOptsState().length).toBe(2);
@@ -112,6 +121,18 @@ describe('<Filter />', () => {
 
     wrapper.instance().searchFieldOptions(FilterType.type, '');
     expect(typeOptsState().length).toBe(4);
+
+    wrapper.instance().searchFieldOptions(FilterType.tag, 'vit');
+    expect(tagsOptsState().length).toBe(2);
+    expect(tagsOptsState()[0].name).toBe('vitamin B');
+    expect(tagsOptsState()[1].name).toBe('vitamin D');
+
+    wrapper.instance().searchFieldOptions(FilterType.tag, 'mine');
+    expect(tagsOptsState().length).toBe(1);
+    expect(tagsOptsState()[0].name).toBe('minerals');
+
+    wrapper.instance().searchFieldOptions(FilterType.tag, '');
+    expect(tagsOptsState().length).toBe(14);
   });
 
   it('updateSelection(), updates selected filters state and emits crosstalk event', () => {

@@ -8,38 +8,45 @@ import ContentImage from '@/ContentImage';
 import { contentImgSrc } from '@/utils';
 import './card.scss';
 
-function Card({ data }) {
-  const contentObj = HTMLWidgets.dataframeToD3(data)[0];
-  const imgUrl = contentImgSrc(contentObj.url, contentObj.guid);
+dayjs.extend(dayjs_plugin_localizedFormat);
 
-  return (
-    <div className="rsccard">
+function Card({ data }) {
+  const content = HTMLWidgets.dataframeToD3(data);
+
+  return content.map((item, index) => {
+    const imgUrl = contentImgSrc(item.url, item.guid);
+    return (
       <div
-        className='rsccard__img'
+        key={index}
+        className="rsccard__card"
       >
-        <ContentImage
-          imageUrl={imgUrl}
-          contentUrl={contentObj.url}
-          contentType={contentObj.app_mode}
-        />
+        <div
+          className='rsccard__img'
+        >
+          <ContentImage
+            imageUrl={imgUrl}
+            contentUrl={item.url}
+            contentType={item.app_mode}
+          />
+        </div>
+        <div className="rsccard__meta">
+          <span>{item.owner_username}</span> • <time>{dayjs(item.updated_time).format('ll')}</time>
+          <h2 className="rsccard__meta-title">
+            {item.title || item.name}
+          </h2>
+          <p className="rsccard__meta-description">
+            {item.description}
+          </p>
+          <a
+            className="rsccard__meta-link"
+            href={item.url}
+            target="_blank"
+            rel="noreferrer"
+          >Open Content</a>
+        </div>
       </div>
-      <div className="rsccard__meta">
-        <span>{contentObj.owner_username}</span> • <time>{new Date(contentObj.updated_time).toDateString()}</time>
-        <h2 className="rsccard__meta-title">
-          {contentObj.title || contentObj.name}
-        </h2>
-        <p className="rsccard__meta-description">
-          {contentObj.description}
-        </p>
-        <a
-          className="rsccard__meta-link"
-          href={contentObj.url}
-          target="_blank"
-          rel="noreferrer"
-        >Open Content</a>
-      </div>
-    </div>
-  );
+    );
+  });
 }
 
 Card.propTypes = {

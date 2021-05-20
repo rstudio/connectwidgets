@@ -2,10 +2,33 @@
 #'
 #' Renders a grid view of the provided content items
 #'
-#' @param content A shared object from Connect's content
+#' @param content A data frame from Connect's content. Requires the
+#' following columns "guid", "url", "title", "app_mode", "owner_username".
+#' And, although optional, expects an "updated_time" column.
+#'
 #'
 #' @export
 rscgrid <- function(content) {
+  if (missing(content) || !is.data.frame(content)) {
+    stop("rscgrid() expects a data frame.")
+  }
+
+  if (nrow(content) == 0) {
+    warning("rscgrid() was called with an empty data frame.")
+  } else {
+    cols <- colnames(content)
+    evaluate_widget_input(
+      "rscgrid()",
+      cols,
+      c("guid", "url", "title", "app_mode", "owner_username")
+    )
+    warning_widget_input(
+      "rscgrid()",
+      cols,
+      c("updated_time")
+    )
+  }
+
   if (!crosstalk::is.SharedData(content)) {
     ctalk_group <- digest::digest(toString(content), "md5")
     content <- crosstalk::SharedData$new(content, group = ctalk_group)

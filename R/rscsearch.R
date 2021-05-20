@@ -1,11 +1,22 @@
 #' Search widget
 #'
 #' Search for matching content name/title within the shared data object passed.
+#' Expects the exact same frame passed to the view widget being filtered.
 #'
 #' @param content A shared object from Connect's content
 #'
 #' @export
 rscsearch <- function(content) {
+  if (missing(content) || !is.data.frame(content)) {
+    stop("rscsearch() expects a data frame.")
+  }
+
+  if (nrow(content) == 0) {
+    warning(
+      "rscsearch() called with an empty data.frame. Nothing to search on."
+    )
+  }
+
   if (!crosstalk::is.SharedData(content)) {
     ctalk_group <- digest::digest(toString(content), "md5")
     content <- crosstalk::SharedData$new(content, group = ctalk_group)

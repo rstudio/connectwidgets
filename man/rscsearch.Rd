@@ -11,4 +11,5 @@ rscsearch(content)
 }
 \description{
 Search for matching content name/title within the shared data object passed.
+Expects the exact same frame passed to the view widget being filtered.
 }

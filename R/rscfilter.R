@@ -1,12 +1,24 @@
 #' Filter widget
 #'
 #' Filter content rows with owner, content type and tags,
-#' from a shared data from Connect's content.
+#' expects the exact same frame passed to the view widget being filtered.
 #'
-#' @param content A shared object from Connect's content
+#' @param content A data frame from Connect's content. Although optional,
+#' expects an "owner_username", "app_mode" and "tags" columns.
 #'
 #' @export
 rscfilter <- function(content) {
+  if (missing(content) || !is.data.frame(content)) {
+    stop("rscfilter() expects a data frame.")
+  }
+
+  cols <- colnames(content)
+  warning_widget_input(
+    "rscfilter()",
+    cols,
+    c("owner_username", "app_mode", "tags")
+  )
+
   if (!crosstalk::is.SharedData(content)) {
     ctalk_group <- digest::digest(toString(content), "md5")
     content <- crosstalk::SharedData$new(content, group = ctalk_group)

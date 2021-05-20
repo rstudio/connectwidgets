@@ -1,10 +1,16 @@
 .rsccard {
-  align-items: flex-start;
-  border-radius: 3px;
-  box-shadow: 0 0 3px 1px rgba(0,0,0, 0.2);
   display: flex;
-  position: relative;
-  width: 100%;
+  flex-direction: column;
+
+  &__card {
+    align-items: flex-start;
+    border-radius: 3px;
+    box-shadow: 0 0 3px 1px rgba(0,0,0, 0.2);
+    display: flex;
+    margin-bottom: 2em;
+    position: relative;
+    width: 100%;
+  }
 
   &__img {
     border-radius: 3px;
