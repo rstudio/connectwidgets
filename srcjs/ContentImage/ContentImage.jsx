@@ -16,7 +16,7 @@ const imageClass = {
 class ContentImage extends React.Component {
   constructor(props) {
     super(props);
-    const defaultImage = appModeImg(props.contentType);
+    const defaultImage = appModeImg(props.contentType, props.contentCategory);
 
     this.state = {
       loaded: false,
@@ -60,13 +60,10 @@ class ContentImage extends React.Component {
         href={this.props.contentUrl}
         rel="noreferrer"
       >
-        { this.state.loaded ? 
-          <figure
-            className="rscimage__img"
-            style={{ backgroundImage: `url("${this.state.imgUrl}")` }}
-          ></figure>
-          : ''
-        }
+        <figure
+          className="rscimage__img"
+          style={{ backgroundImage: `url("${this.state.imgUrl}")` }}
+        ></figure>
         <span className='rscimage__request-access'>
           REQUEST ACCESS
         </span>      
@@ -79,6 +76,7 @@ ContentImage.propTypes = {
   imageUrl: PropTypes.string,
   contentUrl: PropTypes.string,
   contentType: PropTypes.string,
+  contentCategory: PropTypes.string,
 };
 
 export default ContentImage;
