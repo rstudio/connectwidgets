@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Grid view for content — rscgrid • rscpages</title>
+<title>Evaluates required columns for widget's input — evaluate_widget_input • rscpages</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Grid view for content — rscgrid" />
-<meta property="og:description" content="Renders a grid view of the provided content items" />
+<meta property="og:title" content="Evaluates required columns for widget's input — evaluate_widget_input" />
+<meta property="og:description" content="Evaluates required columns for widget's input" />
 
 
 
@@ -108,25 +108,31 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Grid view for content</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rstudio/rscpages/blob/master/R/rscgrid.R'><code>R/rscgrid.R</code></a></small>
-    <div class="hidden name"><code>rscgrid.Rd</code></div>
+    <h1>Evaluates required columns for widget's input</h1>
+    <small class="dont-index">Source: <a href='https://github.com/rstudio/rscpages/blob/master/R/utils.R'><code>R/utils.R</code></a></small>
+    <div class="hidden name"><code>evaluate_widget_input.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Renders a grid view of the provided content items</p>
+    <p>Evaluates required columns for widget's input</p>
     </div>
 
-    <pre class="usage"><span class='fu'>rscgrid</span><span class='op'>(</span><span class='va'>content</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>evaluate_widget_input</span><span class='op'>(</span><span class='va'>widget</span>, <span class='va'>colnames</span>, <span class='va'>required</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>content</th>
-      <td><p>A data frame from Connect's content. Requires the
-following columns "guid", "url", "title", "app_mode", "owner_username".
-And, although optional, expects an "updated_time" column.</p></td>
+      <th>widget</th>
+      <td><p>Widget's name to identify errors thrown</p></td>
+    </tr>
+    <tr>
+      <th>colnames</th>
+      <td><p>Column names provided from the widget content input</p></td>
+    </tr>
+    <tr>
+      <th>required</th>
+      <td><p>List of required columns to look for in the widget's input</p></td>
     </tr>
     </table>
 

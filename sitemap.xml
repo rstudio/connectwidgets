@@ -22,6 +22,9 @@
     <loc>https://rstudio.github.io/rscpages/reference/content.html</loc>
   </url>
   <url>
+    <loc>https://rstudio.github.io/rscpages/reference/evaluate_widget_input.html</loc>
+  </url>
+  <url>
     <loc>https://rstudio.github.io/rscpages/reference/pipe.html</loc>
   </url>
   <url>
@@ -53,5 +56,8 @@
   </url>
   <url>
     <loc>https://rstudio.github.io/rscpages/reference/rsctable.html</loc>
+  </url>
+  <url>
+    <loc>https://rstudio.github.io/rscpages/reference/warning_widget_input.html</loc>
   </url>
 </urlset>
