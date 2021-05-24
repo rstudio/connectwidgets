@@ -37,7 +37,7 @@ remotes::install_github("rstudio/rscpages")
 Use the template:
 
 ```{r, eval=FALSE}
-rmarkdown::draft("example-page.Rmd", template = "rscpages", package = "rscpages")`
+rmarkdown::draft("example-page.Rmd", template = "rscpages", package = "rscpages")
 ```
 
 You can also copy and knit the following example, or read on for more details:
@@ -105,7 +105,6 @@ the client object:
 
 - validates your API key with the Connect server
 - ensures you are running a recent enough version of Connect
-- warns if you will be unable to see content images while you are developing your page
 
 Use an `.Renviron` file to set the `CONNECT_SERVER` and `CONNECT_API_KEY`
 environment variables.
@@ -166,14 +165,14 @@ specified owner(s) by username.  You can pass a single username or a vector of
 usernames. `by_owner` is provided as an alias for readability when using a
 single username.
 
-```{r}
+```{r, echo=TRUE}
 all_content %>% 
   by_tag("Audit Reports")
 ```
 
 Since `all_content` is a `tibble()`, you can also manipulate it with dplyr:
 
-```{r}
+```{r, echo=TRUE}
 all_content %>% 
   filter(updated_time >= "2021-01-01") %>% 
   arrange(created_time)
@@ -214,6 +213,7 @@ You must pass the same content data frame to `rscsearch()`, `rscfilter()`,
 and `rsctable()` or `rscgrid()` in order for filter and search to work.
 You can also create your own `crosstalk::SharedData()` object to pass to
 the components if you want more control over searching and filtering.
+Read more at `vignette("using-crosstalk")`.
 
 ![search and filter widgets](man/figures/README-search-filter-2.png)
 
