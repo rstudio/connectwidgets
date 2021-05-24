@@ -93,10 +93,10 @@ rsctable(all_content)
 
 ### Setup
 
-the client object:
+The client object:
 
--   validates your API key with the Connect server
--   ensures you are running a recent enough version of Connect
+-   Validates your API key with the RStudio Connect server
+-   Ensures you are running a recent enough version of Connect
 
 Use an `.Renviron` file to set the `CONNECT_SERVER` and
 `CONNECT_API_KEY` environment variables. RStudio Connect will
@@ -234,7 +234,7 @@ all_content %>%
 
 Once your content data are filtered, `rscpages` provides components for
 displaying information about them. The title, description, and preview
-image can be set [from the Connect
+image can be set [from the RStudio Connect
 dashboard.](https://docs.rstudio.com/connect/user/content-settings/#content-metadata)
 For content deployed to Connect where no image has been supplied, a
 default image will be used.
@@ -272,5 +272,5 @@ more control over searching and filtering. Read more at
 
 ![search and filter widgets](man/figures/README-search-filter-2.png)
 
-Once you’re happy with the look of your page, Publish it to Connect.
-Read more at `vignette("publishing")`.
+Once you’re happy with the look of your page, Publish it to RStudio
+Connect. Read more at `vignette("publishing")`.
