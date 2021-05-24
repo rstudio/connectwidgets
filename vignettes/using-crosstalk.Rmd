@@ -1,0 +1,73 @@
+---
+title: "using-crosstalk"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{using-crosstalk}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(rscpages)
+library(dplyr)
+library(purrr)
+library(htmltools)
+
+client <- connect()
+all_content <- client %>% content()
+some_content <- slice_sample(all_content, prop = .1)
+```
+
+The `rsctable()`, `rscgrid()`, `rscsearch()`, and `rscfilter()`  widgets use
+`crosstalk` to facilitate inter-widget communication. In simple cases, passing
+identical results from the `content()` tibble is sufficient:
+
+```{r}
+bscols(rscsearch(some_content), rscfilter(some_content))
+rsctable(some_content)
+```
+
+For more complicated layouts, you may need to pass your own `crosstalk::SharedData()`
+objects to the components.
+In the following example, we want to display a grid of items for each content
+author and the author's name with a level 4 heading. We can do this by creating
+our own [groups](https://rstudio.github.io/crosstalk/using.html#grouping) and
+passing those to the `rscpages` widgets.
+
+```{r}
+some_content_xfilter <- crosstalk::SharedData$new(
+  some_content, group = "xfilter"
+  )
+
+rsc_content_filtered_shared <-
+  some_content %>%
+  group_nest(owner_username, .key = "content_df", keep = TRUE)
+
+div(
+  h3("Grouped Grids by", class = "text-center"),
+  crosstalk::filter_select(
+    "owner_filter",
+    label = "Select owners:",
+    group = "xfilter",
+    multiple = TRUE,
+    sharedData = some_content_xfilter
+  ),
+  pmap(
+    rsc_content_filtered_shared,
+    {
+      ~ tagList(
+        h4(..1),
+        rscgrid(crosstalk::SharedData$new(..2, group = "xfilter"))
+      )
+    }
+  )
+)
+```
+
