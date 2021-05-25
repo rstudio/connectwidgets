@@ -32,7 +32,8 @@ Imports:
     crosstalk,
     reactR,
     purrr,
-    bslib
+    bslib,
+    sass
 URL:
     https://rstudio.github.io/rscpages,
     https://github.com/rstudio/rscpages
