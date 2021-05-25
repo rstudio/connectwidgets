@@ -25,21 +25,17 @@
   }
 
   &__input {
-    border: 1px solid #B0B0B0;
     box-sizing: border-box;
     height: 2.4em;
     padding: 0 0.7em;
     width: 70%;
 
     &:focus {
-      border-color: #4C83B6;
       outline: none;
     }
   }
 
   &__options {
-    background:white;
-    border: 1px solid #B0B0B0;
     box-sizing: border-box;
     opacity: 0;
     pointer-events: none;

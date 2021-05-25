@@ -1,7 +1,5 @@
 .rscfilter {
   display: flex;
-  font-family: "Lato", sans-serif;
-  font-size: 14px;
   position: relative;
   line-height: 3em;
 
@@ -14,7 +12,7 @@
     border: none;
     cursor: pointer;
     display: inline-block;
-    font-size: 1em;
+    font-size: 1.2em;
     line-height: 3em;
     padding: 0;
     padding-right: 2em;
@@ -34,9 +32,7 @@
   }
 
   &__count {
-    background: #4C83B6;
     border-radius: 50%;
-    color: white;
     display: inline-block;
     font-size: 0.84em;
     font-weight: 700;
