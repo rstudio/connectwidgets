@@ -102,7 +102,7 @@ rsctable <- function(content) {
       pagePrevious = "\u276e",
       pageNext = "\u276f"
     ),
-    theme = rscpages_theme()
+    theme = rsctable_sync_theme()
   )
 }
 

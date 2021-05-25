@@ -30,6 +30,7 @@ default_theme <- bslib::bs_theme(
 
   # more complementary variables
   "font-size-base" = "1.2rem",
+  "border-color" = "#F2F2F2",
   "gray-100" = "#F8F8F8",
   "gray-200" = "#F2F2F2",
   "gray-300" = "#ECECEC",
@@ -67,6 +68,9 @@ get_current_theme <- function() {
 }
 
 #' Generate the theme's bslib::bs_dependency to be used by a widget.
+#'
+#' @param widget_name The name of the widget (e.g: rscgrid)
+#' @param theme The bslib theme to generate the CSS dependency
 gen_theme_dependency <- function(widget_name, theme) {
   version <- "0.1.0"
   dependency_name <- sprintf("%s-theme-%s", widget_name, version)
@@ -83,6 +87,8 @@ gen_theme_dependency <- function(widget_name, theme) {
 
 #' Resolve and get theme to be used by a widget. It could be the
 #' default rscpages styling theme or one provided by the user.
+#'
+#' @param widget_name The name of the widget (e.g: rscgrid)
 resolve_theme_dependency <- function(widget_name) {
   theme <- get_current_theme()
 
@@ -95,4 +101,64 @@ resolve_theme_dependency <- function(widget_name) {
   }
 
   gen_theme_dependency(widget_name, theme)
+}
+
+#' Resolve reactable theme for rsctable
+rsctable_sync_theme <- function() {
+  varnames <- c(
+    "body-bg",
+    "body-color",
+    "border-color",
+    "primary",
+    "gray-300",
+    "gray-700",
+    "white"
+  )
+  theme <- get_current_theme()
+  if (is.null(theme)) {
+    theme <- default_theme
+  }
+  theme_vars <- bslib::bs_get_variables(theme, varnames = varnames)
+  reactable::reactableTheme(
+    color = theme_vars[["body-color"]],
+    backgroundColor = theme_vars[["body-bg"]],
+    highlightColor = sprintf("%s09", theme_vars[["primary"]]),
+    borderColor = theme_vars[["border-color"]],
+    borderWidth = "1px",
+    cellPadding = "16px 8px",
+    style = list(
+      boxShadow = "0px 0px 4px 2px rgba(0, 0, 0, 0.1)",
+      borderRadius = 3
+    ),
+    headerStyle = list(
+      "&:first-child" = list(paddingLeft = 24),
+      "&:last-child" = list(paddingRight = 24)
+    ),
+    cellStyle = list(
+      "&:first-child" = list(paddingLeft = 24),
+      "&:last-child" = list(paddingRight = 24)
+    ),
+    paginationStyle = list(
+      flexDirection = "row-reverse",
+      padding = "24px 12px"
+    ),
+    pageButtonStyle = list(
+      background = theme_vars[["white"]],
+      color = theme_vars[["gray-700"]],
+      borderRadius = "16px",
+      padding = "0 0.8em",
+      height = "32px",
+      minWidth = "32px",
+      "&:hover" = list(
+        background = theme_vars[["gray-300"]]
+      )
+    ),
+    pageButtonCurrentStyle = list(
+      backgroundColor = sprintf("%s12", theme_vars[["primary"]]),
+      color = theme_vars[["primary"]],
+      "&:hover" = list(
+        background = sprintf("%s12", theme_vars[["primary"]])
+      )
+    )
+  )
 }

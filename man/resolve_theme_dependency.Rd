@@ -7,6 +7,9 @@ default rscpages styling theme or one provided by the user.}
 \usage{
 resolve_theme_dependency(widget_name)
 }
+\arguments{
+\item{widget_name}{The name of the widget (e.g: rscgrid)}
+}
 \description{
 Resolve and get theme to be used by a widget. It could be the
 default rscpages styling theme or one provided by the user.

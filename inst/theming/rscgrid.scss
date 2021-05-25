@@ -31,13 +31,15 @@
 }
 
 .rscgrid-pagination {
+  font-family: $font-family-base;
+
   &__btn {
     background: $white;
     color: $gray-700;
 
     &--current {
       background: lighten($primary, 45%);
-      color: darken($primary, 7%);
+      color: $primary;
     }
  
     &:hover {
