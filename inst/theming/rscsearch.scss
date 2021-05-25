@@ -1,0 +1,11 @@
+.rscsearch {
+  font-size: $font-size-base;
+
+  &__input {
+    border: 1px solid $gray-500;
+
+    &:focus {
+      border-color: $primary;
+    }
+  }
+}

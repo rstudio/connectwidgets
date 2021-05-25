@@ -52,7 +52,7 @@ class Search extends React.Component {
         <input
           className="rscsearch__input"
           type="text"
-          placeholder="Search content"
+          placeholder="Search"
           onChange={this.onInputChange}
         />
       </div>

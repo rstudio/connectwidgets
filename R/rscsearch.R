@@ -35,6 +35,9 @@ rscsearch <- function(content) {
     )
   )
 
+  dependencies <- crosstalk::crosstalkLibs()
+  dependencies[["rscsearch-theme"]] <- resolve_theme_dependency("rscsearch")
+
   # create widget
   htmlwidgets::createWidget(
     name = "rscsearch",
@@ -42,7 +45,7 @@ rscsearch <- function(content) {
     width = "auto",
     height = "auto",
     package = "rscpages",
-    dependencies = crosstalk::crosstalkLibs()
+    dependencies = dependencies
   )
 }
 
