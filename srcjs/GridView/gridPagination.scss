@@ -24,18 +24,12 @@
     padding: 0 0.8em;
   
     &--current {
-      background: #EDF6FF;
-      color: #5882B2;
       font-weight: 700;
       pointer-events: none;
     }
 
     &:focus {
       outline: none;
-    }
-  
-    &:hover {
-      background: #EBEBEB;
     }
 
     &:disabled {

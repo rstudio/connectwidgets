@@ -47,6 +47,9 @@ rscgrid <- function(content) {
     )
   )
 
+  dependencies <- crosstalk::crosstalkLibs()
+  dependencies[["rscgrid-theme"]] <- resolve_theme_dependency("rscgrid")
+
   # create widget
   htmlwidgets::createWidget(
     name = "rscgrid",
@@ -54,7 +57,7 @@ rscgrid <- function(content) {
     width = "auto",
     height = "auto",
     package = "rscpages",
-    dependencies = crosstalk::crosstalkLibs()
+    dependencies = dependencies
   )
 }
 

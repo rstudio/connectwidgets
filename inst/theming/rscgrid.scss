@@ -1,0 +1,47 @@
+.rscgrid {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+
+  &__grid {
+    &--empty {
+      border-bottom: 1px solid $gray-100;
+      border-top: 1px solid $gray-100;
+    }
+  }
+
+  &-item {
+    background: $gray-100;
+    border: 1px solid $gray-300;
+    box-shadow: 0 0 3px 1px rgba(0,0,0, 0.0);
+    color: $gray-700;
+
+    &:hover {
+      box-shadow: 0 0 12px 2px rgba(0,0,0, 0.2);
+    }
+
+    &:hover,
+    &:focus {
+      color: $gray-700;
+    }
+    
+    &__meta {
+      color: $gray-500;
+    }
+  }
+}
+
+.rscgrid-pagination {
+  &__btn {
+    background: $white;
+    color: $gray-700;
+
+    &--current {
+      background: lighten($primary, 45%);
+      color: darken($primary, 7%);
+    }
+ 
+    &:hover {
+      background: $gray-300;
+    }
+  }
+}
