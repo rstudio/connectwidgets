@@ -28,7 +28,7 @@ remotes::install_github("rstudio/rscpages")
 Use the template:
 
 ``` r
-rmarkdown::draft("example-page.Rmd", template = "rscpages", package = "rscpages")`
+rmarkdown::draft("example-page.Rmd", template = "rscpages", package = "rscpages")
 ```
 
 You can also copy and knit the following example, or read on for more
