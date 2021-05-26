@@ -18,7 +18,6 @@
     padding-right: 2em;
     position: relative;
     text-align: left;
-    width: 4.6em;
   }
   
   &__toggle::after {
@@ -40,6 +39,7 @@
     font-weight: 700;
     line-height: 1.72em;
     margin-left: 5px;
+    text-align: center;
     width: 1.72em;
 
     &:empty {
