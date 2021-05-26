@@ -80,8 +80,7 @@ gen_theme_dependency <- function(widget_name, theme) {
     input = sass::sass_file(scss_path),
     theme = theme,
     name = dependency_name,
-    version = version,
-    cache_key_extra = version
+    version = version
   )
 }
 
@@ -109,10 +108,12 @@ rsctable_sync_theme <- function() {
     "body-bg",
     "body-color",
     "border-color",
+    "font-family-base",
     "primary",
     "gray-300",
     "gray-700",
-    "white"
+    "white",
+    "light"
   )
   theme <- get_current_theme()
   if (is.null(theme)) {
@@ -140,12 +141,15 @@ rsctable_sync_theme <- function() {
     ),
     paginationStyle = list(
       flexDirection = "row-reverse",
+      fontFamily = theme_vars[["font-family-base"]],
+      fontSize = "0.9em",
       padding = "24px 12px"
     ),
     pageButtonStyle = list(
       background = theme_vars[["white"]],
       color = theme_vars[["gray-700"]],
       borderRadius = "16px",
+      marginRight = "5px",
       padding = "0 0.8em",
       height = "32px",
       minWidth = "32px",
@@ -154,10 +158,11 @@ rsctable_sync_theme <- function() {
       )
     ),
     pageButtonCurrentStyle = list(
-      backgroundColor = sprintf("%s12", theme_vars[["primary"]]),
+      # backgroundColor = sprintf("%s12", theme_vars[["primary"]]),
+      backgroundColor = theme_vars[["light"]],
       color = theme_vars[["primary"]],
       "&:hover" = list(
-        background = sprintf("%s12", theme_vars[["primary"]])
+        backgroundColor = theme_vars[["light"]]
       )
     )
   )

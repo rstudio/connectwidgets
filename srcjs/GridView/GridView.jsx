@@ -85,10 +85,10 @@ class GridView extends React.Component {
             contentType={item.app_mode}
             contentCategory={item.content_category}
           />
-           <a
-              href={item.url}
-              target="_blank"
-              rel="noreferrer"
+          <a
+            href={item.url}
+            target="_blank"
+            rel="noreferrer"
           >
             <h2 className="rscgrid-item__title">
               {item.title || item.name}

@@ -2,6 +2,10 @@
   font-family: $font-family-base;
   font-size: $font-size-base;
 
+  a {
+    color: $link-color;
+  }
+
   &__grid {
     &--empty {
       border-bottom: 1px solid $gray-100;
@@ -38,7 +42,7 @@
     color: $gray-700;
 
     &--current {
-      background: lighten($primary, 45%);
+      background: $light;
       color: $primary;
     }
  
