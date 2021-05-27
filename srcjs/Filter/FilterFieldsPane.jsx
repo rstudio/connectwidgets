@@ -32,7 +32,7 @@ function FilterFieldsPane({ isActive }) {
       />
       <div className="rscfilter-pane__actions">
         <button
-          className="rscfilter-pane__actions-reset"
+          className="rscfilter-pane__actions-reset btn btn-secondary"
           onClick={() => context.resetFilters()}
         >
           Reset

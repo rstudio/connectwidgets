@@ -72,7 +72,7 @@ get_current_theme <- function() {
 #' @param widget_name The name of the widget (e.g: rscgrid)
 #' @param theme The bslib theme to generate the CSS dependency
 gen_theme_dependency <- function(widget_name, theme) {
-  version <- "0.1.0"
+  version <- "0.1.11"
   dependency_name <- sprintf("%s-theme-%s", widget_name, version)
   widget_theme_file <- sprintf("%s.scss", widget_name)
   scss_path <- system.file(package = "rscpages", "theming", widget_theme_file)
@@ -96,7 +96,7 @@ resolve_theme_dependency <- function(widget_name) {
     theme <- default_theme
   } else {
     # use bootswatch or user provided theme
-    theme <- bslib::bs_theme_update(theme, "font-size-base" = "1.2rem")
+    theme <- bslib::bs_theme_update(theme)
   }
 
   gen_theme_dependency(widget_name, theme)
