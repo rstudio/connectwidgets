@@ -168,7 +168,7 @@ sample_content <- all_content %>%
 -   `description` - The user-provided description of the content item
 -   `url` - The URL to the content item
 -   `owner_guid` - Unique identifier of the owner of the content item
--   `owner_username` - Username of the owner of teh content item
+-   `owner_username` - Username of the owner of the content item
 -   `owner_first_name` - First name of the owner of the content item
 -   `owner_last_name` - Last name of the owner of the content item
 -   `tags` - A data frame of the tags associated with the content item,
@@ -177,6 +177,10 @@ sample_content <- all_content %>%
 -   `created_time` - The timestamp at which the content item was created
 -   `updated_time` - The timestamp at which the content item was last
     updated
+
+The data frame contains one row for each item visible to the requesting
+user. For users in an “administrator” role, that will be all content
+items.
 
 #### Filtering Content
 

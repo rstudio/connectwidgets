@@ -3,7 +3,7 @@ title: "Untitled"
 output: html_document
 ---
 
-```{r include=FALSE}
+```{r setup, include=FALSE}
 library(rscpages)
 library(dplyr)
 
@@ -17,9 +17,10 @@ client <- connect(
 all_content <- client %>%
   content()
 
-sample_content <- all_content %>% slice_sample(prop = .3)
+sample_content <- all_content %>%
+  arrange(desc(updated_time)) %>%
+  slice_head(prop = .3)
 ```
-
 
 ![](https://source.unsplash.com/1920x1080/?forest "A random forest.")
 
@@ -27,9 +28,7 @@ sample_content <- all_content %>% slice_sample(prop = .3)
 
 ### card
 
-Highlight a single piece of content:
-
-```{r}
+```{r card}
 sample_content %>%
   slice(1) %>%
   rsccard()
@@ -37,30 +36,21 @@ sample_content %>%
 
 ### grid
 
-Show a grid of content:
-
-```{r}
+```{r grid}
 sample_content %>%
   rscgrid()
 ```
 
 ### table
 
-Show a table of content:
-
-```{r}
+```{r table}
 sample_content %>%
   rsctable()
 ```
 
 ### search & filter
 
-To enable searching and filtering (via [Crosstalk](https://rstudio.github.io/crosstalk/)), pass the same data frame to the
-search, filter, table, or grid components.
-
-```{r}
+```{r search-and-filter}
 bscols(rscsearch(all_content), rscfilter(all_content), widths = c(2, 2))
 rsctable(all_content)
 ```
-
-
