@@ -31,8 +31,11 @@ Imports:
     digest,
     crosstalk,
     reactR,
-    purrr
+    purrr,
+    withr (>= 2.4.2)
 URL:
     https://rstudio.github.io/rscpages,
     https://github.com/rstudio/rscpages
 VignetteBuilder: knitr
+Remotes:  
+    r-lib/withr

@@ -18,6 +18,8 @@ Client <- R6::R6Class( # nolint
     initialize = function(server, api_key) {
       self$server <- server
       self$api_key <- api_key
+
+      private$validate()
     },
     print = function(...) {
       cat("RStudio Connect API Client: \n")
@@ -26,6 +28,37 @@ Client <- R6::R6Class( # nolint
         self$api_key, nchar(self$api_key) - 3, nchar(self$api_key)
       )), "\n", sep = "")
       invisible(self)
+    },
+    GET = function(path, ..., writer = httr::write_memory(), parser = "text") {
+      url <- paste0(self$server, "/__api__/v1", path)
+      res <- httr::GET(
+        url,
+        private$add_auth(),
+        writer,
+        ...
+      )
+      private$raise_error(res)
+      httr::content(res, as = parser)
+    }
+  ),
+  private = list(
+    validate = function() {
+      api_key <- self$api_key
+      server <- self$server
+
+      if (is.null(api_key) || is.na(api_key) || nchar(api_key) == 0) {
+        stop("ERROR: Please provide a valid API key")
+      }
+
+      if (is.null(server) || is.na(server) || nchar(server) == 0) {
+        stop("ERROR: Please provide a valid server URL")
+      }
+
+      if (is.null(httr::parse_url(server)$scheme)) {
+        stop(glue::glue(
+          "ERROR: Please provide a protocol (http / https). You gave: {server}"
+        ))
+      }
     },
     raise_error = function(res) {
       if (httr::http_error(res)) {
@@ -40,17 +73,6 @@ Client <- R6::R6Class( # nolint
     },
     add_auth = function() {
       httr::add_headers(Authorization = paste0("Key ", self$api_key))
-    },
-    GET = function(path, ..., writer = httr::write_memory(), parser = "text") {
-      url <- paste0(self$server, "/__api__/v1", path)
-      res <- httr::GET(
-        url,
-        self$add_auth(),
-        writer,
-        ...
-      )
-      self$raise_error(res)
-      httr::content(res, as = parser)
     }
   )
 )
