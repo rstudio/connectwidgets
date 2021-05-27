@@ -18,7 +18,7 @@ The `rsctable()`, `rscgrid()`, `rscsearch()`, and `rscfilter()`  widgets use
 `crosstalk` to facilitate inter-widget communication. In simple cases, passing
 identical results from the `content()` tibble is sufficient:
 
-```{r setup, message=FALSE}
+```{r, eval=FALSE}
 library(rscpages)
 library(dplyr)
 library(purrr)
@@ -39,9 +39,9 @@ objects to the components.
 The following example illustrates using [crosstalk groups](https://rstudio.github.io/crosstalk/using.html#grouping)
 and, `dplyr`, and `purrr` to:
 
-- display a level 4 heading featuring each content owner's username
+- display each content owner's username with a level 4 heading
 - display an `rscgrid()` of each content owner's items
-- 
+- enable search across all the card grids
 
 
 ```{r, eval=FALSE}
@@ -55,14 +55,14 @@ rsc_content_filtered_shared <-
   group_nest(owner_username, .key = "content_df", keep = TRUE)
 
 div(
-  h3("Grouped Grids by ", class = "text-center"),
-  # crosstalk::filter_select(
-  #   "owner_filter",
-  #   label = "Select owners:",
-  #   group = "xfilter",
-  #   multiple = TRUE,
-  #   sharedData = some_content_xfilter
-  # ),
+  h3("Grouped Grids by Owner", class = "text-center"),
+  crosstalk::filter_select(
+    "owner_filter",
+    label = "Select owners:",
+    group = "xfilter",
+    multiple = TRUE,
+    sharedData = some_content_xfilter
+  ),
   pmap(
     rsc_content_filtered_shared,
     {

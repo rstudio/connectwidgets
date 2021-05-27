@@ -62,7 +62,9 @@ client <- connect(
 all_content <- client %>%
   content()
 
-sample_content <- all_content %>% slice_sample(prop = .3)
+sample_content <- all_content %>%
+  arrange(desc(updated_time)) %>%
+  slice_head(prop = .3)
 ```
 
 ![](https://source.unsplash.com/1920x1080/?forest "A random forest.")
@@ -128,7 +130,9 @@ all_content <- client %>%
 
 glimpse(all_content)
 
-sample_content <- all_content %>% slice_sample(prop = .3)
+sample_content <- all_content %>%
+  arrange(desc(updated_time)) %>%
+  slice_head(prop = .3)
 ```
 
 #### `content()`
