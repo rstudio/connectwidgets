@@ -1,5 +1,5 @@
 ---
-title: "using-crosstalk"
+title: "Using Crosstalk"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{using-crosstalk}
@@ -14,7 +14,11 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r setup}
+The `rsctable()`, `rscgrid()`, `rscsearch()`, and `rscfilter()`  widgets use
+`crosstalk` to facilitate inter-widget communication. In simple cases, passing
+identical results from the `content()` tibble is sufficient:
+
+```{r setup, message=FALSE}
 library(rscpages)
 library(dplyr)
 library(purrr)
@@ -23,27 +27,27 @@ library(htmltools)
 client <- connect()
 all_content <- client %>% content()
 some_content <- slice_sample(all_content, prop = .1)
-```
 
-The `rsctable()`, `rscgrid()`, `rscsearch()`, and `rscfilter()`  widgets use
-`crosstalk` to facilitate inter-widget communication. In simple cases, passing
-identical results from the `content()` tibble is sufficient:
-
-```{r}
-bscols(rscsearch(some_content), rscfilter(some_content))
-rsctable(some_content)
+tagList(
+  bscols(rscsearch(some_content), rscfilter(some_content)),
+  rsctable(some_content)
+)
 ```
 
 For more complicated layouts, you may need to pass your own `crosstalk::SharedData()`
 objects to the components.
-In the following example, we want to display a grid of items for each content
-author and the author's name with a level 4 heading. We can do this by creating
-our own [groups](https://rstudio.github.io/crosstalk/using.html#grouping) and
-passing those to the `rscpages` widgets.
+The following example illustrates using [crosstalk groups](https://rstudio.github.io/crosstalk/using.html#grouping)
+and, `dplyr`, and `purrr` to:
 
-```{r}
+- display a level 4 heading featuring each content owner's username
+- display an `rscgrid()` of each content owner's items
+- 
+
+
+```{r, eval=FALSE}
 some_content_xfilter <- crosstalk::SharedData$new(
-  some_content, group = "xfilter"
+  some_content,
+  group = "xfilter"
   )
 
 rsc_content_filtered_shared <-
@@ -51,14 +55,14 @@ rsc_content_filtered_shared <-
   group_nest(owner_username, .key = "content_df", keep = TRUE)
 
 div(
-  h3("Grouped Grids by", class = "text-center"),
-  crosstalk::filter_select(
-    "owner_filter",
-    label = "Select owners:",
-    group = "xfilter",
-    multiple = TRUE,
-    sharedData = some_content_xfilter
-  ),
+  h3("Grouped Grids by ", class = "text-center"),
+  # crosstalk::filter_select(
+  #   "owner_filter",
+  #   label = "Select owners:",
+  #   group = "xfilter",
+  #   multiple = TRUE,
+  #   sharedData = some_content_xfilter
+  # ),
   pmap(
     rsc_content_filtered_shared,
     {
