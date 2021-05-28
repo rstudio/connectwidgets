@@ -3,18 +3,5 @@
     &-author {
       color: $gray-500;
     }
-
-    &-link {
-      border-bottom: 2px solid $primary;
-      color: $primary;
-      display: inline-block;
-      line-height: 1.72em;
-
-      &:hover,
-      &:focus {
-        color: $primary;
-        text-decoration: none;
-      }
-    }
   }
 }

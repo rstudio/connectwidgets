@@ -29,7 +29,7 @@ default_theme <- bslib::bs_theme(
   heading_font = "Lato, sans-serif",
 
   # more complementary variables
-  "font-size-base" = "1.2rem",
+  "font-size-base" = "1.44rem",
   "border-color" = "#F2F2F2",
   "gray-100" = "#F8F8F8",
   "gray-200" = "#F2F2F2",
@@ -105,7 +105,6 @@ resolve_theme_dependency <- function(widget_name) {
     gen_theme_dependency(widget_name, default_theme, default = TRUE)
   } else {
     # use bootswatch or user provided theme
-    # theme <- bslib::bs_theme_update(theme)
     gen_theme_dependency(widget_name, theme)
   }
 }
