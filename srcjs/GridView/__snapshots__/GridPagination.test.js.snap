@@ -5,66 +5,79 @@ exports[`<GridPagination /> for too many pages displays compact pagination contr
   className="rscgrid-pagination"
 >
   <ul
-    className="rscgrid-pagination__list"
+    className="rscgrid-pagination__list pagination"
   >
-    <li>
-      <button
-        className="rscgrid-pagination__btn"
+    <li
+      className="page-item disabled"
+    >
+      <a
+        className="rscgrid-pagination__btn page-link"
         disabled={true}
+        href="#"
         onClick={[Function]}
       >
         ❮
-      </button>
+      </a>
     </li>
     <li
+      className="page-item active"
       key="0"
     >
-      <button
-        className="rscgrid-pagination__btn rscgrid-pagination__btn--current"
+      <a
+        className="rscgrid-pagination__btn rscgrid-pagination__btn--current page-link"
+        href="#"
         onClick={[Function]}
       >
         1
-      </button>
+      </a>
     </li>
     <li
+      className="page-item"
       key="1"
     >
-      <button
-        className="rscgrid-pagination__btn"
+      <a
+        className="rscgrid-pagination__btn page-link"
+        href="#"
         onClick={[Function]}
       >
         2
-      </button>
+      </a>
     </li>
     <li
+      className="page-item"
       key="2"
     >
-      <button
-        className="rscgrid-pagination__btn"
+      <a
+        className="rscgrid-pagination__btn page-link"
+        href="#"
         onClick={[Function]}
       >
         3
-      </button>
+      </a>
     </li>
     <li
+      className="page-item"
       key="3"
     >
-      <button
-        className="rscgrid-pagination__btn"
+      <a
+        className="rscgrid-pagination__btn page-link"
+        href="#"
         onClick={[Function]}
       >
         4
-      </button>
+      </a>
     </li>
     <li
+      className="page-item"
       key="4"
     >
-      <button
-        className="rscgrid-pagination__btn"
+      <a
+        className="rscgrid-pagination__btn page-link"
+        href="#"
         onClick={[Function]}
       >
         5
-      </button>
+      </a>
     </li>
     <li
       className="rscgrid-pagination__sep"
@@ -74,23 +87,28 @@ exports[`<GridPagination /> for too many pages displays compact pagination contr
       ...
     </li>
     <li
+      className="page-item"
       key="6"
     >
-      <button
-        className="rscgrid-pagination__btn"
+      <a
+        className="rscgrid-pagination__btn page-link"
+        href="#"
         onClick={[Function]}
       >
         109
-      </button>
+      </a>
     </li>
-    <li>
-      <button
-        className="rscgrid-pagination__btn"
+    <li
+      className="page-item"
+    >
+      <a
+        className="rscgrid-pagination__btn page-link"
         disabled={false}
+        href="#"
         onClick={[Function]}
       >
         ❯
-      </button>
+      </a>
     </li>
   </ul>
 </nav>
@@ -101,26 +119,31 @@ exports[`<GridPagination /> for too many pages displays compact pagination contr
   className="rscgrid-pagination"
 >
   <ul
-    className="rscgrid-pagination__list"
+    className="rscgrid-pagination__list pagination"
   >
-    <li>
-      <button
-        className="rscgrid-pagination__btn"
+    <li
+      className="page-item"
+    >
+      <a
+        className="rscgrid-pagination__btn page-link"
         disabled={false}
+        href="#"
         onClick={[Function]}
       >
         ❮
-      </button>
+      </a>
     </li>
     <li
+      className="page-item"
       key="0"
     >
-      <button
-        className="rscgrid-pagination__btn"
+      <a
+        className="rscgrid-pagination__btn page-link"
+        href="#"
         onClick={[Function]}
       >
         1
-      </button>
+      </a>
     </li>
     <li
       className="rscgrid-pagination__sep"
@@ -130,34 +153,40 @@ exports[`<GridPagination /> for too many pages displays compact pagination contr
       ...
     </li>
     <li
+      className="page-item"
       key="2"
     >
-      <button
-        className="rscgrid-pagination__btn"
+      <a
+        className="rscgrid-pagination__btn page-link"
+        href="#"
         onClick={[Function]}
       >
         53
-      </button>
+      </a>
     </li>
     <li
+      className="page-item active"
       key="3"
     >
-      <button
-        className="rscgrid-pagination__btn rscgrid-pagination__btn--current"
+      <a
+        className="rscgrid-pagination__btn rscgrid-pagination__btn--current page-link"
+        href="#"
         onClick={[Function]}
       >
         54
-      </button>
+      </a>
     </li>
     <li
+      className="page-item"
       key="4"
     >
-      <button
-        className="rscgrid-pagination__btn"
+      <a
+        className="rscgrid-pagination__btn page-link"
+        href="#"
         onClick={[Function]}
       >
         55
-      </button>
+      </a>
     </li>
     <li
       className="rscgrid-pagination__sep"
@@ -167,23 +196,28 @@ exports[`<GridPagination /> for too many pages displays compact pagination contr
       ...
     </li>
     <li
+      className="page-item"
       key="6"
     >
-      <button
-        className="rscgrid-pagination__btn"
+      <a
+        className="rscgrid-pagination__btn page-link"
+        href="#"
         onClick={[Function]}
       >
         109
-      </button>
+      </a>
     </li>
-    <li>
-      <button
-        className="rscgrid-pagination__btn"
+    <li
+      className="page-item"
+    >
+      <a
+        className="rscgrid-pagination__btn page-link"
         disabled={false}
+        href="#"
         onClick={[Function]}
       >
         ❯
-      </button>
+      </a>
     </li>
   </ul>
 </nav>
@@ -194,26 +228,31 @@ exports[`<GridPagination /> for too many pages displays compact pagination contr
   className="rscgrid-pagination"
 >
   <ul
-    className="rscgrid-pagination__list"
+    className="rscgrid-pagination__list pagination"
   >
-    <li>
-      <button
-        className="rscgrid-pagination__btn"
+    <li
+      className="page-item"
+    >
+      <a
+        className="rscgrid-pagination__btn page-link"
         disabled={false}
+        href="#"
         onClick={[Function]}
       >
         ❮
-      </button>
+      </a>
     </li>
     <li
+      className="page-item"
       key="0"
     >
-      <button
-        className="rscgrid-pagination__btn"
+      <a
+        className="rscgrid-pagination__btn page-link"
+        href="#"
         onClick={[Function]}
       >
         1
-      </button>
+      </a>
     </li>
     <li
       className="rscgrid-pagination__sep"
@@ -223,34 +262,40 @@ exports[`<GridPagination /> for too many pages displays compact pagination contr
       ...
     </li>
     <li
+      className="page-item"
       key="2"
     >
-      <button
-        className="rscgrid-pagination__btn"
+      <a
+        className="rscgrid-pagination__btn page-link"
+        href="#"
         onClick={[Function]}
       >
         5
-      </button>
+      </a>
     </li>
     <li
+      className="page-item active"
       key="3"
     >
-      <button
-        className="rscgrid-pagination__btn rscgrid-pagination__btn--current"
+      <a
+        className="rscgrid-pagination__btn rscgrid-pagination__btn--current page-link"
+        href="#"
         onClick={[Function]}
       >
         6
-      </button>
+      </a>
     </li>
     <li
+      className="page-item"
       key="4"
     >
-      <button
-        className="rscgrid-pagination__btn"
+      <a
+        className="rscgrid-pagination__btn page-link"
+        href="#"
         onClick={[Function]}
       >
         7
-      </button>
+      </a>
     </li>
     <li
       className="rscgrid-pagination__sep"
@@ -260,23 +305,28 @@ exports[`<GridPagination /> for too many pages displays compact pagination contr
       ...
     </li>
     <li
+      className="page-item"
       key="6"
     >
-      <button
-        className="rscgrid-pagination__btn"
+      <a
+        className="rscgrid-pagination__btn page-link"
+        href="#"
         onClick={[Function]}
       >
         109
-      </button>
+      </a>
     </li>
-    <li>
-      <button
-        className="rscgrid-pagination__btn"
+    <li
+      className="page-item"
+    >
+      <a
+        className="rscgrid-pagination__btn page-link"
         disabled={false}
+        href="#"
         onClick={[Function]}
       >
         ❯
-      </button>
+      </a>
     </li>
   </ul>
 </nav>
@@ -287,26 +337,31 @@ exports[`<GridPagination /> for too many pages displays compact pagination contr
   className="rscgrid-pagination"
 >
   <ul
-    className="rscgrid-pagination__list"
+    className="rscgrid-pagination__list pagination"
   >
-    <li>
-      <button
-        className="rscgrid-pagination__btn"
+    <li
+      className="page-item"
+    >
+      <a
+        className="rscgrid-pagination__btn page-link"
         disabled={false}
+        href="#"
         onClick={[Function]}
       >
         ❮
-      </button>
+      </a>
     </li>
     <li
+      className="page-item"
       key="0"
     >
-      <button
-        className="rscgrid-pagination__btn"
+      <a
+        className="rscgrid-pagination__btn page-link"
+        href="#"
         onClick={[Function]}
       >
         1
-      </button>
+      </a>
     </li>
     <li
       className="rscgrid-pagination__sep"
@@ -316,34 +371,40 @@ exports[`<GridPagination /> for too many pages displays compact pagination contr
       ...
     </li>
     <li
+      className="page-item"
       key="2"
     >
-      <button
-        className="rscgrid-pagination__btn"
+      <a
+        className="rscgrid-pagination__btn page-link"
+        href="#"
         onClick={[Function]}
       >
         105
-      </button>
+      </a>
     </li>
     <li
+      className="page-item active"
       key="3"
     >
-      <button
-        className="rscgrid-pagination__btn rscgrid-pagination__btn--current"
+      <a
+        className="rscgrid-pagination__btn rscgrid-pagination__btn--current page-link"
+        href="#"
         onClick={[Function]}
       >
         106
-      </button>
+      </a>
     </li>
     <li
+      className="page-item"
       key="4"
     >
-      <button
-        className="rscgrid-pagination__btn"
+      <a
+        className="rscgrid-pagination__btn page-link"
+        href="#"
         onClick={[Function]}
       >
         107
-      </button>
+      </a>
     </li>
     <li
       className="rscgrid-pagination__sep"
@@ -353,23 +414,28 @@ exports[`<GridPagination /> for too many pages displays compact pagination contr
       ...
     </li>
     <li
+      className="page-item"
       key="6"
     >
-      <button
-        className="rscgrid-pagination__btn"
+      <a
+        className="rscgrid-pagination__btn page-link"
+        href="#"
         onClick={[Function]}
       >
         109
-      </button>
+      </a>
     </li>
-    <li>
-      <button
-        className="rscgrid-pagination__btn"
+    <li
+      className="page-item"
+    >
+      <a
+        className="rscgrid-pagination__btn page-link"
         disabled={false}
+        href="#"
         onClick={[Function]}
       >
         ❯
-      </button>
+      </a>
     </li>
   </ul>
 </nav>
@@ -380,26 +446,31 @@ exports[`<GridPagination /> for too many pages displays compact pagination contr
   className="rscgrid-pagination"
 >
   <ul
-    className="rscgrid-pagination__list"
+    className="rscgrid-pagination__list pagination"
   >
-    <li>
-      <button
-        className="rscgrid-pagination__btn"
+    <li
+      className="page-item"
+    >
+      <a
+        className="rscgrid-pagination__btn page-link"
         disabled={false}
+        href="#"
         onClick={[Function]}
       >
         ❮
-      </button>
+      </a>
     </li>
     <li
+      className="page-item"
       key="0"
     >
-      <button
-        className="rscgrid-pagination__btn"
+      <a
+        className="rscgrid-pagination__btn page-link"
+        href="#"
         onClick={[Function]}
       >
         1
-      </button>
+      </a>
     </li>
     <li
       className="rscgrid-pagination__sep"
@@ -409,53 +480,64 @@ exports[`<GridPagination /> for too many pages displays compact pagination contr
       ...
     </li>
     <li
+      className="page-item"
       key="2"
     >
-      <button
-        className="rscgrid-pagination__btn"
+      <a
+        className="rscgrid-pagination__btn page-link"
+        href="#"
         onClick={[Function]}
       >
         106
-      </button>
+      </a>
     </li>
     <li
+      className="page-item"
       key="3"
     >
-      <button
-        className="rscgrid-pagination__btn"
+      <a
+        className="rscgrid-pagination__btn page-link"
+        href="#"
         onClick={[Function]}
       >
         107
-      </button>
+      </a>
     </li>
     <li
+      className="page-item"
       key="4"
     >
-      <button
-        className="rscgrid-pagination__btn"
+      <a
+        className="rscgrid-pagination__btn page-link"
+        href="#"
         onClick={[Function]}
       >
         108
-      </button>
+      </a>
     </li>
     <li
+      className="page-item active"
       key="5"
     >
-      <button
-        className="rscgrid-pagination__btn rscgrid-pagination__btn--current"
+      <a
+        className="rscgrid-pagination__btn rscgrid-pagination__btn--current page-link"
+        href="#"
         onClick={[Function]}
       >
         109
-      </button>
+      </a>
     </li>
-    <li>
-      <button
-        className="rscgrid-pagination__btn"
+    <li
+      className="page-item disabled"
+    >
+      <a
+        className="rscgrid-pagination__btn page-link"
         disabled={true}
+        href="#"
         onClick={[Function]}
       >
         ❯
-      </button>
+      </a>
     </li>
   </ul>
 </nav>
@@ -466,85 +548,103 @@ exports[`<GridPagination /> renders properly 1`] = `
   className="rscgrid-pagination"
 >
   <ul
-    className="rscgrid-pagination__list"
+    className="rscgrid-pagination__list pagination"
   >
-    <li>
-      <button
-        className="rscgrid-pagination__btn"
+    <li
+      className="page-item disabled"
+    >
+      <a
+        className="rscgrid-pagination__btn page-link"
         disabled={true}
+        href="#"
         onClick={[Function]}
       >
         ❮
-      </button>
+      </a>
     </li>
     <li
+      className="page-item active"
       key="0"
     >
-      <button
-        className="rscgrid-pagination__btn rscgrid-pagination__btn--current"
+      <a
+        className="rscgrid-pagination__btn rscgrid-pagination__btn--current page-link"
+        href="#"
         onClick={[Function]}
       >
         1
-      </button>
+      </a>
     </li>
     <li
+      className="page-item"
       key="1"
     >
-      <button
-        className="rscgrid-pagination__btn"
+      <a
+        className="rscgrid-pagination__btn page-link"
+        href="#"
         onClick={[Function]}
       >
         2
-      </button>
+      </a>
     </li>
     <li
+      className="page-item"
       key="2"
     >
-      <button
-        className="rscgrid-pagination__btn"
+      <a
+        className="rscgrid-pagination__btn page-link"
+        href="#"
         onClick={[Function]}
       >
         3
-      </button>
+      </a>
     </li>
     <li
+      className="page-item"
       key="3"
     >
-      <button
-        className="rscgrid-pagination__btn"
+      <a
+        className="rscgrid-pagination__btn page-link"
+        href="#"
         onClick={[Function]}
       >
         4
-      </button>
+      </a>
     </li>
     <li
+      className="page-item"
       key="4"
     >
-      <button
-        className="rscgrid-pagination__btn"
+      <a
+        className="rscgrid-pagination__btn page-link"
+        href="#"
         onClick={[Function]}
       >
         5
-      </button>
+      </a>
     </li>
     <li
+      className="page-item"
       key="5"
     >
-      <button
-        className="rscgrid-pagination__btn"
+      <a
+        className="rscgrid-pagination__btn page-link"
+        href="#"
         onClick={[Function]}
       >
         6
-      </button>
+      </a>
     </li>
-    <li>
-      <button
-        className="rscgrid-pagination__btn"
+    <li
+      className="page-item"
+    >
+      <a
+        className="rscgrid-pagination__btn page-link"
         disabled={false}
+        href="#"
         onClick={[Function]}
       >
         ❯
-      </button>
+      </a>
     </li>
   </ul>
 </nav>

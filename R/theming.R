@@ -72,15 +72,25 @@ get_current_theme <- function() {
 #'
 #' @param widget_name The name of the widget (e.g: rscgrid)
 #' @param theme The bslib theme to generate the CSS dependency
+#' @param default Using the default theme or not
 gen_theme_dependency <- function(widget_name, theme, default = FALSE) {
   version <- "0.1.0"
   widget_theme_file <- sprintf("%s.scss", widget_name)
   if (default) {
     dependency_name <- sprintf("%s-default-theme-%s", widget_name, version)
-    scss_path <- system.file(package = "rscpages", "theming", "default", widget_theme_file)
+    scss_path <- system.file(
+      package = "rscpages",
+      "theming",
+      "default",
+      widget_theme_file
+    )
   } else {
     dependency_name <- sprintf("%s-theme-%s", widget_name, version)
-    scss_path <- system.file(package = "rscpages", "theming", widget_theme_file)
+    scss_path <- system.file(
+      package = "rscpages",
+      "theming",
+      widget_theme_file
+    )
   }
   bslib::bs_dependency(
     input = sass::sass_file(scss_path),
@@ -133,7 +143,7 @@ rsctable_sync_theme <- function() {
   }
   theme_vars <- bslib::bs_get_variables(theme, varnames = varnames)
 
-  pageButtonStyle <- list(
+  page_btns_style <- list(
     background = theme_vars[["white"]],
     color = theme_vars[["primary"]],
     border = "1px solid",
@@ -151,7 +161,7 @@ rsctable_sync_theme <- function() {
     )
   )
 
-  pageButtonCurrentStyle <- list(
+  page_btns_current_style <- list(
     backgroundColor = theme_vars[["primary"]],
     border = "1px solid",
     borderColor = theme_vars[["primary"]],
@@ -162,18 +172,18 @@ rsctable_sync_theme <- function() {
   )
 
   if (is.null(current_theme)) {
-    pageButtonStyle["border"] = "none"
-    pageButtonStyle["borderRadius"] = "16px"
-    pageButtonStyle["height"] = "32px"
-    pageButtonStyle["line-height"] = "32px"
-    pageButtonStyle["marginLeft"] = "0"
-    pageButtonStyle["marginRight"] = "5px"
-    pageButtonStyle["minWidth"] = "32px"
-    pageButtonStyle["padding"] = "0 0.8em"
+    page_btns_style["border"] <- "none"
+    page_btns_style["borderRadius"] <- "16px"
+    page_btns_style["height"] <- "32px"
+    page_btns_style["line-height"] <- "32px"
+    page_btns_style["marginLeft"] <- "0"
+    page_btns_style["marginRight"] <- "5px"
+    page_btns_style["minWidth"] <- "32px"
+    page_btns_style["padding"] <- "0 0.8em"
 
-    pageButtonCurrentStyle["backgroundColor"] = theme_vars[["primary"]]
-    pageButtonCurrentStyle["color"] = theme_vars[["white"]]
-    pageButtonCurrentStyle["border"] = "none"
+    page_btns_current_style["backgroundColor"] <- theme_vars[["primary"]]
+    page_btns_current_style["color"] <- theme_vars[["white"]]
+    page_btns_current_style["border"] <- "none"
   }
 
   reactable::reactableTheme(
@@ -200,7 +210,7 @@ rsctable_sync_theme <- function() {
       fontFamily = theme_vars[["font-family-base"]],
       padding = "24px 12px"
     ),
-    pageButtonStyle = pageButtonStyle,
-    pageButtonCurrentStyle = pageButtonCurrentStyle
+    pageButtonStyle = page_btns_style,
+    pageButtonCurrentStyle = page_btns_current_style
   )
 }
