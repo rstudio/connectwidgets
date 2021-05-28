@@ -3,13 +3,16 @@
   flex-direction: column;
 
   &__card {
-    align-items: flex-start;
     border-radius: 3px;
-    box-shadow: 0 0 3px 1px rgba(0,0,0, 0.2);
-    display: flex;
     margin-bottom: 2em;
     position: relative;
     width: 100%;
+
+    & .card-body {
+      align-items: flex-start;
+      display: flex;
+      padding: 0;
+    }
   }
 
   &__img {
@@ -26,6 +29,12 @@
     margin: 16px;
     margin-left: 0;
 
+    /*
+    &-author {
+      default styles on theming files
+    }
+    */
+
     &-title {
       margin: 0;
       line-height: 1.72em;
@@ -35,17 +44,10 @@
       line-height: 1.62em;
     }
 
+    /*
     &-link {
-      border-bottom: 2px solid #4C83B6;
-      color: #4C83B6;
-      display: inline-block;
-      line-height: 1.72em;
-
-      &:hover,
-      &:focus {
-        color: #4C83B6;
-        text-decoration: none;
-      }
+      default styles on theming files
     }
+    */
   }
 }

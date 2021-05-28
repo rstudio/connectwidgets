@@ -19,10 +19,9 @@ function FiltersSelected({ type }) {
         selections.map(selection => (
           <div
             key={selection.name}
-            className="rscfilter-selections__item"
+            className="rscfilter-selections__item badge rounded-pill bg-secondary"
           >
             { selection.label }
-            {/* TODO:  use proper role and key handler or :focus-within work-around */}
             {/* eslint-disable */}
             <span
               className="rscfilter-selections__item-discard"

@@ -33,14 +33,8 @@
   }
 
   &__count {
-    border-radius: 50%;
-    display: inline-block;
-    font-size: 0.84em;
-    font-weight: 700;
-    line-height: 1.72em;
     margin-left: 5px;
-    text-align: center;
-    width: 1.72em;
+    /* more default styles on theming files */
 
     &:empty {
       display: none;

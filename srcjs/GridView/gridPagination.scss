@@ -2,37 +2,12 @@
   Meant to be styled to match rsctable (reactable) pagination
 */
 .rscgrid-pagination {
-  &__list {
-    display: flex;
-    list-style: none;
-    padding: 0;
-  }
+  /*
+    more default styles on theming files
+  */
 
   &__sep {
     line-height: 2.4em;
-    margin-right: 5px;
-  }
-
-  &__btn {
-    border-radius: 16px;
-    border: none;
-    height: 32px;
-    margin-right: 5px;
-    min-width: 32px;
-    padding: 0 0.8em;
-  
-    &--current {
-      font-weight: 700;
-      pointer-events: none;
-    }
-
-    &:focus {
-      outline: none;
-    }
-
-    &:disabled {
-      opacity: 0.6;
-      pointer-events: none;
-    }
+    margin: 0 0.6em;
   }
 }

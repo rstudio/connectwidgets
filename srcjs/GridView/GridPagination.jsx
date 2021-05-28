@@ -3,9 +3,15 @@ import PropTypes from 'prop-types';
 import './gridPagination.scss';
 
 const btnClass = {
-  base: 'rscgrid-pagination__btn',
-  current: 'rscgrid-pagination__btn rscgrid-pagination__btn--current',
+  base: 'rscgrid-pagination__btn page-link',
+  current: 'rscgrid-pagination__btn rscgrid-pagination__btn--current page-link',
 };
+
+const bsPageClass = {
+  base: 'page-item',
+  disabled: 'page-item disabled',
+  current: 'page-item active',
+}
 
 function GridPagination({ total, perPage, currentPage, onChange }) {
   const sep = '...';
@@ -37,12 +43,16 @@ function GridPagination({ total, perPage, currentPage, onChange }) {
       }
       return (
         <li
+          className={currentPage === pageNum ? bsPageClass.current : bsPageClass.base}
           key={index}
         >
-          <button
+          {/* eslint-disable */}
+          <a
             className={currentPage === pageNum ? btnClass.current : btnClass.base}
-            onClick={() => gotoPage(pageNum)}
-          >{pageNum}</button>
+            href="#"
+            onClick={(ev) => { ev.preventDefault(); gotoPage(pageNum); }}
+          >{pageNum}</a>
+          {/* eslint-enable */}
         </li>
       );
     });
@@ -64,21 +74,31 @@ function GridPagination({ total, perPage, currentPage, onChange }) {
 
   return (
     <nav className="rscgrid-pagination">
-      <ul className="rscgrid-pagination__list">
-        <li>
-          <button
+      <ul className="rscgrid-pagination__list pagination">
+        <li
+          className={disablePrevious() ? bsPageClass.disabled : bsPageClass.base}
+        >
+          {/* eslint-disable */}
+          <a
             className={btnClass.base}
             disabled={disablePrevious()}
-            onClick={() => gotoPage(currentPage - 1)}
-          >❮</button>
+            href="#"
+            onClick={(ev) => { ev.preventDefault(); gotoPage(currentPage - 1); }}
+          >❮</a>
+          {/* eslint-enable */}
         </li>
         {pageButtons()}
-        <li>
-          <button
+        <li
+          className={disableNext() ? bsPageClass.disabled : bsPageClass.base}
+        >
+          {/* eslint-disable */}
+          <a
             className={btnClass.base}
             disabled={disableNext()}
-            onClick={() => gotoPage(currentPage + 1)}
-          >❯</button>
+            href="#"
+            onClick={(ev) => { ev.preventDefault(); gotoPage(currentPage + 1); }}
+          >❯</a>
+          {/* eslint-enable */}
         </li>
       </ul>
     </nav>

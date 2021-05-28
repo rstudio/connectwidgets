@@ -1,6 +1,4 @@
 .rscgrid {
-  font-family: "Lato", sans-serif;
-  font-size: 14px;
   width: 100%;
 
   &__grid {
@@ -16,13 +14,19 @@
 
   &-item {
     border-radius: 3px;
+    box-shadow: 0 0 3px 1px rgba(0,0,0, 0.0);
     margin-bottom: 3%;
     margin-right: 3%;
     overflow: hidden;
     transition: all 0.2s ease;
     width: 22.75%;
+
+    & .card-body {
+      padding: 0;
+    }
   
     &:hover {
+      box-shadow: 0 0 12px 2px rgba(0,0,0, 0.2);
       transform: scale(1.05);
     }
   
@@ -36,10 +40,11 @@
     }
   
     &__title {
+      /*
+        more default styles on theming files
+      */
       font-size: 1.2em;
-      font-weight: 700;
-      line-height: 1.72em;
-      margin: 0.4em 0 0 0;
+      margin-top: 0.4em;
       padding: 0 0.7em;
     }
     

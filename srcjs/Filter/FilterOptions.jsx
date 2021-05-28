@@ -30,7 +30,7 @@ function FilterOptions({ type }) {
   }
 
   return (
-    <div className="rscfilter-field__options">
+    <div className="rscfilter-field__options bg-white border">
       {
         options.map((option, index) => {
           const chClass = option.isSelected ? checkboxClass.checked : checkboxClass.base;

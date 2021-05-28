@@ -19,21 +19,11 @@
     box-shadow: -1px -1px 1px 0px rgba(0, 0, 0, 0.06);
     content: " ";
     height: 1em;
-    left: 3.9em;
+    left: 1em;
     position: absolute;
     top: -0.4em;
     transform: rotate(45deg);
     width: 1em;
-  }
-  
-  /* Cover shadow of overlay-box's arrow */
-  &::after {
-    content: " ";
-    height: 1em;
-    left: 2em;
-    position: absolute;
-    top: 0;
-    width: 30px;
   }
 
   &--active {
@@ -46,11 +36,10 @@
     padding-top: 15px;
     text-align: right;
 
+    /*
     &-reset {
-      border: none;
-      border-radius: 3px;
-      line-height: 36px;
-      padding: 0 16px;
+      default styles on theming files
     }
+    */
   }  
 }

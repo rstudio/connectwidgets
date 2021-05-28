@@ -165,7 +165,7 @@ class Filter extends React.Component {
           >
             Filter
           <span
-            className="rscfilter__count"
+            className="rscfilter__count badge rounded-pill bg-primary"
           >
             {this.filtersCount()}
           </span>
