@@ -18,7 +18,7 @@ function Card({ data }) {
     return (
       <div
         key={index}
-        className="rsccard__card card border-secondary"
+        className="rsccard__card card"
       >
         <div className="card-body">
           <div

@@ -184,7 +184,7 @@ rsctable_sync_theme <- function() {
     borderWidth = "1px",
     cellPadding = "16px 8px",
     style = list(
-      boxShadow = "0px 0px 4px 2px rgba(0, 0, 0, 0.1)",
+      border = sprintf("1px solid %s", theme_vars[["border-color"]]),
       borderRadius = 3
     ),
     headerStyle = list(

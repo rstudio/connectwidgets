@@ -1,1 +1,14 @@
-.rsccard {}
+@import 'contrast.scss';
+
+$lightContrast: contrast($body-bg, white);
+$darkContrast: contrast($body-bg, black);
+
+.rsccard {
+  &__meta {
+    &-author {
+      @if ($lightContrast > $darkContrast) {
+        color: $white!important;
+      }
+    }
+  }
+}

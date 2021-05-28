@@ -1,8 +1,21 @@
+@import 'contrast.scss';
+
+$lightContrast: contrast($body-bg, white);
+$darkContrast: contrast($body-bg, black);
+
 .rscgrid {
   &__grid {
     &--empty {
       border-bottom: 1px solid $border-color;
       border-top: 1px solid $border-color;
+    }
+  }
+
+  &-item {
+    &__meta {
+      @if ($lightContrast > $darkContrast) {
+        color: $white!important;
+      }
     }
   }
 }

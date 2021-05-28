@@ -76,7 +76,7 @@ class GridView extends React.Component {
       const imgUrl = contentImgSrc(item.url, item.guid);
       return (
         <div
-        className="rscgrid-item card border-secondary"
+        className="rscgrid-item card"
         key={item.guid || item.name}
         >
           <ContentImage
