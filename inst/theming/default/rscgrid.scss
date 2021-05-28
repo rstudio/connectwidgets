@@ -59,7 +59,7 @@
     background: $white;
     border-radius: 16px!important;
     border: none!important;
-    color: $gray-700;
+    color: $primary!important;
     height: 32px;
     line-height: 32px!important;
     margin-right: 5px;
@@ -69,7 +69,7 @@
   
     &--current {
       background: $primary!important;
-      color: $white;
+      color: $white!important;
       font-weight: 700;
       pointer-events: none;
     }

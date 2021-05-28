@@ -21,7 +21,7 @@ default_theme <- bslib::bs_theme(
   # principal variables in use by rscpages
   bg = "#FFF",
   fg = "#000",
-  primary = "#4C83B6",
+  primary = "#346899",
   secondary = "#858585",
   dark = "#252525",
   light = "#EDF6FF",
@@ -53,30 +53,35 @@ get_bootswatch_theme_name <- function() {
   }
 }
 
-#' Verify if a theme is already set within document meta,
-#' or within the user's code via bslib
-get_current_theme <- function() {
-  bslib_theme <- bslib::bs_current_theme()
+#' Get the current bootswatch theme if any
+get_current_bootswatch_theme <- function() {
   bootswatch_theme <- get_bootswatch_theme_name()
-  if (!is.null(bslib_theme)) {
-    return(bslib_theme)
-  }
   if (!is.null(bootswatch_theme)) {
-    print(bslib::bs_theme(bootswatch = bootswatch_theme))
-    return(bslib::bs_theme(bootswatch = bootswatch_theme))
+    bslib::bs_theme(bootswatch = bootswatch_theme)
+  } else {
+    NULL
   }
-  NULL
+}
+
+#' Get the current user provided bslib theme if any
+get_user_provided_theme <- function() {
+  bslib_theme <- bslib::bs_current_theme()
+  if (!is.null(bslib_theme)) {
+    bslib_theme
+  } else {
+    NULL
+  }
 }
 
 #' Generate the theme's bslib::bs_dependency to be used by a widget.
 #'
 #' @param widget_name The name of the widget (e.g: rscgrid)
 #' @param theme The bslib theme to generate the CSS dependency
-#' @param default Using the default theme or not
-gen_theme_dependency <- function(widget_name, theme, default = FALSE) {
+#' @param default_base Using the default theme or not
+gen_theme_dependency <- function(widget_name, theme, default_base = FALSE) {
   version <- "0.1.0"
   widget_theme_file <- sprintf("%s.scss", widget_name)
-  if (default) {
+  if (default_base) {
     dependency_name <- sprintf("%s-default-theme-%s", widget_name, version)
     scss_path <- system.file(
       package = "rscpages",
@@ -108,15 +113,19 @@ gen_theme_dependency <- function(widget_name, theme, default = FALSE) {
 #'
 #' @param widget_name The name of the widget (e.g: rscgrid)
 resolve_theme_dependency <- function(widget_name) {
-  theme <- get_current_theme()
-
-  if (is.null(theme)) {
-    # set default theme
-    gen_theme_dependency(widget_name, default_theme, default = TRUE)
-  } else {
-    # use bootswatch or user provided theme
-    gen_theme_dependency(widget_name, theme)
+  theme <- get_current_bootswatch_theme()
+  if (!is.null(theme)) {
+    # Use bootswatch theme
+    return(gen_theme_dependency(widget_name, theme))
   }
+
+  theme <- get_user_provided_theme()
+  if (!is.null(theme)) {
+    # Use user provided theme over the default rules
+    return(gen_theme_dependency(widget_name, theme, default_base = TRUE))
+  }
+
+  gen_theme_dependency(widget_name, default_theme, default_base = TRUE)
 }
 
 #' Resolve reactable theme for rsctable
@@ -135,12 +144,18 @@ rsctable_sync_theme <- function() {
     "white",
     "light"
   )
-  current_theme <- get_current_theme()
-  if (is.null(current_theme)) {
-    theme <- default_theme
-  } else {
-    theme <- current_theme
+
+  theme <- default_theme
+  user_theme <- get_user_provided_theme()
+  if (!is.null(user_theme)) {
+    theme <- user_theme
   }
+
+  bootswatch_theme <- get_current_bootswatch_theme()
+  if (!is.null(bootswatch_theme)) {
+    theme <- bootswatch_theme
+  }
+
   theme_vars <- bslib::bs_get_variables(theme, varnames = varnames)
 
   page_btns_style <- list(
@@ -171,7 +186,7 @@ rsctable_sync_theme <- function() {
     )
   )
 
-  if (is.null(current_theme)) {
+  if (is.null(bootswatch_theme)) {
     page_btns_style["border"] <- "none"
     page_btns_style["borderRadius"] <- "16px"
     page_btns_style["height"] <- "32px"

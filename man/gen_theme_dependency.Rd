@@ -4,14 +4,14 @@
 \alias{gen_theme_dependency}
 \title{Generate the theme's bslib::bs_dependency to be used by a widget.}
 \usage{
-gen_theme_dependency(widget_name, theme, default = FALSE)
+gen_theme_dependency(widget_name, theme, default_base = FALSE)
 }
 \arguments{
 \item{widget_name}{The name of the widget (e.g: rscgrid)}
 
 \item{theme}{The bslib theme to generate the CSS dependency}
 
-\item{default}{Using the default theme or not}
+\item{default_base}{Using the default theme or not}
 }
 \description{
 Generate the theme's bslib::bs_dependency to be used by a widget.
