@@ -1,61 +1,34 @@
+@import 'contrast.scss';
+
+$lightContrast: contrast($body-bg, white);
+$darkContrast: contrast($body-bg, black);
+
 .rscfilter {
-  font-family: $font-family-base;
-  font-size: $font-size-base;
-
-  &__count {
-    background: $primary;
-    color: $white;
-  }
-}
-
-.rscfilter-field {
-  &__input {
-    border: 1px solid $gray-500;
-
-    &:focus {
-      border-color: $primary;
+  &__toggle {
+    @if ($lightContrast > $darkContrast) {
+      color: white;
     }
   }
 
-  &__options {
-    background:$white;
-    border: 1px solid $gray-500;
+  &__toggle::after {
+    @if ($lightContrast > $darkContrast) {
+      background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iNSIgdmlld0JveD0iMCAwIDEwIDUiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0wIC00LjM3MTE0ZS0wN0w1IDVMMTAgMEwwIC00LjM3MTE0ZS0wN1oiIGZpbGw9IiNGRkZGRkYiLz4KPC9zdmc+");
+    }
   }
 }
 
 .rscfilter-pane {
-  background: $white;
-  color: $gray-700;
-
   &::before {
     background: $white;
   }
-  
-  &::after {
-    background: $white;
-  }
-  
-  &__actions {
-    border-top: 2px solid $gray-200;
-
-    &-reset {
-      background: $gray-200;
-    }
-  }  
 }
 
 .rscfilter-option {
   &__checkbox {
-    border: 1px solid $gray-500;
+    border: 1px solid $border-color;
   }
 
   &:focus &__checkbox {
     border: 2px solid $primary;
-  }
-}
-
-.rscfilter-selections {
-  &__item {
-    background: $gray-200;
   }
 }

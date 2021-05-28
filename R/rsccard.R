@@ -33,6 +33,9 @@ rsccard <- function(content) {
     )
   )
 
+  dependencies <- crosstalk::crosstalkLibs()
+  dependencies[["rsccard-theme"]] <- resolve_theme_dependency("rsccard")
+
   # create widget
   htmlwidgets::createWidget(
     name = "rsccard",
@@ -40,7 +43,7 @@ rsccard <- function(content) {
     width = "auto",
     height = "auto",
     package = "rscpages",
-    dependencies = crosstalk::crosstalkLibs()
+    dependencies = dependencies
   )
 }
 

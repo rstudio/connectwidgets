@@ -42,12 +42,12 @@ default_theme <- bslib::bs_theme(
 
 #' Get docmeta theme name (output: html_document: theme)
 get_bootswatch_theme_name <- function() {
-  bswatch_theme <- tryCatch({
-    rmarkdown::metadata$output$html_document$theme
+  theme_name <- tryCatch({
+    rmarkdown::metadata$output$html_document$theme$bootswatch
   }, error = function(e) e)
-  theme_in_meta <- !inherits(bswatch_theme, "error") && !is.null(bswatch_theme)
+  theme_in_meta <- !inherits(theme_name, "error") && !is.null(theme_name)
   if (theme_in_meta) {
-    bswatch_theme
+    theme_name
   } else {
     NULL
   }
@@ -62,6 +62,7 @@ get_current_theme <- function() {
     return(bslib_theme)
   }
   if (!is.null(bootswatch_theme)) {
+    print(bslib::bs_theme(bootswatch = bootswatch_theme))
     return(bslib::bs_theme(bootswatch = bootswatch_theme))
   }
   NULL
@@ -71,16 +72,24 @@ get_current_theme <- function() {
 #'
 #' @param widget_name The name of the widget (e.g: rscgrid)
 #' @param theme The bslib theme to generate the CSS dependency
-gen_theme_dependency <- function(widget_name, theme) {
-  version <- "0.1.11"
-  dependency_name <- sprintf("%s-theme-%s", widget_name, version)
+gen_theme_dependency <- function(widget_name, theme, default = FALSE) {
+  version <- "0.1.0"
   widget_theme_file <- sprintf("%s.scss", widget_name)
-  scss_path <- system.file(package = "rscpages", "theming", widget_theme_file)
+  if (default) {
+    dependency_name <- sprintf("%s-default-theme-%s", widget_name, version)
+    scss_path <- system.file(package = "rscpages", "theming", "default", widget_theme_file)
+  } else {
+    dependency_name <- sprintf("%s-theme-%s", widget_name, version)
+    scss_path <- system.file(package = "rscpages", "theming", widget_theme_file)
+  }
   bslib::bs_dependency(
     input = sass::sass_file(scss_path),
     theme = theme,
     name = dependency_name,
-    version = version
+    version = version,
+    .sass_args = list(
+      cache = FALSE
+    )
   )
 }
 
@@ -93,13 +102,12 @@ resolve_theme_dependency <- function(widget_name) {
 
   if (is.null(theme)) {
     # set default theme
-    theme <- default_theme
+    gen_theme_dependency(widget_name, default_theme, default = TRUE)
   } else {
     # use bootswatch or user provided theme
-    theme <- bslib::bs_theme_update(theme)
+    # theme <- bslib::bs_theme_update(theme)
+    gen_theme_dependency(widget_name, theme)
   }
-
-  gen_theme_dependency(widget_name, theme)
 }
 
 #' Resolve reactable theme for rsctable
@@ -108,18 +116,67 @@ rsctable_sync_theme <- function() {
     "body-bg",
     "body-color",
     "border-color",
+    "border-radius",
     "font-family-base",
     "primary",
+    "gray-100",
     "gray-300",
+    "gray-500",
     "gray-700",
     "white",
     "light"
   )
-  theme <- get_current_theme()
-  if (is.null(theme)) {
+  current_theme <- get_current_theme()
+  if (is.null(current_theme)) {
     theme <- default_theme
+  } else {
+    theme <- current_theme
   }
   theme_vars <- bslib::bs_get_variables(theme, varnames = varnames)
+
+  pageButtonStyle <- list(
+    background = theme_vars[["white"]],
+    color = theme_vars[["primary"]],
+    border = "1px solid",
+    borderColor = theme_vars[["border-color"]],
+    borderRadius = "0",
+    padding = "0.5rem 0.75rem",
+    lineHeight = "1.25em",
+    marginLeft = "-1px",
+    "&:hover" = list(
+      background = theme_vars[["gray-300"]]
+    ),
+    "&[disabled]" = list(
+      color = theme_vars[["gray-700"]],
+      pointerEvents = "none"
+    )
+  )
+
+  pageButtonCurrentStyle <- list(
+    backgroundColor = theme_vars[["primary"]],
+    border = "1px solid",
+    borderColor = theme_vars[["primary"]],
+    color = theme_vars[["white"]],
+    "&:hover" = list(
+      pointerEvents = "none"
+    )
+  )
+
+  if (is.null(current_theme)) {
+    pageButtonStyle["border"] = "none"
+    pageButtonStyle["borderRadius"] = "16px"
+    pageButtonStyle["height"] = "32px"
+    pageButtonStyle["line-height"] = "32px"
+    pageButtonStyle["marginLeft"] = "0"
+    pageButtonStyle["marginRight"] = "5px"
+    pageButtonStyle["minWidth"] = "32px"
+    pageButtonStyle["padding"] = "0 0.8em"
+
+    pageButtonCurrentStyle["backgroundColor"] = theme_vars[["primary"]]
+    pageButtonCurrentStyle["color"] = theme_vars[["white"]]
+    pageButtonCurrentStyle["border"] = "none"
+  }
+
   reactable::reactableTheme(
     color = theme_vars[["body-color"]],
     backgroundColor = theme_vars[["body-bg"]],
@@ -142,28 +199,9 @@ rsctable_sync_theme <- function() {
     paginationStyle = list(
       flexDirection = "row-reverse",
       fontFamily = theme_vars[["font-family-base"]],
-      fontSize = "0.9em",
       padding = "24px 12px"
     ),
-    pageButtonStyle = list(
-      background = theme_vars[["white"]],
-      color = theme_vars[["gray-700"]],
-      borderRadius = "16px",
-      marginRight = "5px",
-      padding = "0 0.8em",
-      height = "32px",
-      minWidth = "32px",
-      "&:hover" = list(
-        background = theme_vars[["gray-300"]]
-      )
-    ),
-    pageButtonCurrentStyle = list(
-      # backgroundColor = sprintf("%s12", theme_vars[["primary"]]),
-      backgroundColor = theme_vars[["light"]],
-      color = theme_vars[["primary"]],
-      "&:hover" = list(
-        backgroundColor = theme_vars[["light"]]
-      )
-    )
+    pageButtonStyle = pageButtonStyle,
+    pageButtonCurrentStyle = pageButtonCurrentStyle
   )
 }
