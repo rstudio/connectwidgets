@@ -212,7 +212,7 @@ Display multiple content items via a grid:
 
 #### table
 
-Provide a more detailed view with table:
+Provide a more detailed view with a table:
 
 ![a sample table](man/figures/README-table-1.png)
 
@@ -227,5 +227,115 @@ Read more at `vignette("using-crosstalk")`.
 
 ![search and filter widgets](man/figures/README-search-filter-2.png)
 
+## Theming
+
+`rscpages` components support styling in `rmarkdown::html_document` via the `bslib` package.
+You can supply a [Bootswatch theme](https://bootswatch.com/4/) in the yaml header, e.g.
+
+```yaml
+---
+output:
+  html_document:
+    theme:
+      bootswatch: minty
+---
+```
+
+or pass in other customizations consistent with your organization's style.
+
 Once you're happy with the look of your page, Publish it to RStudio Connect.
 Read more at `vignette("publishing")`.
+
+## A more customized example:
+
+
+````markdown
+---
+output:
+  html_document:
+    theme:
+      bootswatch: lumen
+---
+
+```{css, echo=FALSE}`r ''`
+.main-container {
+    width: 100%;
+    max-width: unset;
+}
+
+.main {
+    max-width: 940px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* https://codepen.io/eversionsystems/pen/YOmqdj */
+.jumbotron {
+  color: white;
+  background-image: url("https://source.unsplash.com/d30sszrW7Vw/1920x1080");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 50vh;
+}
+```
+
+```{r, include=FALSE}`r ''`
+library(rscpages)
+library(dplyr)
+library(htmltools)
+
+knitr::opts_chunk$set(
+  comment = "",
+  echo = FALSE, warning = FALSE, message = FALSE
+)
+
+rsc_content <-
+  connect() %>%
+  content()
+
+apis <- rsc_content %>%
+  filter(app_mode %in% c("api", "python-api"))
+```
+
+```{r}`r ''`
+div(
+  class = "jumbotron jumbotron-fluid",
+  div(
+    class = "container",
+    h1("Connect API Portal", class = "display-4"),
+    p("Model APIs maintained by the data science team")
+  )
+)
+```
+
+```{r}`r ''`
+div(
+  class = "main",
+  h3("Featured APIs", class = "text-center"),
+  {
+    model_copy <- c(
+      "Our most important model: Distillery retro taiyaki fashion axe.
+      Art party cray intelligentsia flexitarian.",
+      "Our second most important model: Pug af twee portland pitchfork brunch 
+      kogi gochujang organic migas shaman four dollar toast 90's slow-carb."
+      )
+    
+    apis %>%
+      slice_head(n = 2) %>%
+      mutate(
+      description = model_copy
+      ) %>% 
+      rsccard()
+  },
+  h3("All APIs", class = "text-center"),
+  p("that thing George Box said one time. You know what thing."),
+  {
+    tagList(
+      bscols(rscsearch(apis), rscfilter(apis)),
+      rscgrid(apis)
+    )
+  }
+)
+```
+````

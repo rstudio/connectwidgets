@@ -132,23 +132,23 @@ all_content <- client %>%
   content()
 
 glimpse(all_content)
-#> Rows: 1,240
+#> Rows: 1,242
 #> Columns: 15
-#> $ id               <int> 3979, 4603, 4602, 4954, 4974, 4973, 4957, 4956, 4955,…
-#> $ guid             <chr> "ca22a1f6-bab5-4fc0-8f38-ed8021be41f5", "e7c26684-ec4…
-#> $ name             <chr> "github-issues-connect", "group-info", "user-info", "…
-#> $ title            <chr> NA, "group-info", "user-info", "rscpages-dashboard", …
-#> $ description      <chr> "A table pin with 19475 rows and 10 columns.", "Resul…
-#> $ app_mode         <chr> "static", "static", "static", "rmd-shiny", "shiny", "…
-#> $ content_category <chr> "pin", "pin", "pin", "", "", "", "", "", "", "", "", …
-#> $ url              <chr> "https://rsc.radixu.com/content/ca22a1f6-bab5-4fc0-8f…
-#> $ owner_guid       <chr> "1d6cc041-eb11-411e-810e-718508cde25b", "0fc96747-ec9…
-#> $ owner_username   <chr> "brian", "kelly.obriant", "kelly.obriant", "david", "…
-#> $ owner_first_name <chr> "Brian", "Kelly", "Kelly", "E. David", "Toph", "Chris…
-#> $ owner_last_name  <chr> "Smith", "@RStudio", "@RStudio", "Aja", "Allen", "Tie…
-#> $ tags             <list> [<data.frame[2 x 5]>], [<data.frame[1 x 5]>], [<data…
-#> $ created_time     <dttm> 2020-04-03 17:54:27, 2020-12-05 02:37:30, 2020-12-05…
-#> $ updated_time     <dttm> 2021-05-28 07:03:22, 2021-05-28 07:00:37, 2021-05-28…
+#> $ id               <int> 4980, 4957, 3979, 4603, 4602, 4978, 4954, 4974, 4973,…
+#> $ guid             <chr> "d3768fcc-41e0-40e5-9083-588444f1fdcf", "4a254e6d-0ad…
+#> $ name             <chr> "dont_know_why", "api-portal", "github-issues-connect…
+#> $ title            <chr> "don't know why", "api-portal", NA, "group-info", "us…
+#> $ description      <chr> "", "", "A table pin with 19480 rows and 10 columns."…
+#> $ app_mode         <chr> "rmd-static", "rmd-static", "static", "static", "stat…
+#> $ content_category <chr> "", "", "pin", "pin", "pin", "", "", "", "", "", "", …
+#> $ url              <chr> "https://rsc.radixu.com/content/d3768fcc-41e0-40e5-90…
+#> $ owner_guid       <chr> "05d349d3-4549-44af-94ff-054b7855c085", "05d349d3-454…
+#> $ owner_username   <chr> "david", "david", "brian", "kelly.obriant", "kelly.ob…
+#> $ owner_first_name <chr> "E. David", "E. David", "Brian", "Kelly", "Kelly", "E…
+#> $ owner_last_name  <chr> "Aja", "Aja", "Smith", "@RStudio", "@RStudio", "Aja",…
+#> $ tags             <list> <NULL>, <NULL>, [<data.frame[2 x 5]>], [<data.frame[…
+#> $ created_time     <dttm> 2021-06-01 22:41:54, 2021-05-21 00:23:07, 2020-04-03…
+#> $ updated_time     <dttm> 2021-06-01 22:41:58, 2021-06-01 18:23:31, 2021-06-01…
 
 sample_content <- all_content %>%
   arrange(desc(updated_time)) %>%
@@ -222,7 +222,7 @@ dplyr:
 all_content %>% 
   filter(updated_time >= "2021-01-01") %>% 
   arrange(created_time)
-#> # A tibble: 47 x 15
+#> # A tibble: 49 x 15
 #>       id guid    name    title   description   app_mode content_category url    
 #>    <int> <chr>   <chr>   <chr>   <chr>         <chr>    <chr>            <chr>  
 #>  1  1890 be63ca… rmd     rmd4    "This rmd is… rmd-sta… ""               https:…
@@ -235,7 +235,7 @@ all_content %>%
 #>  8  4631 68c9b2… top-5-… top-5-… ""            python-… ""               https:…
 #>  9  4650 ebdea3… reticu… reticu… ""            static   ""               https:…
 #> 10  4651 321bba… rsc_sp… RSC: S… ""            static   ""               https:…
-#> # … with 37 more rows, and 7 more variables: owner_guid <chr>,
+#> # … with 39 more rows, and 7 more variables: owner_guid <chr>,
 #> #   owner_username <chr>, owner_first_name <chr>, owner_last_name <chr>,
 #> #   tags <list>, created_time <dttm>, updated_time <dttm>
 ```
@@ -266,7 +266,7 @@ Display multiple content items via a grid:
 
 #### table
 
-Provide a more detailed view with table:
+Provide a more detailed view with a table:
 
 ![a sample table](man/figures/README-table-1.png)
 
@@ -282,5 +282,116 @@ more control over searching and filtering. Read more at
 
 ![search and filter widgets](man/figures/README-search-filter-2.png)
 
+## Theming
+
+`rscpages` components support styling in `rmarkdown::html_document` via
+the `bslib` package. You can supply a [Bootswatch
+theme](https://bootswatch.com/4/) in the yaml header, e.g.
+
+``` yaml
+---
+output:
+  html_document:
+    theme:
+      bootswatch: minty
+---
+```
+
+or pass in other customizations consistent with your organization’s
+style.
+
 Once you’re happy with the look of your page, Publish it to RStudio
 Connect. Read more at `vignette("publishing")`.
+
+## A more customized example:
+
+```` markdown
+---
+output:
+  html_document:
+    theme:
+      bootswatch: lumen
+---
+
+```{css, echo=FALSE}
+.main-container {
+    width: 100%;
+    max-width: unset;
+}
+
+.main {
+    max-width: 940px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* https://codepen.io/eversionsystems/pen/YOmqdj */
+.jumbotron {
+  color: white;
+  background-image: url("https://source.unsplash.com/d30sszrW7Vw/1920x1080");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 50vh;
+}
+```
+
+```{r, include=FALSE}
+library(rscpages)
+library(dplyr)
+library(htmltools)
+
+knitr::opts_chunk$set(
+  comment = "",
+  echo = FALSE, warning = FALSE, message = FALSE
+)
+
+rsc_content <-
+  connect() %>%
+  content()
+
+apis <- rsc_content %>%
+  filter(app_mode %in% c("api", "python-api"))
+```
+
+```{r}
+div(
+  class = "jumbotron jumbotron-fluid",
+  div(
+    class = "container",
+    h1("Connect API Portal", class = "display-4"),
+    p("Model APIs maintained by the data science team")
+  )
+)
+```
+
+```{r}
+div(
+  class = "main",
+  h3("Featured APIs", class = "text-center"),
+  {
+    model_copy <- c(
+      "Our most important model: Distillery retro taiyaki fashion axe.
+      Art party cray intelligentsia flexitarian.",
+      "Our second most important model: Pug af twee portland pitchfork brunch 
+      kogi gochujang organic migas shaman four dollar toast 90's slow-carb."
+      )
+    
+    apis %>%
+      slice_head(n = 2) %>%
+      mutate(
+      description = model_copy
+      ) %>% 
+      rsccard()
+  },
+  h3("All APIs", class = "text-center"),
+  p("that thing George Box said one time. You know what thing."),
+  {
+    tagList(
+      bscols(rscsearch(apis), rscfilter(apis)),
+      rscgrid(apis)
+    )
+  }
+)
+```
+````
