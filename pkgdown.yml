@@ -3,7 +3,7 @@ pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   publishing: publishing.html
-last_built: 2021-05-25T13:24Z
+last_built: 2021-06-01T16:33Z
 urls:
   reference: https://rstudio.github.io/rscpages/reference
   article: https://rstudio.github.io/rscpages/articles
