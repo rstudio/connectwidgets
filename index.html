@@ -56,6 +56,9 @@
 <li>
       <a href="articles/publishing.html">Publishing</a>
     </li>
+    <li>
+      <a href="articles/using-crosstalk.html">Using Crosstalk</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -117,51 +120,52 @@
 <span id="cb3-17"><a href="#cb3-17"></a><span class="bn">all_content &lt;- client %&gt;%</span></span>
 <span id="cb3-18"><a href="#cb3-18"></a><span class="bn">  content()</span></span>
 <span id="cb3-19"><a href="#cb3-19"></a></span>
-<span id="cb3-20"><a href="#cb3-20"></a><span class="bn">sample_content &lt;- all_content %&gt;% slice_sample(prop = .3)</span></span>
-<span id="cb3-21"><a href="#cb3-21"></a><span class="bn">```</span></span>
-<span id="cb3-22"><a href="#cb3-22"></a></span>
-<span id="cb3-23"><a href="#cb3-23"></a>![](https://source.unsplash.com/1920x1080/?forest "A random forest.")</span>
+<span id="cb3-20"><a href="#cb3-20"></a><span class="bn">sample_content &lt;- all_content %&gt;%</span></span>
+<span id="cb3-21"><a href="#cb3-21"></a><span class="bn">  arrange(desc(updated_time)) %&gt;%</span></span>
+<span id="cb3-22"><a href="#cb3-22"></a><span class="bn">  slice_head(prop = .3)</span></span>
+<span id="cb3-23"><a href="#cb3-23"></a><span class="bn">```</span></span>
 <span id="cb3-24"><a href="#cb3-24"></a></span>
-<span id="cb3-25"><a href="#cb3-25"></a><span class="fu">## Components</span></span>
+<span id="cb3-25"><a href="#cb3-25"></a>![](https://source.unsplash.com/1920x1080/?forest "A random forest.")</span>
 <span id="cb3-26"><a href="#cb3-26"></a></span>
-<span id="cb3-27"><a href="#cb3-27"></a><span class="fu">### card</span></span>
+<span id="cb3-27"><a href="#cb3-27"></a><span class="fu">## Components</span></span>
 <span id="cb3-28"><a href="#cb3-28"></a></span>
-<span id="cb3-29"><a href="#cb3-29"></a><span class="bn">```{r card}</span></span>
-<span id="cb3-30"><a href="#cb3-30"></a><span class="bn">sample_content %&gt;%</span></span>
-<span id="cb3-31"><a href="#cb3-31"></a><span class="bn">  slice(1) %&gt;%</span></span>
-<span id="cb3-32"><a href="#cb3-32"></a><span class="bn">  rsccard()</span></span>
-<span id="cb3-33"><a href="#cb3-33"></a><span class="bn">```</span></span>
-<span id="cb3-34"><a href="#cb3-34"></a></span>
-<span id="cb3-35"><a href="#cb3-35"></a><span class="fu">### grid</span></span>
+<span id="cb3-29"><a href="#cb3-29"></a><span class="fu">### card</span></span>
+<span id="cb3-30"><a href="#cb3-30"></a></span>
+<span id="cb3-31"><a href="#cb3-31"></a><span class="bn">```{r card}</span></span>
+<span id="cb3-32"><a href="#cb3-32"></a><span class="bn">sample_content %&gt;%</span></span>
+<span id="cb3-33"><a href="#cb3-33"></a><span class="bn">  slice(1) %&gt;%</span></span>
+<span id="cb3-34"><a href="#cb3-34"></a><span class="bn">  rsccard()</span></span>
+<span id="cb3-35"><a href="#cb3-35"></a><span class="bn">```</span></span>
 <span id="cb3-36"><a href="#cb3-36"></a></span>
-<span id="cb3-37"><a href="#cb3-37"></a><span class="bn">```{r grid}</span></span>
-<span id="cb3-38"><a href="#cb3-38"></a><span class="bn">sample_content %&gt;%</span></span>
-<span id="cb3-39"><a href="#cb3-39"></a><span class="bn">  rscgrid()</span></span>
-<span id="cb3-40"><a href="#cb3-40"></a><span class="bn">```</span></span>
-<span id="cb3-41"><a href="#cb3-41"></a></span>
-<span id="cb3-42"><a href="#cb3-42"></a><span class="fu">### table</span></span>
+<span id="cb3-37"><a href="#cb3-37"></a><span class="fu">### grid</span></span>
+<span id="cb3-38"><a href="#cb3-38"></a></span>
+<span id="cb3-39"><a href="#cb3-39"></a><span class="bn">```{r grid}</span></span>
+<span id="cb3-40"><a href="#cb3-40"></a><span class="bn">sample_content %&gt;%</span></span>
+<span id="cb3-41"><a href="#cb3-41"></a><span class="bn">  rscgrid()</span></span>
+<span id="cb3-42"><a href="#cb3-42"></a><span class="bn">```</span></span>
 <span id="cb3-43"><a href="#cb3-43"></a></span>
-<span id="cb3-44"><a href="#cb3-44"></a><span class="bn">```{r table}</span></span>
-<span id="cb3-45"><a href="#cb3-45"></a><span class="bn">sample_content %&gt;%</span></span>
-<span id="cb3-46"><a href="#cb3-46"></a><span class="bn">  rsctable()</span></span>
-<span id="cb3-47"><a href="#cb3-47"></a><span class="bn">```</span></span>
-<span id="cb3-48"><a href="#cb3-48"></a></span>
-<span id="cb3-49"><a href="#cb3-49"></a><span class="fu">### search &amp; filter</span></span>
+<span id="cb3-44"><a href="#cb3-44"></a><span class="fu">### table</span></span>
+<span id="cb3-45"><a href="#cb3-45"></a></span>
+<span id="cb3-46"><a href="#cb3-46"></a><span class="bn">```{r table}</span></span>
+<span id="cb3-47"><a href="#cb3-47"></a><span class="bn">sample_content %&gt;%</span></span>
+<span id="cb3-48"><a href="#cb3-48"></a><span class="bn">  rsctable()</span></span>
+<span id="cb3-49"><a href="#cb3-49"></a><span class="bn">```</span></span>
 <span id="cb3-50"><a href="#cb3-50"></a></span>
-<span id="cb3-51"><a href="#cb3-51"></a><span class="bn">```{r search-and-filter}</span></span>
-<span id="cb3-52"><a href="#cb3-52"></a><span class="bn">bscols(rscsearch(all_content), rscfilter(all_content), widths = c(2, 2))</span></span>
-<span id="cb3-53"><a href="#cb3-53"></a><span class="bn">rsctable(all_content)</span></span>
-<span id="cb3-54"><a href="#cb3-54"></a><span class="bn">```</span></span></code></pre></div>
+<span id="cb3-51"><a href="#cb3-51"></a><span class="fu">### search &amp; filter</span></span>
+<span id="cb3-52"><a href="#cb3-52"></a></span>
+<span id="cb3-53"><a href="#cb3-53"></a><span class="bn">```{r search-and-filter}</span></span>
+<span id="cb3-54"><a href="#cb3-54"></a><span class="bn">bscols(rscsearch(all_content), rscfilter(all_content), widths = c(2, 2))</span></span>
+<span id="cb3-55"><a href="#cb3-55"></a><span class="bn">rsctable(all_content)</span></span>
+<span id="cb3-56"><a href="#cb3-56"></a><span class="bn">```</span></span></code></pre></div>
 <div id="setup" class="section level3">
 <h3 class="hasAnchor">
 <a href="#setup" class="anchor"></a>Setup</h3>
-<p>the client object:</p>
+<p>The client object:</p>
 <ul>
-<li>validates your API key with the Connect server</li>
-<li>ensures you are running a recent enough version of Connect</li>
-<li>warns if you will be unable to see content images while you are developing your page</li>
+<li>Validates your API key with the RStudio Connect server</li>
+<li>Ensures you are running a recent enough version of Connect</li>
 </ul>
-<p>Use an <code>.Renviron</code> file to set the <code>CONNECT_SERVER</code> and <code>CONNECT_API_KEY</code> environment variables. RStudio Connect will <a href="https://docs.rstudio.com/connect/news/#rstudio-connect-188">automatically apply</a> values for these at document run time, so there is no need to include them in your code:</p>
+<p>Use an <code>.Renviron</code> file to set the <code>CONNECT_SERVER</code> and <code>CONNECT_API_KEY</code> environment variables. If you’re not familiar with setting environment variables, check out the <a href="https://rstats.wtf/r-startup.html#renviron">R Startup chapter</a> of What They Forgot to Teach You About R. RStudio Connect will <a href="https://docs.rstudio.com/connect/news/#rstudio-connect-188">automatically apply</a> values for these at document run time, so there is no need to include them in your code:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rstudio.github.io/rscpages">rscpages</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
@@ -185,25 +189,27 @@
   <span class="fu"><a href="reference/content.html">content</a></span><span class="op">(</span><span class="op">)</span>
 
 <span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span><span class="op">(</span><span class="va">all_content</span><span class="op">)</span>
-<span class="co">#&gt; Rows: 1,234</span>
+<span class="co">#&gt; Rows: 1,242</span>
 <span class="co">#&gt; Columns: 15</span>
-<span class="co">#&gt; $ id               &lt;int&gt; 4954, 4953, 3979, 4603, 4602, 4925, 4922, 4917, 4901,…</span>
-<span class="co">#&gt; $ guid             &lt;chr&gt; "194de38f-bcd9-4116-918d-dfa7c5fe1aa6", "c1660506-677…</span>
-<span class="co">#&gt; $ name             &lt;chr&gt; "dashboard", "pages-readme", "github-issues-connect",…</span>
-<span class="co">#&gt; $ title            &lt;chr&gt; "dashboard", "pages-readme", NA, "group-info", "user-…</span>
-<span class="co">#&gt; $ description      &lt;chr&gt; "", "", "A table pin with 19421 rows and 10 columns."…</span>
-<span class="co">#&gt; $ app_mode         &lt;chr&gt; "rmd-shiny", "rmd-shiny", "static", "static", "static…</span>
-<span class="co">#&gt; $ content_category &lt;chr&gt; "", "", "pin", "pin", "pin", "", "", "", "api", "", "…</span>
-<span class="co">#&gt; $ url              &lt;chr&gt; "https://rsc.radixu.com/content/194de38f-bcd9-4116-91…</span>
+<span class="co">#&gt; $ id               &lt;int&gt; 4980, 4957, 3979, 4603, 4602, 4978, 4954, 4974, 4973,…</span>
+<span class="co">#&gt; $ guid             &lt;chr&gt; "d3768fcc-41e0-40e5-9083-588444f1fdcf", "4a254e6d-0ad…</span>
+<span class="co">#&gt; $ name             &lt;chr&gt; "dont_know_why", "api-portal", "github-issues-connect…</span>
+<span class="co">#&gt; $ title            &lt;chr&gt; "don't know why", "api-portal", NA, "group-info", "us…</span>
+<span class="co">#&gt; $ description      &lt;chr&gt; "", "", "A table pin with 19480 rows and 10 columns."…</span>
+<span class="co">#&gt; $ app_mode         &lt;chr&gt; "rmd-static", "rmd-static", "static", "static", "stat…</span>
+<span class="co">#&gt; $ content_category &lt;chr&gt; "", "", "pin", "pin", "pin", "", "", "", "", "", "", …</span>
+<span class="co">#&gt; $ url              &lt;chr&gt; "https://rsc.radixu.com/content/d3768fcc-41e0-40e5-90…</span>
 <span class="co">#&gt; $ owner_guid       &lt;chr&gt; "05d349d3-4549-44af-94ff-054b7855c085", "05d349d3-454…</span>
 <span class="co">#&gt; $ owner_username   &lt;chr&gt; "david", "david", "brian", "kelly.obriant", "kelly.ob…</span>
-<span class="co">#&gt; $ owner_first_name &lt;chr&gt; "E. David", "E. David", "Brian", "Kelly", "Kelly", "T…</span>
-<span class="co">#&gt; $ owner_last_name  &lt;chr&gt; "Aja", "Aja", "Smith", "@RStudio", "@RStudio", "Mock"…</span>
+<span class="co">#&gt; $ owner_first_name &lt;chr&gt; "E. David", "E. David", "Brian", "Kelly", "Kelly", "E…</span>
+<span class="co">#&gt; $ owner_last_name  &lt;chr&gt; "Aja", "Aja", "Smith", "@RStudio", "@RStudio", "Aja",…</span>
 <span class="co">#&gt; $ tags             &lt;list&gt; &lt;NULL&gt;, &lt;NULL&gt;, [&lt;data.frame[2 x 5]&gt;], [&lt;data.frame[…</span>
-<span class="co">#&gt; $ created_time     &lt;dttm&gt; 2021-05-20 15:29:00, 2021-05-20 13:30:47, 2020-04-03…</span>
-<span class="co">#&gt; $ updated_time     &lt;dttm&gt; 2021-05-20 15:35:59, 2021-05-20 13:30:57, 2021-05-20…</span>
+<span class="co">#&gt; $ created_time     &lt;dttm&gt; 2021-06-01 22:41:54, 2021-05-21 00:23:07, 2020-04-03…</span>
+<span class="co">#&gt; $ updated_time     &lt;dttm&gt; 2021-06-01 22:41:58, 2021-06-01 18:23:31, 2021-06-01…</span>
 
-<span class="va">sample_content</span> <span class="op">&lt;-</span> <span class="va">all_content</span> <span class="op">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_sample</a></span><span class="op">(</span>prop <span class="op">=</span> <span class="fl">.3</span><span class="op">)</span></code></pre></div>
+<span class="va">sample_content</span> <span class="op">&lt;-</span> <span class="va">all_content</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">updated_time</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_head</a></span><span class="op">(</span>prop <span class="op">=</span> <span class="fl">.3</span><span class="op">)</span></code></pre></div>
 <div id="content" class="section level4">
 <h4 class="hasAnchor">
 <a href="#content" class="anchor"></a><code>content()</code>
@@ -229,7 +235,7 @@
 <li>
 <code>owner_guid</code> - Unique identifier of the owner of the content item</li>
 <li>
-<code>owner_username</code> - Username of the owner of teh content item</li>
+<code>owner_username</code> - Username of the owner of the content item</li>
 <li>
 <code>owner_first_name</code> - First name of the owner of the content item</li>
 <li>
@@ -241,6 +247,7 @@
 <li>
 <code>updated_time</code> - The timestamp at which the content item was last updated</li>
 </ul>
+<p>The data frame contains one row for each item visible to the requesting user. For users in an “administrator” role, that will be all content items.</p>
 </div>
 <div id="filtering-content" class="section level4">
 <h4 class="hasAnchor">
@@ -250,41 +257,48 @@
 <li><p><code><a href="reference/by_tags.html">by_tags()</a></code> - Filters the data frame to only include content that has been tagged with the specified tag name(s). You can pass a single tag name or a vector of tag names. <code>by_tag</code> is provided as an alias for readability when using a single tag.</p></li>
 <li><p><code><a href="reference/by_owners.html">by_owners()</a></code> - Filters the data frame to only include content with the specified owner(s) by username. You can pass a single username or a vector of usernames. <code>by_owner</code> is provided as an alias for readability when using a single username.</p></li>
 </ul>
-<!-- --><div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">#&gt; # A tibble: 6 x 15</span></span>
-<span id="cb5-2"><a href="#cb5-2"></a><span class="co">#&gt;      id guid  name  title description app_mode content_category url   owner_guid</span></span>
-<span id="cb5-3"><a href="#cb5-3"></a><span class="co">#&gt;   &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt;            &lt;chr&gt; &lt;chr&gt;     </span></span>
-<span id="cb5-4"><a href="#cb5-4"></a><span class="co">#&gt; 1  4875 7cbd… Audi… Audi… ""          rmd-sta… ""               http… 0fc96747-…</span></span>
-<span id="cb5-5"><a href="#cb5-5"></a><span class="co">#&gt; 2  4619 b191… tag-… tag-… ""          rmd-sta… ""               http… 0fc96747-…</span></span>
-<span id="cb5-6"><a href="#cb5-6"></a><span class="co">#&gt; 3  4618 4348… acl-… acl-… ""          rmd-sta… ""               http… 0fc96747-…</span></span>
-<span id="cb5-7"><a href="#cb5-7"></a><span class="co">#&gt; 4  4597 6a8f… cont… cont… ""          rmd-sta… ""               http… 0fc96747-…</span></span>
-<span id="cb5-8"><a href="#cb5-8"></a><span class="co">#&gt; 5  4596 3f7a… vani… vani… ""          rmd-sta… ""               http… 0fc96747-…</span></span>
-<span id="cb5-9"><a href="#cb5-9"></a><span class="co">#&gt; 6  4595 5687… envi… envi… "R and Pyt… rmd-sta… ""               http… 0fc96747-…</span></span>
-<span id="cb5-10"><a href="#cb5-10"></a><span class="co">#&gt; # … with 6 more variables: owner_username &lt;chr&gt;, owner_first_name &lt;chr&gt;,</span></span>
-<span id="cb5-11"><a href="#cb5-11"></a><span class="co">#&gt; #   owner_last_name &lt;chr&gt;, tags &lt;list&gt;, created_time &lt;dttm&gt;,</span></span>
-<span id="cb5-12"><a href="#cb5-12"></a><span class="co">#&gt; #   updated_time &lt;dttm&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">all_content</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="reference/by_tags.html">by_tag</a></span><span class="op">(</span><span class="st">"Audit Reports"</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 6 x 15</span>
+<span class="co">#&gt;      id guid  name  title description app_mode content_category url   owner_guid</span>
+<span class="co">#&gt;   &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt;            &lt;chr&gt; &lt;chr&gt;     </span>
+<span class="co">#&gt; 1  4875 7cbd… Audi… Audi… Using the … rmd-sta… ""               http… 0fc96747-…</span>
+<span class="co">#&gt; 2  4619 b191… tag-… Tag … List all t… rmd-sta… ""               http… 0fc96747-…</span>
+<span class="co">#&gt; 3  4618 4348… acl-… Cont… Generate a… rmd-sta… ""               http… 0fc96747-…</span>
+<span class="co">#&gt; 4  4597 6a8f… cont… Basi… List all c… rmd-sta… ""               http… 0fc96747-…</span>
+<span class="co">#&gt; 5  4596 3f7a… vani… Vani… List all d… rmd-sta… ""               http… 0fc96747-…</span>
+<span class="co">#&gt; 6  4595 5687… envi… R an… R and Pyth… rmd-sta… ""               http… 0fc96747-…</span>
+<span class="co">#&gt; # … with 6 more variables: owner_username &lt;chr&gt;, owner_first_name &lt;chr&gt;,</span>
+<span class="co">#&gt; #   owner_last_name &lt;chr&gt;, tags &lt;list&gt;, created_time &lt;dttm&gt;,</span>
+<span class="co">#&gt; #   updated_time &lt;dttm&gt;</span></code></pre></div>
 <p>Since <code>all_content</code> is a <code><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble()</a></code>, you can also manipulate it with dplyr:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="co">#&gt; # A tibble: 41 x 15</span></span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="co">#&gt;       id guid    name    title   description   app_mode content_category url    </span></span>
-<span id="cb6-3"><a href="#cb6-3"></a><span class="co">#&gt;    &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;         &lt;chr&gt;    &lt;chr&gt;            &lt;chr&gt;  </span></span>
-<span id="cb6-4"><a href="#cb6-4"></a><span class="co">#&gt;  1  1890 be63ca… rmd     rmd4    "This rmd is… rmd-sta… ""               https:…</span></span>
-<span id="cb6-5"><a href="#cb6-5"></a><span class="co">#&gt;  2  3724 b5e57e… team-d… Team-d… ""            static   ""               https:…</span></span>
-<span id="cb6-6"><a href="#cb6-6"></a><span class="co">#&gt;  3  3979 ca22a1… github… &lt;NA&gt;    "A table pin… static   "pin"            https:…</span></span>
-<span id="cb6-7"><a href="#cb6-7"></a><span class="co">#&gt;  4  4364 9ffbbd… shiny-… shiny-… ""            shiny    ""               https:…</span></span>
-<span id="cb6-8"><a href="#cb6-8"></a><span class="co">#&gt;  5  4602 e21598… user-i… user-i… "Results pul… static   "pin"            https:…</span></span>
-<span id="cb6-9"><a href="#cb6-9"></a><span class="co">#&gt;  6  4603 e7c266… group-… group-… "Results pul… static   "pin"            https:…</span></span>
-<span id="cb6-10"><a href="#cb6-10"></a><span class="co">#&gt;  7  4630 f12eb8… top-5-… top-5-… ""            python-… ""               https:…</span></span>
-<span id="cb6-11"><a href="#cb6-11"></a><span class="co">#&gt;  8  4631 68c9b2… top-5-… top-5-… ""            python-… ""               https:…</span></span>
-<span id="cb6-12"><a href="#cb6-12"></a><span class="co">#&gt;  9  4650 ebdea3… reticu… reticu… ""            static   ""               https:…</span></span>
-<span id="cb6-13"><a href="#cb6-13"></a><span class="co">#&gt; 10  4651 321bba… rsc_sp… RSC: S… ""            static   ""               https:…</span></span>
-<span id="cb6-14"><a href="#cb6-14"></a><span class="co">#&gt; # … with 31 more rows, and 7 more variables: owner_guid &lt;chr&gt;,</span></span>
-<span id="cb6-15"><a href="#cb6-15"></a><span class="co">#&gt; #   owner_username &lt;chr&gt;, owner_first_name &lt;chr&gt;, owner_last_name &lt;chr&gt;,</span></span>
-<span id="cb6-16"><a href="#cb6-16"></a><span class="co">#&gt; #   tags &lt;list&gt;, created_time &lt;dttm&gt;, updated_time &lt;dttm&gt;</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">all_content</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">updated_time</span> <span class="op">&gt;=</span> <span class="st">"2021-01-01"</span><span class="op">)</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">created_time</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 49 x 15</span>
+<span class="co">#&gt;       id guid    name    title   description   app_mode content_category url    </span>
+<span class="co">#&gt;    &lt;int&gt; &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;   &lt;chr&gt;         &lt;chr&gt;    &lt;chr&gt;            &lt;chr&gt;  </span>
+<span class="co">#&gt;  1  1890 be63ca… rmd     rmd4    "This rmd is… rmd-sta… ""               https:…</span>
+<span class="co">#&gt;  2  3724 b5e57e… team-d… Team-d… ""            static   ""               https:…</span>
+<span class="co">#&gt;  3  3979 ca22a1… github… &lt;NA&gt;    "A table pin… static   "pin"            https:…</span>
+<span class="co">#&gt;  4  4364 9ffbbd… shiny-… shiny-… ""            shiny    ""               https:…</span>
+<span class="co">#&gt;  5  4602 e21598… user-i… user-i… "Results pul… static   "pin"            https:…</span>
+<span class="co">#&gt;  6  4603 e7c266… group-… group-… "Results pul… static   "pin"            https:…</span>
+<span class="co">#&gt;  7  4630 f12eb8… top-5-… top-5-… ""            python-… ""               https:…</span>
+<span class="co">#&gt;  8  4631 68c9b2… top-5-… top-5-… ""            python-… ""               https:…</span>
+<span class="co">#&gt;  9  4650 ebdea3… reticu… reticu… ""            static   ""               https:…</span>
+<span class="co">#&gt; 10  4651 321bba… rsc_sp… RSC: S… ""            static   ""               https:…</span>
+<span class="co">#&gt; # … with 39 more rows, and 7 more variables: owner_guid &lt;chr&gt;,</span>
+<span class="co">#&gt; #   owner_username &lt;chr&gt;, owner_first_name &lt;chr&gt;, owner_last_name &lt;chr&gt;,</span>
+<span class="co">#&gt; #   tags &lt;list&gt;, created_time &lt;dttm&gt;, updated_time &lt;dttm&gt;</span></code></pre></div>
 </div>
 </div>
 <div id="components" class="section level3">
 <h3 class="hasAnchor">
 <a href="#components" class="anchor"></a>Components</h3>
-<p>Once your content data are filtered, <code>rscpages</code> provides components for displaying information about them. The title, description, and preview image can be set <a href="https://docs.rstudio.com/connect/user/content-settings/#content-metadata">from the Connect dashboard.</a> For content deployed to Connect where no image has been supplied, a default image will be used.</p>
+<p>Once your content data are filtered, <code>rscpages</code> provides components for displaying information about them. The title, description, and preview image can be set <a href="https://docs.rstudio.com/connect/user/content-settings/#content-metadata">from the RStudio Connect dashboard.</a> For content deployed to Connect where no image has been supplied, a default image will be used.</p>
 <p><em>Note:</em> In many cases, you will only see default images until your content is deployed.</p>
 <div id="card" class="section level4">
 <h4 class="hasAnchor">
@@ -301,17 +315,121 @@
 <div id="table" class="section level4">
 <h4 class="hasAnchor">
 <a href="#table" class="anchor"></a>table</h4>
-<p>Provide a more detailed view with table:</p>
+<p>Provide a more detailed view with a table:</p>
 <p><img src="reference/figures/README-table-1.png" alt="a sample table"></p>
 </div>
 <div id="search--filter" class="section level4">
 <h4 class="hasAnchor">
 <a href="#search--filter" class="anchor"></a>search &amp; filter</h4>
-<p>The search and filter components help viewers find the content they are most interested in. You must pass the same content data frame to <code><a href="reference/rscsearch.html">rscsearch()</a></code>, <code><a href="reference/rscfilter.html">rscfilter()</a></code>, and <code><a href="reference/rsctable.html">rsctable()</a></code> or <code><a href="reference/rscgrid.html">rscgrid()</a></code> in order for filter and search to work. You can also create your own <code><a href="https://rdrr.io/pkg/crosstalk/man/SharedData.html">crosstalk::SharedData()</a></code> object to pass to the components if you want more control over searching and filtering.</p>
+<p>The search and filter components help viewers find the content they are most interested in. You must pass the same content data frame to <code><a href="reference/rscsearch.html">rscsearch()</a></code>, <code><a href="reference/rscfilter.html">rscfilter()</a></code>, and <code><a href="reference/rsctable.html">rsctable()</a></code> or <code><a href="reference/rscgrid.html">rscgrid()</a></code> in order for filter and search to work. You can also create your own <code><a href="https://rdrr.io/pkg/crosstalk/man/SharedData.html">crosstalk::SharedData()</a></code> object to pass to the components if you want more control over searching and filtering. Read more at <code><a href="articles/using-crosstalk.html">vignette("using-crosstalk")</a></code>.</p>
 <p><img src="reference/figures/README-search-filter-2.png" alt="search and filter widgets"></p>
-<p>Once you’re happy with the look of your page, Publish it to Connect. Read more at <code><a href="articles/publishing.html">vignette("publishing")</a></code>.</p>
 </div>
 </div>
+</div>
+<div id="theming" class="section level2">
+<h2 class="hasAnchor">
+<a href="#theming" class="anchor"></a>Theming</h2>
+<p><code>rscpages</code> components support styling in <code><a href="https://pkgs.rstudio.com/rmarkdown/reference/html_document.html">rmarkdown::html_document</a></code> via the <code>bslib</code> package. You can supply a <a href="https://bootswatch.com/4/">Bootswatch theme</a> in the yaml header, e.g.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb7-1"><a href="#cb7-1"></a><span class="pp">---</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="fu">output</span><span class="kw">:</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="at">  </span><span class="fu">html_document</span><span class="kw">:</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="at">      </span><span class="fu">bootswatch</span><span class="kw">:</span><span class="at"> minty</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="pp">---</span></span></code></pre></div>
+<p>or pass in other customizations consistent with your organization’s style.</p>
+<p>Once you’re happy with the look of your page, Publish it to RStudio Connect. Read more at <code><a href="articles/publishing.html">vignette("publishing")</a></code>.</p>
+</div>
+<div id="a-more-customized-example" class="section level2">
+<h2 class="hasAnchor">
+<a href="#a-more-customized-example" class="anchor"></a>A more customized example:</h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1"></a>---</span>
+<span id="cb8-2"><a href="#cb8-2"></a>output:</span>
+<span id="cb8-3"><a href="#cb8-3"></a>  html_document:</span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="bn">    theme:</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="bn">      bootswatch: lumen</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a>---</span>
+<span id="cb8-7"><a href="#cb8-7"></a></span>
+<span id="cb8-8"><a href="#cb8-8"></a><span class="bn">```{css, echo=FALSE}</span></span>
+<span id="cb8-9"><a href="#cb8-9"></a><span class="bn">.main-container {</span></span>
+<span id="cb8-10"><a href="#cb8-10"></a><span class="bn">    width: 100%;</span></span>
+<span id="cb8-11"><a href="#cb8-11"></a><span class="bn">    max-width: unset;</span></span>
+<span id="cb8-12"><a href="#cb8-12"></a><span class="bn">}</span></span>
+<span id="cb8-13"><a href="#cb8-13"></a></span>
+<span id="cb8-14"><a href="#cb8-14"></a><span class="bn">.main {</span></span>
+<span id="cb8-15"><a href="#cb8-15"></a><span class="bn">    max-width: 940px;</span></span>
+<span id="cb8-16"><a href="#cb8-16"></a><span class="bn">    margin-left: auto;</span></span>
+<span id="cb8-17"><a href="#cb8-17"></a><span class="bn">    margin-right: auto;</span></span>
+<span id="cb8-18"><a href="#cb8-18"></a><span class="bn">}</span></span>
+<span id="cb8-19"><a href="#cb8-19"></a></span>
+<span id="cb8-20"><a href="#cb8-20"></a><span class="bn">/* https://codepen.io/eversionsystems/pen/YOmqdj */</span></span>
+<span id="cb8-21"><a href="#cb8-21"></a><span class="bn">.jumbotron {</span></span>
+<span id="cb8-22"><a href="#cb8-22"></a><span class="bn">  color: white;</span></span>
+<span id="cb8-23"><a href="#cb8-23"></a><span class="bn">  background-image: url("https://source.unsplash.com/d30sszrW7Vw/1920x1080");</span></span>
+<span id="cb8-24"><a href="#cb8-24"></a><span class="bn">  background-position: center;</span></span>
+<span id="cb8-25"><a href="#cb8-25"></a><span class="bn">  background-repeat: no-repeat;</span></span>
+<span id="cb8-26"><a href="#cb8-26"></a><span class="bn">  background-size: cover;</span></span>
+<span id="cb8-27"><a href="#cb8-27"></a><span class="bn">  height: 50vh;</span></span>
+<span id="cb8-28"><a href="#cb8-28"></a><span class="bn">}</span></span>
+<span id="cb8-29"><a href="#cb8-29"></a><span class="bn">```</span></span>
+<span id="cb8-30"><a href="#cb8-30"></a></span>
+<span id="cb8-31"><a href="#cb8-31"></a><span class="bn">```{r, include=FALSE}</span></span>
+<span id="cb8-32"><a href="#cb8-32"></a><span class="bn">library(rscpages)</span></span>
+<span id="cb8-33"><a href="#cb8-33"></a><span class="bn">library(dplyr)</span></span>
+<span id="cb8-34"><a href="#cb8-34"></a><span class="bn">library(htmltools)</span></span>
+<span id="cb8-35"><a href="#cb8-35"></a></span>
+<span id="cb8-36"><a href="#cb8-36"></a><span class="bn">knitr::opts_chunk$set(</span></span>
+<span id="cb8-37"><a href="#cb8-37"></a><span class="bn">  comment = "",</span></span>
+<span id="cb8-38"><a href="#cb8-38"></a><span class="bn">  echo = FALSE, warning = FALSE, message = FALSE</span></span>
+<span id="cb8-39"><a href="#cb8-39"></a><span class="bn">)</span></span>
+<span id="cb8-40"><a href="#cb8-40"></a></span>
+<span id="cb8-41"><a href="#cb8-41"></a><span class="bn">rsc_content &lt;-</span></span>
+<span id="cb8-42"><a href="#cb8-42"></a><span class="bn">  connect() %&gt;%</span></span>
+<span id="cb8-43"><a href="#cb8-43"></a><span class="bn">  content()</span></span>
+<span id="cb8-44"><a href="#cb8-44"></a></span>
+<span id="cb8-45"><a href="#cb8-45"></a><span class="bn">apis &lt;- rsc_content %&gt;%</span></span>
+<span id="cb8-46"><a href="#cb8-46"></a><span class="bn">  filter(app_mode %in% c("api", "python-api"))</span></span>
+<span id="cb8-47"><a href="#cb8-47"></a><span class="bn">```</span></span>
+<span id="cb8-48"><a href="#cb8-48"></a></span>
+<span id="cb8-49"><a href="#cb8-49"></a><span class="bn">```{r}</span></span>
+<span id="cb8-50"><a href="#cb8-50"></a><span class="bn">div(</span></span>
+<span id="cb8-51"><a href="#cb8-51"></a><span class="bn">  class = "jumbotron jumbotron-fluid",</span></span>
+<span id="cb8-52"><a href="#cb8-52"></a><span class="bn">  div(</span></span>
+<span id="cb8-53"><a href="#cb8-53"></a><span class="bn">    class = "container",</span></span>
+<span id="cb8-54"><a href="#cb8-54"></a><span class="bn">    h1("Connect API Portal", class = "display-4"),</span></span>
+<span id="cb8-55"><a href="#cb8-55"></a><span class="bn">    p("Model APIs maintained by the data science team")</span></span>
+<span id="cb8-56"><a href="#cb8-56"></a><span class="bn">  )</span></span>
+<span id="cb8-57"><a href="#cb8-57"></a><span class="bn">)</span></span>
+<span id="cb8-58"><a href="#cb8-58"></a><span class="bn">```</span></span>
+<span id="cb8-59"><a href="#cb8-59"></a></span>
+<span id="cb8-60"><a href="#cb8-60"></a><span class="bn">```{r}</span></span>
+<span id="cb8-61"><a href="#cb8-61"></a><span class="bn">div(</span></span>
+<span id="cb8-62"><a href="#cb8-62"></a><span class="bn">  class = "main",</span></span>
+<span id="cb8-63"><a href="#cb8-63"></a><span class="bn">  h3("Featured APIs", class = "text-center"),</span></span>
+<span id="cb8-64"><a href="#cb8-64"></a><span class="bn">  {</span></span>
+<span id="cb8-65"><a href="#cb8-65"></a><span class="bn">    model_copy &lt;- c(</span></span>
+<span id="cb8-66"><a href="#cb8-66"></a><span class="bn">      "Our most important model: Distillery retro taiyaki fashion axe.</span></span>
+<span id="cb8-67"><a href="#cb8-67"></a><span class="bn">      Art party cray intelligentsia flexitarian.",</span></span>
+<span id="cb8-68"><a href="#cb8-68"></a><span class="bn">      "Our second most important model: Pug af twee portland pitchfork brunch </span></span>
+<span id="cb8-69"><a href="#cb8-69"></a><span class="bn">      kogi gochujang organic migas shaman four dollar toast 90's slow-carb."</span></span>
+<span id="cb8-70"><a href="#cb8-70"></a><span class="bn">      )</span></span>
+<span id="cb8-71"><a href="#cb8-71"></a><span class="bn">    </span></span>
+<span id="cb8-72"><a href="#cb8-72"></a><span class="bn">    apis %&gt;%</span></span>
+<span id="cb8-73"><a href="#cb8-73"></a><span class="bn">      slice_head(n = 2) %&gt;%</span></span>
+<span id="cb8-74"><a href="#cb8-74"></a><span class="bn">      mutate(</span></span>
+<span id="cb8-75"><a href="#cb8-75"></a><span class="bn">      description = model_copy</span></span>
+<span id="cb8-76"><a href="#cb8-76"></a><span class="bn">      ) %&gt;% </span></span>
+<span id="cb8-77"><a href="#cb8-77"></a><span class="bn">      rsccard()</span></span>
+<span id="cb8-78"><a href="#cb8-78"></a><span class="bn">  },</span></span>
+<span id="cb8-79"><a href="#cb8-79"></a><span class="bn">  h3("All APIs", class = "text-center"),</span></span>
+<span id="cb8-80"><a href="#cb8-80"></a><span class="bn">  p("that thing George Box said one time. You know what thing."),</span></span>
+<span id="cb8-81"><a href="#cb8-81"></a><span class="bn">  {</span></span>
+<span id="cb8-82"><a href="#cb8-82"></a><span class="bn">    tagList(</span></span>
+<span id="cb8-83"><a href="#cb8-83"></a><span class="bn">      bscols(rscsearch(apis), rscfilter(apis)),</span></span>
+<span id="cb8-84"><a href="#cb8-84"></a><span class="bn">      rscgrid(apis)</span></span>
+<span id="cb8-85"><a href="#cb8-85"></a><span class="bn">    )</span></span>
+<span id="cb8-86"><a href="#cb8-86"></a><span class="bn">  }</span></span>
+<span id="cb8-87"><a href="#cb8-87"></a><span class="bn">)</span></span>
+<span id="cb8-88"><a href="#cb8-88"></a><span class="bn">```</span></span></code></pre></div>
 </div>
 </div>
   </div>

@@ -3,7 +3,8 @@ pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   publishing: publishing.html
-last_built: 2021-06-01T16:33Z
+  using-crosstalk: using-crosstalk.html
+last_built: 2021-06-02T00:48Z
 urls:
   reference: https://rstudio.github.io/rscpages/reference
   article: https://rstudio.github.io/rscpages/articles
