@@ -15,7 +15,9 @@ RoxygenNote: 7.1.1
 Suggests: 
     knitr,
     rmarkdown,
-    testthat
+    testthat,
+    webmockr,
+    withr
 Imports: 
     R6,
     httr,

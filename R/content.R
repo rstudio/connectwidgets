@@ -32,9 +32,7 @@
 #'
 #' @export
 content <- function(client) {
-  results <- client$GET("/content", query = list(include = "tags,owner"))
-
-  df <- jsonlite::fromJSON(results, simplifyDataFrame = T)
+  df <- client$content()
 
   content_tbl <- tibble::tibble(
     id = as.integer(df$id),
