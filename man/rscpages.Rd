@@ -3,6 +3,7 @@
 \docType{package}
 \name{rscpages}
 \alias{rscpages}
+\alias{rscpages-package}
 \title{rscpages: Curate your content on RStudio Connect}
 \description{
 rscpages provides UI components to help publishers provide curated
@@ -10,10 +11,9 @@ organization of content on RStudio Connect.
 }
 \section{Connection}{
 
-Set \code{CONNECT_SERVER} and \code{CONNECT_API_KEY} environment
-variables and \code{\link[=connect]{connect()}}.
-Fetch a \code{tibble} listing server content with \code{\link[=content]{content()}}.
-use the \code{\link[=by_owner]{by_owner()}} and \code{\link[=by_tags]{by_tags()}} filter helpers to narrow your search.
+Set \code{CONNECT_SERVER} and \code{CONNECT_API_KEY} environment variables and
+\code{\link[=connect]{connect()}}. Fetch a \code{tibble} listing server content with \code{\link[=content]{content()}}. Use
+the \code{\link[=by_owner]{by_owner()}} and \code{\link[=by_tags]{by_tags()}} filter helpers to narrow your search.
 }
 
 \section{Components}{
@@ -28,3 +28,15 @@ Present your content with different components:
 }
 }
 
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://rstudio.github.io/rscpages}
+  \item \url{https://github.com/rstudio/rscpages}
+}
+
+}
+\author{
+\strong{Maintainer}: Brian Smith \email{brian@rstudio.com}
+
+}

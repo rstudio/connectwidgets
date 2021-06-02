@@ -4,10 +4,9 @@
 #' organization of content on RStudio Connect.
 #'
 #' @section Connection:
-#' Set `CONNECT_SERVER` and `CONNECT_API_KEY` environment
-#' variables and [connect()].
-#' Fetch a `tibble` listing server content with [content()].
-#' use the [by_owner()] and [by_tags()] filter helpers to narrow your search.
+#' Set `CONNECT_SERVER` and `CONNECT_API_KEY` environment variables and
+#' [connect()]. Fetch a `tibble` listing server content with [content()]. Use
+#' the [by_owner()] and [by_tags()] filter helpers to narrow your search.
 #'
 #' @section Components:
 #' Present your content with different components:
@@ -21,4 +20,4 @@
 #'
 #' @docType package
 #' @name rscpages
-NULL
+"_PACKAGE"

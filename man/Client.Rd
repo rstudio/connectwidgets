@@ -21,9 +21,9 @@ API. Authentication is done by providing an API key.
 \itemize{
 \item \href{#method-new}{\code{Client$new()}}
 \item \href{#method-print}{\code{Client$print()}}
-\item \href{#method-raise_error}{\code{Client$raise_error()}}
-\item \href{#method-add_auth}{\code{Client$add_auth()}}
 \item \href{#method-GET}{\code{Client$GET()}}
+\item \href{#method-content}{\code{Client$content()}}
+\item \href{#method-server_settings}{\code{Client$server_settings()}}
 \item \href{#method-clone}{\code{Client$clone()}}
 }
 }
@@ -46,29 +46,29 @@ API. Authentication is done by providing an API key.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-raise_error"></a>}}
-\if{latex}{\out{\hypertarget{method-raise_error}{}}}
-\subsection{Method \code{raise_error()}}{
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Client$raise_error(res)}\if{html}{\out{</div>}}
-}
-
-}
-\if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-add_auth"></a>}}
-\if{latex}{\out{\hypertarget{method-add_auth}{}}}
-\subsection{Method \code{add_auth()}}{
-\subsection{Usage}{
-\if{html}{\out{<div class="r">}}\preformatted{Client$add_auth()}\if{html}{\out{</div>}}
-}
-
-}
-\if{html}{\out{<hr>}}
 \if{html}{\out{<a id="method-GET"></a>}}
 \if{latex}{\out{\hypertarget{method-GET}{}}}
 \subsection{Method \code{GET()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Client$GET(path, ..., writer = httr::write_memory(), parser = "text")}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-content"></a>}}
+\if{latex}{\out{\hypertarget{method-content}{}}}
+\subsection{Method \code{content()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Client$content()}\if{html}{\out{</div>}}
+}
+
+}
+\if{html}{\out{<hr>}}
+\if{html}{\out{<a id="method-server_settings"></a>}}
+\if{latex}{\out{\hypertarget{method-server_settings}{}}}
+\subsection{Method \code{server_settings()}}{
+\subsection{Usage}{
+\if{html}{\out{<div class="r">}}\preformatted{Client$server_settings()}\if{html}{\out{</div>}}
 }
 
 }
