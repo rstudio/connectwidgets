@@ -1,0 +1,90 @@
+.rscgrid {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+
+  a {
+    color: $link-color;
+  }
+
+  &__grid {
+    &--empty {
+      border-bottom: 1px solid $gray-100;
+      border-top: 1px solid $gray-100;
+    }
+  }
+
+  &-item {
+    background: $gray-100;
+    border: 1px solid $gray-300;
+    color: $gray-700;
+
+    &:hover,
+    &:focus {
+      color: $gray-700;
+    }
+
+    & .card-body {
+      padding: 0!important;
+    }
+
+    &__title {
+      font-size: 1.2em;
+      font-weight: 700;
+      line-height: 1.72em;
+      margin: 0.4em 0 0 0;
+      padding: 0 0.7em;
+    }
+    
+    &__meta {
+      color: $gray-500;
+    }
+  }
+}
+
+.rscgrid-pagination {
+  font-family: $font-family-base;
+
+  &__list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+  }
+
+  &__sep {
+    line-height: 2.4em;
+    margin-right: 5px;
+  }
+
+  &__btn {
+    background: $white;
+    border-radius: 16px!important;
+    border: none!important;
+    color: $primary!important;
+    height: 32px;
+    line-height: 32px!important;
+    margin-right: 5px;
+    min-width: 32px;
+    padding: 0 0.8em!important;
+    text-align: center;
+  
+    &--current {
+      background: $primary!important;
+      color: $white!important;
+      font-weight: 700;
+      pointer-events: none;
+    }
+
+    &:hover {
+      background: $gray-300;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &:disabled {
+      opacity: 0.6;
+      pointer-events: none;
+    }
+  }
+}

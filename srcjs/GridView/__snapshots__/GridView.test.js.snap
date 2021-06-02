@@ -8,375 +8,447 @@ exports[`<GridView /> renders properly, setup state and crosstalk handle 1`] = `
     className="rscgrid__grid"
   >
     <div
-      className="rscgrid-item"
+      className="rscgrid-item card"
       key="991f16c5-dc7e-4403-89d0-c54d10968460"
     >
       <ContentImage
         contentUrl="https://connect.tester.net/content/991f16c5-dc7e-4403-89d0-c54d10968460/"
         imageUrl="https://connect.tester.net/__api__/applications/991f16c5-dc7e-4403-89d0-c54d10968460/image?strict=1"
       />
-      <a
-        href="https://connect.tester.net/content/991f16c5-dc7e-4403-89d0-c54d10968460/"
-        rel="noreferrer"
-        target="_blank"
-      >
-        <h2
-          className="rscgrid-item__title"
-        >
-          methodical synergize
-        </h2>
-      </a>
       <div
-        className="rscgrid-item__meta"
+        className="card-body"
       >
-        <span>
-          Porter.Terry
-           • 
-          <time>
-            Apr 15, 2021
-          </time>
-        </span>
+        <a
+          href="https://connect.tester.net/content/991f16c5-dc7e-4403-89d0-c54d10968460/"
+          rel="noreferrer"
+          target="_blank"
+        >
+          <h2
+            className="rscgrid-item__title"
+          >
+            methodical synergize
+          </h2>
+        </a>
+        <div
+          className="rscgrid-item__meta text-muted"
+        >
+          <small>
+            <span>
+              Porter.Terry
+               • 
+              <time>
+                Apr 15, 2021
+              </time>
+            </span>
+          </small>
+        </div>
       </div>
     </div>
     <div
-      className="rscgrid-item"
+      className="rscgrid-item card"
       key="4b5345cc-8dc5-46fa-80ed-1a389d80e21b"
     >
       <ContentImage
         contentUrl="https://connect.tester.net/content/4b5345cc-8dc5-46fa-80ed-1a389d80e21b/"
         imageUrl="https://connect.tester.net/__api__/applications/4b5345cc-8dc5-46fa-80ed-1a389d80e21b/image?strict=1"
       />
-      <a
-        href="https://connect.tester.net/content/4b5345cc-8dc5-46fa-80ed-1a389d80e21b/"
-        rel="noreferrer"
-        target="_blank"
-      >
-        <h2
-          className="rscgrid-item__title"
-        >
-          Plaza Federation
-        </h2>
-      </a>
       <div
-        className="rscgrid-item__meta"
+        className="card-body"
       >
-        <span>
-          Rickey_Williamson64
-           • 
-          <time>
-            Jan 3, 2021
-          </time>
-        </span>
+        <a
+          href="https://connect.tester.net/content/4b5345cc-8dc5-46fa-80ed-1a389d80e21b/"
+          rel="noreferrer"
+          target="_blank"
+        >
+          <h2
+            className="rscgrid-item__title"
+          >
+            Plaza Federation
+          </h2>
+        </a>
+        <div
+          className="rscgrid-item__meta text-muted"
+        >
+          <small>
+            <span>
+              Rickey_Williamson64
+               • 
+              <time>
+                Jan 3, 2021
+              </time>
+            </span>
+          </small>
+        </div>
       </div>
     </div>
     <div
-      className="rscgrid-item"
+      className="rscgrid-item card"
       key="100881c9-0162-4f3f-b973-6870085d48ff"
     >
       <ContentImage
         contentUrl="https://connect.tester.net/content/100881c9-0162-4f3f-b973-6870085d48ff/"
         imageUrl="https://connect.tester.net/__api__/applications/100881c9-0162-4f3f-b973-6870085d48ff/image?strict=1"
       />
-      <a
-        href="https://connect.tester.net/content/100881c9-0162-4f3f-b973-6870085d48ff/"
-        rel="noreferrer"
-        target="_blank"
-      >
-        <h2
-          className="rscgrid-item__title"
-        >
-          deposit Vanuatu Paradigm
-        </h2>
-      </a>
       <div
-        className="rscgrid-item__meta"
+        className="card-body"
       >
-        <span>
-          Kimberly_McKenzie
-           • 
-          <time>
-            Oct 16, 2020
-          </time>
-        </span>
+        <a
+          href="https://connect.tester.net/content/100881c9-0162-4f3f-b973-6870085d48ff/"
+          rel="noreferrer"
+          target="_blank"
+        >
+          <h2
+            className="rscgrid-item__title"
+          >
+            deposit Vanuatu Paradigm
+          </h2>
+        </a>
+        <div
+          className="rscgrid-item__meta text-muted"
+        >
+          <small>
+            <span>
+              Kimberly_McKenzie
+               • 
+              <time>
+                Oct 16, 2020
+              </time>
+            </span>
+          </small>
+        </div>
       </div>
     </div>
     <div
-      className="rscgrid-item"
+      className="rscgrid-item card"
       key="e2f6ef2a-2735-44ac-b4b4-666f080d3435"
     >
       <ContentImage
         contentUrl="https://connect.tester.net/content/e2f6ef2a-2735-44ac-b4b4-666f080d3435/"
         imageUrl="https://connect.tester.net/__api__/applications/e2f6ef2a-2735-44ac-b4b4-666f080d3435/image?strict=1"
       />
-      <a
-        href="https://connect.tester.net/content/e2f6ef2a-2735-44ac-b4b4-666f080d3435/"
-        rel="noreferrer"
-        target="_blank"
-      >
-        <h2
-          className="rscgrid-item__title"
-        >
-          Gardens Consultant
-        </h2>
-      </a>
       <div
-        className="rscgrid-item__meta"
+        className="card-body"
       >
-        <span>
-          Jayden62
-           • 
-          <time>
-            Nov 28, 2020
-          </time>
-        </span>
+        <a
+          href="https://connect.tester.net/content/e2f6ef2a-2735-44ac-b4b4-666f080d3435/"
+          rel="noreferrer"
+          target="_blank"
+        >
+          <h2
+            className="rscgrid-item__title"
+          >
+            Gardens Consultant
+          </h2>
+        </a>
+        <div
+          className="rscgrid-item__meta text-muted"
+        >
+          <small>
+            <span>
+              Jayden62
+               • 
+              <time>
+                Nov 28, 2020
+              </time>
+            </span>
+          </small>
+        </div>
       </div>
     </div>
     <div
-      className="rscgrid-item"
+      className="rscgrid-item card"
       key="407fa045-4f38-4e9a-9482-12fe29fdbbe2"
     >
       <ContentImage
         contentUrl="https://connect.tester.net/content/407fa045-4f38-4e9a-9482-12fe29fdbbe2/"
         imageUrl="https://connect.tester.net/__api__/applications/407fa045-4f38-4e9a-9482-12fe29fdbbe2/image?strict=1"
       />
-      <a
-        href="https://connect.tester.net/content/407fa045-4f38-4e9a-9482-12fe29fdbbe2/"
-        rel="noreferrer"
-        target="_blank"
-      >
-        <h2
-          className="rscgrid-item__title"
-        >
-          Corporate logistical services
-        </h2>
-      </a>
       <div
-        className="rscgrid-item__meta"
+        className="card-body"
       >
-        <span>
-          Theron.Kreiger24
-           • 
-          <time>
-            Aug 12, 2020
-          </time>
-        </span>
+        <a
+          href="https://connect.tester.net/content/407fa045-4f38-4e9a-9482-12fe29fdbbe2/"
+          rel="noreferrer"
+          target="_blank"
+        >
+          <h2
+            className="rscgrid-item__title"
+          >
+            Corporate logistical services
+          </h2>
+        </a>
+        <div
+          className="rscgrid-item__meta text-muted"
+        >
+          <small>
+            <span>
+              Theron.Kreiger24
+               • 
+              <time>
+                Aug 12, 2020
+              </time>
+            </span>
+          </small>
+        </div>
       </div>
     </div>
     <div
-      className="rscgrid-item"
+      className="rscgrid-item card"
       key="765bd469-3e00-47be-b214-f870036986e4"
     >
       <ContentImage
         contentUrl="https://connect.tester.net/content/765bd469-3e00-47be-b214-f870036986e4/"
         imageUrl="https://connect.tester.net/__api__/applications/765bd469-3e00-47be-b214-f870036986e4/image?strict=1"
       />
-      <a
-        href="https://connect.tester.net/content/765bd469-3e00-47be-b214-f870036986e4/"
-        rel="noreferrer"
-        target="_blank"
-      >
-        <h2
-          className="rscgrid-item__title"
-        >
-          Bacon
-        </h2>
-      </a>
       <div
-        className="rscgrid-item__meta"
+        className="card-body"
       >
-        <span>
-          Wilber.Wintheiser
-           • 
-          <time>
-            Jul 16, 2020
-          </time>
-        </span>
+        <a
+          href="https://connect.tester.net/content/765bd469-3e00-47be-b214-f870036986e4/"
+          rel="noreferrer"
+          target="_blank"
+        >
+          <h2
+            className="rscgrid-item__title"
+          >
+            Bacon
+          </h2>
+        </a>
+        <div
+          className="rscgrid-item__meta text-muted"
+        >
+          <small>
+            <span>
+              Wilber.Wintheiser
+               • 
+              <time>
+                Jul 16, 2020
+              </time>
+            </span>
+          </small>
+        </div>
       </div>
     </div>
     <div
-      className="rscgrid-item"
+      className="rscgrid-item card"
       key="f36c30d7-22a2-4ed5-ad36-d7a00f82cecd"
     >
       <ContentImage
         contentUrl="https://connect.tester.net/content/f36c30d7-22a2-4ed5-ad36-d7a00f82cecd/"
         imageUrl="https://connect.tester.net/__api__/applications/f36c30d7-22a2-4ed5-ad36-d7a00f82cecd/image?strict=1"
       />
-      <a
-        href="https://connect.tester.net/content/f36c30d7-22a2-4ed5-ad36-d7a00f82cecd/"
-        rel="noreferrer"
-        target="_blank"
-      >
-        <h2
-          className="rscgrid-item__title"
-        >
-          Optimization
-        </h2>
-      </a>
       <div
-        className="rscgrid-item__meta"
+        className="card-body"
       >
-        <span>
-          Estevan.Metz99
-           • 
-          <time>
-            Jun 11, 2020
-          </time>
-        </span>
+        <a
+          href="https://connect.tester.net/content/f36c30d7-22a2-4ed5-ad36-d7a00f82cecd/"
+          rel="noreferrer"
+          target="_blank"
+        >
+          <h2
+            className="rscgrid-item__title"
+          >
+            Optimization
+          </h2>
+        </a>
+        <div
+          className="rscgrid-item__meta text-muted"
+        >
+          <small>
+            <span>
+              Estevan.Metz99
+               • 
+              <time>
+                Jun 11, 2020
+              </time>
+            </span>
+          </small>
+        </div>
       </div>
     </div>
     <div
-      className="rscgrid-item"
+      className="rscgrid-item card"
       key="054c3ae5-5b49-4ce4-b29c-bec7618355d6"
     >
       <ContentImage
         contentUrl="https://connect.tester.net/content/054c3ae5-5b49-4ce4-b29c-bec7618355d6/"
         imageUrl="https://connect.tester.net/__api__/applications/054c3ae5-5b49-4ce4-b29c-bec7618355d6/image?strict=1"
       />
-      <a
-        href="https://connect.tester.net/content/054c3ae5-5b49-4ce4-b29c-bec7618355d6/"
-        rel="noreferrer"
-        target="_blank"
-      >
-        <h2
-          className="rscgrid-item__title"
-        >
-          bottom-line ROI Pizza
-        </h2>
-      </a>
       <div
-        className="rscgrid-item__meta"
+        className="card-body"
       >
-        <span>
-          Skye27
-           • 
-          <time>
-            Jul 4, 2020
-          </time>
-        </span>
+        <a
+          href="https://connect.tester.net/content/054c3ae5-5b49-4ce4-b29c-bec7618355d6/"
+          rel="noreferrer"
+          target="_blank"
+        >
+          <h2
+            className="rscgrid-item__title"
+          >
+            bottom-line ROI Pizza
+          </h2>
+        </a>
+        <div
+          className="rscgrid-item__meta text-muted"
+        >
+          <small>
+            <span>
+              Skye27
+               • 
+              <time>
+                Jul 4, 2020
+              </time>
+            </span>
+          </small>
+        </div>
       </div>
     </div>
     <div
-      className="rscgrid-item"
+      className="rscgrid-item card"
       key="81a1603c-0f85-430c-8586-0fc794a12955"
     >
       <ContentImage
         contentUrl="https://connect.tester.net/content/81a1603c-0f85-430c-8586-0fc794a12955/"
         imageUrl="https://connect.tester.net/__api__/applications/81a1603c-0f85-430c-8586-0fc794a12955/image?strict=1"
       />
-      <a
-        href="https://connect.tester.net/content/81a1603c-0f85-430c-8586-0fc794a12955/"
-        rel="noreferrer"
-        target="_blank"
-      >
-        <h2
-          className="rscgrid-item__title"
-        >
-          Legacy Keyboard architecture
-        </h2>
-      </a>
       <div
-        className="rscgrid-item__meta"
+        className="card-body"
       >
-        <span>
-          Noemy12
-           • 
-          <time>
-            Feb 25, 2021
-          </time>
-        </span>
+        <a
+          href="https://connect.tester.net/content/81a1603c-0f85-430c-8586-0fc794a12955/"
+          rel="noreferrer"
+          target="_blank"
+        >
+          <h2
+            className="rscgrid-item__title"
+          >
+            Legacy Keyboard architecture
+          </h2>
+        </a>
+        <div
+          className="rscgrid-item__meta text-muted"
+        >
+          <small>
+            <span>
+              Noemy12
+               • 
+              <time>
+                Feb 25, 2021
+              </time>
+            </span>
+          </small>
+        </div>
       </div>
     </div>
     <div
-      className="rscgrid-item"
+      className="rscgrid-item card"
       key="d4f047fc-e556-46fe-ba37-c37e94aa8b27"
     >
       <ContentImage
         contentUrl="https://connect.tester.net/content/d4f047fc-e556-46fe-ba37-c37e94aa8b27/"
         imageUrl="https://connect.tester.net/__api__/applications/d4f047fc-e556-46fe-ba37-c37e94aa8b27/image?strict=1"
       />
-      <a
-        href="https://connect.tester.net/content/d4f047fc-e556-46fe-ba37-c37e94aa8b27/"
-        rel="noreferrer"
-        target="_blank"
-      >
-        <h2
-          className="rscgrid-item__title"
-        >
-          transmitter Shoes indexing
-        </h2>
-      </a>
       <div
-        className="rscgrid-item__meta"
+        className="card-body"
       >
-        <span>
-          Francisca72
-           • 
-          <time>
-            May 31, 2020
-          </time>
-        </span>
+        <a
+          href="https://connect.tester.net/content/d4f047fc-e556-46fe-ba37-c37e94aa8b27/"
+          rel="noreferrer"
+          target="_blank"
+        >
+          <h2
+            className="rscgrid-item__title"
+          >
+            transmitter Shoes indexing
+          </h2>
+        </a>
+        <div
+          className="rscgrid-item__meta text-muted"
+        >
+          <small>
+            <span>
+              Francisca72
+               • 
+              <time>
+                May 31, 2020
+              </time>
+            </span>
+          </small>
+        </div>
       </div>
     </div>
     <div
-      className="rscgrid-item"
+      className="rscgrid-item card"
       key="10352ba4-e6fa-4f69-a0b1-966b9f84276c"
     >
       <ContentImage
         contentUrl="https://connect.tester.net/content/10352ba4-e6fa-4f69-a0b1-966b9f84276c/"
         imageUrl="https://connect.tester.net/__api__/applications/10352ba4-e6fa-4f69-a0b1-966b9f84276c/image?strict=1"
       />
-      <a
-        href="https://connect.tester.net/content/10352ba4-e6fa-4f69-a0b1-966b9f84276c/"
-        rel="noreferrer"
-        target="_blank"
-      >
-        <h2
-          className="rscgrid-item__title"
-        >
-          Account recontextualize
-        </h2>
-      </a>
       <div
-        className="rscgrid-item__meta"
+        className="card-body"
       >
-        <span>
-          Mabel_Dooley
-           • 
-          <time>
-            Dec 23, 2020
-          </time>
-        </span>
+        <a
+          href="https://connect.tester.net/content/10352ba4-e6fa-4f69-a0b1-966b9f84276c/"
+          rel="noreferrer"
+          target="_blank"
+        >
+          <h2
+            className="rscgrid-item__title"
+          >
+            Account recontextualize
+          </h2>
+        </a>
+        <div
+          className="rscgrid-item__meta text-muted"
+        >
+          <small>
+            <span>
+              Mabel_Dooley
+               • 
+              <time>
+                Dec 23, 2020
+              </time>
+            </span>
+          </small>
+        </div>
       </div>
     </div>
     <div
-      className="rscgrid-item"
+      className="rscgrid-item card"
       key="b77ec334-951a-4b3e-9d01-3c2cc486c65e"
     >
       <ContentImage
         contentUrl="https://connect.tester.net/content/b77ec334-951a-4b3e-9d01-3c2cc486c65e/"
         imageUrl="https://connect.tester.net/__api__/applications/b77ec334-951a-4b3e-9d01-3c2cc486c65e/image?strict=1"
       />
-      <a
-        href="https://connect.tester.net/content/b77ec334-951a-4b3e-9d01-3c2cc486c65e/"
-        rel="noreferrer"
-        target="_blank"
-      >
-        <h2
-          className="rscgrid-item__title"
-        >
-          Cambodia
-        </h2>
-      </a>
       <div
-        className="rscgrid-item__meta"
+        className="card-body"
       >
-        <span>
-          Royal_Cummerata31
-           • 
-          <time>
-            Apr 22, 2021
-          </time>
-        </span>
+        <a
+          href="https://connect.tester.net/content/b77ec334-951a-4b3e-9d01-3c2cc486c65e/"
+          rel="noreferrer"
+          target="_blank"
+        >
+          <h2
+            className="rscgrid-item__title"
+          >
+            Cambodia
+          </h2>
+        </a>
+        <div
+          className="rscgrid-item__meta text-muted"
+        >
+          <small>
+            <span>
+              Royal_Cummerata31
+               • 
+              <time>
+                Apr 22, 2021
+              </time>
+            </span>
+          </small>
+        </div>
       </div>
     </div>
   </div>

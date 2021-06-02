@@ -293,7 +293,7 @@ exports[`<Filter /> renders properly, setup state and crosstalk handle 1`] = `
     >
       Filter
       <span
-        className="rscfilter__count"
+        className="rscfilter__count badge rounded-pill bg-primary"
       />
     </button>
     <FilterFieldsPane

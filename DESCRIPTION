@@ -33,7 +33,9 @@ Imports:
     digest,
     crosstalk,
     reactR,
-    purrr
+    purrr,
+    bslib,
+    sass
 URL:
     https://rstudio.github.io/rscpages,
     https://github.com/rstudio/rscpages

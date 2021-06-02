@@ -13,7 +13,6 @@
   }
 
   &__checkbox {
-    border: 1px solid #B0B0B0;
     height: 1em;
     margin-right: 0.7em;
     width: 1em;
@@ -23,9 +22,5 @@
       background-position: center center;
       background-repeat: no-repeat;
     }
-  }
-
-  &:focus &__checkbox {
-    border: 2px solid #4C83B6;
   }
 }

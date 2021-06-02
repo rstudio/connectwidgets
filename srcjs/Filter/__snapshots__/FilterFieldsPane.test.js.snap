@@ -2,7 +2,7 @@
 
 exports[`<FilterFieldsPane /> renders properly 1`] = `
 <div
-  className="rscfilter-pane"
+  className="rscfilter-pane bg-white"
 >
   <FilterField
     label="Owner"
@@ -20,10 +20,10 @@ exports[`<FilterFieldsPane /> renders properly 1`] = `
     type="tag"
   />
   <div
-    className="rscfilter-pane__actions"
+    className="rscfilter-pane__actions border-top"
   >
     <button
-      className="rscfilter-pane__actions-reset"
+      className="rscfilter-pane__actions-reset btn btn-secondary"
       onClick={[Function]}
     >
       Reset

@@ -18,31 +18,37 @@ function Card({ data }) {
     return (
       <div
         key={index}
-        className="rsccard__card"
+        className="rsccard__card card"
       >
-        <div
-          className='rsccard__img'
-        >
-          <ContentImage
-            imageUrl={imgUrl}
-            contentUrl={item.url}
-            contentType={item.app_mode}
-          />
-        </div>
-        <div className="rsccard__meta">
-          <span>{item.owner_username}</span> • <time>{dayjs(item.updated_time).format('ll')}</time>
-          <h2 className="rsccard__meta-title">
-            {item.title || item.name}
-          </h2>
-          <p className="rsccard__meta-description">
-            {item.description}
-          </p>
-          <a
-            className="rsccard__meta-link"
-            href={item.url}
-            target="_blank"
-            rel="noreferrer"
-          >Open Content</a>
+        <div className="card-body">
+          <div
+            className='rsccard__img'
+          >
+            <ContentImage
+              imageUrl={imgUrl}
+              contentUrl={item.url}
+              contentType={item.app_mode}
+            />
+          </div>
+          <div className="rsccard__meta">
+            <div className="rsccard__meta-author text-muted">
+              <small>
+                <span>{item.owner_username}</span> • <time>{dayjs(item.updated_time).format('ll')}</time>
+              </small>
+            </div>
+            <h2 className="rsccard__meta-title">
+              {item.title || item.name}
+            </h2>
+            <p className="rsccard__meta-description">
+              {item.description}
+            </p>
+            <a
+              className="rsccard__meta-link btn btn-primary btn-sm"
+              href={item.url}
+              target="_blank"
+              rel="noreferrer"
+            >Open Content</a>
+          </div>
         </div>
       </div>
     );

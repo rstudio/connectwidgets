@@ -1,0 +1,32 @@
+@import '../contrast.scss';
+
+$lightContrast: contrast($primary, white);
+$darkContrast: contrast($primary, black);
+
+.rsccard {
+  &__card {
+    border: 1px solid $border-color;
+  }
+
+  &__meta {
+    &-author {
+      color: $gray-500;
+    }
+
+    &-link {
+      background: $primary;
+      border: none;
+      transition: all 0.2s ease;
+
+      @if ($lightContrast > $darkContrast) {
+        color: $white;
+      } @else {
+        color: $dark;
+      }
+
+      &:hover {
+        background: $secondary;
+      }
+    }
+  }
+}

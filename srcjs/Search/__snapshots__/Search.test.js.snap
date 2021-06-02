@@ -7,7 +7,7 @@ exports[`<Search /> renders properly, setup crosstalk handle 1`] = `
   <input
     className="rscsearch__input"
     onChange={[Function]}
-    placeholder="Search content"
+    placeholder="Search"
     type="text"
   />
 </div>

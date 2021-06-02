@@ -1,5 +1,6 @@
 .rscsearch {
-  font-size: 14px;
+  align-items: center;
+  display: flex;
   position: relative;
 
   &::before {
@@ -15,7 +16,6 @@
   }
 
   &__input {
-    border: 1px solid #B0B0B0;
     border-radius: 3px;
     box-sizing: border-box;
     height: 3em;
@@ -23,7 +23,6 @@
     max-width: 100%;
     
     &:focus {
-      border-color: #4C83B6;
       outline: none;
     }
   }

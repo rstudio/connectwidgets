@@ -76,7 +76,7 @@ class GridView extends React.Component {
       const imgUrl = contentImgSrc(item.url, item.guid);
       return (
         <div
-        className="rscgrid-item"
+        className="rscgrid-item card"
         key={item.guid || item.name}
         >
           <ContentImage
@@ -85,17 +85,21 @@ class GridView extends React.Component {
             contentType={item.app_mode}
             contentCategory={item.content_category}
           />
-           <a
+          <div className="card-body">
+            <a
               href={item.url}
               target="_blank"
               rel="noreferrer"
-          >
-            <h2 className="rscgrid-item__title">
-              {item.title || item.name}
-            </h2>
-          </a>
-          <div className="rscgrid-item__meta">
-            <span>{item.owner_username} • <time>{dayjs(item.updated_time).format('ll')}</time></span>
+            >
+              <h2 className="rscgrid-item__title">
+                {item.title || item.name}
+              </h2>
+            </a>
+            <div className="rscgrid-item__meta text-muted">
+              <small>
+                <span>{item.owner_username} • <time>{dayjs(item.updated_time).format('ll')}</time></span>
+              </small>
+            </div>
           </div>
         </div>
       );

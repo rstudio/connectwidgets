@@ -1,0 +1,79 @@
+.rscfilter {
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+
+  &__count {
+    background: $primary;
+    color: $white;
+    border-radius: 50%;
+    display: inline-block;
+    font-size: 0.84em;
+    font-weight: 700;
+    line-height: 1.72em;
+    text-align: center;
+    width: 1.72em;
+  }
+}
+
+.rscfilter-field {
+  &__input {
+    border: 1px solid $gray-500;
+
+    &:focus {
+      border-color: $primary;
+    }
+  }
+
+  &__options {
+    background:$white;
+    border: 1px solid $gray-500;
+  }
+}
+
+.rscfilter-pane {
+  background: $white;
+  color: $gray-700;
+
+  &::before {
+    background: $white;
+  }
+  
+  &::after {
+    background: $white;
+  }
+  
+  &__actions {
+    border-top: 2px solid $gray-200;
+
+    &-reset {
+      background: $gray-200;
+      border: none;
+      border-radius: 3px;
+      line-height: 36px;
+      padding: 0 16px;
+    }
+  }  
+}
+
+.rscfilter-option {
+  &__checkbox {
+    border: 1px solid $gray-500;
+  }
+
+  &:focus &__checkbox {
+    border: 2px solid $primary;
+  }
+}
+
+.rscfilter-selections {
+  &__item {
+    background: $gray-200;
+    border-radius: 0.86em;
+    display: flex;
+    font-size: 0.86em;
+    height: 1.72em;
+    line-height: 1.72em;
+    margin: 0 0.4em 0.4em 0;;
+    padding: 0 0.86em;
+  }
+}

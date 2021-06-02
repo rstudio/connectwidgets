@@ -7,7 +7,7 @@ import './filterFieldsPane.scss';
 function FilterFieldsPane({ isActive }) {
   const context = React.useContext(FilterContext);
 
-  let paneClass = 'rscfilter-pane';
+  let paneClass = 'rscfilter-pane bg-white';
 
   if (isActive) {
     paneClass += ' rscfilter-pane--active';
@@ -30,9 +30,9 @@ function FilterFieldsPane({ isActive }) {
         placeholder="Filter tags"
         type={FilterType.tag}
       />
-      <div className="rscfilter-pane__actions">
+      <div className="rscfilter-pane__actions border-top">
         <button
-          className="rscfilter-pane__actions-reset"
+          className="rscfilter-pane__actions-reset btn btn-secondary"
           onClick={() => context.resetFilters()}
         >
           Reset

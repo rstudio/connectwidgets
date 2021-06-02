@@ -2,7 +2,7 @@
 
 exports[`<FilterOptions /> renders properly 1`] = `
 <div
-  className="rscfilter-field__options"
+  className="rscfilter-field__options bg-white border"
 >
   <div
     aria-checked={false}

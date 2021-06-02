@@ -1,0 +1,35 @@
+@import 'overwrites.scss';
+@import 'contrast.scss';
+
+$lightContrast: contrast($body-bg, white);
+$darkContrast: contrast($body-bg, black);
+
+.rscfilter {
+  &__toggle {
+    @if ($lightContrast > $darkContrast) {
+      color: white;
+    }
+  }
+
+  &__toggle::after {
+    @if ($lightContrast > $darkContrast) {
+      background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iNSIgdmlld0JveD0iMCAwIDEwIDUiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik0wIC00LjM3MTE0ZS0wN0w1IDVMMTAgMEwwIC00LjM3MTE0ZS0wN1oiIGZpbGw9IiNGRkZGRkYiLz4KPC9zdmc+");
+    }
+  }
+}
+
+.rscfilter-pane {
+  &::before {
+    background: $white;
+  }
+}
+
+.rscfilter-option {
+  &__checkbox {
+    border: 1px solid $border-color;
+  }
+
+  &:focus &__checkbox {
+    border: 2px solid $primary;
+  }
+}
