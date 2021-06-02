@@ -151,9 +151,9 @@ API. Authentication is done by providing an API key.</p>
 <ul>
 <li><p><a href='#method-new'><code>Client$new()</code></a></p></li>
 <li><p><a href='#method-print'><code>Client$print()</code></a></p></li>
-<li><p><a href='#method-raise_error'><code>Client$raise_error()</code></a></p></li>
-<li><p><a href='#method-add_auth'><code>Client$add_auth()</code></a></p></li>
 <li><p><a href='#method-GET'><code>Client$GET()</code></a></p></li>
+<li><p><a href='#method-content'><code>Client$content()</code></a></p></li>
+<li><p><a href='#method-server_settings'><code>Client$server_settings()</code></a></p></li>
 <li><p><a href='#method-clone'><code>Client$clone()</code></a></p></li>
 </ul>
 <p><hr>
@@ -169,22 +169,22 @@ API. Authentication is done by providing an API key.</p>
 <p><div class="r"></p><pre><span class='va'>Client</span><span class='op'>$</span><span class='fu'>print</span><span class='op'>(</span><span class='va'>...</span><span class='op'>)</span></pre><p></div></p>
 
 <p><hr>
-<a id="method-raise_error"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>raise_error()</code></h3>
-
-<h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
-<p><div class="r"></p><pre><span class='va'>Client</span><span class='op'>$</span><span class='fu'>raise_error</span><span class='op'>(</span><span class='va'>res</span><span class='op'>)</span></pre><p></div></p>
-
-<p><hr>
-<a id="method-add_auth"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>add_auth()</code></h3>
-
-<h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
-<p><div class="r"></p><pre><span class='va'>Client</span><span class='op'>$</span><span class='fu'>add_auth</span><span class='op'>(</span><span class='op'>)</span></pre><p></div></p>
-
-<p><hr>
 <a id="method-GET"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>GET()</code></h3>
 
 <h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
 <p><div class="r"></p><pre><span class='va'>Client</span><span class='op'>$</span><span class='fu'>GET</span><span class='op'>(</span><span class='va'>path</span>, <span class='va'>...</span>, writer <span class='op'>=</span> <span class='fu'>httr</span><span class='fu'>::</span><span class='fu'><a href='https://httr.r-lib.org/reference/write_disk.html'>write_memory</a></span><span class='op'>(</span><span class='op'>)</span>, parser <span class='op'>=</span> <span class='st'>"text"</span><span class='op'>)</span></pre><p></div></p>
+
+<p><hr>
+<a id="method-content"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code><a href='content.html'>content()</a></code></h3>
+
+<h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre><span class='va'>Client</span><span class='op'>$</span><span class='fu'>content</span><span class='op'>(</span><span class='op'>)</span></pre><p></div></p>
+
+<p><hr>
+<a id="method-server_settings"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>server_settings()</code></h3>
+
+<h4 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Usage</h4>
+<p><div class="r"></p><pre><span class='va'>Client</span><span class='op'>$</span><span class='fu'>server_settings</span><span class='op'>(</span><span class='op'>)</span></pre><p></div></p>
 
 <p><hr>
 <a id="method-clone"></a></p><h3 class='hasAnchor' id='arguments'><a class='anchor' href='#arguments'></a>Method <code>clone()</code></h3>
