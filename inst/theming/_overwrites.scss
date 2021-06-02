@@ -1,0 +1,10 @@
+/*
+  For an unkown reason (yet), priamry buttons for some 
+  bootswatch themes doesn't use the expected white text.
+
+  This files overwrites those undesired rules.
+*/
+
+.btn-primary {
+  color: white!important;
+}
