@@ -113,7 +113,7 @@ environment variables.
 If you're not familiar with setting environment variables, check out the
 [R Startup chapter](https://rstats.wtf/r-startup.html#renviron)
 of What They Forgot to Teach You About R.
-RStudio Connect will [automatically apply](https://docs.rstudio.com/connect/news/#rstudio-connect-188)
+RStudio Connect will [automatically apply](https://docs.rstudio.com/connect/user/content-settings/#content-vars)
 values for these at document run time,
 so there is no need to include them in your code:
 
