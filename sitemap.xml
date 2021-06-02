@@ -22,10 +22,28 @@
     <loc>https://rstudio.github.io/rscpages/reference/content.html</loc>
   </url>
   <url>
+    <loc>https://rstudio.github.io/rscpages/reference/default_theme.html</loc>
+  </url>
+  <url>
     <loc>https://rstudio.github.io/rscpages/reference/evaluate_widget_input.html</loc>
   </url>
   <url>
+    <loc>https://rstudio.github.io/rscpages/reference/gen_theme_dependency.html</loc>
+  </url>
+  <url>
+    <loc>https://rstudio.github.io/rscpages/reference/get_bootswatch_theme_name.html</loc>
+  </url>
+  <url>
+    <loc>https://rstudio.github.io/rscpages/reference/get_current_bootswatch_theme.html</loc>
+  </url>
+  <url>
+    <loc>https://rstudio.github.io/rscpages/reference/get_user_provided_theme.html</loc>
+  </url>
+  <url>
     <loc>https://rstudio.github.io/rscpages/reference/pipe.html</loc>
+  </url>
+  <url>
+    <loc>https://rstudio.github.io/rscpages/reference/resolve_theme_dependency.html</loc>
   </url>
   <url>
     <loc>https://rstudio.github.io/rscpages/reference/rsccard-shiny.html</loc>
@@ -49,9 +67,6 @@
     <loc>https://rstudio.github.io/rscpages/reference/rscpages.html</loc>
   </url>
   <url>
-    <loc>https://rstudio.github.io/rscpages/reference/rscpages_theme.html</loc>
-  </url>
-  <url>
     <loc>https://rstudio.github.io/rscpages/reference/rscsearch-shiny.html</loc>
   </url>
   <url>
@@ -59,6 +74,9 @@
   </url>
   <url>
     <loc>https://rstudio.github.io/rscpages/reference/rsctable.html</loc>
+  </url>
+  <url>
+    <loc>https://rstudio.github.io/rscpages/reference/rsctable_sync_theme.html</loc>
   </url>
   <url>
     <loc>https://rstudio.github.io/rscpages/reference/warning_widget_input.html</loc>
