@@ -15,6 +15,7 @@ Client <- R6::R6Class( # nolint
   public = list(
     server = NULL,
     api_key = NULL,
+    minimum_server_version = "1.8.8.3",
     initialize = function(server, api_key) {
       self$server <- server
       self$api_key <- api_key
@@ -30,7 +31,7 @@ Client <- R6::R6Class( # nolint
       invisible(self)
     },
     GET = function(path, ..., writer = httr::write_memory(), parser = "text") {
-      url <- paste0(self$server, "/__api__/v1", path)
+      url <- paste0(self$server, "/__api__", path)
       res <- httr::GET(
         url,
         private$add_auth(),
@@ -39,6 +40,13 @@ Client <- R6::R6Class( # nolint
       )
       private$raise_error(res)
       httr::content(res, as = parser)
+    },
+    content = function() {
+      results <- client$GET("/v1/content", query = list(include = "tags,owner"))
+      jsonlite::fromJSON(results, simplifyDataFrame = T)
+    },
+    server_settings = function() {
+      self$GET("/server_settings", parser = "parsed")
     }
   ),
   private = list(
@@ -58,6 +66,29 @@ Client <- R6::R6Class( # nolint
         stop(glue::glue(
           "ERROR: Please provide a protocol (http / https). You gave: {server}"
         ))
+      }
+
+      settings <- tryCatch({
+          self$server_settings()
+        },
+        error = function(e) {
+          message(e)
+          stop(
+            glue::glue(
+              "ERROR: Unable to connect to RStudio Connect at {server}",
+              e
+            )
+          )
+        }
+      )
+
+      if (compareVersion(settings$version, self$minimum_server_version) < 0) {
+        stop(
+          glue::glue("ERROR: Requires RStudio Connect server version >= ",
+            self$minimum_server_version,
+            ", current version ",
+            settings$version)
+        )
       }
     },
     raise_error = function(res) {
