@@ -62,7 +62,9 @@ client <- connect(
 all_content <- client %>%
   content()
 
-sample_content <- all_content %>% slice_sample(prop = .3)
+sample_content <- all_content %>%
+  arrange(desc(updated_time)) %>%
+  slice_head(prop = .3)
 ```
 
 ![](https://source.unsplash.com/1920x1080/?forest "A random forest.")
@@ -108,7 +110,10 @@ The client object:
 
 Use an `.Renviron` file to set the `CONNECT_SERVER` and `CONNECT_API_KEY`
 environment variables.
-RStudio Connect will [automatically apply](https://docs.rstudio.com/connect/news/#rstudio-connect-188)
+If you're not familiar with setting environment variables, check out the
+[R Startup chapter](https://rstats.wtf/r-startup.html#renviron)
+of What They Forgot to Teach You About R.
+RStudio Connect will [automatically apply](https://docs.rstudio.com/connect/user/content-settings/#content-vars)
 values for these at document run time,
 so there is no need to include them in your code:
 
@@ -128,7 +133,9 @@ all_content <- client %>%
 
 glimpse(all_content)
 
-sample_content <- all_content %>% slice_sample(prop = .3)
+sample_content <- all_content %>%
+  arrange(desc(updated_time)) %>%
+  slice_head(prop = .3)
 ```
 
 #### `content()`
@@ -144,12 +151,15 @@ sample_content <- all_content %>% slice_sample(prop = .3)
 * `description` - The user-provided description of the content item
 * `url` - The URL to the content item
 * `owner_guid` - Unique identifier of the owner of the content item
-* `owner_username` - Username of the owner of teh content item
+* `owner_username` - Username of the owner of the content item
 * `owner_first_name` - First name of the owner of the content item
 * `owner_last_name` - Last name of the owner of the content item
 * `tags` - A data frame of the tags associated with the content item, with the following columns: `id`, `name`, `parent_id`, `created_time`, `updated_time`.
 * `created_time` - The timestamp at which the content item was created
 * `updated_time` - The timestamp at which the content item was last updated
+
+The data frame contains one row for each item visible to the requesting user.
+For users in an "administrator" role, that will be all content items.
 
 #### Filtering Content
 
@@ -165,14 +175,14 @@ specified owner(s) by username.  You can pass a single username or a vector of
 usernames. `by_owner` is provided as an alias for readability when using a
 single username.
 
-```{r}
+```{r, echo=TRUE}
 all_content %>% 
   by_tag("Audit Reports")
 ```
 
 Since `all_content` is a `tibble()`, you can also manipulate it with dplyr:
 
-```{r}
+```{r, echo=TRUE}
 all_content %>% 
   filter(updated_time >= "2021-01-01") %>% 
   arrange(created_time)
@@ -202,7 +212,7 @@ Display multiple content items via a grid:
 
 #### table
 
-Provide a more detailed view with table:
+Provide a more detailed view with a table:
 
 ![a sample table](man/figures/README-table-1.png)
 
@@ -213,8 +223,119 @@ You must pass the same content data frame to `rscsearch()`, `rscfilter()`,
 and `rsctable()` or `rscgrid()` in order for filter and search to work.
 You can also create your own `crosstalk::SharedData()` object to pass to
 the components if you want more control over searching and filtering.
+Read more at `vignette("using-crosstalk")`.
 
 ![search and filter widgets](man/figures/README-search-filter-2.png)
 
+## Theming
+
+`rscpages` components support styling in `rmarkdown::html_document` via the `bslib` package.
+You can supply a [Bootswatch theme](https://bootswatch.com/4/) in the yaml header, e.g.
+
+```yaml
+---
+output:
+  html_document:
+    theme:
+      bootswatch: minty
+---
+```
+
+or pass in other customizations consistent with your organization's style.
+
 Once you're happy with the look of your page, Publish it to RStudio Connect.
 Read more at `vignette("publishing")`.
+
+## A more customized example:
+
+
+````markdown
+---
+output:
+  html_document:
+    theme:
+      bootswatch: lumen
+---
+
+```{css, echo=FALSE}`r ''`
+.main-container {
+    width: 100%;
+    max-width: unset;
+}
+
+.main {
+    max-width: 940px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* https://codepen.io/eversionsystems/pen/YOmqdj */
+.jumbotron {
+  color: white;
+  background-image: url("https://source.unsplash.com/d30sszrW7Vw/1920x1080");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 50vh;
+}
+```
+
+```{r, include=FALSE}`r ''`
+library(rscpages)
+library(dplyr)
+library(htmltools)
+
+knitr::opts_chunk$set(
+  comment = "",
+  echo = FALSE, warning = FALSE, message = FALSE
+)
+
+rsc_content <-
+  connect() %>%
+  content()
+
+apis <- rsc_content %>%
+  filter(app_mode %in% c("api", "python-api"))
+```
+
+```{r}`r ''`
+div(
+  class = "jumbotron jumbotron-fluid",
+  div(
+    class = "container",
+    h1("Connect API Portal", class = "display-4"),
+    p("Model APIs maintained by the data science team")
+  )
+)
+```
+
+```{r}`r ''`
+div(
+  class = "main",
+  h3("Featured APIs", class = "text-center"),
+  {
+    model_copy <- c(
+      "Our most important model: Distillery retro taiyaki fashion axe.
+      Art party cray intelligentsia flexitarian.",
+      "Our second most important model: Pug af twee portland pitchfork brunch 
+      kogi gochujang organic migas shaman four dollar toast 90's slow-carb."
+      )
+    
+    apis %>%
+      slice_head(n = 2) %>%
+      mutate(
+      description = model_copy
+      ) %>% 
+      rsccard()
+  },
+  h3("All APIs", class = "text-center"),
+  p("that thing George Box said one time. You know what thing."),
+  {
+    tagList(
+      bscols(rscsearch(apis), rscfilter(apis)),
+      rscgrid(apis)
+    )
+  }
+)
+```
+````
