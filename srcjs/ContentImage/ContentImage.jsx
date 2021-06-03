@@ -9,8 +9,8 @@ import { appModeImg } from '@/appMode';
 import './contentImage.scss';
 
 const imageClass = {
-  base: 'rscimage d-block',
-  noAccess: 'rscimage rscimage--no-access d-block',
+  base: 'rscimage',
+  noAccess: 'rscimage rscimage--no-access',
 }
 
 class ContentImage extends React.Component {
