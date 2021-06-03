@@ -3,6 +3,7 @@
 .Rdata
 .httr-oauth
 .DS_Store
+.Renviron
 docs
 node_modules
 inst/doc

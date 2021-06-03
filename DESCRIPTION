@@ -1,6 +1,6 @@
-Package: rscpages
+Package: connectwidgets
 Title: Organize and Curate Your Content Within RStudio Connect
-Version: 0.0.0.9000
+Version: 0.1.0.9000
 Authors@R: 
     person(given = "Brian",
            family = "Smith",
@@ -37,6 +37,6 @@ Imports:
     bslib,
     sass
 URL:
-    https://rstudio.github.io/rscpages,
-    https://github.com/rstudio/rscpages
+    https://rstudio.github.io/connectwidgets,
+    https://github.com/rstudio/connectwidgets
 VignetteBuilder: knitr

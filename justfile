@@ -2,7 +2,7 @@
 deps:
   npm i
 
-# Build the React components used by rscpages (alias "npm run build")
+# Build the React components used by connectwidgets (alias "npm run build")
 build:
   npm run build
 
@@ -15,7 +15,7 @@ lint:
 dev-watch:
   npm run dev:watch
 
-# Roxygenise (generate rscpages docs)
+# Roxygenise (generate connectwidgets docs)
 roxygen:
   Rscript -e 'roxygen2::roxygenise()'
 

@@ -4,7 +4,7 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-library(rscpages)
+library(connectwidgets)
 library(dplyr)
 
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)

@@ -1,6 +1,6 @@
 ^renv$
 ^renv\.lock$
-^rscpages\.Rproj$
+^connectwidgets\.Rproj$
 ^\.Rproj\.user$
 ^LICENSE\.md$
 ^README\.Rmd$
