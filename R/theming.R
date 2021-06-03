@@ -236,7 +236,7 @@ table_pagination_styles <- function(theme_vars = NULL) {
     page_btns_current_style["backgroundColor"] <- theme_vars[["primary"]]
     page_btns_current_style["border"] <- "none"
 
-    return (
+    return(
       list(
         styles = page_btns_style,
         current_styles = page_btns_current_style

@@ -4,10 +4,13 @@
 \alias{content}
 \title{Get Content Items}
 \usage{
-content(client)
+content(client, unpublished = FALSE)
 }
 \arguments{
 \item{client}{A Client object (see \code{connect})}
+
+\item{unpublished}{A boolean value specifying whether to return content that
+has not successfully published}
 }
 \value{
 A data frame (tibble) of content items
