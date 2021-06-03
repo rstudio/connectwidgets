@@ -4,6 +4,8 @@
 #' return content that is visible to the API key's user account.
 #'
 #' @param client A Client object (see `connect`)
+#' @param unpublished A boolean value specifying whether to return content that
+#'   has not successfully published
 #'
 #' @return A data frame (tibble) of content items
 #'
@@ -31,10 +33,14 @@
 #'   }
 #'
 #' @export
-content <- function(client) {
+content <- function(client, unpublished = FALSE) {
   df <- client$content()
 
-  content_tbl <- tibble::tibble(
+  if (!unpublished) {
+    df <- df %>% dplyr::filter(!is.na(.data$bundle_id))
+  }
+
+  tibble::tibble(
     id = as.integer(df$id),
     guid = df$guid,
     name = df$name,
