@@ -11,7 +11,7 @@
     font-weight: 700;
     line-height: 1.72em;
     text-align: center;
-    width: 1.72em;
+    min-width: 2em;
   }
 }
 
@@ -69,6 +69,7 @@
   &__item {
     background: $gray-200;
     border-radius: 0.86em;
+    color: $gray-700;
     display: flex;
     font-size: 0.86em;
     height: 1.72em;
