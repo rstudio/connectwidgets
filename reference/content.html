@@ -134,7 +134,7 @@ return content that is visible to the API key's user account." />
 return content that is visible to the API key's user account.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>content</span><span class='op'>(</span><span class='va'>client</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>content</span><span class='op'>(</span><span class='va'>client</span>, unpublished <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -142,6 +142,11 @@ return content that is visible to the API key's user account.</p>
     <tr>
       <th>client</th>
       <td><p>A Client object (see <code>connect</code>)</p></td>
+    </tr>
+    <tr>
+      <th>unpublished</th>
+      <td><p>A boolean value specifying whether to return content that
+has not successfully published</p></td>
     </tr>
     </table>
 
