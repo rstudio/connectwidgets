@@ -1,16 +1,16 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# rscpages: Curate your content on RStudio Connect
+# connectwidgets: Curate your content on RStudio Connect
 
 <!-- badges: start -->
 
 [![CRAN
-status](https://www.r-pkg.org/badges/version/rscpages)](https://CRAN.R-project.org/package=rscpages)
+status](https://www.r-pkg.org/badges/version/connectwidgets)](https://CRAN.R-project.org/package=connectwidgets)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![R-CMD-check](https://github.com/rstudio/rscpages/workflows/R-CMD-check/badge.svg)](https://github.com/rstudio/rscpages/actions)
-[![lint](https://github.com/rstudio/rscpages/actions/workflows/lint.yaml/badge.svg)](https://github.com/rstudio/rscpages/actions/workflows/lint.yaml)
+[![R-CMD-check](https://github.com/rstudio/connectwidgets/workflows/R-CMD-check/badge.svg)](https://github.com/rstudio/connectwidgets/actions)
+[![lint](https://github.com/rstudio/connectwidgets/actions/workflows/lint.yaml/badge.svg)](https://github.com/rstudio/connectwidgets/actions/workflows/lint.yaml)
 <!-- badges: end -->
 
 ## Installation
@@ -20,7 +20,7 @@ from GitHub:
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("rstudio/rscpages")
+remotes::install_github("rstudio/connectwidgets")
 ```
 
 ## Example
@@ -28,7 +28,7 @@ remotes::install_github("rstudio/rscpages")
 Use the template:
 
 ``` r
-rmarkdown::draft("example-page.Rmd", template = "rscpages", package = "rscpages")
+rmarkdown::draft("example-page.Rmd", template = "connectwidgets", package = "connectwidgets")
 ```
 
 You can also copy and knit the following example, or read on for more
@@ -41,7 +41,7 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-library(rscpages)
+library(connectwidgets)
 library(dplyr)
 
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
@@ -110,7 +110,7 @@ values for these at document run time, so there is no need to include
 them in your code:
 
 ``` r
-library(rscpages)
+library(connectwidgets)
 library(dplyr)
 #> 
 #> Attaching package: 'dplyr'
@@ -242,7 +242,7 @@ all_content %>%
 
 ### Components
 
-Once your content data are filtered, `rscpages` provides components for
+Once your content data are filtered, `connectwidgets` provides components for
 displaying information about them. The title, description, and preview
 image can be set [from the RStudio Connect
 dashboard.](https://docs.rstudio.com/connect/user/content-settings/#content-metadata)
@@ -284,7 +284,7 @@ more control over searching and filtering. Read more at
 
 ## Theming
 
-`rscpages` components support styling in `rmarkdown::html_document` via
+`connectwidgets` components support styling in `rmarkdown::html_document` via
 the `bslib` package. You can supply a [Bootswatch
 theme](https://bootswatch.com/4/) in the yaml header, e.g.
 
@@ -337,7 +337,7 @@ output:
 ```
 
 ```{r, include=FALSE}
-library(rscpages)
+library(connectwidgets)
 library(dplyr)
 library(htmltools)
 

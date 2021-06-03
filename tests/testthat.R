@@ -1,4 +1,4 @@
 library(testthat)
-library(rscpages)
+library(connectwidgets)
 
-test_check("rscpages")
+test_check("connectwidgets")

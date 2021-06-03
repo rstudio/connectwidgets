@@ -42,7 +42,7 @@ rsccard <- function(content) {
     reactR::reactMarkup(component),
     width = "auto",
     height = "auto",
-    package = "rscpages",
+    package = "connectwidgets",
     dependencies = dependencies
   )
 }
@@ -78,7 +78,7 @@ widget_html.rsccard <- function(id, style, class, ...) {
 #'
 #' @export
 rsccardOutput <- function(outputId, width = '100%', height = '400px'){
-  htmlwidgets::shinyWidgetOutput(outputId, 'rsccard', width, height, package = 'rscpages')
+  htmlwidgets::shinyWidgetOutput(outputId, 'rsccard', width, height, package = 'connectwidgets')
 }
 
 #' @rdname rsccard-shiny

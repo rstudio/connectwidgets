@@ -44,7 +44,7 @@ rscsearch <- function(content) {
     reactR::reactMarkup(component),
     width = "auto",
     height = "auto",
-    package = "rscpages",
+    package = "connectwidgets",
     dependencies = dependencies
   )
 }
@@ -80,7 +80,7 @@ widget_html.rscsearch <- function(id, style, class, ...) {
 #'
 #' @export
 rscsearchOutput <- function(outputId, width = '100%', height = '400px'){
-  htmlwidgets::shinyWidgetOutput(outputId, 'rscsearch', width, height, package = 'rscpages')
+  htmlwidgets::shinyWidgetOutput(outputId, 'rscsearch', width, height, package = 'connectwidgets')
 }
 
 #' @rdname rscsearch-shiny

@@ -13,14 +13,14 @@ knitr::opts_chunk$set(
 )
 ```
 
-# rscpages: Curate your content on RStudio Connect
+# connectwidgets: Curate your content on RStudio Connect
 
 <!-- badges: start -->
 
-[![CRAN status](https://www.r-pkg.org/badges/version/rscpages)](https://CRAN.R-project.org/package=rscpages)
+[![CRAN status](https://www.r-pkg.org/badges/version/connectwidgets)](https://CRAN.R-project.org/package=connectwidgets)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
-[![R-CMD-check](https://github.com/rstudio/rscpages/workflows/R-CMD-check/badge.svg)](https://github.com/rstudio/rscpages/actions)
-[![lint](https://github.com/rstudio/rscpages/actions/workflows/lint.yaml/badge.svg)](https://github.com/rstudio/rscpages/actions/workflows/lint.yaml)
+[![R-CMD-check](https://github.com/rstudio/connectwidgets/workflows/R-CMD-check/badge.svg)](https://github.com/rstudio/connectwidgets/actions)
+[![lint](https://github.com/rstudio/connectwidgets/actions/workflows/lint.yaml/badge.svg)](https://github.com/rstudio/connectwidgets/actions/workflows/lint.yaml)
 <!-- badges: end -->
 
 ## Installation
@@ -29,7 +29,7 @@ This package has not been released to CRAN yet and must be installed from GitHub
 
 ``` r
 # install.packages("remotes")
-remotes::install_github("rstudio/rscpages")
+remotes::install_github("rstudio/connectwidgets")
 ```
 
 ## Example
@@ -37,7 +37,7 @@ remotes::install_github("rstudio/rscpages")
 Use the template:
 
 ```{r, eval=FALSE}
-rmarkdown::draft("example-page.Rmd", template = "rscpages", package = "rscpages")
+rmarkdown::draft("example-page.Rmd", template = "connectwidgets", package = "connectwidgets")
 ```
 
 You can also copy and knit the following example, or read on for more details:
@@ -49,7 +49,7 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}`r ''`
-library(rscpages)
+library(connectwidgets)
 library(dplyr)
 
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
@@ -117,8 +117,8 @@ RStudio Connect will [automatically apply](https://docs.rstudio.com/connect/user
 values for these at document run time,
 so there is no need to include them in your code:
 
-```{r}
-library(rscpages)
+```{r warning = FALSE, message = FALSE}
+library(connectwidgets)
 library(dplyr)
 
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
@@ -130,8 +130,6 @@ client <- connect(
 
 all_content <- client %>%
   content()
-
-glimpse(all_content)
 
 sample_content <- all_content %>%
   arrange(desc(updated_time)) %>%
@@ -191,7 +189,7 @@ all_content %>%
 
 ### Components
 
-Once your content data are filtered, `rscpages` provides components for
+Once your content data are filtered, `connectwidgets` provides components for
 displaying information about them. The title, description, and preview image can be set
 [from the RStudio Connect dashboard.](https://docs.rstudio.com/connect/user/content-settings/#content-metadata)
 For content deployed to Connect where no image has been supplied, a default image will be used.
@@ -229,7 +227,7 @@ Read more at `vignette("using-crosstalk")`.
 
 ## Theming
 
-`rscpages` components support styling in `rmarkdown::html_document` via the `bslib` package.
+`connectwidgets` components support styling in `rmarkdown::html_document` via the `bslib` package.
 You can supply a [Bootswatch theme](https://bootswatch.com/4/) in the yaml header, e.g.
 
 ```yaml
@@ -281,7 +279,7 @@ output:
 ```
 
 ```{r, include=FALSE}`r ''`
-library(rscpages)
+library(connectwidgets)
 library(dplyr)
 library(htmltools)
 

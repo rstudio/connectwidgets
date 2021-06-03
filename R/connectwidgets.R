@@ -1,6 +1,6 @@
-#' rscpages: Curate your content on RStudio Connect
+#' connectwidgets: Curate your content on RStudio Connect
 #'
-#' rscpages provides UI components to help publishers provide curated
+#' connectwidgets provides UI components to help publishers provide curated
 #' organization of content on RStudio Connect.
 #'
 #' @section Connection:
@@ -19,5 +19,5 @@
 #' }
 #'
 #' @docType package
-#' @name rscpages
+#' @name connectwidgets
 "_PACKAGE"

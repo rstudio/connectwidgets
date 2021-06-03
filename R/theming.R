@@ -18,7 +18,7 @@
 #'
 
 default_theme <- bslib::bs_theme(
-  # principal variables in use by rscpages
+  # principal variables in use by connectwidgets
   bg = "#FFF",
   fg = "#000",
   primary = "#346899",
@@ -84,7 +84,7 @@ gen_theme_dependency <- function(widget_name, theme, default_base = FALSE) {
   if (default_base) {
     dependency_name <- sprintf("%s-default-theme-%s", widget_name, version)
     scss_path <- system.file(
-      package = "rscpages",
+      package = "connectwidgets",
       "theming",
       "default",
       widget_theme_file
@@ -92,7 +92,7 @@ gen_theme_dependency <- function(widget_name, theme, default_base = FALSE) {
   } else {
     dependency_name <- sprintf("%s-theme-%s", widget_name, version)
     scss_path <- system.file(
-      package = "rscpages",
+      package = "connectwidgets",
       "theming",
       widget_theme_file
     )
@@ -109,7 +109,7 @@ gen_theme_dependency <- function(widget_name, theme, default_base = FALSE) {
 }
 
 #' Resolve and get theme to be used by a widget. It could be the
-#' default rscpages styling theme or one provided by the user.
+#' default connectwidgets styling theme or one provided by the user.
 #'
 #' @param widget_name The name of the widget (e.g: rscgrid)
 resolve_theme_dependency <- function(widget_name) {

@@ -7,7 +7,7 @@
 rsctable(content)
 }
 \arguments{
-\item{content}{The tibble of content provided by rscpages::content()
+\item{content}{The tibble of content provided by connectwidgets::content()
 Requires the columns "guid", "url", "title", "app_mode",
 "owner_username" and "updated_time".}
 }

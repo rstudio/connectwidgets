@@ -56,7 +56,7 @@ rscgrid <- function(content) {
     reactR::reactMarkup(component),
     width = "auto",
     height = "auto",
-    package = "rscpages",
+    package = "connectwidgets",
     dependencies = dependencies
   )
 }
@@ -92,7 +92,7 @@ widget_html.rscgrid <- function(id, style, class, ...) {
 #'
 #' @export
 rscgridOutput <- function(outputId, width = '100%', height = '400px'){
-  htmlwidgets::shinyWidgetOutput(outputId, 'rscgrid', width, height, package = 'rscpages')
+  htmlwidgets::shinyWidgetOutput(outputId, 'rscgrid', width, height, package = 'connectwidgets')
 }
 
 #' @rdname rscgrid-shiny

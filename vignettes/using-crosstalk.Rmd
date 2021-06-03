@@ -19,7 +19,7 @@ The `rsctable()`, `rscgrid()`, `rscsearch()`, and `rscfilter()`  widgets use
 identical results from the `content()` tibble is sufficient:
 
 ```{r, eval=FALSE}
-library(rscpages)
+library(connectwidgets)
 library(dplyr)
 library(purrr)
 library(htmltools)
