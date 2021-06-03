@@ -75,8 +75,7 @@ Client <- R6::R6Class( # nolint
           message(e)
           stop(
             glue::glue(
-              "ERROR: Unable to connect to RStudio Connect at {server}",
-              e
+              "ERROR: Unable to connect to RStudio Connect at {server}"
             )
           )
         }
