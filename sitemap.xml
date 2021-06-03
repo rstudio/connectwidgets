@@ -1,90 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://rstudio.github.io/rscpages/index.html</loc>
+    <loc>https://rstudio.github.io/connectwidgets/index.html</loc>
   </url>
   <url>
-    <loc>https://rstudio.github.io/rscpages/reference/Client.html</loc>
+    <loc>https://rstudio.github.io/connectwidgets/reference/Client.html</loc>
   </url>
   <url>
-    <loc>https://rstudio.github.io/rscpages/reference/bscols.html</loc>
+    <loc>https://rstudio.github.io/connectwidgets/reference/bscols.html</loc>
   </url>
   <url>
-    <loc>https://rstudio.github.io/rscpages/reference/by_owners.html</loc>
+    <loc>https://rstudio.github.io/connectwidgets/reference/by_owners.html</loc>
   </url>
   <url>
-    <loc>https://rstudio.github.io/rscpages/reference/by_tags.html</loc>
+    <loc>https://rstudio.github.io/connectwidgets/reference/by_tags.html</loc>
   </url>
   <url>
-    <loc>https://rstudio.github.io/rscpages/reference/connect.html</loc>
+    <loc>https://rstudio.github.io/connectwidgets/reference/connect.html</loc>
   </url>
   <url>
-    <loc>https://rstudio.github.io/rscpages/reference/content.html</loc>
+    <loc>https://rstudio.github.io/connectwidgets/reference/connectwidgets.html</loc>
   </url>
   <url>
-    <loc>https://rstudio.github.io/rscpages/reference/default_theme.html</loc>
+    <loc>https://rstudio.github.io/connectwidgets/reference/content.html</loc>
   </url>
   <url>
-    <loc>https://rstudio.github.io/rscpages/reference/evaluate_widget_input.html</loc>
+    <loc>https://rstudio.github.io/connectwidgets/reference/default_theme.html</loc>
   </url>
   <url>
-    <loc>https://rstudio.github.io/rscpages/reference/gen_theme_dependency.html</loc>
+    <loc>https://rstudio.github.io/connectwidgets/reference/evaluate_widget_input.html</loc>
   </url>
   <url>
-    <loc>https://rstudio.github.io/rscpages/reference/get_bootswatch_theme_name.html</loc>
+    <loc>https://rstudio.github.io/connectwidgets/reference/gen_theme_dependency.html</loc>
   </url>
   <url>
-    <loc>https://rstudio.github.io/rscpages/reference/get_current_bootswatch_theme.html</loc>
+    <loc>https://rstudio.github.io/connectwidgets/reference/get_bootswatch_theme_name.html</loc>
   </url>
   <url>
-    <loc>https://rstudio.github.io/rscpages/reference/get_user_provided_theme.html</loc>
+    <loc>https://rstudio.github.io/connectwidgets/reference/get_current_bootswatch_theme.html</loc>
   </url>
   <url>
-    <loc>https://rstudio.github.io/rscpages/reference/pipe.html</loc>
+    <loc>https://rstudio.github.io/connectwidgets/reference/get_user_provided_theme.html</loc>
   </url>
   <url>
-    <loc>https://rstudio.github.io/rscpages/reference/resolve_theme_dependency.html</loc>
+    <loc>https://rstudio.github.io/connectwidgets/reference/pipe.html</loc>
   </url>
   <url>
-    <loc>https://rstudio.github.io/rscpages/reference/rsccard-shiny.html</loc>
+    <loc>https://rstudio.github.io/connectwidgets/reference/resolve_theme_dependency.html</loc>
   </url>
   <url>
-    <loc>https://rstudio.github.io/rscpages/reference/rsccard.html</loc>
+    <loc>https://rstudio.github.io/connectwidgets/reference/rsccard-shiny.html</loc>
   </url>
   <url>
-    <loc>https://rstudio.github.io/rscpages/reference/rscfilter-shiny.html</loc>
+    <loc>https://rstudio.github.io/connectwidgets/reference/rsccard.html</loc>
   </url>
   <url>
-    <loc>https://rstudio.github.io/rscpages/reference/rscfilter.html</loc>
+    <loc>https://rstudio.github.io/connectwidgets/reference/rscfilter-shiny.html</loc>
   </url>
   <url>
-    <loc>https://rstudio.github.io/rscpages/reference/rscgrid-shiny.html</loc>
+    <loc>https://rstudio.github.io/connectwidgets/reference/rscfilter.html</loc>
   </url>
   <url>
-    <loc>https://rstudio.github.io/rscpages/reference/rscgrid.html</loc>
+    <loc>https://rstudio.github.io/connectwidgets/reference/rscgrid-shiny.html</loc>
   </url>
   <url>
-    <loc>https://rstudio.github.io/rscpages/reference/rscpages.html</loc>
+    <loc>https://rstudio.github.io/connectwidgets/reference/rscgrid.html</loc>
   </url>
   <url>
-    <loc>https://rstudio.github.io/rscpages/reference/rscsearch-shiny.html</loc>
+    <loc>https://rstudio.github.io/connectwidgets/reference/rscsearch-shiny.html</loc>
   </url>
   <url>
-    <loc>https://rstudio.github.io/rscpages/reference/rscsearch.html</loc>
+    <loc>https://rstudio.github.io/connectwidgets/reference/rscsearch.html</loc>
   </url>
   <url>
-    <loc>https://rstudio.github.io/rscpages/reference/rsctable.html</loc>
+    <loc>https://rstudio.github.io/connectwidgets/reference/rsctable.html</loc>
   </url>
   <url>
-    <loc>https://rstudio.github.io/rscpages/reference/rsctable_sync_theme.html</loc>
+    <loc>https://rstudio.github.io/connectwidgets/reference/rsctable_sync_theme.html</loc>
   </url>
   <url>
-    <loc>https://rstudio.github.io/rscpages/reference/warning_widget_input.html</loc>
+    <loc>https://rstudio.github.io/connectwidgets/reference/warning_widget_input.html</loc>
   </url>
   <url>
-    <loc>https://rstudio.github.io/rscpages/articles/publishing.html</loc>
+    <loc>https://rstudio.github.io/connectwidgets/articles/publishing.html</loc>
   </url>
   <url>
-    <loc>https://rstudio.github.io/rscpages/articles/using-crosstalk.html</loc>
+    <loc>https://rstudio.github.io/connectwidgets/articles/using-crosstalk.html</loc>
   </url>
 </urlset>

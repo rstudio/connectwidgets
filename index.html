@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Organize and Curate Your Content Within RStudio Connect • rscpages</title>
+<title>Organize and Curate Your Content Within RStudio Connect • connectwidgets</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
@@ -30,8 +30,8 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="index.html">rscpages</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <a class="navbar-link" href="index.html">connectwidgets</a>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9000</span>
       </span>
     </div>
 
@@ -64,7 +64,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/rstudio/rscpages/">
+  <a href="https://github.com/rstudio/connectwidgets/">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -81,9 +81,9 @@
 
       </header><div class="row">
   <div class="contents col-md-9">
-<div id="rscpages-curate-your-content-on-rstudio-connect" class="section level1">
+<div id="connectwidgets-curate-your-content-on-rstudio-connect" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#rscpages-curate-your-content-on-rstudio-connect" class="anchor"></a>rscpages: Curate your content on RStudio Connect</h1></div>
+<a href="#connectwidgets-curate-your-content-on-rstudio-connect" class="anchor"></a>connectwidgets: Curate your content on RStudio Connect</h1></div>
 <!-- badges: start -->
 
 <div id="installation" class="section level2">
@@ -92,14 +92,14 @@
 <p>This package has not been released to CRAN yet and must be installed from GitHub:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># install.packages("remotes")</span>
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"rstudio/rscpages"</span><span class="op">)</span></code></pre></div>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"rstudio/connectwidgets"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h2>
 <p>Use the template:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/draft.html">draft</a></span><span class="op">(</span><span class="st">"example-page.Rmd"</span>, template <span class="op">=</span> <span class="st">"rscpages"</span>, package <span class="op">=</span> <span class="st">"rscpages"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu">rmarkdown</span><span class="fu">::</span><span class="fu"><a href="https://pkgs.rstudio.com/rmarkdown/reference/draft.html">draft</a></span><span class="op">(</span><span class="st">"example-page.Rmd"</span>, template <span class="op">=</span> <span class="st">"connectwidgets"</span>, package <span class="op">=</span> <span class="st">"connectwidgets"</span><span class="op">)</span></code></pre></div>
 <p>You can also copy and knit the following example, or read on for more details:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode markdown"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1"></a>---</span>
 <span id="cb3-2"><a href="#cb3-2"></a>title: an example page</span>
@@ -107,7 +107,7 @@
 <span id="cb3-4"><a href="#cb3-4"></a>---</span>
 <span id="cb3-5"><a href="#cb3-5"></a></span>
 <span id="cb3-6"><a href="#cb3-6"></a><span class="bn">```{r setup, include=FALSE}</span></span>
-<span id="cb3-7"><a href="#cb3-7"></a><span class="bn">library(rscpages)</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="bn">library(connectwidgets)</span></span>
 <span id="cb3-8"><a href="#cb3-8"></a><span class="bn">library(dplyr)</span></span>
 <span id="cb3-9"><a href="#cb3-9"></a></span>
 <span id="cb3-10"><a href="#cb3-10"></a><span class="bn">knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)</span></span>
@@ -167,7 +167,7 @@
 </ul>
 <p>Use an <code>.Renviron</code> file to set the <code>CONNECT_SERVER</code> and <code>CONNECT_API_KEY</code> environment variables. If you’re not familiar with setting environment variables, check out the <a href="https://rstats.wtf/r-startup.html#renviron">R Startup chapter</a> of What They Forgot to Teach You About R. RStudio Connect will <a href="https://docs.rstudio.com/connect/news/#rstudio-connect-188">automatically apply</a> values for these at document run time, so there is no need to include them in your code:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rstudio.github.io/rscpages">rscpages</a></span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rstudio.github.io/connectwidgets">connectwidgets</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; Attaching package: 'dplyr'</span>
@@ -298,7 +298,7 @@
 <div id="components" class="section level3">
 <h3 class="hasAnchor">
 <a href="#components" class="anchor"></a>Components</h3>
-<p>Once your content data are filtered, <code>rscpages</code> provides components for displaying information about them. The title, description, and preview image can be set <a href="https://docs.rstudio.com/connect/user/content-settings/#content-metadata">from the RStudio Connect dashboard.</a> For content deployed to Connect where no image has been supplied, a default image will be used.</p>
+<p>Once your content data are filtered, <code>connectwidgets</code> provides components for displaying information about them. The title, description, and preview image can be set <a href="https://docs.rstudio.com/connect/user/content-settings/#content-metadata">from the RStudio Connect dashboard.</a> For content deployed to Connect where no image has been supplied, a default image will be used.</p>
 <p><em>Note:</em> In many cases, you will only see default images until your content is deployed.</p>
 <div id="card" class="section level4">
 <h4 class="hasAnchor">
@@ -329,7 +329,7 @@
 <div id="theming" class="section level2">
 <h2 class="hasAnchor">
 <a href="#theming" class="anchor"></a>Theming</h2>
-<p><code>rscpages</code> components support styling in <code><a href="https://pkgs.rstudio.com/rmarkdown/reference/html_document.html">rmarkdown::html_document</a></code> via the <code>bslib</code> package. You can supply a <a href="https://bootswatch.com/4/">Bootswatch theme</a> in the yaml header, e.g.</p>
+<p><code>connectwidgets</code> components support styling in <code><a href="https://pkgs.rstudio.com/rmarkdown/reference/html_document.html">rmarkdown::html_document</a></code> via the <code>bslib</code> package. You can supply a <a href="https://bootswatch.com/4/">Bootswatch theme</a> in the yaml header, e.g.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb7-1"><a href="#cb7-1"></a><span class="pp">---</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a><span class="fu">output</span><span class="kw">:</span></span>
 <span id="cb7-3"><a href="#cb7-3"></a><span class="at">  </span><span class="fu">html_document</span><span class="kw">:</span></span>
@@ -373,7 +373,7 @@
 <span id="cb8-29"><a href="#cb8-29"></a><span class="bn">```</span></span>
 <span id="cb8-30"><a href="#cb8-30"></a></span>
 <span id="cb8-31"><a href="#cb8-31"></a><span class="bn">```{r, include=FALSE}</span></span>
-<span id="cb8-32"><a href="#cb8-32"></a><span class="bn">library(rscpages)</span></span>
+<span id="cb8-32"><a href="#cb8-32"></a><span class="bn">library(connectwidgets)</span></span>
 <span id="cb8-33"><a href="#cb8-33"></a><span class="bn">library(dplyr)</span></span>
 <span id="cb8-34"><a href="#cb8-34"></a><span class="bn">library(htmltools)</span></span>
 <span id="cb8-35"><a href="#cb8-35"></a></span>
@@ -438,7 +438,7 @@
     <div class="links">
 <h2>Links</h2>
 <ul class="list-unstyled">
-<li>Browse source code at <br><a href="https://github.com/rstudio/rscpages/">https://​github.com/​rstudio/​rscpages/​</a>
+<li>Browse source code at <br><a href="https://github.com/rstudio/connectwidgets/">https://​github.com/​rstudio/​connectwidgets/​</a>
 </li>
 </ul>
 </div>
@@ -459,10 +459,10 @@
   <div class="dev-status">
 <h2>Dev status</h2>
 <ul class="list-unstyled">
-<li><a href="https://CRAN.R-project.org/package=rscpages"><img src="https://www.r-pkg.org/badges/version/rscpages" alt="CRAN status"></a></li>
+<li><a href="https://CRAN.R-project.org/package=connectwidgets"><img src="https://www.r-pkg.org/badges/version/connectwidgets" alt="CRAN status"></a></li>
 <li><a href="https://lifecycle.r-lib.org/articles/stages.html#experimental"><img src="https://img.shields.io/badge/lifecycle-experimental-orange.svg" alt="Lifecycle: experimental"></a></li>
-<li><a href="https://github.com/rstudio/rscpages/actions"><img src="https://github.com/rstudio/rscpages/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
-<li><a href="https://github.com/rstudio/rscpages/actions/workflows/lint.yaml"><img src="https://github.com/rstudio/rscpages/actions/workflows/lint.yaml/badge.svg" alt="lint"></a></li>
+<li><a href="https://github.com/rstudio/connectwidgets/actions"><img src="https://github.com/rstudio/connectwidgets/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"></a></li>
+<li><a href="https://github.com/rstudio/connectwidgets/actions/workflows/lint.yaml"><img src="https://github.com/rstudio/connectwidgets/actions/workflows/lint.yaml/badge.svg" alt="lint"></a></li>
 </ul>
 </div>
 </div>
