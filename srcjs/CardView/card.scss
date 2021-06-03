@@ -45,21 +45,3 @@
     }
   }
 }
-
-@media screen and (max-width: 680px) {
-  .rsccard {
-    &__card .card-body {
-      flex-direction: column;
-    }
-
-    &__img {
-      flex: auto;
-      margin: 3%;
-      width: 94%;
-    }
-
-    &__meta {
-      margin: 3%;
-    }
-  }
-}

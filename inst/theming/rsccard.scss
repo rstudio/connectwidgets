@@ -13,3 +13,21 @@ $darkContrast: contrast($body-bg, black);
     }
   }
 }
+
+@include media-breakpoint-down(sm) {
+  .rsccard {
+    &__card .card-body {
+      flex-direction: column;
+    }
+
+    &__img {
+      flex: auto;
+      margin: 3%;
+      width: 94%;
+    }
+
+    &__meta {
+      margin: 3%;
+    }
+  }
+}
