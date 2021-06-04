@@ -131,6 +131,8 @@ client <- connect(
 all_content <- client %>%
   content()
 
+glimpse(all_content)
+
 sample_content <- all_content %>%
   arrange(desc(updated_time)) %>%
   slice_head(prop = .3)
