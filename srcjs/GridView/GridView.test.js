@@ -1,11 +1,12 @@
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
 import GridView from './GridView';
+import GridPagination from './GridPagination';
 import testFrameData from './test-fixtures/data.json'
 
-const mkWrapper = () => {
+const mkWrapper = (data = testFrameData) => {
   return shallow(<GridView
-    data={testFrameData}
+    data={data}
     crosstalkGroup="abcd-1234"
   />);
 };
@@ -83,6 +84,22 @@ describe('<GridView />', () => {
       expect(wrapper.instance().state.currentPage).toBe(1);
       expect(titleOf(0)).toBe('Gardens Consultant');
       expect(titleOf(4)).toBe('e-enable invoice');
+    });
+
+    it('pagination only shows when there is more than 1 page', () => {
+      const dataKeys = [
+        'url', 'guid', 'title', 'name',
+        'owner_username', 'updated_time'
+      ];
+      const smallDataSample = {};
+      dataKeys.forEach(key => {
+        smallDataSample[key] = testFrameData[key].slice(0,8);
+      });
+      wrapper = mkWrapper(smallDataSample);
+      expect(wrapper.find(GridPagination).exists()).toBe(false);
+
+      wrapper = mkWrapper();
+      expect(wrapper.find(GridPagination).exists()).toBe(true);
     });
   });
 });

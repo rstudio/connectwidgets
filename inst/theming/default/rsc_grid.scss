@@ -74,6 +74,10 @@
       pointer-events: none;
     }
 
+    &--disabled {
+      color: $gray-600!important;
+    }
+
     &:hover {
       background: $gray-300;
     }

@@ -24,6 +24,7 @@ class GridView extends React.Component {
     this.reset = this.reset.bind(this);
     this.filter = this.filter.bind(this);
     this.paginate = this.paginate.bind(this);
+    this.showPagination = this.showPagination.bind(this);
     this.onFilterChange = this.onFilterChange.bind(this);
 
     const crosstalkHandle = new crosstalk.FilterHandle();
@@ -110,6 +111,10 @@ class GridView extends React.Component {
     this.setState({ currentPage: page });
   }
 
+  showPagination() {
+    return this.state.originalData.length > this.state.itemsPerPage;
+  }
+
   render() {
     const pageItems = this.pageItems();
     return (
@@ -121,12 +126,16 @@ class GridView extends React.Component {
               : "No content found"
           }
         </div>
-        <GridPagination
+        {
+          this.showPagination() ? 
+          <GridPagination
           total={this.state.data.length}
           perPage={this.state.itemsPerPage}
           currentPage={this.state.currentPage}
           onChange={this.paginate}
-        />
+          />
+          : ''
+        }
       </div>
     );
   }

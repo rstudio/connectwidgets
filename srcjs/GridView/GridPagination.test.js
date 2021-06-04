@@ -32,33 +32,33 @@ describe('<GridPagination />', () => {
   it('onChange: navigates and highlights the current page as expected', () => {
     mkWrapper();
     const pagesBtns = () => wrapper.find('.rscgrid-pagination__btn');
-    expect(pagesBtns().at(0).prop('disabled')).toBe(true);
+    expect(pagesBtns().at(0).hasClass('rscgrid-pagination__btn--disabled')).toBe(true);
 
     // hit next page
     pagesBtns().at(7).simulate('click', { preventDefault: () => {} });
     expect(onChangeFn).toHaveBeenCalledWith(2);
-    expect(pagesBtns().at(0).prop('disabled')).toBe(false);
+    expect(pagesBtns().at(0).hasClass('rscgrid-pagination__btn--disabled')).toBe(false);
     expect(pagesBtns().at(2).hasClass('rscgrid-pagination__btn--current')).toBe(true);
 
     // hit fourth page
     pagesBtns().at(4).simulate('click', { preventDefault: () => {} });
     expect(onChangeFn).toHaveBeenCalledWith(4);
-    expect(pagesBtns().at(0).prop('disabled')).toBe(false);
-    expect(pagesBtns().at(7).prop('disabled')).toBe(false);
+    expect(pagesBtns().at(0).hasClass('rscgrid-pagination__btn--disabled')).toBe(false);
+    expect(pagesBtns().at(7).hasClass('rscgrid-pagination__btn--disabled')).toBe(false);
     expect(pagesBtns().at(4).hasClass('rscgrid-pagination__btn--current')).toBe(true);
 
     // hit previous page
     pagesBtns().at(0).simulate('click', { preventDefault: () => {} });
     expect(onChangeFn).toHaveBeenCalledWith(3);
-    expect(pagesBtns().at(0).prop('disabled')).toBe(false);
-    expect(pagesBtns().at(7).prop('disabled')).toBe(false);
+    expect(pagesBtns().at(0).hasClass('rscgrid-pagination__btn--disabled')).toBe(false);
+    expect(pagesBtns().at(7).hasClass('rscgrid-pagination__btn--disabled')).toBe(false);
     expect(pagesBtns().at(3).hasClass('rscgrid-pagination__btn--current')).toBe(true);
 
     // hit last page
     pagesBtns().at(6).simulate('click', { preventDefault: () => {} });
     expect(onChangeFn).toHaveBeenCalledWith(6);
-    expect(pagesBtns().at(0).prop('disabled')).toBe(false);
-    expect(pagesBtns().at(7).prop('disabled')).toBe(true);
+    expect(pagesBtns().at(0).hasClass('rscgrid-pagination__btn--disabled')).toBe(false);
+    expect(pagesBtns().at(7).hasClass('rscgrid-pagination__btn--disabled')).toBe(true);
     expect(pagesBtns().at(6).hasClass('rscgrid-pagination__btn--current')).toBe(true);
   });
 
