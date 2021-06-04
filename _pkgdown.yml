@@ -10,7 +10,7 @@ reference:
   - starts_with("by")
 - title: "Components"
   desc: >
-    UI components for constructing Pages
+    UI components
 - contents:
   - rsccard
   - rscgrid
@@ -20,7 +20,7 @@ reference:
   - bscols
 - title: "Shiny"
   desc: >
-    Shiny bindings for Pages components
+    Shiny bindings for `connectwidgets`
 - contents:
   - contains("Output")
   - contains("render")

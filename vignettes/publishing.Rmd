@@ -14,8 +14,8 @@ knitr::opts_chunk$set(
 )
 ```
 
-Once your Pages are built and [published](https://docs.rstudio.com/connect/user/publishing/#publishing-documents),
-you have a few options for keeping them up to date:
+Once you have built and [published](https://docs.rstudio.com/connect/user/publishing/#publishing-documents)
+a page featuring `connectwidgets`, you have a few options for keeping it up to date:
 
 ## Scheduled RMarkdown
 
@@ -35,4 +35,4 @@ runtime: shiny
 
 ## Shiny App
 
-Since Pages components are htmlwidgets, you can use them to build a shiny app.
+Since `connectwidgets` components are htmlwidgets, you can use them to build a shiny app.

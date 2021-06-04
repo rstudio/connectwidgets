@@ -119,7 +119,7 @@ so there is no need to include them in your code:
 
 ```{r warning = FALSE, message = FALSE}
 library(connectwidgets)
-library(dplyr)
+library(dplyr, warn.conflicts = FALSE)
 
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 
@@ -130,6 +130,8 @@ client <- connect(
 
 all_content <- client %>%
   content()
+
+glimpse(all_content)
 
 sample_content <- all_content %>%
   arrange(desc(updated_time)) %>%
@@ -227,8 +229,8 @@ Read more at `vignette("using-crosstalk")`.
 
 ## Theming
 
-`connectwidgets` components support styling in `rmarkdown::html_document` via the `bslib` package.
-You can supply a [Bootswatch theme](https://bootswatch.com/4/) in the yaml header, e.g.
+`connectwidgets` components support styling in `rmarkdown::html_document` via the [`bslib`](https://rstudio.github.io/bslib/) package.
+You can supply a [Bootswatch theme](https://bootswatch.com/4/) in the yaml header, e.g.:
 
 ```yaml
 ---
@@ -239,13 +241,38 @@ output:
 ---
 ```
 
-or pass in other customizations consistent with your organization's style.
+or pass a custom theme consistent with your organization's style:
+
+```yaml:
+---
+output:
+  html_document:
+    theme:
+      bg: "#FFF"
+      fg: "#22333B" 
+      primary: "#4F772D"
+      dark: "#252525"
+      light: "#DCE6D3"
+      base_font: "Lato, sans-serif"
+      heading_font: "Lato, sans-serif"
+      border-color: "#E9F5DB"
+      gray-100: "#F7FCF0"
+---
+```
 
 Once you're happy with the look of your page, Publish it to RStudio Connect.
 Read more at `vignette("publishing")`.
 
 ## A more customized example:
 
+Putting it all together, the example API portal page below:
+
+- uses CSS to create a full-width image with inset text
+- uses a Bootswatch theme
+- overrides the `description` text for a couple of cards
+
+If no APIs are deployed on your RStudio Connect server,
+try filtering for static documents or Shiny apps instead.
 
 ````markdown
 ---
