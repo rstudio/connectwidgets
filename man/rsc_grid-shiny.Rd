@@ -2,13 +2,13 @@
 % Please edit documentation in R/rsc_grid.R
 \name{rsc_grid-shiny}
 \alias{rsc_grid-shiny}
-\alias{rsc_gridOutput}
-\alias{renderRsc_grid}
+\alias{rscgridOutput}
+\alias{renderRscgrid}
 \title{Shiny bindings for rsc_grid}
 \usage{
-rsc_gridOutput(outputId, width = "100\%", height = "400px")
+rscgridOutput(outputId, width = "100\%", height = "400px")
 
-renderRsc_grid(expr, env = parent.frame(), quoted = FALSE)
+renderRscgrid(expr, env = parent.frame(), quoted = FALSE)
 }
 \arguments{
 \item{outputId}{output variable to read from}

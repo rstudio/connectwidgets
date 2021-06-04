@@ -2,13 +2,13 @@
 % Please edit documentation in R/rsc_card.R
 \name{rsc_card-shiny}
 \alias{rsc_card-shiny}
-\alias{rsc_cardOutput}
-\alias{renderRsc_card}
+\alias{rsccardOutput}
+\alias{renderRsccard}
 \title{Shiny bindings for rsc_card}
 \usage{
-rsc_cardOutput(outputId, width = "100\%", height = "400px")
+rsccardOutput(outputId, width = "100\%", height = "400px")
 
-renderRsc_card(expr, env = parent.frame(), quoted = FALSE)
+renderRsccard(expr, env = parent.frame(), quoted = FALSE)
 }
 \arguments{
 \item{outputId}{output variable to read from}

@@ -91,14 +91,14 @@ widget_html.rsc_grid <- function(id, style, class, ...) {
 #' @name rsc_grid-shiny
 #'
 #' @export
-rsc_gridOutput <- function(outputId, width = '100%', height = '400px'){
+rscgridOutput <- function(outputId, width = '100%', height = '400px'){
   htmlwidgets::shinyWidgetOutput(outputId, 'rsc_grid', width, height, package = 'connectwidgets')
 }
 
 #' @rdname rsc_grid-shiny
 #' @export
-renderRsc_grid <- function(expr, env = parent.frame(), quoted = FALSE) {
+renderRscgrid <- function(expr, env = parent.frame(), quoted = FALSE) {
   if (!quoted) { expr <- substitute(expr) } # force quoted
-  htmlwidgets::shinyRenderWidget(expr, rsc_gridOutput, env, quoted = TRUE)
+  htmlwidgets::shinyRenderWidget(expr, rscgridOutput, env, quoted = TRUE)
 }
 # nolint end

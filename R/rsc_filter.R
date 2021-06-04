@@ -81,14 +81,14 @@ widget_html.rsc_filter <- function(id, style, class, ...) {
 #' @name rsc_filter-shiny
 #'
 #' @export
-rsc_filterOutput <- function(outputId, width = '100%', height = '400px'){
+rscfilterOutput <- function(outputId, width = '100%', height = '400px'){
   htmlwidgets::shinyWidgetOutput(outputId, 'rsc_filter', width, height, package = 'connectwidgets')
 }
 
 #' @rdname rsc_filter-shiny
 #' @export
-renderRsc_filter <- function(expr, env = parent.frame(), quoted = FALSE) {
+renderRscfilter <- function(expr, env = parent.frame(), quoted = FALSE) {
   if (!quoted) { expr <- substitute(expr) } # force quoted
-  htmlwidgets::shinyRenderWidget(expr, rsc_filterOutput, env, quoted = TRUE)
+  htmlwidgets::shinyRenderWidget(expr, rscfilterOutput, env, quoted = TRUE)
 }
 # nolint end

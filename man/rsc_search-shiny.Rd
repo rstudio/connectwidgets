@@ -2,13 +2,13 @@
 % Please edit documentation in R/rsc_search.R
 \name{rsc_search-shiny}
 \alias{rsc_search-shiny}
-\alias{rsc_searchOutput}
-\alias{renderRsc_search}
+\alias{rscsearchOutput}
+\alias{renderRscsearch}
 \title{Shiny bindings for rsc_search}
 \usage{
-rsc_searchOutput(outputId, width = "100\%", height = "400px")
+rscsearchOutput(outputId, width = "100\%", height = "400px")
 
-renderRsc_search(expr, env = parent.frame(), quoted = FALSE)
+renderRscsearch(expr, env = parent.frame(), quoted = FALSE)
 }
 \arguments{
 \item{outputId}{output variable to read from}

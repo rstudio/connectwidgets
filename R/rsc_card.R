@@ -77,14 +77,14 @@ widget_html.rsc_card <- function(id, style, class, ...) {
 #' @name rsc_card-shiny
 #'
 #' @export
-rsc_cardOutput <- function(outputId, width = '100%', height = '400px'){
+rsccardOutput <- function(outputId, width = '100%', height = '400px'){
   htmlwidgets::shinyWidgetOutput(outputId, 'rsc_card', width, height, package = 'connectwidgets')
 }
 
 #' @rdname rsc_card-shiny
 #' @export
-renderRsc_card <- function(expr, env = parent.frame(), quoted = FALSE) {
+renderRsccard <- function(expr, env = parent.frame(), quoted = FALSE) {
   if (!quoted) { expr <- substitute(expr) } # force quoted
-  htmlwidgets::shinyRenderWidget(expr, rsc_cardOutput, env, quoted = TRUE)
+  htmlwidgets::shinyRenderWidget(expr, rsccardOutput, env, quoted = TRUE)
 }
 # nolint end

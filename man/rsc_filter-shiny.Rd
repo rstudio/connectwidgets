@@ -2,13 +2,13 @@
 % Please edit documentation in R/rsc_filter.R
 \name{rsc_filter-shiny}
 \alias{rsc_filter-shiny}
-\alias{rsc_filterOutput}
-\alias{renderRsc_filter}
+\alias{rscfilterOutput}
+\alias{renderRscfilter}
 \title{Shiny bindings for rsc_filter}
 \usage{
-rsc_filterOutput(outputId, width = "100\%", height = "400px")
+rscfilterOutput(outputId, width = "100\%", height = "400px")
 
-renderRsc_filter(expr, env = parent.frame(), quoted = FALSE)
+renderRscfilter(expr, env = parent.frame(), quoted = FALSE)
 }
 \arguments{
 \item{outputId}{output variable to read from}

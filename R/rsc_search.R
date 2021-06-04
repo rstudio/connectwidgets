@@ -79,14 +79,14 @@ widget_html.rsc_search <- function(id, style, class, ...) {
 #' @name rsc_search-shiny
 #'
 #' @export
-rsc_searchOutput <- function(outputId, width = '100%', height = '400px'){
+rscsearchOutput <- function(outputId, width = '100%', height = '400px'){
   htmlwidgets::shinyWidgetOutput(outputId, 'rsc_search', width, height, package = 'connectwidgets')
 }
 
 #' @rdname rsc_search-shiny
 #' @export
-renderRsc_search <- function(expr, env = parent.frame(), quoted = FALSE) {
+renderRscsearch <- function(expr, env = parent.frame(), quoted = FALSE) {
   if (!quoted) { expr <- substitute(expr) } # force quoted
-  htmlwidgets::shinyRenderWidget(expr, rsc_searchOutput, env, quoted = TRUE)
+  htmlwidgets::shinyRenderWidget(expr, rscsearchOutput, env, quoted = TRUE)
 }
 # nolint end
