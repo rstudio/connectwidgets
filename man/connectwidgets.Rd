@@ -20,11 +20,11 @@ the \code{\link[=by_owner]{by_owner()}} and \code{\link[=by_tags]{by_tags()}} fi
 
 Present your content with different components:
 \itemize{
-\item \code{\link[=rsccard]{rsccard()}} for highlighting individual content items
-\item \code{\link[=rscgrid]{rscgrid()}} for groups of cards
-\item \code{\link[=rsctable]{rsctable()}} for a tabular view
-\item \code{\link[=rscsearch]{rscsearch()}} a text input for searching grids and tables
-\item \code{\link[=rscfilter]{rscfilter()}} an input to filter grids or tables by owner, type, or tag
+\item \code{\link[=rsc_card]{rsc_card()}} for highlighting individual content items
+\item \code{\link[=rsc_grid]{rsc_grid()}} for groups of cards
+\item \code{\link[=rsc_table]{rsc_table()}} for a tabular view
+\item \code{\link[=rsc_search]{rsc_search()}} a text input for searching grids and tables
+\item \code{\link[=rsc_filter]{rsc_filter()}} an input to filter grids or tables by owner, type, or tag
 }
 }
 

@@ -11,11 +11,11 @@
 #' @section Components:
 #' Present your content with different components:
 #' \itemize{
-#' \item [rsccard()] for highlighting individual content items
-#' \item [rscgrid()] for groups of cards
-#' \item [rsctable()] for a tabular view
-#' \item [rscsearch()] a text input for searching grids and tables
-#' \item [rscfilter()] an input to filter grids or tables by owner, type, or tag
+#' \item [rsc_card()] for highlighting individual content items
+#' \item [rsc_grid()] for groups of cards
+#' \item [rsc_table()] for a tabular view
+#' \item [rsc_search()] a text input for searching grids and tables
+#' \item [rsc_filter()] an input to filter grids or tables by owner, type, or tag
 #' }
 #'
 #' @docType package
