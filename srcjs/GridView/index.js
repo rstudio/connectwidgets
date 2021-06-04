@@ -1,4 +1,4 @@
 import { reactWidget } from 'reactR';
 import GridView from './GridView';
 
-reactWidget('rscgrid', 'output', { GridView });
+reactWidget('rsc_grid', 'output', { GridView });

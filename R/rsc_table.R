@@ -9,17 +9,17 @@
 #' @importFrom rlang .data
 #'
 #' @export
-rsctable <- function(content) {
+rsc_table <- function(content) {
   if (missing(content) || !is.data.frame(content)) {
-    stop("rsctable() expects a data frame.")
+    stop("rsc_table() expects a data frame.")
   }
 
   if (nrow(content) == 0) {
-    warning("rsctable() was called with an empty data frame.")
+    warning("rsc_table() was called with an empty data frame.")
   } else {
     cols <- colnames(content)
     evaluate_widget_input(
-      "rscgrid()",
+      "rsc_table()",
       cols,
       c("guid", "url", "title", "app_mode", "owner_username", "updated_time")
     )
@@ -102,7 +102,7 @@ rsctable <- function(content) {
       pagePrevious = "\u276e",
       pageNext = "\u276f"
     ),
-    theme = rsctable_sync_theme()
+    theme = rsc_table_sync_theme()
   )
 }
 

@@ -1,23 +1,33 @@
-#' Filter widget
+#' Grid view for content
 #'
-#' Filter content rows with owner, content type and tags,
-#' expects the exact same frame passed to the view widget being filtered.
+#' Renders a grid view of the provided content items
 #'
-#' @param content A data frame from Connect's content. Although optional,
-#' expects an "owner_username", "app_mode" and "tags" columns.
+#' @param content A data frame from Connect's content. Requires the
+#' following columns "guid", "url", "title", "app_mode", "owner_username".
+#' And, although optional, expects an "updated_time" column.
+#'
 #'
 #' @export
-rscfilter <- function(content) {
+rsc_grid <- function(content) {
   if (missing(content) || !is.data.frame(content)) {
-    stop("rscfilter() expects a data frame.")
+    stop("rsc_grid() expects a data frame.")
   }
 
-  cols <- colnames(content)
-  warning_widget_input(
-    "rscfilter()",
-    cols,
-    c("owner_username", "app_mode", "tags")
-  )
+  if (nrow(content) == 0) {
+    warning("rsc_grid() was called with an empty data frame.")
+  } else {
+    cols <- colnames(content)
+    evaluate_widget_input(
+      "rsc_grid()",
+      cols,
+      c("guid", "url", "title", "app_mode", "owner_username")
+    )
+    warning_widget_input(
+      "rsc_grid()",
+      cols,
+      c("updated_time")
+    )
+  }
 
   if (!crosstalk::is.SharedData(content)) {
     ctalk_group <- digest::digest(toString(content), "md5")
@@ -29,7 +39,7 @@ rscfilter <- function(content) {
   content <- content$origData()
 
   component <- reactR::component(
-    "Filter",
+    "GridView",
     list(
       data = content,
       crosstalkKey = key,
@@ -38,11 +48,11 @@ rscfilter <- function(content) {
   )
 
   dependencies <- crosstalk::crosstalkLibs()
-  dependencies[["rscfilter-theme"]] <- resolve_theme_dependency("rscfilter")
+  dependencies[["rsc_grid-theme"]] <- resolve_theme_dependency("rsc_grid")
 
   # create widget
   htmlwidgets::createWidget(
-    name = "rscfilter",
+    name = "rsc_grid",
     reactR::reactMarkup(component),
     width = "auto",
     height = "auto",
@@ -54,7 +64,7 @@ rscfilter <- function(content) {
 # nolint start
 #' Called by HTMLWidgets to produce the widget's root element.
 #' @noRd
-widget_html.rscfilter <- function(id, style, class, ...) {
+widget_html.rsc_grid <- function(id, style, class, ...) {
   htmltools::tagList(
     # Necessary for RStudio viewer version < 1.2
     reactR::html_dependency_corejs(),
@@ -64,31 +74,31 @@ widget_html.rscfilter <- function(id, style, class, ...) {
   )
 }
 
-#' Shiny bindings for rscfilter
+#' Shiny bindings for rsc_grid
 #'
-#' Output and render functions for using rscfilter within Shiny
+#' Output and render functions for using rsc_grid within Shiny
 #' applications and interactive Rmd documents.
 #'
 #' @param outputId output variable to read from
 #' @param width,height Must be a valid CSS unit (like \code{'100\%'},
 #'   \code{'400px'}, \code{'auto'}) or a number, which will be coerced to a
 #'   string and have \code{'px'} appended.
-#' @param expr An expression that generates a rscfilter
+#' @param expr An expression that generates a rsc_grid
 #' @param env The environment in which to evaluate \code{expr}.
 #' @param quoted Is \code{expr} a quoted expression (with \code{quote()})? This
 #'   is useful if you want to save an expression in a variable.
 #'
-#' @name rscfilter-shiny
+#' @name rsc_grid-shiny
 #'
 #' @export
-rscfilterOutput <- function(outputId, width = '100%', height = '400px'){
-  htmlwidgets::shinyWidgetOutput(outputId, 'rscfilter', width, height, package = 'connectwidgets')
+rsc_gridOutput <- function(outputId, width = '100%', height = '400px'){
+  htmlwidgets::shinyWidgetOutput(outputId, 'rsc_grid', width, height, package = 'connectwidgets')
 }
 
-#' @rdname rscfilter-shiny
+#' @rdname rsc_grid-shiny
 #' @export
-renderRscfilter <- function(expr, env = parent.frame(), quoted = FALSE) {
+renderRsc_grid <- function(expr, env = parent.frame(), quoted = FALSE) {
   if (!quoted) { expr <- substitute(expr) } # force quoted
-  htmlwidgets::shinyRenderWidget(expr, rscfilterOutput, env, quoted = TRUE)
+  htmlwidgets::shinyRenderWidget(expr, rsc_gridOutput, env, quoted = TRUE)
 }
 # nolint end

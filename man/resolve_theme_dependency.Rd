@@ -8,7 +8,7 @@ default connectwidgets styling theme or one provided by the user.}
 resolve_theme_dependency(widget_name)
 }
 \arguments{
-\item{widget_name}{The name of the widget (e.g: rscgrid)}
+\item{widget_name}{The name of the widget (e.g: rsc_grid)}
 }
 \description{
 Resolve and get theme to be used by a widget. It could be the
