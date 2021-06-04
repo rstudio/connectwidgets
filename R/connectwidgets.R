@@ -15,7 +15,8 @@
 #' \item [rsc_grid()] for groups of cards
 #' \item [rsc_table()] for a tabular view
 #' \item [rsc_search()] a text input for searching grids and tables
-#' \item [rsc_filter()] an input to filter grids or tables by owner, type, or tag
+#' \item [rsc_filter()] an input to filter grids or tables
+#' by owner, type, or tag
 #' }
 #'
 #' @docType package

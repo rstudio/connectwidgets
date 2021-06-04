@@ -9,8 +9,23 @@
 #'
 #' @export
 rsc_grid <- function(content) {
-  if (missing(content) || !is.data.frame(content)) {
-    stop("rsc_grid() expects a data frame.")
+  if (missing(content)) {
+    stop("rsc_grid() expects a data frame or a crosstalk shared data object.")
+  }
+
+  if (crosstalk::is.SharedData(content)) {
+    key <- content$key()
+    group <- content$groupName()
+    content <- content$origData()
+  } else {
+    if (!is.data.frame(content)) {
+      stop("rsc_grid() expects a data frame or a crosstalk shared data object.")
+    }
+    ctalk_group <- digest::digest(toString(content), "md5")
+    shared <- crosstalk::SharedData$new(content, group = ctalk_group)
+    key <- shared$key()
+    group <- shared$groupName()
+    content <- shared$origData()
   }
 
   if (nrow(content) == 0) {
@@ -28,15 +43,6 @@ rsc_grid <- function(content) {
       c("updated_time")
     )
   }
-
-  if (!crosstalk::is.SharedData(content)) {
-    ctalk_group <- digest::digest(toString(content), "md5")
-    content <- crosstalk::SharedData$new(content, group = ctalk_group)
-  }
-
-  key <- content$key()
-  group <- content$groupName()
-  content <- content$origData()
 
   component <- reactR::component(
     "GridView",

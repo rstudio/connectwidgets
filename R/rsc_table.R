@@ -10,24 +10,31 @@
 #'
 #' @export
 rsc_table <- function(content) {
-  if (missing(content) || !is.data.frame(content)) {
-    stop("rsc_table() expects a data frame.")
+  if (missing(content)) {
+    stop(
+      "rsc_table() expects a data frame or a crosstalk shared data object."
+    )
   }
 
-  if (nrow(content) == 0) {
+  if (!crosstalk::is.SharedData(content)) {
+    if (!is.data.frame(content)) {
+      stop(
+        "rsc_table() expects a data frame or a crosstalk shared data object."
+      )
+    }
+    ctalk_group <- digest::digest(toString(content), "md5")
+    content <- crosstalk::SharedData$new(content, group = ctalk_group)
+  }
+
+  if (nrow(content$origData()) == 0) {
     warning("rsc_table() was called with an empty data frame.")
   } else {
-    cols <- colnames(content)
+    cols <- colnames(content$origData())
     evaluate_widget_input(
       "rsc_table()",
       cols,
       c("guid", "url", "title", "app_mode", "owner_username", "updated_time")
     )
-  }
-
-  if (!crosstalk::is.SharedData(content)) {
-    ctalk_group <- digest::digest(toString(content), "md5")
-    content <- crosstalk::SharedData$new(content, group = ctalk_group)
   }
 
   reactable::reactable(
