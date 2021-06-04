@@ -88,7 +88,7 @@ sample_content %>%
 ### search & filter
 
 ```{r search-and-filter}
-bscols(rscsearch(all_content), rscfilter(all_content), widths = c(2, 2))
+bscols(rscsearch(all_content), rscfilter(all_content), widths = c(3, NA))
 rsctable(all_content)
 ```
 ````
