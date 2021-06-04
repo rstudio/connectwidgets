@@ -43,6 +43,9 @@
       font-size: 1.2em;
       margin-top: 0.4em;
       padding: 0 0.7em;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     &__meta {
