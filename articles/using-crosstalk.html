@@ -92,7 +92,7 @@
 
     
     
-<p>The <code><a href="../reference/rsctable.html">rsctable()</a></code>, <code><a href="../reference/rscgrid.html">rscgrid()</a></code>, <code><a href="../reference/rscsearch.html">rscsearch()</a></code>, and <code><a href="../reference/rscfilter.html">rscfilter()</a></code> widgets use <code>crosstalk</code> to facilitate inter-widget communication. In simple cases, passing identical results from the <code><a href="../reference/content.html">content()</a></code> tibble is sufficient:</p>
+<p>The <code>rsctable()</code>, <code>rscgrid()</code>, <code>rscsearch()</code>, and <code>rscfilter()</code> widgets use <code>crosstalk</code> to facilitate inter-widget communication. In simple cases, passing identical results from the <code><a href="../reference/content.html">content()</a></code> tibble is sufficient:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rstudio.github.io/connectwidgets">connectwidgets</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
@@ -104,13 +104,13 @@
 <span class="va">some_content</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_sample</a></span><span class="op">(</span><span class="va">all_content</span>, prop <span class="op">=</span> <span class="fl">.1</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/tag.html">tagList</a></span><span class="op">(</span>
-  <span class="fu"><a href="../reference/bscols.html">bscols</a></span><span class="op">(</span><span class="fu"><a href="../reference/rscsearch.html">rscsearch</a></span><span class="op">(</span><span class="va">some_content</span><span class="op">)</span>, <span class="fu"><a href="../reference/rscfilter.html">rscfilter</a></span><span class="op">(</span><span class="va">some_content</span><span class="op">)</span><span class="op">)</span>,
-  <span class="fu"><a href="../reference/rsctable.html">rsctable</a></span><span class="op">(</span><span class="va">some_content</span><span class="op">)</span>
+  <span class="fu"><a href="../reference/bscols.html">bscols</a></span><span class="op">(</span><span class="fu">rscsearch</span><span class="op">(</span><span class="va">some_content</span><span class="op">)</span>, <span class="fu">rscfilter</span><span class="op">(</span><span class="va">some_content</span><span class="op">)</span><span class="op">)</span>,
+  <span class="fu">rsctable</span><span class="op">(</span><span class="va">some_content</span><span class="op">)</span>
 <span class="op">)</span></code></pre></div>
 <p>For more complicated layouts, you may need to pass your own <code><a href="https://rdrr.io/pkg/crosstalk/man/SharedData.html">crosstalk::SharedData()</a></code> objects to the components. The following example illustrates using <a href="https://rstudio.github.io/crosstalk/using.html#grouping">crosstalk groups</a> and, <code>dplyr</code>, and <code>purrr</code> to:</p>
 <ul>
 <li>display each content owner’s username with a level 4 heading</li>
-<li>display an <code><a href="../reference/rscgrid.html">rscgrid()</a></code> of each content owner’s items</li>
+<li>display an <code>rscgrid()</code> of each content owner’s items</li>
 <li>enable search across all the card grids</li>
 </ul>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
@@ -137,7 +137,7 @@
     <span class="op">{</span>
       <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/tag.html">tagList</a></span><span class="op">(</span>
         <span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/builder.html">h4</a></span><span class="op">(</span><span class="va">..1</span><span class="op">)</span>,
-        <span class="fu"><a href="../reference/rscgrid.html">rscgrid</a></span><span class="op">(</span><span class="fu">crosstalk</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/crosstalk/man/SharedData.html">SharedData</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">..2</span>, group <span class="op">=</span> <span class="st">"xfilter"</span><span class="op">)</span><span class="op">)</span>
+        <span class="fu">rscgrid</span><span class="op">(</span><span class="fu">crosstalk</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/crosstalk/man/SharedData.html">SharedData</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">..2</span>, group <span class="op">=</span> <span class="st">"xfilter"</span><span class="op">)</span><span class="op">)</span>
       <span class="op">)</span>
     <span class="op">}</span>
   <span class="op">)</span>

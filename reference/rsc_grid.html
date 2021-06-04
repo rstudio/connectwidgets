@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>connectwidgets: Curate your content on RStudio Connect — connectwidgets • connectwidgets</title>
+<title>Grid view for content — rsc_grid • connectwidgets</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,8 @@
 
 
 
-<meta property="og:title" content="connectwidgets: Curate your content on RStudio Connect — connectwidgets" />
-<meta property="og:description" content="connectwidgets provides UI components to help publishers provide curated
-organization of content on RStudio Connect." />
+<meta property="og:title" content="Grid view for content — rsc_grid" />
+<meta property="og:description" content="Renders a grid view of the provided content items" />
 
 
 
@@ -124,48 +123,28 @@ organization of content on RStudio Connect." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>connectwidgets: Curate your content on RStudio Connect</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rstudio/connectwidgets/blob/master/R/connectwidgets.R'><code>R/connectwidgets.R</code></a></small>
-    <div class="hidden name"><code>connectwidgets.Rd</code></div>
+    <h1>Grid view for content</h1>
+    <small class="dont-index">Source: <a href='https://github.com/rstudio/connectwidgets/blob/master/R/rsc_grid.R'><code>R/rsc_grid.R</code></a></small>
+    <div class="hidden name"><code>rsc_grid.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>connectwidgets provides UI components to help publishers provide curated
-organization of content on RStudio Connect.</p>
+    <p>Renders a grid view of the provided content items</p>
     </div>
 
+    <pre class="usage"><span class='fu'>rsc_grid</span><span class='op'>(</span><span class='va'>content</span><span class='op'>)</span></pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>content</th>
+      <td><p>A data frame from Connect's content. Requires the
+following columns "guid", "url", "title", "app_mode", "owner_username".
+And, although optional, expects an "updated_time" column.</p></td>
+    </tr>
+    </table>
 
-    <h2 class="hasAnchor" id="connection"><a class="anchor" href="#connection"></a>Connection</h2>
-
-    
-
-<p>Set <code>CONNECT_SERVER</code> and <code>CONNECT_API_KEY</code> environment variables and
-<code><a href='connect.html'>connect()</a></code>. Fetch a <code>tibble</code> listing server content with <code><a href='content.html'>content()</a></code>. Use
-the <code><a href='by_owners.html'>by_owner()</a></code> and <code><a href='by_tags.html'>by_tags()</a></code> filter helpers to narrow your search.</p>
-    <h2 class="hasAnchor" id="components"><a class="anchor" href="#components"></a>Components</h2>
-
-    
-
-<p>Present your content with different components:</p><ul>
-<li><p><code><a href='rsc_card.html'>rsc_card()</a></code> for highlighting individual content items</p></li>
-<li><p><code><a href='rsc_grid.html'>rsc_grid()</a></code> for groups of cards</p></li>
-<li><p><code><a href='rsc_table.html'>rsc_table()</a></code> for a tabular view</p></li>
-<li><p><code><a href='rsc_search.html'>rsc_search()</a></code> a text input for searching grids and tables</p></li>
-<li><p><code><a href='rsc_filter.html'>rsc_filter()</a></code> an input to filter grids or tables by owner, type, or tag</p></li>
-</ul>
-
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p>Useful links:</p><ul>
-<li><p><a href='https://rstudio.github.io/connectwidgets'>https://rstudio.github.io/connectwidgets</a></p></li>
-<li><p><a href='https://github.com/rstudio/connectwidgets'>https://github.com/rstudio/connectwidgets</a></p></li>
-</ul>
-
-</div>
-    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
-
-    <p><strong>Maintainer</strong>: Brian Smith <a href='mailto:brian@rstudio.com'>brian@rstudio.com</a></p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

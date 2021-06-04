@@ -134,28 +134,28 @@
 <span id="cb3-31"><a href="#cb3-31"></a><span class="bn">```{r card}</span></span>
 <span id="cb3-32"><a href="#cb3-32"></a><span class="bn">sample_content %&gt;%</span></span>
 <span id="cb3-33"><a href="#cb3-33"></a><span class="bn">  slice(1) %&gt;%</span></span>
-<span id="cb3-34"><a href="#cb3-34"></a><span class="bn">  rsccard()</span></span>
+<span id="cb3-34"><a href="#cb3-34"></a><span class="bn">  rsc_card()</span></span>
 <span id="cb3-35"><a href="#cb3-35"></a><span class="bn">```</span></span>
 <span id="cb3-36"><a href="#cb3-36"></a></span>
 <span id="cb3-37"><a href="#cb3-37"></a><span class="fu">### grid</span></span>
 <span id="cb3-38"><a href="#cb3-38"></a></span>
 <span id="cb3-39"><a href="#cb3-39"></a><span class="bn">```{r grid}</span></span>
 <span id="cb3-40"><a href="#cb3-40"></a><span class="bn">sample_content %&gt;%</span></span>
-<span id="cb3-41"><a href="#cb3-41"></a><span class="bn">  rscgrid()</span></span>
+<span id="cb3-41"><a href="#cb3-41"></a><span class="bn">  rsc_grid()</span></span>
 <span id="cb3-42"><a href="#cb3-42"></a><span class="bn">```</span></span>
 <span id="cb3-43"><a href="#cb3-43"></a></span>
 <span id="cb3-44"><a href="#cb3-44"></a><span class="fu">### table</span></span>
 <span id="cb3-45"><a href="#cb3-45"></a></span>
 <span id="cb3-46"><a href="#cb3-46"></a><span class="bn">```{r table}</span></span>
 <span id="cb3-47"><a href="#cb3-47"></a><span class="bn">sample_content %&gt;%</span></span>
-<span id="cb3-48"><a href="#cb3-48"></a><span class="bn">  rsctable()</span></span>
+<span id="cb3-48"><a href="#cb3-48"></a><span class="bn">  rsc_table()</span></span>
 <span id="cb3-49"><a href="#cb3-49"></a><span class="bn">```</span></span>
 <span id="cb3-50"><a href="#cb3-50"></a></span>
 <span id="cb3-51"><a href="#cb3-51"></a><span class="fu">### search &amp; filter</span></span>
 <span id="cb3-52"><a href="#cb3-52"></a></span>
 <span id="cb3-53"><a href="#cb3-53"></a><span class="bn">```{r search-and-filter}</span></span>
-<span id="cb3-54"><a href="#cb3-54"></a><span class="bn">bscols(rscsearch(all_content), rscfilter(all_content), widths = c(2, 2))</span></span>
-<span id="cb3-55"><a href="#cb3-55"></a><span class="bn">rsctable(all_content)</span></span>
+<span id="cb3-54"><a href="#cb3-54"></a><span class="bn">bscols(rsc_search(all_content), rsc_filter(all_content), widths = c(2, 2))</span></span>
+<span id="cb3-55"><a href="#cb3-55"></a><span class="bn">rsc_table(all_content)</span></span>
 <span id="cb3-56"><a href="#cb3-56"></a><span class="bn">```</span></span></code></pre></div>
 <div id="setup" class="section level3">
 <h3 class="hasAnchor">
@@ -321,7 +321,7 @@
 <div id="search--filter" class="section level4">
 <h4 class="hasAnchor">
 <a href="#search--filter" class="anchor"></a>search &amp; filter</h4>
-<p>The search and filter components help viewers find the content they are most interested in. You must pass the same content data frame to <code><a href="reference/rscsearch.html">rscsearch()</a></code>, <code><a href="reference/rscfilter.html">rscfilter()</a></code>, and <code><a href="reference/rsctable.html">rsctable()</a></code> or <code><a href="reference/rscgrid.html">rscgrid()</a></code> in order for filter and search to work. You can also create your own <code><a href="https://rdrr.io/pkg/crosstalk/man/SharedData.html">crosstalk::SharedData()</a></code> object to pass to the components if you want more control over searching and filtering. Read more at <code><a href="articles/using-crosstalk.html">vignette("using-crosstalk")</a></code>.</p>
+<p>The search and filter components help viewers find the content they are most interested in. You must pass the same content data frame to <code><a href="reference/rsc_search.html">rsc_search()</a></code>, <code><a href="reference/rsc_filter.html">rsc_filter()</a></code>, and <code><a href="reference/rsc_table.html">rsc_table()</a></code> or <code><a href="reference/rsc_grid.html">rsc_grid()</a></code> in order for filter and search to work. You can also create your own <code><a href="https://rdrr.io/pkg/crosstalk/man/SharedData.html">crosstalk::SharedData()</a></code> object to pass to the components if you want more control over searching and filtering. Read more at <code><a href="articles/using-crosstalk.html">vignette("using-crosstalk")</a></code>.</p>
 <p><img src="reference/figures/README-search-filter-2.png" alt="search and filter widgets"></p>
 </div>
 </div>
@@ -418,14 +418,14 @@
 <span id="cb8-74"><a href="#cb8-74"></a><span class="bn">      mutate(</span></span>
 <span id="cb8-75"><a href="#cb8-75"></a><span class="bn">      description = model_copy</span></span>
 <span id="cb8-76"><a href="#cb8-76"></a><span class="bn">      ) %&gt;% </span></span>
-<span id="cb8-77"><a href="#cb8-77"></a><span class="bn">      rsccard()</span></span>
+<span id="cb8-77"><a href="#cb8-77"></a><span class="bn">      rsc_card()</span></span>
 <span id="cb8-78"><a href="#cb8-78"></a><span class="bn">  },</span></span>
 <span id="cb8-79"><a href="#cb8-79"></a><span class="bn">  h3("All APIs", class = "text-center"),</span></span>
 <span id="cb8-80"><a href="#cb8-80"></a><span class="bn">  p("that thing George Box said one time. You know what thing."),</span></span>
 <span id="cb8-81"><a href="#cb8-81"></a><span class="bn">  {</span></span>
 <span id="cb8-82"><a href="#cb8-82"></a><span class="bn">    tagList(</span></span>
-<span id="cb8-83"><a href="#cb8-83"></a><span class="bn">      bscols(rscsearch(apis), rscfilter(apis)),</span></span>
-<span id="cb8-84"><a href="#cb8-84"></a><span class="bn">      rscgrid(apis)</span></span>
+<span id="cb8-83"><a href="#cb8-83"></a><span class="bn">      bscols(rsc_search(apis), rsc_filter(apis)),</span></span>
+<span id="cb8-84"><a href="#cb8-84"></a><span class="bn">      rsc_grid(apis)</span></span>
 <span id="cb8-85"><a href="#cb8-85"></a><span class="bn">    )</span></span>
 <span id="cb8-86"><a href="#cb8-86"></a><span class="bn">  }</span></span>
 <span id="cb8-87"><a href="#cb8-87"></a><span class="bn">)</span></span>

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>connectwidgets: Curate your content on RStudio Connect — connectwidgets • connectwidgets</title>
+<title>Shiny bindings for rsc_filter — rsc_filter-shiny • connectwidgets</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,9 @@
 
 
 
-<meta property="og:title" content="connectwidgets: Curate your content on RStudio Connect — connectwidgets" />
-<meta property="og:description" content="connectwidgets provides UI components to help publishers provide curated
-organization of content on RStudio Connect." />
+<meta property="og:title" content="Shiny bindings for rsc_filter — rsc_filter-shiny" />
+<meta property="og:description" content="Output and render functions for using rsc_filter within Shiny
+applications and interactive Rmd documents." />
 
 
 
@@ -124,48 +124,48 @@ organization of content on RStudio Connect." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>connectwidgets: Curate your content on RStudio Connect</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rstudio/connectwidgets/blob/master/R/connectwidgets.R'><code>R/connectwidgets.R</code></a></small>
-    <div class="hidden name"><code>connectwidgets.Rd</code></div>
+    <h1>Shiny bindings for rsc_filter</h1>
+    <small class="dont-index">Source: <a href='https://github.com/rstudio/connectwidgets/blob/master/R/rsc_filter.R'><code>R/rsc_filter.R</code></a></small>
+    <div class="hidden name"><code>rsc_filter-shiny.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>connectwidgets provides UI components to help publishers provide curated
-organization of content on RStudio Connect.</p>
+    <p>Output and render functions for using rsc_filter within Shiny
+applications and interactive Rmd documents.</p>
     </div>
 
+    <pre class="usage"><span class='fu'>rscfilterOutput</span><span class='op'>(</span><span class='va'>outputId</span>, width <span class='op'>=</span> <span class='st'>"100%"</span>, height <span class='op'>=</span> <span class='st'>"400px"</span><span class='op'>)</span>
 
+<span class='fu'>renderRscfilter</span><span class='op'>(</span><span class='va'>expr</span>, env <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sys.parent.html'>parent.frame</a></span><span class='op'>(</span><span class='op'>)</span>, quoted <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
-    <h2 class="hasAnchor" id="connection"><a class="anchor" href="#connection"></a>Connection</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>outputId</th>
+      <td><p>output variable to read from</p></td>
+    </tr>
+    <tr>
+      <th>width, height</th>
+      <td><p>Must be a valid CSS unit (like <code>'100%'</code>,
+<code>'400px'</code>, <code>'auto'</code>) or a number, which will be coerced to a
+string and have <code>'px'</code> appended.</p></td>
+    </tr>
+    <tr>
+      <th>expr</th>
+      <td><p>An expression that generates a rsc_filter</p></td>
+    </tr>
+    <tr>
+      <th>env</th>
+      <td><p>The environment in which to evaluate <code>expr</code>.</p></td>
+    </tr>
+    <tr>
+      <th>quoted</th>
+      <td><p>Is <code>expr</code> a quoted expression (with <code><a href='https://rdrr.io/r/base/substitute.html'>quote()</a></code>)? This
+is useful if you want to save an expression in a variable.</p></td>
+    </tr>
+    </table>
 
-    
-
-<p>Set <code>CONNECT_SERVER</code> and <code>CONNECT_API_KEY</code> environment variables and
-<code><a href='connect.html'>connect()</a></code>. Fetch a <code>tibble</code> listing server content with <code><a href='content.html'>content()</a></code>. Use
-the <code><a href='by_owners.html'>by_owner()</a></code> and <code><a href='by_tags.html'>by_tags()</a></code> filter helpers to narrow your search.</p>
-    <h2 class="hasAnchor" id="components"><a class="anchor" href="#components"></a>Components</h2>
-
-    
-
-<p>Present your content with different components:</p><ul>
-<li><p><code><a href='rsc_card.html'>rsc_card()</a></code> for highlighting individual content items</p></li>
-<li><p><code><a href='rsc_grid.html'>rsc_grid()</a></code> for groups of cards</p></li>
-<li><p><code><a href='rsc_table.html'>rsc_table()</a></code> for a tabular view</p></li>
-<li><p><code><a href='rsc_search.html'>rsc_search()</a></code> a text input for searching grids and tables</p></li>
-<li><p><code><a href='rsc_filter.html'>rsc_filter()</a></code> an input to filter grids or tables by owner, type, or tag</p></li>
-</ul>
-
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p>Useful links:</p><ul>
-<li><p><a href='https://rstudio.github.io/connectwidgets'>https://rstudio.github.io/connectwidgets</a></p></li>
-<li><p><a href='https://github.com/rstudio/connectwidgets'>https://github.com/rstudio/connectwidgets</a></p></li>
-</ul>
-
-</div>
-    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
-
-    <p><strong>Maintainer</strong>: Brian Smith <a href='mailto:brian@rstudio.com'>brian@rstudio.com</a></p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
