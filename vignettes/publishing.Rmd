@@ -35,4 +35,4 @@ runtime: shiny
 
 ## Shiny App
 
-Since Pages components are htmlwidgets, you can use them to build a shiny app.
+Since `connectwidgets` components are htmlwidgets, you can use them to build a shiny app.
