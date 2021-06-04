@@ -75,7 +75,7 @@ get_user_provided_theme <- function() {
 
 #' Generate the theme's bslib::bs_dependency to be used by a widget.
 #'
-#' @param widget_name The name of the widget (e.g: rscgrid)
+#' @param widget_name The name of the widget (e.g: rsc_grid)
 #' @param theme The bslib theme to generate the CSS dependency
 #' @param default_base Using the default theme or not
 gen_theme_dependency <- function(widget_name, theme, default_base = FALSE) {
@@ -111,7 +111,7 @@ gen_theme_dependency <- function(widget_name, theme, default_base = FALSE) {
 #' Resolve and get theme to be used by a widget. It could be the
 #' default connectwidgets styling theme or one provided by the user.
 #'
-#' @param widget_name The name of the widget (e.g: rscgrid)
+#' @param widget_name The name of the widget (e.g: rsc_grid)
 resolve_theme_dependency <- function(widget_name) {
   theme <- get_current_bootswatch_theme()
   if (!is.null(theme)) {
@@ -128,8 +128,8 @@ resolve_theme_dependency <- function(widget_name) {
   gen_theme_dependency(widget_name, default_theme, default_base = TRUE)
 }
 
-#' Resolve reactable theme for rsctable
-rsctable_sync_theme <- function() {
+#' Resolve reactable theme for rsc_table
+rsc_table_sync_theme <- function() {
   varnames <- c(
     "body-bg",
     "body-color",

@@ -68,28 +68,28 @@ sample_content <- all_content %>%
 ```{r card}
 sample_content %>%
   slice(1) %>%
-  rsccard()
+  rsc_card()
 ```
 
 ### grid
 
 ```{r grid}
 sample_content %>%
-  rscgrid()
+  rsc_grid()
 ```
 
 ### table
 
 ```{r table}
 sample_content %>%
-  rsctable()
+  rsc_table()
 ```
 
 ### search & filter
 
 ```{r search-and-filter}
-bscols(rscsearch(all_content), rscfilter(all_content), widths = c(2, 2))
-rsctable(all_content)
+bscols(rsc_search(all_content), rsc_filter(all_content), widths = c(2, 2))
+rsc_table(all_content)
 ```
 ````
 
@@ -274,7 +274,7 @@ Provide a more detailed view with a table:
 
 The search and filter components help viewers find the content they are
 most interested in. You must pass the same content data frame to
-`rscsearch()`, `rscfilter()`, and `rsctable()` or `rscgrid()` in order
+`rsc_search()`, `rsc_filter()`, and `rsc_table()` or `rsc_grid()` in order
 for filter and search to work. You can also create your own
 `crosstalk::SharedData()` object to pass to the components if you want
 more control over searching and filtering. Read more at
@@ -382,14 +382,14 @@ div(
       mutate(
       description = model_copy
       ) %>% 
-      rsccard()
+      rsc_card()
   },
   h3("All APIs", class = "text-center"),
   p("that thing George Box said one time. You know what thing."),
   {
     tagList(
-      bscols(rscsearch(apis), rscfilter(apis)),
-      rscgrid(apis)
+      bscols(rsc_search(apis), rsc_filter(apis)),
+      rsc_grid(apis)
     )
   }
 )

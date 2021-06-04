@@ -7,7 +7,7 @@
 gen_theme_dependency(widget_name, theme, default_base = FALSE)
 }
 \arguments{
-\item{widget_name}{The name of the widget (e.g: rscgrid)}
+\item{widget_name}{The name of the widget (e.g: rsc_grid)}
 
 \item{theme}{The bslib theme to generate the CSS dependency}
 

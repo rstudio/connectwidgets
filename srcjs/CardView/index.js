@@ -1,4 +1,4 @@
 import { reactWidget } from 'reactR';
 import CardView from './CardView';
 
-reactWidget('rsccard', 'output', { CardView });
+reactWidget('rsc_card', 'output', { CardView });

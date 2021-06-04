@@ -6,14 +6,14 @@
 #' @param content A shared object from Connect's content
 #'
 #' @export
-rscsearch <- function(content) {
+rsc_search <- function(content) {
   if (missing(content) || !is.data.frame(content)) {
-    stop("rscsearch() expects a data frame.")
+    stop("rsc_search() expects a data frame.")
   }
 
   if (nrow(content) == 0) {
     warning(
-      "rscsearch() called with an empty data.frame. Nothing to search on."
+      "rsc_search() called with an empty data.frame. Nothing to search on."
     )
   }
 
@@ -36,11 +36,11 @@ rscsearch <- function(content) {
   )
 
   dependencies <- crosstalk::crosstalkLibs()
-  dependencies[["rscsearch-theme"]] <- resolve_theme_dependency("rscsearch")
+  dependencies[["rsc_search-theme"]] <- resolve_theme_dependency("rsc_search")
 
   # create widget
   htmlwidgets::createWidget(
-    name = "rscsearch",
+    name = "rsc_search",
     reactR::reactMarkup(component),
     width = "auto",
     height = "auto",
@@ -52,7 +52,7 @@ rscsearch <- function(content) {
 # nolint start
 #' Called by HTMLWidgets to produce the widget's root element.
 #' @noRd
-widget_html.rscsearch <- function(id, style, class, ...) {
+widget_html.rsc_search <- function(id, style, class, ...) {
   htmltools::tagList(
     # Necessary for RStudio viewer version < 1.2
     reactR::html_dependency_corejs(),
@@ -62,28 +62,28 @@ widget_html.rscsearch <- function(id, style, class, ...) {
   )
 }
 
-#' Shiny bindings for rscsearch
+#' Shiny bindings for rsc_search
 #'
-#' Output and render functions for using rscsearch within Shiny
+#' Output and render functions for using rsc_search within Shiny
 #' applications and interactive Rmd documents.
 #'
 #' @param outputId output variable to read from
 #' @param width,height Must be a valid CSS unit (like \code{'100\%'},
 #'   \code{'400px'}, \code{'auto'}) or a number, which will be coerced to a
 #'   string and have \code{'px'} appended.
-#' @param expr An expression that generates a rscsearch
+#' @param expr An expression that generates a rsc_search
 #' @param env The environment in which to evaluate \code{expr}.
 #' @param quoted Is \code{expr} a quoted expression (with \code{quote()})? This
 #'   is useful if you want to save an expression in a variable.
 #'
-#' @name rscsearch-shiny
+#' @name rsc_search-shiny
 #'
 #' @export
 rscsearchOutput <- function(outputId, width = '100%', height = '400px'){
-  htmlwidgets::shinyWidgetOutput(outputId, 'rscsearch', width, height, package = 'connectwidgets')
+  htmlwidgets::shinyWidgetOutput(outputId, 'rsc_search', width, height, package = 'connectwidgets')
 }
 
-#' @rdname rscsearch-shiny
+#' @rdname rsc_search-shiny
 #' @export
 renderRscsearch <- function(expr, env = parent.frame(), quoted = FALSE) {
   if (!quoted) { expr <- substitute(expr) } # force quoted

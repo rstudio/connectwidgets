@@ -2,10 +2,10 @@ const path = require('path');
 
 module.exports = {
   entry: {
-    rscgrid: path.join(__dirname, 'srcjs/GridView', 'index.js'),
-    rsccard: path.join(__dirname, 'srcjs/CardView', 'index.js'),
-    rscfilter: path.join(__dirname, 'srcjs/Filter', 'index.js'),
-    rscsearch: path.join(__dirname, 'srcjs/Search', 'index.js'),
+    rsc_grid: path.join(__dirname, 'srcjs/GridView', 'index.js'),
+    rsc_card: path.join(__dirname, 'srcjs/CardView', 'index.js'),
+    rsc_filter: path.join(__dirname, 'srcjs/Filter', 'index.js'),
+    rsc_search: path.join(__dirname, 'srcjs/Search', 'index.js'),
   },
   output: {
     filename: '[name].js',
