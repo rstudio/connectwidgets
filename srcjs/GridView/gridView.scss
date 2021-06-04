@@ -22,23 +22,20 @@
     width: 22.75%;
 
     & .card-body {
+      flex: unset;
       padding: 0;
     }
-  
+
     &:hover {
       box-shadow: 0 0 12px 2px rgba(0,0,0, 0.2);
       transform: scale(1.05);
     }
-  
+
     &:hover,
     &:focus {
       text-decoration: none;
     }
-  
-    &:nth-of-type(4n) {
-      margin-right: 0;
-    }
-  
+
     &__title {
       /*
         more default styles on theming files
@@ -47,7 +44,7 @@
       margin-top: 0.4em;
       padding: 0 0.7em;
     }
-    
+
     &__meta {
       display: flex;
       flex-direction: column;

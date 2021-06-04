@@ -2,7 +2,7 @@
 
 exports[`<ContentImage /> forbidden images uses default image and request access label shows 1`] = `
 <a
-  className="rscimage rscimage--no-access d-block"
+  className="rscimage rscimage--no-access"
   href="https://science.rstudio.com/content/7e4bdcb4-c809-40da-9717-be86625ee690"
   rel="noreferrer"
   target="_blank"
@@ -25,7 +25,7 @@ exports[`<ContentImage /> forbidden images uses default image and request access
 
 exports[`<ContentImage /> non existent images uses default image and request access label shows 1`] = `
 <a
-  className="rscimage d-block"
+  className="rscimage"
   href="https://science.rstudio.com/content/7e4bdcb4-c809-40da-9717-be86625ee690"
   rel="noreferrer"
   target="_blank"
@@ -48,7 +48,7 @@ exports[`<ContentImage /> non existent images uses default image and request acc
 
 exports[`<ContentImage /> renders properly 1`] = `
 <a
-  className="rscimage d-block"
+  className="rscimage"
   href="https://science.rstudio.com/content/7e4bdcb4-c809-40da-9717-be86625ee690"
   rel="noreferrer"
   target="_blank"
