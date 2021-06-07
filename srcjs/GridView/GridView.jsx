@@ -57,8 +57,8 @@ class GridView extends React.Component {
   }
 
   filter(tableRows) {
-    const data = []
-    this.state.dataKeys.forEach((itemKey, index) => {
+    const data = [];
+    (this.state.dataKeys || []).forEach((itemKey, index) => {
       if (tableRows.includes(itemKey)) {
         data.push({ ...this.state.originalData[index] });
       }
