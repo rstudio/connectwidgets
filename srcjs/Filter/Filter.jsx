@@ -21,10 +21,15 @@ class Filter extends React.Component {
     const crosstalkHandle = new crosstalk.FilterHandle();
     crosstalkHandle.setGroup(props.crosstalkGroup);
 
+    const dataKeys = Array.isArray(props.crosstalkKey)
+                      ? props.crosstalkKey
+                      : props.data[props.crosstalkKey];
+
     this.parsedData = parseDataToFilters(props.data);
     this.state = {
       showPane: false,
       crosstalkHandle,
+      dataKeys,
       options: cloneDeep(this.parsedData),
       selections: shallowFiltersState(),
       stateOptionsFor: this.stateOptionsFor.bind(this),
@@ -85,7 +90,7 @@ class Filter extends React.Component {
       }
     });
 
-    return matchingRows;
+    return matchingRows.map(rowIndex => this.state.dataKeys[rowIndex]);
   }
 
   searchFieldOptions(type, prefix) {
@@ -181,6 +186,7 @@ class Filter extends React.Component {
 
 Filter.propTypes = {
   data: PropTypes.object,
+  crosstalkKey: PropTypes.array,
   crosstalkGroup: PropTypes.string,
 }
 
