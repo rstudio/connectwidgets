@@ -5,6 +5,7 @@ import './gridPagination.scss';
 const btnClass = {
   base: 'rscgrid-pagination__btn page-link',
   current: 'rscgrid-pagination__btn rscgrid-pagination__btn--current page-link',
+  disabled: 'rscgrid-pagination__btn rscgrid-pagination__btn--disabled page-link',
 };
 
 const bsPageClass = {
@@ -59,7 +60,8 @@ function GridPagination({ total, perPage, currentPage, onChange }) {
   }
 
   function gotoPage(page) {
-    if (page !== currentPage) {
+    const reachedLimit = page == 0 || page > totalPages;
+    if (!reachedLimit && page !== currentPage) {
       onChange(page);
     }
   }
@@ -80,8 +82,7 @@ function GridPagination({ total, perPage, currentPage, onChange }) {
         >
           {/* eslint-disable */}
           <a
-            className={btnClass.base}
-            disabled={disablePrevious()}
+            className={disablePrevious() ? btnClass.disabled : btnClass.base}
             href="#"
             onClick={(ev) => { ev.preventDefault(); gotoPage(currentPage - 1); }}
           >❮</a>
@@ -93,8 +94,7 @@ function GridPagination({ total, perPage, currentPage, onChange }) {
         >
           {/* eslint-disable */}
           <a
-            className={btnClass.base}
-            disabled={disableNext()}
+            className={disableNext() ? btnClass.disabled : btnClass.base}
             href="#"
             onClick={(ev) => { ev.preventDefault(); gotoPage(currentPage + 1); }}
           >❯</a>
