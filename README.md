@@ -105,21 +105,13 @@ Use an `.Renviron` file to set the `CONNECT_SERVER` and
 setting environment variables, check out the [R Startup
 chapter](https://rstats.wtf/r-startup.html#renviron) of What They Forgot
 to Teach You About R. RStudio Connect will [automatically
-apply](https://docs.rstudio.com/connect/news/#rstudio-connect-188)
+apply](https://docs.rstudio.com/connect/user/content-settings/#content-vars)
 values for these at document run time, so there is no need to include
 them in your code:
 
 ``` r
 library(connectwidgets)
-library(dplyr)
-#> 
-#> Attaching package: 'dplyr'
-#> The following objects are masked from 'package:stats':
-#> 
-#>     filter, lag
-#> The following objects are masked from 'package:base':
-#> 
-#>     intersect, setdiff, setequal, union
+library(dplyr, warn.conflicts = FALSE)
 
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 
@@ -132,23 +124,23 @@ all_content <- client %>%
   content()
 
 glimpse(all_content)
-#> Rows: 1,242
+#> Rows: 1,187
 #> Columns: 15
-#> $ id               <int> 4980, 4957, 3979, 4603, 4602, 4978, 4954, 4974, 4973,…
-#> $ guid             <chr> "d3768fcc-41e0-40e5-9083-588444f1fdcf", "4a254e6d-0ad…
-#> $ name             <chr> "dont_know_why", "api-portal", "github-issues-connect…
-#> $ title            <chr> "don't know why", "api-portal", NA, "group-info", "us…
-#> $ description      <chr> "", "", "A table pin with 19480 rows and 10 columns."…
-#> $ app_mode         <chr> "rmd-static", "rmd-static", "static", "static", "stat…
-#> $ content_category <chr> "", "", "pin", "pin", "pin", "", "", "", "", "", "", …
-#> $ url              <chr> "https://rsc.radixu.com/content/d3768fcc-41e0-40e5-90…
-#> $ owner_guid       <chr> "05d349d3-4549-44af-94ff-054b7855c085", "05d349d3-454…
-#> $ owner_username   <chr> "david", "david", "brian", "kelly.obriant", "kelly.ob…
-#> $ owner_first_name <chr> "E. David", "E. David", "Brian", "Kelly", "Kelly", "E…
-#> $ owner_last_name  <chr> "Aja", "Aja", "Smith", "@RStudio", "@RStudio", "Aja",…
-#> $ tags             <list> <NULL>, <NULL>, [<data.frame[2 x 5]>], [<data.frame[…
-#> $ created_time     <dttm> 2021-06-01 22:41:54, 2021-05-21 00:23:07, 2020-04-03…
-#> $ updated_time     <dttm> 2021-06-01 22:41:58, 2021-06-01 18:23:31, 2021-06-01…
+#> $ id               <int> 3979, 4603, 4602, 4985, 4980, 4957, 4978, 4954, 4976,…
+#> $ guid             <chr> "ca22a1f6-bab5-4fc0-8f38-ed8021be41f5", "e7c26684-ec4…
+#> $ name             <chr> "github-issues-connect", "group-info", "user-info", "…
+#> $ title            <chr> NA, "group-info", "user-info", "pages-readme-responsi…
+#> $ description      <chr> "A table pin with 19497 rows and 10 columns.", "Resul…
+#> $ app_mode         <chr> "static", "static", "static", "rmd-static", "rmd-stat…
+#> $ content_category <chr> "pin", "pin", "pin", "", "", "", "", "", "", "", "", …
+#> $ url              <chr> "https://rsc.radixu.com/content/ca22a1f6-bab5-4fc0-8f…
+#> $ owner_guid       <chr> "1d6cc041-eb11-411e-810e-718508cde25b", "0fc96747-ec9…
+#> $ owner_username   <chr> "brian", "kelly.obriant", "kelly.obriant", "david", "…
+#> $ owner_first_name <chr> "Brian", "Kelly", "Kelly", "E. David", "E. David", "E…
+#> $ owner_last_name  <chr> "Smith", "@RStudio", "@RStudio", "Aja", "Aja", "Aja",…
+#> $ tags             <list> [<data.frame[2 x 5]>], [<data.frame[1 x 5]>], [<data…
+#> $ created_time     <dttm> 2020-04-03 17:54:27, 2020-12-05 02:37:30, 2020-12-05…
+#> $ updated_time     <dttm> 2021-06-04 07:03:28, 2021-06-04 07:01:09, 2021-06-04…
 
 sample_content <- all_content %>%
   arrange(desc(updated_time)) %>%
@@ -222,7 +214,7 @@ dplyr:
 all_content %>% 
   filter(updated_time >= "2021-01-01") %>% 
   arrange(created_time)
-#> # A tibble: 49 x 15
+#> # A tibble: 50 x 15
 #>       id guid    name    title   description   app_mode content_category url    
 #>    <int> <chr>   <chr>   <chr>   <chr>         <chr>    <chr>            <chr>  
 #>  1  1890 be63ca… rmd     rmd4    "This rmd is… rmd-sta… ""               https:…
@@ -235,16 +227,16 @@ all_content %>%
 #>  8  4631 68c9b2… top-5-… top-5-… ""            python-… ""               https:…
 #>  9  4650 ebdea3… reticu… reticu… ""            static   ""               https:…
 #> 10  4651 321bba… rsc_sp… RSC: S… ""            static   ""               https:…
-#> # … with 39 more rows, and 7 more variables: owner_guid <chr>,
+#> # … with 40 more rows, and 7 more variables: owner_guid <chr>,
 #> #   owner_username <chr>, owner_first_name <chr>, owner_last_name <chr>,
 #> #   tags <list>, created_time <dttm>, updated_time <dttm>
 ```
 
 ### Components
 
-Once your content data are filtered, `connectwidgets` provides components for
-displaying information about them. The title, description, and preview
-image can be set [from the RStudio Connect
+Once your content data are filtered, `connectwidgets` provides
+components for displaying information about them. The title,
+description, and preview image can be set [from the RStudio Connect
 dashboard.](https://docs.rstudio.com/connect/user/content-settings/#content-metadata)
 For content deployed to Connect where no image has been supplied, a
 default image will be used.
@@ -284,9 +276,10 @@ more control over searching and filtering. Read more at
 
 ## Theming
 
-`connectwidgets` components support styling in `rmarkdown::html_document` via
-the `bslib` package. You can supply a [Bootswatch
-theme](https://bootswatch.com/4/) in the yaml header, e.g.
+`connectwidgets` components support styling in
+`rmarkdown::html_document` via the
+[`bslib`](https://rstudio.github.io/bslib/) package. You can supply a
+[Bootswatch theme](https://bootswatch.com/4/) in the yaml header, e.g.:
 
 ``` yaml
 ---
@@ -297,13 +290,38 @@ output:
 ---
 ```
 
-or pass in other customizations consistent with your organization’s
-style.
+or pass a custom theme consistent with your organization’s style:
+
+``` yaml:
+---
+output:
+  html_document:
+    theme:
+      bg: "#FFF"
+      fg: "#22333B" 
+      primary: "#4F772D"
+      dark: "#252525"
+      light: "#DCE6D3"
+      base_font: "Lato, sans-serif"
+      heading_font: "Lato, sans-serif"
+      border-color: "#E9F5DB"
+      gray-100: "#F7FCF0"
+---
+```
 
 Once you’re happy with the look of your page, Publish it to RStudio
 Connect. Read more at `vignette("publishing")`.
 
 ## A more customized example:
+
+Putting it all together, the example API portal page below:
+
+-   uses CSS to create a full-width image with inset text
+-   uses a Bootswatch theme
+-   overrides the `description` text for a couple of cards
+
+If no APIs are deployed on your RStudio Connect server, try filtering
+for static documents or Shiny apps instead.
 
 ```` markdown
 ---
