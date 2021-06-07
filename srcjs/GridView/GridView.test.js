@@ -32,6 +32,14 @@ describe('<GridView />', () => {
       expect(wrapper.find('.rscgrid-item').length).toBe(5);
     });
 
+    it('managing subsets, shows the applicable items and discards non existent items', () => {
+      const wrapper = mkWrapper();
+      expect(wrapper.find('.rscgrid-item').length).toBe(12);
+
+      wrapper.instance().onFilterChange({ value: [4, 10, 23, 1000, 1002, 1005] });
+      expect(wrapper.find('.rscgrid-item').length).toBe(3);
+    });
+
     it('with empty results, shows "no content found"', () => {
       const wrapper = mkWrapper();
       expect(wrapper.find('.rscgrid-item').length).toBe(12);

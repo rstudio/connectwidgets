@@ -52,10 +52,13 @@ class GridView extends React.Component {
   }
 
   filter(tableRows) {
-    const data = tableRows.map(rowIndex => {
-      // data rows start at 1, thus -1 to match index 
-      return { ...this.state.originalData[rowIndex - 1] };
-    });
+    const data = tableRows.reduce((colln, rowIndex) => {
+      // data rows start at 1, thus -1 to match index
+      if (this.state.originalData[rowIndex - 1]) {
+        colln.push({ ...this.state.originalData[rowIndex - 1] });
+      }
+      return colln;
+    }, []);
     this.setState({
       data,
       currentPage: 1,
