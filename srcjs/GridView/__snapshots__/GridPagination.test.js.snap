@@ -11,8 +11,7 @@ exports[`<GridPagination /> for too many pages displays compact pagination contr
       className="page-item disabled"
     >
       <a
-        className="rscgrid-pagination__btn page-link"
-        disabled={true}
+        className="rscgrid-pagination__btn rscgrid-pagination__btn--disabled page-link"
         href="#"
         onClick={[Function]}
       >
@@ -103,7 +102,6 @@ exports[`<GridPagination /> for too many pages displays compact pagination contr
     >
       <a
         className="rscgrid-pagination__btn page-link"
-        disabled={false}
         href="#"
         onClick={[Function]}
       >
@@ -126,7 +124,6 @@ exports[`<GridPagination /> for too many pages displays compact pagination contr
     >
       <a
         className="rscgrid-pagination__btn page-link"
-        disabled={false}
         href="#"
         onClick={[Function]}
       >
@@ -212,7 +209,6 @@ exports[`<GridPagination /> for too many pages displays compact pagination contr
     >
       <a
         className="rscgrid-pagination__btn page-link"
-        disabled={false}
         href="#"
         onClick={[Function]}
       >
@@ -235,7 +231,6 @@ exports[`<GridPagination /> for too many pages displays compact pagination contr
     >
       <a
         className="rscgrid-pagination__btn page-link"
-        disabled={false}
         href="#"
         onClick={[Function]}
       >
@@ -321,7 +316,6 @@ exports[`<GridPagination /> for too many pages displays compact pagination contr
     >
       <a
         className="rscgrid-pagination__btn page-link"
-        disabled={false}
         href="#"
         onClick={[Function]}
       >
@@ -344,7 +338,6 @@ exports[`<GridPagination /> for too many pages displays compact pagination contr
     >
       <a
         className="rscgrid-pagination__btn page-link"
-        disabled={false}
         href="#"
         onClick={[Function]}
       >
@@ -430,7 +423,6 @@ exports[`<GridPagination /> for too many pages displays compact pagination contr
     >
       <a
         className="rscgrid-pagination__btn page-link"
-        disabled={false}
         href="#"
         onClick={[Function]}
       >
@@ -453,7 +445,6 @@ exports[`<GridPagination /> for too many pages displays compact pagination contr
     >
       <a
         className="rscgrid-pagination__btn page-link"
-        disabled={false}
         href="#"
         onClick={[Function]}
       >
@@ -531,8 +522,7 @@ exports[`<GridPagination /> for too many pages displays compact pagination contr
       className="page-item disabled"
     >
       <a
-        className="rscgrid-pagination__btn page-link"
-        disabled={true}
+        className="rscgrid-pagination__btn rscgrid-pagination__btn--disabled page-link"
         href="#"
         onClick={[Function]}
       >
@@ -554,8 +544,7 @@ exports[`<GridPagination /> renders properly 1`] = `
       className="page-item disabled"
     >
       <a
-        className="rscgrid-pagination__btn page-link"
-        disabled={true}
+        className="rscgrid-pagination__btn rscgrid-pagination__btn--disabled page-link"
         href="#"
         onClick={[Function]}
       >
@@ -639,7 +628,6 @@ exports[`<GridPagination /> renders properly 1`] = `
     >
       <a
         className="rscgrid-pagination__btn page-link"
-        disabled={false}
         href="#"
         onClick={[Function]}
       >
