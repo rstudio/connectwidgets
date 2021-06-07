@@ -1,5 +1,6 @@
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
+import { range } from 'lodash';
 import GridView from './GridView';
 import GridPagination from './GridPagination';
 import testFrameData from './test-fixtures/data.json'
@@ -7,6 +8,7 @@ import testFrameData from './test-fixtures/data.json'
 const mkWrapper = (data = testFrameData) => {
   return shallow(<GridView
     data={data}
+    crosstalkKey={range(1, testFrameData.guid.length + 1)}
     crosstalkGroup="abcd-1234"
   />);
 };
@@ -30,6 +32,14 @@ describe('<GridView />', () => {
 
       wrapper.instance().onFilterChange({ value: [4, 10, 23, 29, 54] });
       expect(wrapper.find('.rscgrid-item').length).toBe(5);
+    });
+
+    it('managing subsets, shows the applicable items and discards non existent items', () => {
+      const wrapper = mkWrapper();
+      expect(wrapper.find('.rscgrid-item').length).toBe(12);
+
+      wrapper.instance().onFilterChange({ value: [4, 10, 23, 1000, 1002, 1005] });
+      expect(wrapper.find('.rscgrid-item').length).toBe(3);
     });
 
     it('with empty results, shows "no content found"', () => {

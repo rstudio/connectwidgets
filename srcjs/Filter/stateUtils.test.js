@@ -45,7 +45,7 @@ describe('parseDataToFilters', () => {
     const result = parseDataToFilters(rawData);
     expect(result[FilterType.owner]).toEqual([
       {
-        "applicableRows": [ 3 ],
+        "applicableRows": [ 2 ],
         "filterType": "owner",
         "index": 0,
         "isSelected": false,
@@ -53,7 +53,7 @@ describe('parseDataToFilters', () => {
         "name": "automata",
       },
       {
-        "applicableRows": [ 7 ],
+        "applicableRows": [ 6 ],
         "filterType": "owner",
         "index": 1,
         "isSelected": false,
@@ -61,7 +61,7 @@ describe('parseDataToFilters', () => {
         "name": "autoreporter009",
       },
       {
-        "applicableRows": [ 8, 9 ],
+        "applicableRows": [ 7, 8 ],
         "filterType": "owner",
         "index": 2,
         "isSelected": false,
@@ -69,7 +69,7 @@ describe('parseDataToFilters', () => {
         "name": "brucebowtie",
       },
       {
-        "applicableRows": [ 1, 5 ],
+        "applicableRows": [ 0, 4 ],
         "filterType": "owner",
         "index": 3,
         "isSelected": false,
@@ -77,7 +77,7 @@ describe('parseDataToFilters', () => {
         "name": "jzcarpenter",
       },
       {
-        "applicableRows": [ 2, 4, 6 ],
+        "applicableRows": [ 1, 3, 5 ],
         "filterType": "owner",
         "index": 4,
         "isSelected": false,
@@ -87,7 +87,7 @@ describe('parseDataToFilters', () => {
     ]);
     expect(result[FilterType.type]).toEqual([
       {
-        "applicableRows": [ 2 ],
+        "applicableRows": [ 1 ],
         "filterType": "type",
         "index": 0,
         "isSelected": false,
@@ -95,7 +95,7 @@ describe('parseDataToFilters', () => {
         "name": "API",
       },
       {
-        "applicableRows": [ 3, 5 ],
+        "applicableRows": [ 2, 4 ],
         "filterType": "type",
         "index": 1,
         "isSelected": false,
@@ -103,7 +103,7 @@ describe('parseDataToFilters', () => {
         "name": "Application",
       },
       {
-        "applicableRows": [ 4, 7, 9 ],
+        "applicableRows": [ 3, 6, 8 ],
         "filterType": "type",
         "index": 2,
         "isSelected": false,
@@ -111,7 +111,7 @@ describe('parseDataToFilters', () => {
         "name": "Document",
       },
       {
-        "applicableRows": [ 6 ],
+        "applicableRows": [ 5 ],
         "filterType": "type",
         "index": 3,
         "isSelected": false,
@@ -119,7 +119,7 @@ describe('parseDataToFilters', () => {
         "name": "Other",
       },
       {
-        "applicableRows": [ 1 ],
+        "applicableRows": [ 0 ],
         "filterType": "type",
         "index": 4,
         "isSelected": false,
@@ -127,7 +127,7 @@ describe('parseDataToFilters', () => {
         "name": "Pin",
       },
       {
-        "applicableRows": [ 8 ],
+        "applicableRows": [ 7 ],
         "filterType": "type",
         "index": 5,
         "isSelected": false,
@@ -137,7 +137,7 @@ describe('parseDataToFilters', () => {
     ]);
     expect(result[FilterType.tag]).toEqual([
       {
-        "applicableRows": [ 8 ],
+        "applicableRows": [ 7 ],
         "filterType": "tag",
         "index": 0,
         "isSelected": false,
@@ -145,7 +145,7 @@ describe('parseDataToFilters', () => {
         "name": "alpine",
       },
       {
-        "applicableRows": [ 1 ],
+        "applicableRows": [ 0 ],
         "filterType": "tag",
         "index": 1,
         "isSelected": false,
@@ -153,7 +153,7 @@ describe('parseDataToFilters', () => {
         "name": "carrot",
       },
       {
-        "applicableRows": [ 8 ],
+        "applicableRows": [ 7 ],
         "filterType": "tag",
         "index": 2,
         "isSelected": false,
@@ -161,7 +161,7 @@ describe('parseDataToFilters', () => {
         "name": "distros",
       },
       {
-        "applicableRows": [ 3, 6 ],
+        "applicableRows": [ 2, 5 ],
         "filterType": "tag",
         "index": 3,
         "isSelected": false,
@@ -169,7 +169,7 @@ describe('parseDataToFilters', () => {
         "name": "fruits",
       },
       {
-        "applicableRows": [ 7, 9 ],
+        "applicableRows": [ 6, 8 ],
         "filterType": "tag",
         "index": 4,
         "isSelected": false,
@@ -177,7 +177,7 @@ describe('parseDataToFilters', () => {
         "name": "minerals",
       },
       {
-        "applicableRows": [ 4 ],
+        "applicableRows": [ 3 ],
         "filterType": "tag",
         "index": 5,
         "isSelected": false,
@@ -185,7 +185,7 @@ describe('parseDataToFilters', () => {
         "name": "nutrition",
       },
       {
-        "applicableRows": [ 2, 3 ],
+        "applicableRows": [ 1, 2 ],
         "filterType": "tag",
         "index": 6,
         "isSelected": false,
@@ -193,7 +193,7 @@ describe('parseDataToFilters', () => {
         "name": "orange",
       },
       {
-        "applicableRows": [ 7 ],
+        "applicableRows": [ 6 ],
         "filterType": "tag",
         "index": 7,
         "isSelected": false,
@@ -201,7 +201,7 @@ describe('parseDataToFilters', () => {
         "name": "other",
       },
       {
-        "applicableRows": [ 6 ],
+        "applicableRows": [ 5 ],
         "filterType": "tag",
         "index": 8,
         "isSelected": false,
@@ -209,7 +209,7 @@ describe('parseDataToFilters', () => {
         "name": "strawberry",
       },
       {
-        "applicableRows": [ 1 ],
+        "applicableRows": [ 0 ],
         "filterType": "tag",
         "index": 9,
         "isSelected": false,
@@ -217,7 +217,7 @@ describe('parseDataToFilters', () => {
         "name": "vegetables",
       },
       {
-        "applicableRows": [ 4 ],
+        "applicableRows": [ 3 ],
         "filterType": "tag",
         "index": 10,
         "isSelected": false,
@@ -225,7 +225,7 @@ describe('parseDataToFilters', () => {
         "name": "vitamin B",
       },
       {
-        "applicableRows": [ 1, 4 ],
+        "applicableRows": [ 0, 3 ],
         "filterType": "tag",
         "index": 11,
         "isSelected": false,
@@ -233,7 +233,7 @@ describe('parseDataToFilters', () => {
         "name": "vitamin D",
       },
       {
-        "applicableRows": [ 5 ],
+        "applicableRows": [ 4 ],
         "filterType": "tag",
         "index": 12,
         "isSelected": false,
@@ -241,7 +241,7 @@ describe('parseDataToFilters', () => {
         "name": "watermelon",
       },
       {
-        "applicableRows": [ 7 ],
+        "applicableRows": [ 6 ],
         "filterType": "tag",
         "index": 13,
         "isSelected": false,

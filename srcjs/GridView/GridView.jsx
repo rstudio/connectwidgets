@@ -31,9 +31,14 @@ class GridView extends React.Component {
     crosstalkHandle.setGroup(props.crosstalkGroup)
     crosstalkHandle.on('change', this.onFilterChange);
 
+    const dataKeys = Array.isArray(props.crosstalkKey)
+                      ? props.crosstalkKey
+                      : props.data[props.crosstalkKey];
+
     const originalData = HTMLWidgets.dataframeToD3(props.data);
     this.state = {
       originalData,
+      dataKeys,
       currentPage: 1,
       itemsPerPage: 12,
       data: cloneDeep(originalData),
@@ -52,9 +57,11 @@ class GridView extends React.Component {
   }
 
   filter(tableRows) {
-    const data = tableRows.map(rowIndex => {
-      // data rows start at 1, thus -1 to match index 
-      return { ...this.state.originalData[rowIndex - 1] };
+    const data = [];
+    (this.state.dataKeys || []).forEach((itemKey, index) => {
+      if (tableRows.includes(itemKey)) {
+        data.push({ ...this.state.originalData[index] });
+      }
     });
     this.setState({
       data,
@@ -143,6 +150,7 @@ class GridView extends React.Component {
 
 GridView.propTypes = {
   data: PropTypes.object,
+  crosstalkKey: PropTypes.array,
   crosstalkGroup: PropTypes.string,
 }
 

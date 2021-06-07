@@ -1,5 +1,6 @@
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
+import { range } from 'lodash';
 import Filter from './Filter';
 import FilterFieldsPane from './FilterFieldsPane';
 import { FilterType } from './filterType';
@@ -54,7 +55,13 @@ const testFrameData = {
  * tag: ['alpine' 'carrot' 'distros' 'fruits' 'minerals' 'nutrition' 'orange' 'other' 'strawberry' 'vegetables' 'vitamin B' 'vitamin D' 'watermelon' 'zinc']
  */
 
-const mkWrapper = () => shallow(<Filter data={testFrameData} crosstalkGroup="abcd-1234" />);
+const mkWrapper = () => shallow(
+  <Filter
+    data={testFrameData}
+    crosstalkKey={range(1, testFrameData.app_mode.length + 1)}
+    crosstalkGroup="abcd-1234"
+  />
+);
 
 describe('<Filter />', () => {
   beforeEach(() => {
@@ -144,7 +151,7 @@ describe('<Filter />', () => {
       name: 'reporterfrank',
       isSelected: true,
       filterType: FilterType.owner,
-      applicableRows: expectedRows,
+      applicableRows: [1, 3, 5],
     });
     expect(crosstalk.FilterHandle().set).toHaveBeenCalledWith(expectedRows);
 
@@ -153,7 +160,7 @@ describe('<Filter />', () => {
       name: 'API',
       isSelected: true,
       filterType: FilterType.type,
-      applicableRows: [2, 7],
+      applicableRows: [1, 6],
     });
     expect(crosstalk.FilterHandle().set).toHaveBeenCalledWith(expectedRows);
 
@@ -162,7 +169,7 @@ describe('<Filter />', () => {
       name: 'autoreporter009',
       isSelected: true,
       filterType: FilterType.owner,
-      applicableRows: [7],
+      applicableRows: [6],
     });
     expect(crosstalk.FilterHandle().set).toHaveBeenCalledWith(expectedRows);
 
@@ -171,7 +178,7 @@ describe('<Filter />', () => {
       name: 'API',
       isSelected: false,
       filterType: FilterType.type,
-      applicableRows: [2, 7],
+      applicableRows: [1, 6],
     });
     expect(crosstalk.FilterHandle().set).toHaveBeenCalledWith(expectedRows);
 
@@ -180,7 +187,7 @@ describe('<Filter />', () => {
       name: 'reporterfrank',
       isSelected: false,
       filterType: FilterType.owner,
-      applicableRows: [2, 4, 6],
+      applicableRows: [1, 3, 5],
     });
     expect(crosstalk.FilterHandle().set).toHaveBeenCalledWith(expectedRows);
 
@@ -189,7 +196,7 @@ describe('<Filter />', () => {
       name: 'autoreporter009',
       isSelected: false,
       filterType: FilterType.owner,
-      applicableRows: [7],
+      applicableRows: [6],
     });
     expect(crosstalk.FilterHandle().clear).toHaveBeenCalled();
   });
@@ -201,21 +208,21 @@ describe('<Filter />', () => {
       name: 'reporterfrank',
       isSelected: true,
       filterType: FilterType.owner,
-      applicableRows: [2, 4, 6],
+      applicableRows: [1, 3, 5],
     });
 
     wrapper.instance().updateSelection({
       name: 'jzcarpenter',
       isSelected: true,
       filterType: FilterType.owner,
-      applicableRows: [1, 5],
+      applicableRows: [0, 4],
     });
 
     wrapper.instance().updateSelection({
       name: 'Document',
       isSelected: true,
       filterType: FilterType.type,
-      applicableRows: [1, 5],
+      applicableRows: [0, 4],
     });
 
     expect(wrapper.instance().hasFiltersSelected()).toBe(true);

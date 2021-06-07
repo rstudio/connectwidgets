@@ -14,8 +14,13 @@ class Search extends React.Component {
     const crosstalkHandle = new crosstalk.FilterHandle();
     crosstalkHandle.setGroup(props.crosstalkGroup);
 
+    const dataKeys = Array.isArray(props.crosstalkKey)
+                      ? props.crosstalkKey
+                      : props.data[props.crosstalkKey];
+
     this.state = {
       data: cloneDeep(props.data),
+      dataKeys,
       crosstalkHandle,
     };
 
@@ -38,7 +43,7 @@ class Search extends React.Component {
     const results = this.state.data.title.reduce((matching, title, index) => {
       if (regx.test(title) || regx.test(this.state.data.name[index])) {
         // dataframe rows start at 1 and aren't based on index 0
-        matching.push(index + 1);
+        matching.push(this.state.dataKeys[index]);
       }
       return matching;
     }, []);
@@ -62,6 +67,7 @@ class Search extends React.Component {
 
 Search.propTypes = {
   data: PropTypes.object,
+  crosstalkKey: PropTypes.array,
   crosstalkGroup: PropTypes.string,
 }
 

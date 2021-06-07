@@ -9,8 +9,7 @@ const filterOptionFactory = (dataIndex, filterType, filterName, filterLabel) => 
     label: filterLabel || filterName,
     isSelected: false,
     filterType: filterType,
-    // dataframe rows start at 1 and aren't based on index 0
-    applicableRows: [ dataIndex + 1 ],
+    applicableRows: [ dataIndex ],
   };
 }
 
@@ -34,8 +33,7 @@ export const parseDataToFilters = allData => {
     if (!(item in collection)) {
       collection[item] = filterOptionFactory(index, type, item);
     } else {
-      // dataframe rows start at 1 and aren't based on index 0 (thus index + 1)
-      collection[item].applicableRows.push(index + 1);
+      collection[item].applicableRows.push(index);
     }
     return collection;
   };
