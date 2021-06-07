@@ -1,5 +1,6 @@
 import { shallow } from 'enzyme';
 import toJson from 'enzyme-to-json';
+import { range } from 'lodash';
 import GridView from './GridView';
 import GridPagination from './GridPagination';
 import testFrameData from './test-fixtures/data.json'
@@ -7,6 +8,7 @@ import testFrameData from './test-fixtures/data.json'
 const mkWrapper = (data = testFrameData) => {
   return shallow(<GridView
     data={data}
+    crosstalkKey={range(1, testFrameData.guid.length + 1)}
     crosstalkGroup="abcd-1234"
   />);
 };
