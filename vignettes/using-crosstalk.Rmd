@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-The `rsctable()`, `rscgrid()`, `rscsearch()`, and `rscfilter()`  widgets use
+The `rsc_table()`, `rsc_grid()`, `rsc_search()`, and `rsc_filter()`  widgets use
 `crosstalk` to facilitate inter-widget communication. In simple cases, passing
 identical results from the `content()` tibble is sufficient:
 
@@ -29,49 +29,57 @@ all_content <- client %>% content()
 some_content <- slice_sample(all_content, prop = .1)
 
 tagList(
-  rsc_cols(rscsearch(some_content), rscfilter(some_content)),
-  rsctable(some_content)
+  rsc_cols(rsc_search(some_content), rsc_filter(some_content)),
+  rsc_table(some_content)
 )
 ```
 
-For more complicated layouts, you may need to pass your own `crosstalk::SharedData()`
-objects to the components.
-The following example illustrates using [crosstalk groups](https://rstudio.github.io/crosstalk/using.html#grouping)
-and, `dplyr`, and `purrr` to:
+For more complicated layouts, you may want to pass your own `crosstalk` objects to the components.
+
+## Example: Grids grouped by owner
+
+As a publisher, you want to:
 
 - display each content owner's username with a level 4 heading
-- display an `rscgrid()` of each content owner's items
-- enable search across all the card grids
+- display an `rsc_grid()` of each content owner's items
+- display one search and filter widget that works across all the card grids
 
+`crosstalk::SharedData$new()` takes two optional parameters that make this possible:
+
+- `keys`
+  - The `content()` tibble contains a globally unique identifier (GUID) for each piece of content, which you can [use as a key](https://rstudio.github.io/crosstalk/using.html#keys) when creating your `SharedData` object (e.g `key = ~ guid`).
+
+- `group`
+  - Specifying a [group name](https://rstudio.github.io/crosstalk/using.html#grouping)
+  when creating the `SharedData` object gives you control over which widgets are
+  grouped together (e.g. `group = "xfilter"`).
+
+Since the `some_content` tibble contains all the GUIDs, passing it to the Search
+and Filter components will enable you to search across each of the subset tibbles
+created by `dplyr::group_nest`:
 
 ```{r, eval=FALSE}
 some_content_xfilter <- crosstalk::SharedData$new(
   some_content,
+  key = ~ guid,
   group = "xfilter"
   )
 
-rsc_content_filtered_shared <-
+rsc_content_shared <-
   some_content %>%
   group_nest(owner_username, .key = "content_df", keep = TRUE)
 
 div(
   h3("Grouped Grids by Owner", class = "text-center"),
-  crosstalk::filter_select(
-    "owner_filter",
-    label = "Select owners:",
-    group = "xfilter",
-    multiple = TRUE,
-    sharedData = some_content_xfilter
-  ),
-  pmap(
-    rsc_content_filtered_shared,
+  bscols(rsc_search(some_content_xfilter), rsc_filter(some_content_xfilter)),
+  purrr::pmap(
+    rsc_content_shared,
     {
       ~ tagList(
         h4(..1),
-        rscgrid(crosstalk::SharedData$new(..2, group = "xfilter"))
+        rsc_grid(crosstalk::SharedData$new(..2, key = ~ guid, group = "xfilter"))
       )
     }
   )
 )
 ```
-

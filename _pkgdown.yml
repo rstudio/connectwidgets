@@ -12,11 +12,11 @@ reference:
   desc: >
     UI components
 - contents:
-  - rsccard
-  - rscgrid
-  - rsctable
-  - rscsearch
-  - rscfilter
+  - rsc_card
+  - rsc_grid
+  - rsc_table
+  - rsc_search
+  - rsc_filter
   - rsc_cols
 - title: "Shiny"
   desc: >
