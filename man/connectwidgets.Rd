@@ -24,7 +24,8 @@ Present your content with different components:
 \item \code{\link[=rsc_grid]{rsc_grid()}} for groups of cards
 \item \code{\link[=rsc_table]{rsc_table()}} for a tabular view
 \item \code{\link[=rsc_search]{rsc_search()}} a text input for searching grids and tables
-\item \code{\link[=rsc_filter]{rsc_filter()}} an input to filter grids or tables by owner, type, or tag
+\item \code{\link[=rsc_filter]{rsc_filter()}} an input to filter grids or tables
+by owner, type, or tag
 }
 }
 
