@@ -101,10 +101,7 @@ gen_theme_dependency <- function(widget_name, theme, default_base = FALSE) {
     input = sass::sass_file(scss_path),
     theme = theme,
     name = dependency_name,
-    version = version,
-    .sass_args = list(
-      cache = FALSE
-    )
+    version = version
   )
 }
 

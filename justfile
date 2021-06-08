@@ -23,9 +23,18 @@ roxygen:
 local-install:
   Rscript -e 'devtools::install(upgrade = FALSE)'
 
-# Run tests
-test:
+# Run R tests
+test-r:
+  Rscript -e "devtools::test()"
+
+# Run JS tests
+test-ui:
   npm run test
+
+# Run all tests
+test:
+  just test-r
+  just test-ui
 
 # Run JS tests in watch mode
 test-watch:
