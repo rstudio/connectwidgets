@@ -19,4 +19,4 @@ jobs:
       - name: Test Unit
         run: |
           just deps
-          just test
+          just test-ui
