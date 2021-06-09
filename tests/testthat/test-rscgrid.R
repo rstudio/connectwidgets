@@ -96,11 +96,9 @@ test_that("rsc_grid supports crosstalk", {
   widget <- rsc_grid(sh)
   attrs <- get_attribs(widget)
 
-  expect_equal(attrs$crosstalkKey, c(
-    "991f16c5-dc7e-4403-89d0-c54d10968460",
-    "4b5345cc-8dc5-46fa-80ed-1a389d80e21b",
-    "100881c9-0162-4f3f-b973-6870085d48ff"
-  ))
+  expect_true("991f16c5-dc7e-4403-89d0-c54d10968460" %in% attrs$crosstalkKey)
+  expect_true("4b5345cc-8dc5-46fa-80ed-1a389d80e21b" %in% attrs$crosstalkKey)
+  expect_true("100881c9-0162-4f3f-b973-6870085d48ff" %in% attrs$crosstalkKey)
   expect_equal(attrs$crosstalkGroup, "gridzzz")
 })
 
