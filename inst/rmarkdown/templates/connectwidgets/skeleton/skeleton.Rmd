@@ -19,7 +19,7 @@ all_content <- client %>%
 
 sample_content <- all_content %>%
   arrange(desc(updated_time)) %>%
-  slice_head(prop = .3)
+  slice_head(n = 50)
 ```
 
 ![](https://source.unsplash.com/1920x1080/?forest "A random forest.")
@@ -31,26 +31,31 @@ sample_content <- all_content %>%
 ```{r card}
 sample_content %>%
   slice(1) %>%
-  rsccard()
+  rsc_card()
 ```
 
 ### grid
 
 ```{r grid}
 sample_content %>%
-  rscgrid()
+  rsc_grid()
 ```
 
 ### table
 
 ```{r table}
 sample_content %>%
-  rsctable()
+  rsc_table()
 ```
 
 ### search & filter
 
 ```{r search-and-filter}
-rsc_cols(rscsearch(all_content), rscfilter(all_content), widths = c(2, 2))
-rsctable(all_content)
+rsc_cols(
+  rsc_search(sample_content),
+  rsc_filter(sample_content),
+  widths = c(2, 2),
+  device = "md")
+
+rsc_table(sample_content)
 ```

@@ -56,7 +56,7 @@ all_content <- client %>%
 
 sample_content <- all_content %>%
   arrange(desc(updated_time)) %>%
-  slice_head(prop = .3)
+  slice_head(n = 50)
 ```
 
 ![](https://source.unsplash.com/1920x1080/?forest "A random forest.")
@@ -144,7 +144,7 @@ glimpse(all_content)
 
 sample_content <- all_content %>%
   arrange(desc(updated_time)) %>%
-  slice_head(prop = .3)
+  slice_head(n = 50)
 ```
 
 #### `content()`
@@ -391,15 +391,15 @@ div(
     model_copy <- c(
       "Our most important model: Distillery retro taiyaki fashion axe.
       Art party cray intelligentsia flexitarian.",
-      "Our second most important model: Pug af twee portland pitchfork brunch 
+      "Our second most important model: Pug af twee portland pitchfork brunch
       kogi gochujang organic migas shaman four dollar toast 90's slow-carb."
       )
-    
+
     apis %>%
       slice_head(n = 2) %>%
       mutate(
       description = model_copy
-      ) %>% 
+      ) %>%
       rsc_card()
   },
   h3("All APIs", class = "text-center"),
