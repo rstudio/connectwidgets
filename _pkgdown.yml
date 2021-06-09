@@ -17,7 +17,7 @@ reference:
   - rsctable
   - rscsearch
   - rscfilter
-  - bscols
+  - rsc_cols
 - title: "Shiny"
   desc: >
     Shiny bindings for `connectwidgets`

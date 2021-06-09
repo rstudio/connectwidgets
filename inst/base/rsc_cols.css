@@ -1,0 +1,17 @@
+/* Adjust margins outwards, so column contents line up with the edges of the
+   parent of container-fluid. */
+.container-fluid.rsc-cols {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* But don't adjust the margins outwards if we're directly under the body,
+   i.e. we were the top-level of something at the console. */
+body > .container-fluid.rsc-cols {
+  padding-left: inherit;
+  padding-right: inherit;
+}
+
+.rsc-cols .row {
+  align-items: center;
+}

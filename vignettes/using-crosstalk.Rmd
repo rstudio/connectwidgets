@@ -29,7 +29,7 @@ all_content <- client %>% content()
 some_content <- slice_sample(all_content, prop = .1)
 
 tagList(
-  bscols(rscsearch(some_content), rscfilter(some_content)),
+  rsc_cols(rscsearch(some_content), rscfilter(some_content)),
   rsctable(some_content)
 )
 ```

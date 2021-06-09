@@ -88,7 +88,7 @@ sample_content %>%
 ### search & filter
 
 ```{r search-and-filter}
-bscols(rsc_search(all_content), rsc_filter(all_content), widths = c(2, 2))
+rsc_cols(rsc_search(all_content), rsc_filter(all_content), widths = c(2, 2))
 rsc_table(all_content)
 ```
 ````
@@ -406,7 +406,7 @@ div(
   p("that thing George Box said one time. You know what thing."),
   {
     tagList(
-      bscols(rsc_search(apis), rsc_filter(apis)),
+      rsc_cols(rsc_search(apis), rsc_filter(apis)),
       rsc_grid(apis)
     )
   }
