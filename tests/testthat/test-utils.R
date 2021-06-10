@@ -1,25 +1,25 @@
 test_that("evaluate_widget_input", {
   expect_error(
     evaluate_widget_input(
-      "rscgrid",
+      "rsc_grid",
       c("guid"),
       c("guid", "url", "title")
     ),
-    "rscgrid requires a \"url\" column but is not present."
+    "rsc_grid requires a \"url\" column but is not present."
   )
 
   expect_error(
     evaluate_widget_input(
-      "rscgrid",
+      "rsc_grid",
       c("guid", "url"),
       c("guid", "url", "title")
     ),
-    "rscgrid requires a \"title\" column but is not present."
+    "rsc_grid requires a \"title\" column but is not present."
   )
 
   expect_error(
     evaluate_widget_input(
-      "rscgrid",
+      "rsc_grid",
       c("guid", "url", "title", "name"),
       c("guid", "url", "title")
     ),
@@ -30,25 +30,25 @@ test_that("evaluate_widget_input", {
 test_that("warning_widget_input", {
   expect_warning(
     warning_widget_input(
-      "rscgrid",
+      "rsc_grid",
       c("guid"),
       c("updated_time")
     ),
-    "rscgrid expects a \"updated_time\" column but is not present."
+    "rsc_grid expects a \"updated_time\" column but is not present."
   )
 
   expect_warning(
     warning_widget_input(
-      "rscgrid",
+      "rsc_grid",
       c("guid", "url"),
       c("updated_time")
     ),
-    "rscgrid expects a \"updated_time\" column but is not present."
+    "rsc_grid expects a \"updated_time\" column but is not present."
   )
 
   expect_warning(
     warning_widget_input(
-      "rscgrid",
+      "rsc_grid",
       c("guid", "url", "updated_time"),
       c("updated_time")
     ),
