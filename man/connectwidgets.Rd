@@ -49,6 +49,7 @@ Other contributors:
 \itemize{
   \item David Aja \email{david@rstudio.com} [contributor]
   \item Kelly O'Briant \email{kelly.obriant@rstudio.com} [contributor]
+  \item RStudio [copyright holder]
 }
 
 }
