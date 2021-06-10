@@ -71,7 +71,7 @@ rsc_content_shared <-
 
 div(
   h3("Grouped Grids by Owner", class = "text-center"),
-  bscols(rsc_search(some_content_xfilter), rsc_filter(some_content_xfilter)),
+  rsc_cols(rsc_search(some_content_xfilter), rsc_filter(some_content_xfilter)),
   purrr::pmap(
     rsc_content_shared,
     {
