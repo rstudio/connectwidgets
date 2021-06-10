@@ -7,9 +7,6 @@
     <loc>https://rstudio.github.io/connectwidgets/reference/Client.html</loc>
   </url>
   <url>
-    <loc>https://rstudio.github.io/connectwidgets/reference/bscols.html</loc>
-  </url>
-  <url>
     <loc>https://rstudio.github.io/connectwidgets/reference/by_owners.html</loc>
   </url>
   <url>
@@ -53,6 +50,9 @@
   </url>
   <url>
     <loc>https://rstudio.github.io/connectwidgets/reference/rsc_card.html</loc>
+  </url>
+  <url>
+    <loc>https://rstudio.github.io/connectwidgets/reference/rsc_cols.html</loc>
   </url>
   <url>
     <loc>https://rstudio.github.io/connectwidgets/reference/rsc_filter-shiny.html</loc>

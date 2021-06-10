@@ -104,7 +104,7 @@
 <span class="va">some_content</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_sample</a></span><span class="op">(</span><span class="va">all_content</span>, prop <span class="op">=</span> <span class="fl">.1</span><span class="op">)</span>
 
 <span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/tag.html">tagList</a></span><span class="op">(</span>
-  <span class="fu"><a href="../reference/bscols.html">bscols</a></span><span class="op">(</span><span class="fu">rscsearch</span><span class="op">(</span><span class="va">some_content</span><span class="op">)</span>, <span class="fu">rscfilter</span><span class="op">(</span><span class="va">some_content</span><span class="op">)</span><span class="op">)</span>,
+  <span class="fu"><a href="../reference/rsc_cols.html">rsc_cols</a></span><span class="op">(</span><span class="fu">rscsearch</span><span class="op">(</span><span class="va">some_content</span><span class="op">)</span>, <span class="fu">rscfilter</span><span class="op">(</span><span class="va">some_content</span><span class="op">)</span><span class="op">)</span>,
   <span class="fu">rsctable</span><span class="op">(</span><span class="va">some_content</span><span class="op">)</span>
 <span class="op">)</span></code></pre></div>
 <p>For more complicated layouts, you may need to pass your own <code><a href="https://rdrr.io/pkg/crosstalk/man/SharedData.html">crosstalk::SharedData()</a></code> objects to the components. The following example illustrates using <a href="https://rstudio.github.io/crosstalk/using.html#grouping">crosstalk groups</a> and, <code>dplyr</code>, and <code>purrr</code> to:</p>

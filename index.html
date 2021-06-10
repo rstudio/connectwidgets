@@ -154,7 +154,7 @@
 <span id="cb3-51"><a href="#cb3-51"></a><span class="fu">### search &amp; filter</span></span>
 <span id="cb3-52"><a href="#cb3-52"></a></span>
 <span id="cb3-53"><a href="#cb3-53"></a><span class="bn">```{r search-and-filter}</span></span>
-<span id="cb3-54"><a href="#cb3-54"></a><span class="bn">bscols(rsc_search(all_content), rsc_filter(all_content), widths = c(2, 2))</span></span>
+<span id="cb3-54"><a href="#cb3-54"></a><span class="bn">rsc_cols(rsc_search(all_content), rsc_filter(all_content), widths = c(2, 2))</span></span>
 <span id="cb3-55"><a href="#cb3-55"></a><span class="bn">rsc_table(all_content)</span></span>
 <span id="cb3-56"><a href="#cb3-56"></a><span class="bn">```</span></span></code></pre></div>
 <div id="setup" class="section level3">
@@ -437,7 +437,7 @@ output:
 <span id="cb9-80"><a href="#cb9-80"></a><span class="bn">  p("that thing George Box said one time. You know what thing."),</span></span>
 <span id="cb9-81"><a href="#cb9-81"></a><span class="bn">  {</span></span>
 <span id="cb9-82"><a href="#cb9-82"></a><span class="bn">    tagList(</span></span>
-<span id="cb9-83"><a href="#cb9-83"></a><span class="bn">      bscols(rsc_search(apis), rsc_filter(apis)),</span></span>
+<span id="cb9-83"><a href="#cb9-83"></a><span class="bn">      rsc_cols(rsc_search(apis), rsc_filter(apis)),</span></span>
 <span id="cb9-84"><a href="#cb9-84"></a><span class="bn">      rsc_grid(apis)</span></span>
 <span id="cb9-85"><a href="#cb9-85"></a><span class="bn">    )</span></span>
 <span id="cb9-86"><a href="#cb9-86"></a><span class="bn">  }</span></span>
