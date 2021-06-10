@@ -35,7 +35,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">connectwidgets</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9002</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0.9003</span>
       </span>
     </div>
 
@@ -126,7 +126,7 @@
 <span id="cb3-19"><a href="#cb3-19"></a></span>
 <span id="cb3-20"><a href="#cb3-20"></a><span class="bn">sample_content &lt;- all_content %&gt;%</span></span>
 <span id="cb3-21"><a href="#cb3-21"></a><span class="bn">  arrange(desc(updated_time)) %&gt;%</span></span>
-<span id="cb3-22"><a href="#cb3-22"></a><span class="bn">  slice_head(prop = .3)</span></span>
+<span id="cb3-22"><a href="#cb3-22"></a><span class="bn">  slice_head(n = 50)</span></span>
 <span id="cb3-23"><a href="#cb3-23"></a><span class="bn">```</span></span>
 <span id="cb3-24"><a href="#cb3-24"></a></span>
 <span id="cb3-25"><a href="#cb3-25"></a>![](https://source.unsplash.com/1920x1080/?forest "A random forest.")</span>
@@ -205,7 +205,7 @@
 
 <span class="va">sample_content</span> <span class="op">&lt;-</span> <span class="va">all_content</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">updated_time</span><span class="op">)</span><span class="op">)</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_head</a></span><span class="op">(</span>prop <span class="op">=</span> <span class="fl">.3</span><span class="op">)</span></code></pre></div>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_head</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">50</span><span class="op">)</span></code></pre></div>
 <div id="content" class="section level4">
 <h4 class="hasAnchor">
 <a href="#content" class="anchor"></a><code>content()</code>
@@ -426,15 +426,15 @@ output:
 <span id="cb9-65"><a href="#cb9-65"></a><span class="bn">    model_copy &lt;- c(</span></span>
 <span id="cb9-66"><a href="#cb9-66"></a><span class="bn">      "Our most important model: Distillery retro taiyaki fashion axe.</span></span>
 <span id="cb9-67"><a href="#cb9-67"></a><span class="bn">      Art party cray intelligentsia flexitarian.",</span></span>
-<span id="cb9-68"><a href="#cb9-68"></a><span class="bn">      "Our second most important model: Pug af twee portland pitchfork brunch </span></span>
+<span id="cb9-68"><a href="#cb9-68"></a><span class="bn">      "Our second most important model: Pug af twee portland pitchfork brunch</span></span>
 <span id="cb9-69"><a href="#cb9-69"></a><span class="bn">      kogi gochujang organic migas shaman four dollar toast 90's slow-carb."</span></span>
 <span id="cb9-70"><a href="#cb9-70"></a><span class="bn">      )</span></span>
-<span id="cb9-71"><a href="#cb9-71"></a><span class="bn">    </span></span>
+<span id="cb9-71"><a href="#cb9-71"></a></span>
 <span id="cb9-72"><a href="#cb9-72"></a><span class="bn">    apis %&gt;%</span></span>
 <span id="cb9-73"><a href="#cb9-73"></a><span class="bn">      slice_head(n = 2) %&gt;%</span></span>
 <span id="cb9-74"><a href="#cb9-74"></a><span class="bn">      mutate(</span></span>
 <span id="cb9-75"><a href="#cb9-75"></a><span class="bn">      description = model_copy</span></span>
-<span id="cb9-76"><a href="#cb9-76"></a><span class="bn">      ) %&gt;% </span></span>
+<span id="cb9-76"><a href="#cb9-76"></a><span class="bn">      ) %&gt;%</span></span>
 <span id="cb9-77"><a href="#cb9-77"></a><span class="bn">      rsc_card()</span></span>
 <span id="cb9-78"><a href="#cb9-78"></a><span class="bn">  },</span></span>
 <span id="cb9-79"><a href="#cb9-79"></a><span class="bn">  h3("All APIs", class = "text-center"),</span></span>
