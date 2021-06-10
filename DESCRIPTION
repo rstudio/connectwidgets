@@ -1,11 +1,11 @@
 Package: connectwidgets
 Title: Organize and Curate Your Content Within RStudio Connect
 Version: 0.1.0.9002
-Authors@R: 
-    person(given = "Brian",
-           family = "Smith",
-           role = c("aut", "cre"),
-           email = "brian@rstudio.com")
+Authors@R: c(
+    person("Brian", "Smith", email = "brian@rstudio.com", role = c("aut", "cre")),
+    person("Marcos", "Navarro", email = "marcos@rstudio.com", role = "aut"),
+    person("David", "Aja", email = "david@rstudio.com", role = "ctb"),
+    person("Kelly", "O'Briant", email = "kelly.obriant@rstudio.com", role = "ctb"))
 Description: A collection of helper functions and htmlwidgets to help publishers
     curate content collections on RStudio Connect. The components,
     Card, Grid, Table, Search, and Filter can be used to produce a

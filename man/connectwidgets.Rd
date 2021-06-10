@@ -40,4 +40,15 @@ Useful links:
 \author{
 \strong{Maintainer}: Brian Smith \email{brian@rstudio.com}
 
+Authors:
+\itemize{
+  \item Marcos Navarro \email{marcos@rstudio.com}
+}
+
+Other contributors:
+\itemize{
+  \item David Aja \email{david@rstudio.com} [contributor]
+  \item Kelly O'Briant \email{kelly.obriant@rstudio.com} [contributor]
+}
+
 }
