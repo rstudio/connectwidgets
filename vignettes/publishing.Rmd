@@ -32,7 +32,3 @@ title: an example page
 ouput: html_document
 runtime: shiny
 ```
-
-## Shiny App
-
-Since `connectwidgets` components are htmlwidgets, you can use them to build a shiny app.
