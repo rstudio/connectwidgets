@@ -42,6 +42,7 @@ rsc_grid <- function(content) {
       cols,
       c("updated_time")
     )
+    warning_large_content(content)
   }
 
   component <- reactR::component(

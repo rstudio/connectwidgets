@@ -37,6 +37,7 @@ rsc_filter <- function(content) {
     cols,
     c("owner_username", "app_mode", "tags")
   )
+  warning_large_content(content)
 
   component <- reactR::component(
     "Filter",
