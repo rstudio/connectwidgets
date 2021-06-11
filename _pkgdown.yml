@@ -18,9 +18,3 @@ reference:
   - rsc_search
   - rsc_filter
   - rsc_cols
-- title: "Shiny"
-  desc: >
-    Shiny bindings for `connectwidgets`
-- contents:
-  - contains("Output")
-  - contains("render")

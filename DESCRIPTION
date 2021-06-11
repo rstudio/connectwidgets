@@ -10,8 +10,8 @@ Authors@R: c(
 Description: A collection of helper functions and htmlwidgets to help publishers
     curate content collections on RStudio Connect. The components,
     Card, Grid, Table, Search, and Filter can be used to produce a
-    showcase page or gallery contained within an R Markdown document
-    or Shiny application.
+    showcase page or gallery contained within a static or interactive
+    R Markdown page.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
