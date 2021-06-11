@@ -35,6 +35,7 @@ rsc_table <- function(content) {
       cols,
       c("guid", "url", "title", "app_mode", "owner_username", "updated_time")
     )
+    warning_large_content(content$origData())
   }
 
   reactable::reactable(

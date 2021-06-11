@@ -35,3 +35,17 @@ warning_widget_input <- function(widget, colnames, expected) {
     }
   }
 }
+
+#' Show warnings for large content
+#' @param content Content data frame or Crosstalk SharedData object
+#' @param max_rows Maximum number of rows before warning (default 500)
+warning_large_content <- function(content, max_rows = 500) {
+  rows <- nrow(content)
+  if (rows > max_rows) {
+    warning(
+      glue::glue(
+        "Content items exceeds maximum ({rows} rows, max {max_rows}). ",
+        "You should reduce the number of content items to avoid performance ",
+        "issues."))
+  }
+}

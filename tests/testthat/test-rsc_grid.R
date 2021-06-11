@@ -75,6 +75,27 @@ test_that("rsc_grid handles invalid/missing args", {
   )
 })
 
+test_that("should warn on large content", {
+  over_max_size <- 501
+  content <- data.frame(
+    guid = rep("100881c9-0162-4f3f-b973-6870085d48ff", times = over_max_size),
+    title = rep("Test", times = over_max_size),
+    url = rep(
+      "https://example.com/content/991f16c5-dc7e-4403-89d0-c54d10968460/",
+      times = over_max_size
+    ),
+    app_mode = rep("api", times = over_max_size),
+    owner_username = rep("bob", times = over_max_size),
+    description = rep("Lorem ipsum", times = over_max_size),
+    updated_time = rep("Sat Oct 03 2020", times = over_max_size)
+  )
+
+  expect_warning(
+    rsc_grid(content),
+    "exceeds maximum"
+  )
+})
+
 test_that("rsc_grid container", {
   widget <- rsc_grid(content_sample)
   attrs <- get_attribs(widget)

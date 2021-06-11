@@ -63,3 +63,35 @@ test_that("rsc_table handles invalid/missing args", {
   content <- cbind(content, tags = c("", "", ""))
   expect_error(rsc_table(content), NA)
 })
+
+test_that("should warn on large content", {
+  over_max_size <- 501
+  content <- data.frame(
+    id = rep("1", times = over_max_size),
+    guid = rep("100881c9-0162-4f3f-b973-6870085d48ff", times = over_max_size),
+    url = rep(
+      "https://example.com/content/991f16c5-dc7e-4403-89d0-c54d10968460/",
+      times = over_max_size
+    ),
+    title = rep("Test", times = over_max_size),
+    name = rep("Test", times = over_max_size),
+    description = rep("Lorem Ipsum", times = over_max_size),
+    app_mode = rep("api", times = over_max_size),
+    content_category = rep("", times = over_max_size),
+    owner_guid = rep(
+      "100881c9-0162-4f3f-b973-6870085d48ff",
+      times = over_max_size
+    ),
+    owner_username = rep("bob", times = over_max_size),
+    owner_first_name = rep("Bob", times = over_max_size),
+    owner_last_name = rep("Smith", times = over_max_size),
+    tags = rep(NA, times = over_max_size),
+    created_time = rep("2021-05-05T10:00:00Z", times = over_max_size),
+    updated_time = rep("2021-05-05T10:00:00Z", times = over_max_size)
+  )
+
+  expect_warning(
+    rsc_table(content),
+    "exceeds maximum"
+  )
+})

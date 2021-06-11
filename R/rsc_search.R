@@ -36,6 +36,8 @@ rsc_search <- function(content) {
     )
   }
 
+  warning_large_content(content)
+
   component <- reactR::component(
     "Search",
     list(

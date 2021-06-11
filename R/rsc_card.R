@@ -25,6 +25,7 @@ rsc_card <- function(content) {
     cols,
     c("owner_username", "description", "updated_time")
   )
+  warning_large_content(content)
 
   component <- reactR::component(
     "CardView",
