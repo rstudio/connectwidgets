@@ -27,7 +27,7 @@ of content (examples: \code{site}, \code{plot}, \code{pin}, etc.)
 \item description - The user-provided description of the content item
 \item url - The URL to the content item
 \item owner_guid - Unique identifier of the owner of the content item
-\item owner_username - Username of the owner of teh content item
+\item owner_username - Username of the owner of the content item
 \item owner_first_name - First name of the owner of the content item
 \item owner_last_name - Last name of the owner of the content item
 \item tags - A data frame of the tags associated with the content item,
