@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Shiny bindings for rsc_grid — rsc_grid-shiny • connectwidgets</title>
+<title>Show warnings for large content — warning_large_content • connectwidgets</title>
 
 
 <!-- jquery -->
@@ -39,9 +39,8 @@
 
 
 
-<meta property="og:title" content="Shiny bindings for rsc_grid — rsc_grid-shiny" />
-<meta property="og:description" content="Output and render functions for using rsc_grid within Shiny
-applications and interactive Rmd documents." />
+<meta property="og:title" content="Show warnings for large content — warning_large_content" />
+<meta property="og:description" content="Show warnings for large content" />
 
 
 
@@ -124,45 +123,27 @@ applications and interactive Rmd documents." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Shiny bindings for rsc_grid</h1>
-    <small class="dont-index">Source: <a href='https://github.com/rstudio/connectwidgets/blob/master/R/rsc_grid.R'><code>R/rsc_grid.R</code></a></small>
-    <div class="hidden name"><code>rsc_grid-shiny.Rd</code></div>
+    <h1>Show warnings for large content</h1>
+    <small class="dont-index">Source: <a href='https://github.com/rstudio/connectwidgets/blob/master/R/utils.R'><code>R/utils.R</code></a></small>
+    <div class="hidden name"><code>warning_large_content.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Output and render functions for using rsc_grid within Shiny
-applications and interactive Rmd documents.</p>
+    <p>Show warnings for large content</p>
     </div>
 
-    <pre class="usage"><span class='fu'>rscgridOutput</span><span class='op'>(</span><span class='va'>outputId</span>, width <span class='op'>=</span> <span class='st'>"100%"</span>, height <span class='op'>=</span> <span class='st'>"400px"</span><span class='op'>)</span>
-
-<span class='fu'>renderRscgrid</span><span class='op'>(</span><span class='va'>expr</span>, env <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/sys.parent.html'>parent.frame</a></span><span class='op'>(</span><span class='op'>)</span>, quoted <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>warning_large_content</span><span class='op'>(</span><span class='va'>content</span>, max_rows <span class='op'>=</span> <span class='fl'>500</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>outputId</th>
-      <td><p>output variable to read from</p></td>
+      <th>content</th>
+      <td><p>Content data frame or Crosstalk SharedData object</p></td>
     </tr>
     <tr>
-      <th>width, height</th>
-      <td><p>Must be a valid CSS unit (like <code>'100%'</code>,
-<code>'400px'</code>, <code>'auto'</code>) or a number, which will be coerced to a
-string and have <code>'px'</code> appended.</p></td>
-    </tr>
-    <tr>
-      <th>expr</th>
-      <td><p>An expression that generates a rsc_grid</p></td>
-    </tr>
-    <tr>
-      <th>env</th>
-      <td><p>The environment in which to evaluate <code>expr</code>.</p></td>
-    </tr>
-    <tr>
-      <th>quoted</th>
-      <td><p>Is <code>expr</code> a quoted expression (with <code><a href='https://rdrr.io/r/base/substitute.html'>quote()</a></code>)? This
-is useful if you want to save an expression in a variable.</p></td>
+      <th>max_rows</th>
+      <td><p>Maximum number of rows before warning (default 500)</p></td>
     </tr>
     </table>
 
