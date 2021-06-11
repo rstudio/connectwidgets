@@ -18,3 +18,4 @@
 ^package-lock\.json$
 ^srcjs$
 ^webpack\.config\.js$
+^cran-comments.md
