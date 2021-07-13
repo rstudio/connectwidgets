@@ -10,7 +10,7 @@ content_response <- "
   \"description\": \"Lorem ipsum\",
   \"app_mode\": \"rmd-static\",
   \"content_category\": \"\",
-  \"url\": \"https://test.io/content/991f16c5-dc7e-4403-89d0-c54d10968460/\",
+  \"content_url\": \"https://test.io/content/991f16c5-dc7e-4403-89d0-c54d10968460/\",
   \"owner\": {
     \"guid\": \"100881c9-0162-4f3f-b973-6870085d48ff\",
     \"username\": \"adam\",
@@ -29,7 +29,7 @@ content_response <- "
   \"description\": \"Lorem ipsum\",
   \"app_mode\": \"rmd-static\",
   \"content_category\": \"\",
-  \"url\": \"https://test.io/content/4b5345cc-8dc5-46fa-80ed-1a389d80e21b/\",
+  \"content_url\": \"https://test.io/content/4b5345cc-8dc5-46fa-80ed-1a389d80e21b/\",
   \"owner\": {
     \"guid\": \"100881c9-0162-4f3f-b973-6870085d48ff\",
     \"username\": \"rick\",
@@ -48,7 +48,7 @@ content_response <- "
   \"description\": \"Lorem ipsum\",
   \"app_mode\": \"rmd-static\",
   \"content_category\": \"\",
-  \"url\": \"https://test.io/content/b77ec334-951a-4b3e-9d01-3c2cc486c65e/\",
+  \"content_url\": \"https://test.io/content/b77ec334-951a-4b3e-9d01-3c2cc486c65e/\",
   \"owner\": {
     \"guid\": \"100881c9-0162-4f3f-b973-6870085d48ff\",
     \"username\": \"adam\",
