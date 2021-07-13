@@ -33,8 +33,10 @@ rsc_table <- function(content) {
     evaluate_widget_input(
       "rsc_table()",
       cols,
-      c("guid", "url", "title", "app_mode", "owner_username", "updated_time")
-    )
+      c("guid", "url", "title", "app_mode", "owner_username", "updated_time",
+        "id", "description", "content_category", "tags", "created_time", "name",
+        "owner_first_name", "owner_last_name", "owner_guid")
+      )
     warning_large_content(content$origData())
   }
 

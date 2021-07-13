@@ -48,7 +48,7 @@ content <- function(client, unpublished = FALSE) {
     "last_deployed_time"
     )
 
-  as_tibble(df) %>%
+  df <- as_tibble(df) %>%
     select(any_of(widget_cols)) %>%
     rename_with(~ gsub(".", "_", .x, fixed = TRUE)) %>%
     rename(
@@ -59,6 +59,12 @@ content <- function(client, unpublished = FALSE) {
       id = as.integer(id),
       across(c(created_time, updated_time), ~ as.POSIXct(format_iso8601(.x)))
     )
+
+  if (!"tags" %in% names(df)) {
+    df$tags <- ""
+  }
+
+  df
 }
 
 #' Filter content by tag(s)
