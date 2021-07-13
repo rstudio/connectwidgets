@@ -31,6 +31,7 @@
 #'     \item updated_time - The timestamp at which the content item
 #'           was last updated
 #'   }
+#' @importFrom dplyr as_tibble filter select any_of rename rename_with mutate across
 #'
 #' @export
 content <- function(client, unpublished = FALSE) {
@@ -40,23 +41,21 @@ content <- function(client, unpublished = FALSE) {
     df <- df %>% dplyr::filter(!is.na(.data$bundle_id))
   }
 
-  tibble::tibble(
-    id = as.integer(df$id),
-    guid = df$guid,
-    name = df$name,
-    title = df$title,
-    description = df$description,
-    app_mode = df$app_mode,
-    content_category = df$content_category,
-    url = df$content_url,
-    owner_guid = df$owner$guid,
-    owner_username = df$owner$username,
-    owner_first_name = df$owner$first_name,
-    owner_last_name = df$owner$last_name,
-    tags = df$tags,
-    created_time = as.POSIXct(format_iso8601(df$created_time)),
-    updated_time = as.POSIXct(format_iso8601(df$last_deployed_time))
-  )
+  widget_cols <- c(
+    "id", "guid", "name", "title", "description", "app_mode",
+    "content_category", "url", "owner.guid", "owner.username",
+    "owner.first_name", "owner.last_name", "tags", "created_time",
+    "last_deployed_time"
+    )
+
+  as_tibble(df) %>%
+    select(any_of(widget_cols)) %>%
+    rename_with(~ gsub(".", "_", .x, fixed = TRUE)) %>%
+    rename(updated_time = last_deployed_time) %>%
+    mutate(
+      id = as.integer(id),
+      across(c(created_time, updated_time), ~ as.POSIXct(format_iso8601(.x)))
+    )
 }
 
 #' Filter content by tag(s)

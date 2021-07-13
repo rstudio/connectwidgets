@@ -43,7 +43,7 @@ Client <- R6::R6Class( # nolint
     },
     content = function() {
       results <- self$GET("/v1/content", query = list(include = "tags,owner"))
-      jsonlite::fromJSON(results, simplifyDataFrame = T)
+      jsonlite::fromJSON(results, simplifyDataFrame = TRUE, flatten = TRUE)
     },
     server_settings = function() {
       self$GET("/server_settings", parser = "parsed")
