@@ -43,7 +43,7 @@ content <- function(client, unpublished = FALSE) {
 
   widget_cols <- c(
     "id", "guid", "name", "title", "description", "app_mode",
-    "content_category", "url", "owner.guid", "owner.username",
+    "content_category", "content_url", "owner.guid", "owner.username",
     "owner.first_name", "owner.last_name", "tags", "created_time",
     "last_deployed_time"
     )
@@ -51,7 +51,10 @@ content <- function(client, unpublished = FALSE) {
   as_tibble(df) %>%
     select(any_of(widget_cols)) %>%
     rename_with(~ gsub(".", "_", .x, fixed = TRUE)) %>%
-    rename(updated_time = last_deployed_time) %>%
+    rename(
+      url = content_url,
+      updated_time = last_deployed_time
+      ) %>%
     mutate(
       id = as.integer(id),
       across(c(created_time, updated_time), ~ as.POSIXct(format_iso8601(.x)))
