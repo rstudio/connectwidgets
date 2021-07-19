@@ -61,6 +61,28 @@ content_response <- "
 }]
 "
 
+content_response_without_tags <- "
+[{
+  \"id\": \"1\",
+  \"bundle_id\": \"1\",
+  \"guid\": \"991f16c5-dc7e-4403-89d0-c54d10968460\",
+  \"name\": \"One\",
+  \"title\": \"One\",
+  \"description\": \"Lorem ipsum\",
+  \"app_mode\": \"rmd-static\",
+  \"content_category\": \"\",
+  \"url\": \"https://test.io/content/991f16c5-dc7e-4403-89d0-c54d10968460/\",
+  \"owner\": {
+    \"guid\": \"100881c9-0162-4f3f-b973-6870085d48ff\",
+    \"username\": \"adam\",
+    \"first_name\": \"adam\",
+    \"last_name\": \"strator\"
+  },
+  \"created_time\": \"2020-10-10\",
+  \"last_deployed_time\": \"2020-10-12\"
+}]
+"
+
 get_client <- function() {
   local_server_stub()
   connect(server = "https://example.com", api_key = "fake-key")
@@ -94,4 +116,18 @@ test_that("content() ignores unpublished content by default", {
     "Two",
     "Three"
   ))
+})
+
+test_that("content() should include tags", {
+  client <- get_client()
+  local_content_stub(jsonres = content_response)
+  result <- content(client)
+  expect_true("tags" %in% names(result))
+})
+
+test_that("content() should include tags without JSON tags", {
+  client <- get_client()
+  local_content_stub(jsonres = content_response_without_tags)
+  result <- content(client)
+  expect_true("tags" %in% names(result))
 })

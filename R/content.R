@@ -40,7 +40,7 @@ content <- function(client, unpublished = FALSE) {
     df <- df %>% dplyr::filter(!is.na(.data$bundle_id))
   }
 
-  tibble::tibble(
+  tb <- tibble::tibble(
     id = as.integer(df$id),
     guid = df$guid,
     name = df$name,
@@ -53,10 +53,18 @@ content <- function(client, unpublished = FALSE) {
     owner_username = df$owner$username,
     owner_first_name = df$owner$first_name,
     owner_last_name = df$owner$last_name,
-    tags = df$tags,
     created_time = as.POSIXct(format_iso8601(df$created_time)),
     updated_time = as.POSIXct(format_iso8601(df$last_deployed_time))
   )
+
+  # Include tags if JSON has tags; otherwise, return column of empty lists
+  if ("tags" %in% names(df)) {
+    tb$tags <- df$tags
+  } else {
+    tb$tags <- vector(mode = "list", length = nrow(tb))
+  }
+
+  tb
 }
 
 #' Filter content by tag(s)
