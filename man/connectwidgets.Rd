@@ -32,7 +32,7 @@ by owner, type, or tag
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://rstudio.github.io/connectwidgets}
+  \item \url{https://rstudio.github.io/connectwidgets/}
   \item \url{https://github.com/rstudio/connectwidgets}
 }
 
