@@ -2,7 +2,7 @@ test_that("gen_theme_dependency()", {
   # It is possible to use the default theme
   result <- gen_theme_dependency(
     "rsc_filter",
-    default_theme,
+    default_theme(),
     default_base = TRUE
   )
   expect_equal(result$name, "rsc_filter-default-theme-0.1.0")
