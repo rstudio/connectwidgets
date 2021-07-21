@@ -15,6 +15,10 @@ stable](https://img.shields.io/badge/lifecycle-stable-green)](https://lifecycle.
 [![lint](https://github.com/rstudio/connectwidgets/actions/workflows/lint.yaml/badge.svg)](https://github.com/rstudio/connectwidgets/actions/workflows/lint.yaml)
 <!-- badges: end -->
 
+`connectwidgets` is an R package that can be used to query an RStudio Connect server for a subset of your existing content items, then organize them within `htmlwidget` components in an R Markdown document or Shiny application.
+
+Use `connectwidgets` to create a content hub or knowledge repository, a customized summary page for a particular group of stakeholders, or a presentation layer for any group of related content. 
+
 ## Installation
 
 This package has not been released to CRAN yet and must be installed
