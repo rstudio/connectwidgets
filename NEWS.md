@@ -1,4 +1,4 @@
-# connectwidgets 0.1.0
+# connectwidgets 0.1.1
 
 * Initial public release and CRAN submission of the {connectwidgets} R package
 * `connect` and `content` functions for enumerating content from RStudio Connect
