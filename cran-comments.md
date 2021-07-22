@@ -2,8 +2,8 @@
 
 This is a resubmission. In this version:
 
-* Updated URL in description to avoid redirect and NOTE
-* Passing checks on win-builder for devel and release
+* Updated URL in description and README to avoid redirect and NOTE
+* Passing checks on win-builder for devel and release (previously failed)
 
 ## Test environments
 

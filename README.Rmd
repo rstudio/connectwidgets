@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# connectwidgets <a href='https://rstudio.github.io/connectwidgets'><img src='man/figures/logo.png' align="right" height="138" /></a>
+# connectwidgets <a href='https://rstudio.github.io/connectwidgets/'><img src='man/figures/logo.png' align="right" height="138" /></a>
 
 Curate your content on RStudio Connect
 

@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# connectwidgets <a href='https://rstudio.github.io/connectwidgets'><img src='man/figures/logo.png' align="right" height="138" /></a>
+# connectwidgets <a href='https://rstudio.github.io/connectwidgets/'><img src='man/figures/logo.png' align="right" height="138" /></a>
 
 Curate your content on RStudio Connect
 
