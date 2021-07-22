@@ -17,28 +17,30 @@
 #' to see the full list of theming variables available
 #'
 
-default_theme <- bslib::bs_theme(
-  # principal variables in use by connectwidgets
-  bg = "#FFF",
-  fg = "#000",
-  primary = "#346899",
-  secondary = "#858585",
-  dark = "#252525",
-  light = "#EDF6FF",
-  base_font = "Lato, sans-serif",
-  heading_font = "Lato, sans-serif",
+default_theme <- function() {
+  bslib::bs_theme(
+    # principal variables in use by connectwidgets
+    bg = "#FFF",
+    fg = "#000",
+    primary = "#346899",
+    secondary = "#858585",
+    dark = "#252525",
+    light = "#EDF6FF",
+    base_font = "Lato, sans-serif",
+    heading_font = "Lato, sans-serif",
 
-  # more complementary variables
-  "font-size-base" = "1.44rem",
-  "border-color" = "#F2F2F2",
-  "gray-100" = "#F8F8F8",
-  "gray-200" = "#F2F2F2",
-  "gray-300" = "#ECECEC",
-  "gray-400" = "#CDCDCD",
-  "gray-500" = "#B0B0B0",
-  "gray-600" = "#858585",
-  "gray-700" = "#303030"
-)
+    # more complementary variables
+    "font-size-base" = "1.44rem",
+    "border-color" = "#F2F2F2",
+    "gray-100" = "#F8F8F8",
+    "gray-200" = "#F2F2F2",
+    "gray-300" = "#ECECEC",
+    "gray-400" = "#CDCDCD",
+    "gray-500" = "#B0B0B0",
+    "gray-600" = "#858585",
+    "gray-700" = "#303030"
+  )
+}
 
 #' Get docmeta theme name (output: html_document: theme)
 get_bootswatch_theme_name <- function() {
@@ -122,7 +124,7 @@ resolve_theme_dependency <- function(widget_name) {
     return(gen_theme_dependency(widget_name, theme, default_base = TRUE))
   }
 
-  gen_theme_dependency(widget_name, default_theme, default_base = TRUE)
+  gen_theme_dependency(widget_name, default_theme(), default_base = TRUE)
 }
 
 #' Resolve reactable theme for rsc_table
@@ -142,7 +144,7 @@ rsc_table_sync_theme <- function() {
     "light"
   )
 
-  theme <- default_theme
+  theme <- default_theme()
   user_theme <- get_user_provided_theme()
   if (!is.null(user_theme)) {
     theme <- user_theme
