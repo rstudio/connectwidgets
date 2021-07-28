@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   publishing: publishing.html
   using-crosstalk: using-crosstalk.html
-last_built: 2021-07-22T18:41Z
+last_built: 2021-07-28T16:15Z
 urls:
   reference: https://rstudio.github.io/connectwidgets/reference
   article: https://rstudio.github.io/connectwidgets/articles
