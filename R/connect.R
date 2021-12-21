@@ -81,7 +81,15 @@ Client <- R6::R6Class( # nolint
         }
       )
 
-      if (compareVersion(settings$version, self$minimum_server_version) < 0) {
+      if (identical(settings$version, "")) {
+        warning(
+          glue::glue(
+            "Unable to validate that the RStudio Connect server version >= ",
+            self$minimum_server_version,
+            "; the server did not provide its version."
+          )
+        )
+      } else if (compareVersion(settings$version, self$minimum_server_version) < 0) {
         stop(
           glue::glue("ERROR: Requires RStudio Connect server version >= ",
             self$minimum_server_version,
