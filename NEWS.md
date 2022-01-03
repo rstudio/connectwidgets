@@ -1,3 +1,7 @@
+# connectwidgets unreleased
+
+* Warn rather than err when the server version is not available. (#63)
+
 # connectwidgets 0.1.1
 
 * Initial public release and CRAN submission of the {connectwidgets} R package

@@ -2,17 +2,23 @@ context("connect")
 
 test_that("should require server (if no CONNECT_SERVER)", {
   local_server_stub()
-  expect_error(
-    connect(api_key = "fake"),
-    "valid server"
+  withr::with_envvar(
+    c(CONNECT_SERVER = NA),
+    expect_error(
+      connect(api_key = "fake"),
+      "valid server"
+    )
   )
 })
 
 test_that("should require api_key (if no CONNECT_API_KEY)", {
   local_server_stub()
-  expect_error(
-    connect(server = "http://example.com"),
-    "valid API key"
+  withr::with_envvar(
+    c(CONNECT_API_KEY = NA),
+    expect_error(
+      connect(server = "http://example.com"),
+      "valid API key"
+    )
   )
 })
 
@@ -72,5 +78,13 @@ test_that("should require minumum RStudio Connect server version", {
   expect_error(
     connect(server = "https://example.com", api_key = "fake"),
     "server version"
+  )
+})
+
+test_that("should warn when RStudio Connect server version is empty", {
+  local_server_stub(version = "")
+  expect_warning(
+    connect(server = "https://example.com", api_key = "fake"),
+    "server did not provide its version"
   )
 })
