@@ -66,7 +66,7 @@ rsc_search <- function(content) {
 #' @noRd
 widget_html.rsc_search <- function(id, style, class, ...) {
   htmltools::tagList(
-    # Necessary for RStudio viewer version < 1.2
+    # Necessary for Posit viewer version < 1.2
     reactR::html_dependency_corejs(),
     reactR::html_dependency_react(),
     reactR::html_dependency_reacttools(),
