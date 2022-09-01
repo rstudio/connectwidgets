@@ -19,17 +19,17 @@ API. Authentication is done by providing an API key.
 \section{Methods}{
 \subsection{Public methods}{
 \itemize{
-\item \href{#method-new}{\code{Client$new()}}
-\item \href{#method-print}{\code{Client$print()}}
-\item \href{#method-GET}{\code{Client$GET()}}
-\item \href{#method-content}{\code{Client$content()}}
-\item \href{#method-server_settings}{\code{Client$server_settings()}}
-\item \href{#method-clone}{\code{Client$clone()}}
+\item \href{#method-Client-new}{\code{Client$new()}}
+\item \href{#method-Client-print}{\code{Client$print()}}
+\item \href{#method-Client-GET}{\code{Client$GET()}}
+\item \href{#method-Client-content}{\code{Client$content()}}
+\item \href{#method-Client-server_settings}{\code{Client$server_settings()}}
+\item \href{#method-Client-clone}{\code{Client$clone()}}
 }
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-new"></a>}}
-\if{latex}{\out{\hypertarget{method-new}{}}}
+\if{html}{\out{<a id="method-Client-new"></a>}}
+\if{latex}{\out{\hypertarget{method-Client-new}{}}}
 \subsection{Method \code{new()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Client$new(server, api_key)}\if{html}{\out{</div>}}
@@ -37,8 +37,8 @@ API. Authentication is done by providing an API key.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-print"></a>}}
-\if{latex}{\out{\hypertarget{method-print}{}}}
+\if{html}{\out{<a id="method-Client-print"></a>}}
+\if{latex}{\out{\hypertarget{method-Client-print}{}}}
 \subsection{Method \code{print()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Client$print(...)}\if{html}{\out{</div>}}
@@ -46,8 +46,8 @@ API. Authentication is done by providing an API key.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-GET"></a>}}
-\if{latex}{\out{\hypertarget{method-GET}{}}}
+\if{html}{\out{<a id="method-Client-GET"></a>}}
+\if{latex}{\out{\hypertarget{method-Client-GET}{}}}
 \subsection{Method \code{GET()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Client$GET(path, ..., writer = httr::write_memory(), parser = "text")}\if{html}{\out{</div>}}
@@ -55,8 +55,8 @@ API. Authentication is done by providing an API key.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-content"></a>}}
-\if{latex}{\out{\hypertarget{method-content}{}}}
+\if{html}{\out{<a id="method-Client-content"></a>}}
+\if{latex}{\out{\hypertarget{method-Client-content}{}}}
 \subsection{Method \code{content()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Client$content()}\if{html}{\out{</div>}}
@@ -64,8 +64,8 @@ API. Authentication is done by providing an API key.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-server_settings"></a>}}
-\if{latex}{\out{\hypertarget{method-server_settings}{}}}
+\if{html}{\out{<a id="method-Client-server_settings"></a>}}
+\if{latex}{\out{\hypertarget{method-Client-server_settings}{}}}
 \subsection{Method \code{server_settings()}}{
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{Client$server_settings()}\if{html}{\out{</div>}}
@@ -73,8 +73,8 @@ API. Authentication is done by providing an API key.
 
 }
 \if{html}{\out{<hr>}}
-\if{html}{\out{<a id="method-clone"></a>}}
-\if{latex}{\out{\hypertarget{method-clone}{}}}
+\if{html}{\out{<a id="method-Client-clone"></a>}}
+\if{latex}{\out{\hypertarget{method-Client-clone}{}}}
 \subsection{Method \code{clone()}}{
 The objects of this class are cloneable with this method.
 \subsection{Usage}{

@@ -73,7 +73,7 @@ test_that("should require valid auth credentials", {
   )
 })
 
-test_that("should require minumum RStudio Connect server version", {
+test_that("should require minumum Posit Connect server version", {
   local_server_stub(version = "1.8.0")
   expect_error(
     connect(server = "https://example.com", api_key = "fake"),
@@ -81,7 +81,7 @@ test_that("should require minumum RStudio Connect server version", {
   )
 })
 
-test_that("should warn when RStudio Connect server version is empty", {
+test_that("should warn when Posit Connect server version is empty", {
   local_server_stub(version = "")
   expect_warning(
     connect(server = "https://example.com", api_key = "fake"),

@@ -1,7 +1,7 @@
-#' connectwidgets: Curate your content on RStudio Connect
+#' connectwidgets: Curate your content on Posit Connect
 #'
 #' connectwidgets provides UI components to help publishers provide curated
-#' organization of content on RStudio Connect.
+#' organization of content on Posit Connect.
 #'
 #' @section Connection:
 #' Set `CONNECT_SERVER` and `CONNECT_API_KEY` environment variables and

@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 
 # connectwidgets <a href='https://rstudio.github.io/connectwidgets/'><img src='man/figures/logo.png' align="right" height="138" /></a>
 
-Curate your content on RStudio Connect
+Curate your content on Posit Connect
 
 <!-- badges: start -->
 
@@ -25,7 +25,7 @@ Curate your content on RStudio Connect
 [![lint](https://github.com/rstudio/connectwidgets/actions/workflows/lint.yaml/badge.svg)](https://github.com/rstudio/connectwidgets/actions/workflows/lint.yaml)
 <!-- badges: end -->
 
-`connectwidgets` is an R package that can be used to query an RStudio Connect server for a subset of your existing content items, then organize them within `htmlwidget` components in an R Markdown document or Shiny application.
+`connectwidgets` is an R package that can be used to query a Posit Connect server for a subset of your existing content items, then organize them within `htmlwidget` components in an R Markdown document or Shiny application.
 
 Use `connectwidgets` to create a content hub or knowledge repository, a customized summary page for a particular group of stakeholders, or a presentation layer for any group of related content. 
 
@@ -117,7 +117,7 @@ rsc_table(all_content)
 
 The client object:
 
-- Validates your API key with the RStudio Connect server
+- Validates your API key with the Posit Connect server
 - Ensures you are running a recent enough version of Connect
 
 Use an `.Renviron` file to set the `CONNECT_SERVER` and `CONNECT_API_KEY`
@@ -125,7 +125,7 @@ environment variables.
 If you're not familiar with setting environment variables, check out the
 [R Startup chapter](https://rstats.wtf/r-startup.html#renviron)
 of What They Forgot to Teach You About R.
-RStudio Connect will [automatically apply](https://docs.rstudio.com/connect/user/content-settings/#content-vars)
+Posit Connect will [automatically apply](https://docs.rstudio.com/connect/user/content-settings/#content-vars)
 values for these at document run time,
 so there is no need to include them in your code:
 
@@ -205,7 +205,7 @@ all_content %>%
 
 Once your content data are filtered, `connectwidgets` provides components for
 displaying information about them. The title, description, and preview image can be set
-[from the RStudio Connect dashboard.](https://docs.rstudio.com/connect/user/content-settings/#content-metadata)
+[from the Posit Connect dashboard.](https://docs.rstudio.com/connect/user/content-settings/#content-metadata)
 For content deployed to Connect where no image has been supplied, a default image will be used.
 
 *Note:* In many cases, you will only see default images until your content is deployed.
@@ -272,7 +272,7 @@ output:
 ---
 ```
 
-Once you're happy with the look of your page, Publish it to RStudio Connect.
+Once you're happy with the look of your page, Publish it to Posit Connect.
 Read more at `vignette("publishing")`.
 
 ## A more customized example:
@@ -283,7 +283,7 @@ Putting it all together, the example API portal page below:
 - uses a Bootswatch theme
 - overrides the `description` text for a couple of cards
 
-If no APIs are deployed on your RStudio Connect server,
+If no APIs are deployed on your Posit Connect server,
 try filtering for static documents or Shiny apps instead.
 
 ````markdown

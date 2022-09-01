@@ -23,7 +23,7 @@ Client <- R6::R6Class( # nolint
       private$validate()
     },
     print = function(...) {
-      cat("RStudio Connect API Client: \n")
+      cat("Posit Connect API Client: \n")
       cat("  Server: ", self$server, "\n", sep = "")
       cat("  API Key: ", paste0(strrep("*", 11), substr(
         self$api_key, nchar(self$api_key) - 3, nchar(self$api_key)
@@ -75,7 +75,7 @@ Client <- R6::R6Class( # nolint
           message(e)
           stop(
             glue::glue(
-              "ERROR: Unable to connect to RStudio Connect at {server}"
+              "ERROR: Unable to connect to Posit Connect at {server}"
             )
           )
         }
@@ -84,14 +84,14 @@ Client <- R6::R6Class( # nolint
       if (identical(settings$version, "")) {
         warning(
           glue::glue(
-            "Unable to validate that the RStudio Connect server version >= ",
+            "Unable to validate that the Posit Connect server version >= ",
             self$minimum_server_version,
             "; the server did not provide its version."
           )
         )
       } else if (compareVersion(settings$version, self$minimum_server_version) < 0) {
         stop(
-          glue::glue("ERROR: Requires RStudio Connect server version >= ",
+          glue::glue("ERROR: Requires Posit Connect server version >= ",
             self$minimum_server_version,
             ", current version ",
             settings$version)
@@ -115,13 +115,13 @@ Client <- R6::R6Class( # nolint
   )
 )
 
-#' Create a connection to RStudio Connect
+#' Create a connection to Posit Connect
 #'
-#' Creates a connection to RStudio Connect using the server URL and an api key.
+#' Creates a connection to Posit Connect using the server URL and an api key.
 #'
-#' @param server The server URL for accessing RStudio Connect. Defaults to
+#' @param server The server URL for accessing Posit Connect. Defaults to
 #'   environment variable CONNECT_SERVER
-#' @param api_key The API key to authenticate with RStudio Connect. Defaults
+#' @param api_key The API key to authenticate with Posit Connect. Defaults
 #'   to environment variable CONNECT_API_KEY
 #'
 #' @return An Client object
