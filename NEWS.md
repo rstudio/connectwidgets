@@ -1,6 +1,7 @@
 # connectwidgets unreleased
 
 * Warn rather than err when the server version is not available. (#63)
+* Update company and product name for rebranding to Posit (#76)
 
 # connectwidgets 0.1.1
 
