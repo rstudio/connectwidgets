@@ -3,7 +3,7 @@
 
 # connectwidgets <a href='https://rstudio.github.io/connectwidgets/'><img src='man/figures/logo.png' align="right" height="138" /></a>
 
-Curate your content on RStudio Connect
+Curate your content on Posit Connect
 
 <!-- badges: start -->
 
@@ -15,7 +15,7 @@ stable](https://img.shields.io/badge/lifecycle-stable-green)](https://lifecycle.
 [![lint](https://github.com/rstudio/connectwidgets/actions/workflows/lint.yaml/badge.svg)](https://github.com/rstudio/connectwidgets/actions/workflows/lint.yaml)
 <!-- badges: end -->
 
-`connectwidgets` is an R package that can be used to query an RStudio
+`connectwidgets` is an R package that can be used to query a Posit
 Connect server for a subset of your existing content items, then
 organize them within `htmlwidget` components in an R Markdown document
 or Shiny application.
@@ -113,14 +113,14 @@ rsc_table(all_content)
 
 The client object:
 
--   Validates your API key with the RStudio Connect server
+-   Validates your API key with the Posit Connect server
 -   Ensures you are running a recent enough version of Connect
 
 Use an `.Renviron` file to set the `CONNECT_SERVER` and
 `CONNECT_API_KEY` environment variables. If you’re not familiar with
 setting environment variables, check out the [R Startup
 chapter](https://rstats.wtf/r-startup.html#renviron) of What They Forgot
-to Teach You About R. RStudio Connect will [automatically
+to Teach You About R. Posit Connect will [automatically
 apply](https://docs.rstudio.com/connect/user/content-settings/#content-vars)
 values for these at document run time, so there is no need to include
 them in your code:
@@ -140,23 +140,23 @@ all_content <- client %>%
   content()
 
 glimpse(all_content)
-#> Rows: 1,213
+#> Rows: 3,245
 #> Columns: 15
-#> $ id               <int> 3979, 4603, 4602, 5061, 5015, 5054, 5055, 5052, 5030,…
-#> $ guid             <chr> "ca22a1f6-bab5-4fc0-8f38-ed8021be41f5", "e7c26684-ec4…
-#> $ name             <chr> "github-issues-connect", "group-info", "user-info", "…
-#> $ title            <chr> NA, "group-info", "user-info", "plumbertabeau", "RSC+…
-#> $ description      <chr> "A table pin with 19718 rows and 10 columns.", "Resul…
-#> $ app_mode         <chr> "static", "static", "static", "api", "static", "api",…
-#> $ content_category <chr> "pin", "pin", "pin", "api", "site", "api", "", "", "s…
-#> $ url              <chr> "https://rsc.radixu.com/content/ca22a1f6-bab5-4fc0-8f…
-#> $ owner_guid       <chr> "1d6cc041-eb11-411e-810e-718508cde25b", "0fc96747-ec9…
-#> $ owner_username   <chr> "brian", "kelly.obriant", "kelly.obriant", "david", "…
-#> $ owner_first_name <chr> "Brian", "Kelly", "Kelly", "E. David", "Aron", "Toph"…
-#> $ owner_last_name  <chr> "Smith", "@RStudio", "@RStudio", "Aja", "Atkins", "Al…
-#> $ tags             <list> [<data.frame[2 x 5]>], [<data.frame[1 x 5]>], [<data…
-#> $ created_time     <dttm> 2020-04-03 17:54:27, 2020-12-05 02:37:30, 2020-12-05…
-#> $ updated_time     <dttm> 2021-07-28 07:03:10, 2021-07-28 07:00:41, 2021-07-28…
+#> $ id               <int> 22598, 9750, 15970, 15969, 15968, 15967, 20350, 19467…
+#> $ guid             <chr> "d14d7b4d-b070-4ea8-8e4b-4b0687e72d5f", "e23a6e50-ff5…
+#> $ name             <chr> "cross-training", "900-text-jster", "303-bslib-html-t…
+#> $ title            <chr> "cross-training", NA, NA, NA, NA, NA, NA, NA, NA, NA,…
+#> $ description      <chr> "", "", "", "", "", "", "", "", "", "", "", "", "", "…
+#> $ app_mode         <chr> "static", "shiny", "shiny", "shiny", "shiny", "shiny"…
+#> $ content_category <chr> "", "", "", "", "", "", "", "", "", "", "", "", "", "…
+#> $ url              <chr> "https://beta.rstudioconnect.com/content/d14d7b4d-b07…
+#> $ owner_guid       <chr> "988d1891-afb0-42cc-924d-dc9217387a9d", "0700f56d-44d…
+#> $ owner_username   <chr> "ambrizjesus74", "barret", "barret", "barret", "barre…
+#> $ owner_first_name <chr> "Jesus", "Barret", "Barret", "Barret", "Barret", "Bar…
+#> $ owner_last_name  <chr> "Ambriz", "Schloerke", "Schloerke", "Schloerke", "Sch…
+#> $ created_time     <dttm> 2022-08-24 17:59:27, 2020-04-02 06:39:42, 2021-01-12…
+#> $ updated_time     <dttm> 2022-09-08 14:09:50, 2022-09-08 04:56:55, 2022-09-08…
+#> $ tags             <list> <NULL>, <NULL>, <NULL>, <NULL>, <NULL>, <NULL>, <NUL…
 
 sample_content <- all_content %>%
   arrange(desc(updated_time)) %>%
@@ -209,18 +209,13 @@ We provide helper functions to filter by both owners and tags.
 ``` r
 all_content %>% 
   by_tag("Audit Reports")
-#> # A tibble: 6 x 15
-#>      id guid  name  title description app_mode content_category url   owner_guid
-#>   <int> <chr> <chr> <chr> <chr>       <chr>    <chr>            <chr> <chr>     
-#> 1  4875 7cbd… Audi… Audi… Using the … rmd-sta… ""               http… 0fc96747-…
-#> 2  4619 b191… tag-… Tag … List all t… rmd-sta… ""               http… 0fc96747-…
-#> 3  4618 4348… acl-… Cont… Generate a… rmd-sta… ""               http… 0fc96747-…
-#> 4  4597 6a8f… cont… Basi… List all c… rmd-sta… ""               http… 0fc96747-…
-#> 5  4596 3f7a… vani… Vani… List all d… rmd-sta… ""               http… 0fc96747-…
-#> 6  4595 5687… envi… R an… R and Pyth… rmd-sta… ""               http… 0fc96747-…
-#> # … with 6 more variables: owner_username <chr>, owner_first_name <chr>,
-#> #   owner_last_name <chr>, tags <list>, created_time <dttm>,
-#> #   updated_time <dttm>
+#> # A tibble: 0 × 15
+#> # … with 15 variables: id <int>, guid <chr>, name <chr>, title <chr>,
+#> #   description <chr>, app_mode <chr>, content_category <chr>, url <chr>,
+#> #   owner_guid <chr>, owner_username <chr>, owner_first_name <chr>,
+#> #   owner_last_name <chr>, created_time <dttm>, updated_time <dttm>,
+#> #   tags <list>
+#> # ℹ Use `colnames()` to see all variable names
 ```
 
 Since `all_content` is a `tibble()`, you can also manipulate it with
@@ -230,29 +225,31 @@ dplyr:
 all_content %>% 
   filter(updated_time >= "2021-01-01") %>% 
   arrange(created_time)
-#> # A tibble: 77 x 15
-#>       id guid    name    title  description    app_mode content_category url    
-#>    <int> <chr>   <chr>   <chr>  <chr>          <chr>    <chr>            <chr>  
-#>  1  1440 d7bf0e… cs_rep… cs_re… ""             rmd-sta… ""               https:…
-#>  2  1890 be63ca… rmd     rmd4   "This rmd is … rmd-sta… ""               https:…
-#>  3  3724 b5e57e… team-d… Team-… ""             static   ""               https:…
-#>  4  3979 ca22a1… github… <NA>   "A table pin … static   "pin"            https:…
-#>  5  4364 9ffbbd… shiny-… shiny… ""             shiny    ""               https:…
-#>  6  4602 e21598… user-i… user-… "Results pull… static   "pin"            https:…
-#>  7  4603 e7c266… group-… group… "Results pull… static   "pin"            https:…
-#>  8  4630 f12eb8… top-5-… top-5… ""             python-… ""               https:…
-#>  9  4631 68c9b2… top-5-… top-5… ""             python-… ""               https:…
-#> 10  4650 ebdea3… reticu… retic… ""             static   ""               https:…
-#> # … with 67 more rows, and 7 more variables: owner_guid <chr>,
-#> #   owner_username <chr>, owner_first_name <chr>, owner_last_name <chr>,
-#> #   tags <list>, created_time <dttm>, updated_time <dttm>
+#> # A tibble: 655 × 15
+#>       id guid  name  title descr…¹ app_m…² conte…³ url   owner…⁴ owner…⁵ owner…⁶
+#>    <int> <chr> <chr> <chr> <chr>   <chr>   <chr>   <chr> <chr>   <chr>   <chr>  
+#>  1  2899 c29d… immu… Immu… ""      static  "site"  http… 862491… philbo… Phil   
+#>  2  3066 3636… an-i… an-i… ""      rmd-sh… ""      http… 862491… philbo… Phil   
+#>  3  3190 a4d5… immu… Immu… ""      rmd-sh… ""      http… 862491… philbo… Phil   
+#>  4  3799 bb86… shin… shin… ""      rmd-st… ""      http… 0700f5… barret  Barret 
+#>  5  4354 5631… ryo-… ryo-… ""      static  ""      http… 980d52… englia… Rγσ    
+#>  6  4890 beba… 004-… <NA>  ""      shiny   ""      http… 0700f5… barret  Barret 
+#>  7  4891 eccf… 002-… <NA>  ""      shiny   ""      http… 0700f5… barret  Barret 
+#>  8  4892 2faa… 001-… <NA>  ""      shiny   ""      http… 0700f5… barret  Barret 
+#>  9  4934 3835… 003-… <NA>  ""      shiny   ""      http… 0700f5… barret  Barret 
+#> 10  4935 d384… 006-… <NA>  ""      shiny   ""      http… 0700f5… barret  Barret 
+#> # … with 645 more rows, 4 more variables: owner_last_name <chr>,
+#> #   created_time <dttm>, updated_time <dttm>, tags <list>, and abbreviated
+#> #   variable names ¹​description, ²​app_mode, ³​content_category, ⁴​owner_guid,
+#> #   ⁵​owner_username, ⁶​owner_first_name
+#> # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names
 ```
 
 ### Components
 
 Once your content data are filtered, `connectwidgets` provides
 components for displaying information about them. The title,
-description, and preview image can be set [from the RStudio Connect
+description, and preview image can be set [from the Posit Connect
 dashboard.](https://docs.rstudio.com/connect/user/content-settings/#content-metadata)
 For content deployed to Connect where no image has been supplied, a
 default image will be used.
@@ -325,7 +322,7 @@ output:
 ---
 ```
 
-Once you’re happy with the look of your page, Publish it to RStudio
+Once you’re happy with the look of your page, Publish it to Posit
 Connect. Read more at `vignette("publishing")`.
 
 ## A more customized example:
@@ -336,8 +333,8 @@ Putting it all together, the example API portal page below:
 -   uses a Bootswatch theme
 -   overrides the `description` text for a couple of cards
 
-If no APIs are deployed on your RStudio Connect server, try filtering
-for static documents or Shiny apps instead.
+If no APIs are deployed on your Posit Connect server, try filtering for
+static documents or Shiny apps instead.
 
 ```` markdown
 ---

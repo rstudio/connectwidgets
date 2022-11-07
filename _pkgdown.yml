@@ -2,7 +2,7 @@ url: https://rstudio.github.io/connectwidgets
 reference:
 - title: "API Client"
   desc: >
-    Functions for connecting to the RStudio Connect API and fetching
+    Functions for connecting to the Posit Connect API and fetching
     content metadata
 - contents:
   - connect

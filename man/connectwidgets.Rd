@@ -4,10 +4,10 @@
 \name{connectwidgets}
 \alias{connectwidgets}
 \alias{connectwidgets-package}
-\title{connectwidgets: Curate your content on RStudio Connect}
+\title{connectwidgets: Curate your content on Posit Connect}
 \description{
 connectwidgets provides UI components to help publishers provide curated
-organization of content on RStudio Connect.
+organization of content on Posit Connect.
 }
 \section{Connection}{
 
@@ -49,7 +49,7 @@ Other contributors:
 \itemize{
   \item David Aja \email{david@rstudio.com} [contributor]
   \item Kelly O'Briant \email{kelly.obriant@rstudio.com} [contributor]
-  \item RStudio [copyright holder]
+  \item Posit [copyright holder]
 }
 
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/connect.R
 \name{connect}
 \alias{connect}
-\title{Create a connection to RStudio Connect}
+\title{Create a connection to Posit Connect}
 \usage{
 connect(
   server = Sys.getenv("CONNECT_SERVER", NA_character_),
@@ -10,15 +10,15 @@ connect(
 )
 }
 \arguments{
-\item{server}{The server URL for accessing RStudio Connect. Defaults to
+\item{server}{The server URL for accessing Posit Connect. Defaults to
 environment variable CONNECT_SERVER}
 
-\item{api_key}{The API key to authenticate with RStudio Connect. Defaults
+\item{api_key}{The API key to authenticate with Posit Connect. Defaults
 to environment variable CONNECT_API_KEY}
 }
 \value{
 An Client object
 }
 \description{
-Creates a connection to RStudio Connect using the server URL and an api key.
+Creates a connection to Posit Connect using the server URL and an api key.
 }

@@ -1,21 +1,21 @@
 Package: connectwidgets
-Title: Organize and Curate Your Content Within 'RStudio Connect'
+Title: Organize and Curate Your Content Within 'Posit Connect'
 Version: 0.1.1
 Authors@R: c(
     person("Brian", "Smith", email = "brian@rstudio.com", role = c("aut", "cre")),
     person("Marcos", "Navarro", email = "marcos@rstudio.com", role = "aut"),
     person("David", "Aja", email = "david@rstudio.com", role = "ctb"),
     person("Kelly", "O'Briant", email = "kelly.obriant@rstudio.com", role = "ctb"),
-    person("RStudio", role = "cph"))
+    person("Posit", role = "cph"))
 Description: A collection of helper functions and 'htmlwidgets' to help publishers
-    curate content collections on 'RStudio Connect'. The components,
+    curate content collections on 'Posit Connect'. The components,
     Card, Grid, Table, Search, and Filter can be used to produce a
     showcase page or gallery contained within a static or interactive
     R Markdown page.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.1
 Suggests: 
     knitr,
     lintr,
