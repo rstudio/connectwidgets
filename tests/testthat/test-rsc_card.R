@@ -112,10 +112,10 @@ test_that("rsccardOutput", {
   expect_true(length(deps) > 0)
 
   # Output container should have data-reactable-output ID set
-  expect_equal(output[[1]][[4]]$name, "div")
-  expect_equal(output[[1]][[4]]$attribs$id, "myrsccardid")
-  expect_equal(
-    output[[1]][[4]]$attribs$class,
-    "rsc_card html-widget html-widget-output"
-  )
+  name <- output[[1]]$name
+  id <- htmltools::tagGetAttribute(output[[1]], "id")
+  cls <- htmltools::tagGetAttribute(output[[1]], "class")
+  expect_equal(name, "div")
+  expect_equal(id, "myrsccardid")
+  expect_match(cls, "rsc_card html-widget html-widget-output")
 })

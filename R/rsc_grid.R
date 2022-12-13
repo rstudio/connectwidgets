@@ -72,12 +72,12 @@ rsc_grid <- function(content) {
 #' Called by HTMLWidgets to produce the widget's root element.
 #' @noRd
 widget_html.rsc_grid <- function(id, style, class, ...) {
-  htmltools::tagList(
+  htmltools::tags$div(
+    id = id, class = class, style = style,
     # Necessary for RStudio viewer version < 1.2
     reactR::html_dependency_corejs(),
     reactR::html_dependency_react(),
-    reactR::html_dependency_reacttools(),
-    htmltools::tags$div(id = id, class = class, style = style)
+    reactR::html_dependency_reacttools()
   )
 }
 

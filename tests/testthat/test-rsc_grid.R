@@ -131,10 +131,10 @@ test_that("rscgridOutput", {
   expect_true(length(deps) > 0)
 
   # Output container should have data-reactable-output ID set
-  expect_equal(output[[1]][[4]]$name, "div")
-  expect_equal(output[[1]][[4]]$attribs$id, "mygridz")
-  expect_equal(
-    output[[1]][[4]]$attribs$class,
-    "rsc_grid html-widget html-widget-output"
-  )
+  name <- output[[1]]$name
+  id <- htmltools::tagGetAttribute(output[[1]], "id")
+  cls <- htmltools::tagGetAttribute(output[[1]], "class")
+  expect_equal(name, "div")
+  expect_equal(id, "mygridz")
+  expect_match(cls, "rsc_grid html-widget html-widget-output")
 })
