@@ -11,7 +11,7 @@
 
 There were no ERRORs or WARNINGs.
 
-There were 2 NOTEs:
+There was 1 NOTE:
 
 * New submission
   Package was archived on CRAN
@@ -20,4 +20,4 @@ There were 2 NOTEs:
 
 ## revdevcheck
 
-Not applicable, first submission
+No reverse dependencies on CRAN
