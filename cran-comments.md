@@ -1,13 +1,6 @@
-## Resubmission
-
-This is a resubmission. In this version:
-
-* Updated URL in description and README to avoid redirect and NOTE
-* Passing checks on win-builder for devel and release (previously failed)
-
 ## Test environments
 
-* local: Debian 10; R 3.6, R 4.1
+* local: Ubuntu 20.04.5; R 4.2.2
 * GH Actions:
   - windows-latest; release
   - macOS-latest; release
@@ -16,14 +9,14 @@ This is a resubmission. In this version:
 
 ## R CMD check results
 
-There were no ERRORs or WARNINGs. 
+There were no ERRORs or WARNINGs.
 
-There was 1 NOTE:
+There were 2 NOTEs:
 
-    Maintainer: ‘Brian Smith <brian@rstudio.com>’
-    New submission
-
-* This is my first CRAN submission as a maintainer
+* New submission
+  Package was archived on CRAN
+  CRAN repository db overrides:
+  X-CRAN-Comment: Archived on 2023-01-10 as issues were not corrected in time.
 
 ## revdevcheck
 

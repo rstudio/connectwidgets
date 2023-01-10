@@ -8,6 +8,9 @@
 #' API. Authentication is done by providing an API key.
 #'
 #' @importFrom utils capture.output
+#' @importFrom R6 R6Class
+#' @importFrom httr GET
+#' @importFrom jsonlite fromJSON
 #'
 #' @family R6 classes
 Client <- R6::R6Class( # nolint
