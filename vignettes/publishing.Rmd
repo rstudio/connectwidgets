@@ -14,12 +14,12 @@ knitr::opts_chunk$set(
 )
 ```
 
-Once you have built and [published](https://docs.rstudio.com/connect/user/publishing/#publishing-documents)
+Once you have built and [published](https://docs.posit.co/connect/user/publishing/#publishing-documents)
 a page featuring `connectwidgets`, you have a few options for keeping it up to date:
 
 ## Scheduled RMarkdown
 
-Publish the page with source, and [schedule it](https://docs.rstudio.com/connect/user/scheduling/#schedule-type)
+Publish the page with source, and [schedule it](https://docs.posit.co/connect/user/scheduling/#schedule-type)
 to update periodically.
 
 ## `runtime: shiny`

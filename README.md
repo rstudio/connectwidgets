@@ -121,7 +121,7 @@ Use an `.Renviron` file to set the `CONNECT_SERVER` and
 setting environment variables, check out the [R Startup
 chapter](https://rstats.wtf/r-startup.html#renviron) of What They Forgot
 to Teach You About R. Posit Connect will [automatically
-apply](https://docs.rstudio.com/connect/user/content-settings/#content-vars)
+apply](https://docs.posit.co/connect/user/content-settings/#content-vars)
 values for these at document run time, so there is no need to include
 them in your code:
 
@@ -140,23 +140,23 @@ all_content <- client %>%
   content()
 
 glimpse(all_content)
-#> Rows: 3,245
+#> Rows: 12
 #> Columns: 15
-#> $ id               <int> 22598, 9750, 15970, 15969, 15968, 15967, 20350, 19467…
-#> $ guid             <chr> "d14d7b4d-b070-4ea8-8e4b-4b0687e72d5f", "e23a6e50-ff5…
-#> $ name             <chr> "cross-training", "900-text-jster", "303-bslib-html-t…
-#> $ title            <chr> "cross-training", NA, NA, NA, NA, NA, NA, NA, NA, NA,…
-#> $ description      <chr> "", "", "", "", "", "", "", "", "", "", "", "", "", "…
-#> $ app_mode         <chr> "static", "shiny", "shiny", "shiny", "shiny", "shiny"…
-#> $ content_category <chr> "", "", "", "", "", "", "", "", "", "", "", "", "", "…
-#> $ url              <chr> "https://beta.rstudioconnect.com/content/d14d7b4d-b07…
-#> $ owner_guid       <chr> "988d1891-afb0-42cc-924d-dc9217387a9d", "0700f56d-44d…
-#> $ owner_username   <chr> "ambrizjesus74", "barret", "barret", "barret", "barre…
-#> $ owner_first_name <chr> "Jesus", "Barret", "Barret", "Barret", "Barret", "Bar…
-#> $ owner_last_name  <chr> "Ambriz", "Schloerke", "Schloerke", "Schloerke", "Sch…
-#> $ created_time     <dttm> 2022-08-24 17:59:27, 2020-04-02 06:39:42, 2021-01-12…
-#> $ updated_time     <dttm> 2022-09-08 14:09:50, 2022-09-08 04:56:55, 2022-09-08…
-#> $ tags             <list> <NULL>, <NULL>, <NULL>, <NULL>, <NULL>, <NULL>, <NUL…
+#> $ id               <int> 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1
+#> $ guid             <chr> "0b7e0b47-a8c7-4492-87ea-7082eb942839", "d0664722-a93…
+#> $ name             <chr> "puser3-acl-static-plot-with-title-and-description", …
+#> $ title            <chr> "Static Plot (Title and Description)", "Static Plot (…
+#> $ description      <chr> "This static plot was deployed with a title and a des…
+#> $ app_mode         <chr> "static", "static", "static", "static", "static", "st…
+#> $ content_category <chr> "plot", "plot", "plot", "plot", "plot", "plot", "plot…
+#> $ url              <chr> "http://localhost:3939/content/0b7e0b47-a8c7-4492-87e…
+#> $ owner_guid       <chr> "504a8529-9a89-4062-8758-a419a490a9a3", "4dfa986f-3e4…
+#> $ owner_username   <chr> "puser3", "puser2", "puser1", "puser3", "puser2", "pu…
+#> $ owner_first_name <chr> "", "", "", "", "", "", "", "", "", "", "", ""
+#> $ owner_last_name  <chr> "", "", "", "", "", "", "", "", "", "", "", ""
+#> $ created_time     <dttm> 2023-01-10 22:37:59, 2023-01-10 22:37:59, 2023-01-10 …
+#> $ updated_time     <dttm> 2023-01-10 22:37:59, 2023-01-10 22:37:59, 2023-01-10 …
+#> $ tags             <list> <NULL>, <NULL>, <NULL>, <NULL>, <NULL>, <NULL>, <NULL…
 
 sample_content <- all_content %>%
   arrange(desc(updated_time)) %>%
@@ -215,7 +215,6 @@ all_content %>%
 #> #   owner_guid <chr>, owner_username <chr>, owner_first_name <chr>,
 #> #   owner_last_name <chr>, created_time <dttm>, updated_time <dttm>,
 #> #   tags <list>
-#> # ℹ Use `colnames()` to see all variable names
 ```
 
 Since `all_content` is a `tibble()`, you can also manipulate it with
@@ -225,24 +224,25 @@ dplyr:
 all_content %>% 
   filter(updated_time >= "2021-01-01") %>% 
   arrange(created_time)
-#> # A tibble: 655 × 15
+#> # A tibble: 12 × 15
 #>       id guid  name  title descr…¹ app_m…² conte…³ url   owner…⁴ owner…⁵ owner…⁶
 #>    <int> <chr> <chr> <chr> <chr>   <chr>   <chr>   <chr> <chr>   <chr>   <chr>  
-#>  1  2899 c29d… immu… Immu… ""      static  "site"  http… 862491… philbo… Phil   
-#>  2  3066 3636… an-i… an-i… ""      rmd-sh… ""      http… 862491… philbo… Phil   
-#>  3  3190 a4d5… immu… Immu… ""      rmd-sh… ""      http… 862491… philbo… Phil   
-#>  4  3799 bb86… shin… shin… ""      rmd-st… ""      http… 0700f5… barret  Barret 
-#>  5  4354 5631… ryo-… ryo-… ""      static  ""      http… 980d52… englia… Rγσ    
-#>  6  4890 beba… 004-… <NA>  ""      shiny   ""      http… 0700f5… barret  Barret 
-#>  7  4891 eccf… 002-… <NA>  ""      shiny   ""      http… 0700f5… barret  Barret 
-#>  8  4892 2faa… 001-… <NA>  ""      shiny   ""      http… 0700f5… barret  Barret 
-#>  9  4934 3835… 003-… <NA>  ""      shiny   ""      http… 0700f5… barret  Barret 
-#> 10  4935 d384… 006-… <NA>  ""      shiny   ""      http… 0700f5… barret  Barret 
-#> # … with 645 more rows, 4 more variables: owner_last_name <chr>,
-#> #   created_time <dttm>, updated_time <dttm>, tags <list>, and abbreviated
-#> #   variable names ¹​description, ²​app_mode, ³​content_category, ⁴​owner_guid,
-#> #   ⁵​owner_username, ⁶​owner_first_name
-#> # ℹ Use `print(n = ...)` to see more rows, and `colnames()` to see all variable names
+#>  1     6 18b2… puse… Stat… ""      static  plot    http… 504a85… puser3  ""     
+#>  2     5 2460… puse… Stat… ""      static  plot    http… 4dfa98… puser2  ""     
+#>  3     4 3de7… puse… Stat… ""      static  plot    http… f6fd68… puser1  ""     
+#>  4     3 7299… puse… <NA>  ""      static  plot    http… 504a85… puser3  ""     
+#>  5     2 edab… puse… <NA>  ""      static  plot    http… 4dfa98… puser2  ""     
+#>  6     1 7ccf… puse… <NA>  ""      static  plot    http… f6fd68… puser1  ""     
+#>  7    12 0b7e… puse… Stat… "This … static  plot    http… 504a85… puser3  ""     
+#>  8    11 d066… puse… Stat… "This … static  plot    http… 4dfa98… puser2  ""     
+#>  9    10 c335… puse… Stat… "This … static  plot    http… f6fd68… puser1  ""     
+#> 10     9 66f2… puse… <NA>  "This … static  plot    http… 504a85… puser3  ""     
+#> 11     8 e7dd… puse… <NA>  "This … static  plot    http… 4dfa98… puser2  ""     
+#> 12     7 5d4e… puse… <NA>  "This … static  plot    http… f6fd68… puser1  ""     
+#> # … with 4 more variables: owner_last_name <chr>, created_time <dttm>,
+#> #   updated_time <dttm>, tags <list>, and abbreviated variable names
+#> #   ¹​description, ²​app_mode, ³​content_category, ⁴​owner_guid, ⁵​owner_username,
+#> #   ⁶​owner_first_name
 ```
 
 ### Components
@@ -250,7 +250,7 @@ all_content %>%
 Once your content data are filtered, `connectwidgets` provides
 components for displaying information about them. The title,
 description, and preview image can be set [from the Posit Connect
-dashboard.](https://docs.rstudio.com/connect/user/content-settings/#content-metadata)
+dashboard.](https://docs.posit.co/connect/user/content-settings/#content-metadata)
 For content deployed to Connect where no image has been supplied, a
 default image will be used.
 

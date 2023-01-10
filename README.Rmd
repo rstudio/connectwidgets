@@ -125,7 +125,7 @@ environment variables.
 If you're not familiar with setting environment variables, check out the
 [R Startup chapter](https://rstats.wtf/r-startup.html#renviron)
 of What They Forgot to Teach You About R.
-Posit Connect will [automatically apply](https://docs.rstudio.com/connect/user/content-settings/#content-vars)
+Posit Connect will [automatically apply](https://docs.posit.co/connect/user/content-settings/#content-vars)
 values for these at document run time,
 so there is no need to include them in your code:
 
@@ -205,7 +205,7 @@ all_content %>%
 
 Once your content data are filtered, `connectwidgets` provides components for
 displaying information about them. The title, description, and preview image can be set
-[from the Posit Connect dashboard.](https://docs.rstudio.com/connect/user/content-settings/#content-metadata)
+[from the Posit Connect dashboard.](https://docs.posit.co/connect/user/content-settings/#content-metadata)
 For content deployed to Connect where no image has been supplied, a default image will be used.
 
 *Note:* In many cases, you will only see default images until your content is deployed.
