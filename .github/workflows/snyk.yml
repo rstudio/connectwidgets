@@ -1,0 +1,23 @@
+name: snyk
+on:
+  schedule:
+    - cron: "0 10 * * 1" # Monday @ 10am UTC
+  workflow_dispatch:
+
+env:
+  SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+  SNYK_ORG: rstudio-connect
+
+jobs:
+  ui:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Run Snyk
+        uses: snyk/actions/node@master
+        with:
+          command: monitor
+          args: --file=package-lock.json --project-name=ui --org=${{ env.SNYK_ORG }}
