@@ -92,13 +92,17 @@ Client <- R6::R6Class( # nolint
             "; the server did not provide its version."
           )
         )
-      } else if (compareVersion(settings$version, self$minimum_server_version) < 0) {
-        stop(
-          glue::glue("ERROR: Requires Posit Connect server version >= ",
-            self$minimum_server_version,
-            ", current version ",
-            settings$version)
-        )
+      } else {
+        parsed_version <- stringr::str_split_i(settings$version, "-", 1)
+
+        if (compareVersion(parsed_version, self$minimum_server_version) < 0) {
+          stop(
+            glue::glue("ERROR: Requires Posit Connect server version >= ",
+              self$minimum_server_version,
+              ", current version ",
+              settings$version)
+          )
+        }
       }
     },
     raise_error = function(res) {

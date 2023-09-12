@@ -88,3 +88,10 @@ test_that("should warn when Posit Connect server version is empty", {
     "server did not provide its version"
   )
 })
+
+test_that("should strip dev versioning artifacts from Posit Connect server version", {
+  local_server_stub(version = "2023.10.0-dev+3")
+  expect_no_warning(
+    connect(server = "https://example.com", api_key = "fake")
+  )
+})

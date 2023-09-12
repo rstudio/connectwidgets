@@ -40,7 +40,8 @@ Imports:
     reactR,
     purrr,
     bslib,
-    sass
+    sass,
+    stringr
 URL:
     https://rstudio.github.io/connectwidgets/,
     https://github.com/rstudio/connectwidgets
