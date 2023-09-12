@@ -5,6 +5,7 @@
 .DS_Store
 .Renviron
 docs
+pkgdown
 node_modules
 inst/doc
 connectwidgets_*.tar.gz
