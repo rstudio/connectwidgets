@@ -18,3 +18,21 @@ reference:
   - rsc_search
   - rsc_filter
   - rsc_cols
+- title: "internal"
+- contents:
+  - Client
+  - connectwidgets
+  - default_theme
+  - evaluate_widget_input
+  - gen_theme_dependency
+  - get_bootswatch_theme_name
+  - get_current_bootswatch_theme
+  - get_user_provided_theme
+  - resolve_theme_dependency
+  - rsc_table_sync_theme
+  - warning_large_content
+  - warning_widget_input
+  - rsc_card-shiny
+  - rsc_filter-shiny
+  - rsc_grid-shiny
+  - rsc_search-shiny
