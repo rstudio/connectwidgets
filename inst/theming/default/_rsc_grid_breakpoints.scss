@@ -1,0 +1,17 @@
+@include media-breakpoint-up(md) {
+  .rscgrid__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .rscgrid__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@include media-breakpoint-up(xl) {
+  .rscgrid__grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

@@ -2,8 +2,9 @@
   width: 100%;
 
   &__grid {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    gap: var(--rscgrid-gap, 1rem);
+    grid-template-columns: 1fr;
 
     &--empty {
       justify-content: center;
@@ -15,11 +16,8 @@
   &-item {
     border-radius: 3px;
     box-shadow: 0 0 3px 1px rgba(0,0,0, 0.0);
-    margin-bottom: 3%;
-    margin-right: 3%;
     overflow: hidden;
     transition: all 0.2s ease;
-    width: 22.75%;
 
     & .card-body {
       flex: unset;
