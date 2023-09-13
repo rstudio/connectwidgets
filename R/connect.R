@@ -93,7 +93,8 @@ Client <- R6::R6Class( # nolint
           )
         )
       } else {
-        parsed_version <- stringr::str_split_i(settings$version, "-", 1)
+        # Drop the -dev version suffix, if present
+        parsed_version <- sub("-.*$", "", settings$version)
 
         if (compareVersion(parsed_version, self$minimum_server_version) < 0) {
           stop(
