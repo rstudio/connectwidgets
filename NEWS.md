@@ -3,6 +3,9 @@
 * Fixed broken grid view with bslib >= 0.4.x (#72)
 * Development versions of Connect no longer generate warnings when using
   `connect` (#44)
+* Add additional content type icons to rsc_table for Quarto, Voila, FastAPI, and
+  Shiny for Python
+* Fix content type labels and icons for sites and other (#46)
 
 # connectwidgets 0.2.0
 

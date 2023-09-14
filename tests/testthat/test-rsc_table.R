@@ -1,5 +1,31 @@
 get_attribs <- function(widget) widget$x$tag$attribs
 
+sample_content <- function(n) {
+  tibble::tibble(
+    id = rep("1", times = n),
+    guid = rep("100881c9-0162-4f3f-b973-6870085d48ff", times = n),
+    url = rep(
+      "https://example.com/content/991f16c5-dc7e-4403-89d0-c54d10968460/",
+      times = n
+    ),
+    title = rep("Test", times = n),
+    name = rep("Test", times = n),
+    description = rep("Lorem Ipsum", times = n),
+    app_mode = rep("api", times = n),
+    content_category = rep("", times = n),
+    owner_guid = rep(
+      "100881c9-0162-4f3f-b973-6870085d48ff",
+      times = n
+    ),
+    owner_username = rep("bob", times = n),
+    owner_first_name = rep("Bob", times = n),
+    owner_last_name = rep("Smith", times = n),
+    tags = rep(NA, times = n),
+    created_time = rep("2021-05-05T10:00:00Z", times = n),
+    updated_time = rep("2021-05-05T10:00:00Z", times = n)
+  )
+}
+
 test_that("rsc_table handles invalid/missing args", {
   # missing content param
   expect_error(rsc_table())
@@ -66,32 +92,75 @@ test_that("rsc_table handles invalid/missing args", {
 
 test_that("should warn on large content", {
   over_max_size <- 501
-  content <- data.frame(
-    id = rep("1", times = over_max_size),
-    guid = rep("100881c9-0162-4f3f-b973-6870085d48ff", times = over_max_size),
-    url = rep(
-      "https://example.com/content/991f16c5-dc7e-4403-89d0-c54d10968460/",
-      times = over_max_size
-    ),
-    title = rep("Test", times = over_max_size),
-    name = rep("Test", times = over_max_size),
-    description = rep("Lorem Ipsum", times = over_max_size),
-    app_mode = rep("api", times = over_max_size),
-    content_category = rep("", times = over_max_size),
-    owner_guid = rep(
-      "100881c9-0162-4f3f-b973-6870085d48ff",
-      times = over_max_size
-    ),
-    owner_username = rep("bob", times = over_max_size),
-    owner_first_name = rep("Bob", times = over_max_size),
-    owner_last_name = rep("Smith", times = over_max_size),
-    tags = rep(NA, times = over_max_size),
-    created_time = rep("2021-05-05T10:00:00Z", times = over_max_size),
-    updated_time = rep("2021-05-05T10:00:00Z", times = over_max_size)
-  )
-
+  content <- sample_content(over_max_size)
   expect_warning(
     rsc_table(content),
     "exceeds maximum"
   )
+})
+
+test_that("content_type_label should be appropriate (based on app mode and content category)", {
+  test_cases <- tibble::tribble(
+    ~app_mode, ~content_category, ~expected,
+    "shiny", "", "Application",
+    "rmd-shiny", "", "Document",
+    "rmd-static", "", "Document",
+    "static", "", "Document",
+    "static", "plot", "Plot",
+    "static", "pin", "Pin",
+    "static", "site", "Site",
+    "api", "", "API",
+    "tensorflow-saved-model", "", "Model",
+    "jupyter-static", "", "Document",
+    "python-api", "", "API",
+    "python-dash", "", "Application",
+    "python-streamlit", "", "Application",
+    "python-bokeh", "", "Application",
+    "python-fastapi", "", "API",
+    "quarto-shiny", "", "Document",
+    "quarto-static", "", "Document",
+    "quarto-static", "site", "Site",
+    "python-shiny", "", "Application",
+    "jupyter-voila", "", "Document",
+    "bogus", "", "Other",
+  )
+
+  test_cases <- test_cases %>%
+    dplyr::rowwise() %>%
+    dplyr::mutate(actual = content_type_label(app_mode, content_category))
+
+  expect_equal(test_cases$expected, test_cases$actual)
+})
+
+test_that("content_type_icon should be appropriate (based on app mode and content category)", {
+  test_cases <- tibble::tribble(
+    ~app_mode, ~content_category, ~expected,
+    "shiny", "", "app",
+    "rmd-shiny", "", "app_doc",
+    "rmd-static", "", "rmd",
+    "static", "", "rmd",
+    "static", "plot", "plot",
+    "static", "pin", "pin",
+    "static", "site", "site",
+    "api", "", "api",
+    "tensorflow-saved-model", "", "tf",
+    "jupyter-static", "", "jupyter",
+    "python-api", "", "api",
+    "python-dash", "", "app",
+    "python-streamlit", "", "app",
+    "python-bokeh", "", "app",
+    "python-fastapi", "", "api",
+    "quarto-shiny", "", "app_doc",
+    "quarto-static", "", "rmd",
+    "quarto-static", "site", "site",
+    "python-shiny", "", "app",
+    "jupyter-voila", "", "app_doc",
+    "bogus", "", "rmd",
+  )
+
+  test_cases <- test_cases %>%
+    dplyr::rowwise() %>%
+    dplyr::mutate(actual = content_type_icon(app_mode, content_category))
+
+  expect_equal(test_cases$expected, test_cases$actual)
 })
