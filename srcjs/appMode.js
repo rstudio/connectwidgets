@@ -4,31 +4,37 @@ import DocImg from '@/images/doc.svg';
 import ModelImg from '@/images/model.svg';
 import PinImg from '@/images/pin.svg';
 import PlotImg from '@/images/plot.svg';
+import SiteImg from '@/images/site.svg';
 
 const appsModeMap = {
   // internal types to type name
   'api': 'API',
   'shiny': 'Application',
   'rmd-shiny': 'Document',
-  'rmd-static': 'Document',
+  'rmd-static': {
+    'site': 'Site',
+    'default': 'Document',
+  },
   'jupyter-static': 'Document',
   'static': {
     'plot': 'Plot',
     'pin': 'Pin',
+    'site': 'Site',
+    'default': 'Document',
   },
   'tensorflow-saved-model': 'Model',
   'python-api': 'API',
   'python-dash': 'Application',
   'python-streamlit': 'Application',
   'python-bokeh': 'Application',
-
-  // name to applicable internal types
-  'API': ['api', 'python-api'],
-  'Document': ['rmd-shiny', 'rmd-static', 'jupyter-static'],
-  'Application': ['shiny', 'python-dash', 'python-streamlit', 'python-bokeh'],
-  'Plot': [['static', 'plot']],
-  'Pin': [['static', 'pin']],
-  'Model': ['tensorflow-saved-model'],
+  'python-fastapi': 'API',
+  'quarto-shiny': 'Document',
+  'quarto-static': {
+    'site': 'Site',
+    'default': 'Document',
+  },
+  'python-shiny': 'Application',
+  'jupyter-voila': 'Document',
 };
 
 /**
@@ -38,15 +44,23 @@ const appsModeMap = {
  * @returns {string} A human friendly content type.
  */
 export const appTypeOf = (id, category) => {
-  let type = appsModeMap[id];
-  if (category) {
-    type = type[category];
+  let type = "Other";
+
+  if (id in appsModeMap) {
+    const appMode = appsModeMap[id];
+
+    if (typeof appMode === 'string') {
+      type = appMode;
+    } else {
+      if (category in appMode) {
+        type = appMode[category];
+      } else if (appMode.default) {
+        type = appMode.default;
+      }
+    }
   }
-  // static type with no sub-category
-  if (typeof type !== 'string') {
-    type = 'Other';
-  }
-  return type || 'Other';
+
+  return type;
 };
 
 /**
@@ -69,6 +83,8 @@ export const appModeImg = (appMode, contentCategory) => {
       return PinImg;
     case 'Model':
       return ModelImg;
+    case 'Site':
+      return SiteImg;
     default:
       return AppImg;
   }
