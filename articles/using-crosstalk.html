@@ -26,6 +26,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -38,23 +40,17 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">connectwidgets</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.2.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
-<li>
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -74,7 +70,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/rstudio/connectwidgets/">
+  <a href="https://github.com/rstudio/connectwidgets/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -89,84 +85,101 @@
 
       
 
-      </header><script src="using-crosstalk_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Using Crosstalk</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/rstudio/connectwidgets/blob/master/vignettes/using-crosstalk.Rmd"><code>vignettes/using-crosstalk.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/rstudio/connectwidgets/blob/HEAD/vignettes/using-crosstalk.Rmd" class="external-link"><code>vignettes/using-crosstalk.Rmd</code></a></small>
       <div class="hidden name"><code>using-crosstalk.Rmd</code></div>
 
     </div>
 
     
     
-<p>The <code><a href="../reference/rsc_table.html">rsc_table()</a></code>, <code><a href="../reference/rsc_grid.html">rsc_grid()</a></code>, <code><a href="../reference/rsc_search.html">rsc_search()</a></code>, and <code><a href="../reference/rsc_filter.html">rsc_filter()</a></code> widgets use <code>crosstalk</code> to facilitate inter-widget communication. In simple cases, passing identical results from the <code><a href="../reference/content.html">content()</a></code> tibble is sufficient:</p>
+<p>The <code><a href="../reference/rsc_table.html">rsc_table()</a></code>, <code><a href="../reference/rsc_grid.html">rsc_grid()</a></code>,
+<code><a href="../reference/rsc_search.html">rsc_search()</a></code>, and <code><a href="../reference/rsc_filter.html">rsc_filter()</a></code> widgets use
+<code>crosstalk</code> to facilitate inter-widget communication. In
+simple cases, passing identical results from the <code><a href="../reference/content.html">content()</a></code>
+tibble is sufficient:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://rstudio.github.io/connectwidgets/">connectwidgets</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://purrr.tidyverse.org">purrr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/rstudio/htmltools">htmltools</a></span><span class="op">)</span>
-
-<span class="va">client</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/connect.html">connect</a></span><span class="op">(</span><span class="op">)</span>
-<span class="va">all_content</span> <span class="op">&lt;-</span> <span class="va">client</span> <span class="op">%&gt;%</span> <span class="fu"><a href="../reference/content.html">content</a></span><span class="op">(</span><span class="op">)</span>
-<span class="va">some_content</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice_sample</a></span><span class="op">(</span><span class="va">all_content</span>, prop <span class="op">=</span> <span class="fl">.1</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/tag.html">tagList</a></span><span class="op">(</span>
-  <span class="fu"><a href="../reference/rsc_cols.html">rsc_cols</a></span><span class="op">(</span><span class="fu"><a href="../reference/rsc_search.html">rsc_search</a></span><span class="op">(</span><span class="va">some_content</span><span class="op">)</span>, <span class="fu"><a href="../reference/rsc_filter.html">rsc_filter</a></span><span class="op">(</span><span class="va">some_content</span><span class="op">)</span><span class="op">)</span>,
-  <span class="fu"><a href="../reference/rsc_table.html">rsc_table</a></span><span class="op">(</span><span class="va">some_content</span><span class="op">)</span>
-<span class="op">)</span></code></pre></div>
-<p>For more complicated layouts, you may want to pass your own <code>crosstalk</code> objects to the components.</p>
-<div id="example-grids-grouped-by-owner" class="section level2">
-<h2 class="hasAnchor">
-<a href="#example-grids-grouped-by-owner" class="anchor"></a>Example: Grids grouped by owner</h2>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rstudio.github.io/connectwidgets/">connectwidgets</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://purrr.tidyverse.org/" class="external-link">purrr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/rstudio/htmltools" class="external-link">htmltools</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">client</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/connect.html">connect</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">all_content</span> <span class="op">&lt;-</span> <span class="va">client</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span> <span class="fu"><a href="../reference/content.html">content</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="va">some_content</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice_sample</a></span><span class="op">(</span><span class="va">all_content</span>, prop <span class="op">=</span> <span class="fl">.1</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rstudio.github.io/htmltools/reference/tagList.html" class="external-link">tagList</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="../reference/rsc_cols.html">rsc_cols</a></span><span class="op">(</span><span class="fu"><a href="../reference/rsc_search.html">rsc_search</a></span><span class="op">(</span><span class="va">some_content</span><span class="op">)</span>, <span class="fu"><a href="../reference/rsc_filter.html">rsc_filter</a></span><span class="op">(</span><span class="va">some_content</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  <span class="fu"><a href="../reference/rsc_table.html">rsc_table</a></span><span class="op">(</span><span class="va">some_content</span><span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p>For more complicated layouts, you may want to pass your own
+<code>crosstalk</code> objects to the components.</p>
+<div class="section level2">
+<h2 id="example-grids-grouped-by-owner">Example: Grids grouped by owner<a class="anchor" aria-label="anchor" href="#example-grids-grouped-by-owner"></a>
+</h2>
 <p>As a publisher, you want to:</p>
 <ul>
 <li>display each content owner’s username with a level 4 heading</li>
-<li>display an <code><a href="../reference/rsc_grid.html">rsc_grid()</a></code> of each content owner’s items</li>
-<li>display one search and filter widget that works across all the card grids</li>
+<li>display an <code><a href="../reference/rsc_grid.html">rsc_grid()</a></code> of each content owner’s
+items</li>
+<li>display one search and filter widget that works across all the card
+grids</li>
 </ul>
-<p><code>crosstalk::SharedData$new()</code> takes two optional parameters that make this possible:</p>
+<p><code>crosstalk::SharedData$new()</code> takes two optional
+parameters that make this possible:</p>
 <ul>
 <li>
 <code>keys</code>
 <ul>
-<li>The <code><a href="../reference/content.html">content()</a></code> tibble contains a globally unique identifier (GUID) for each piece of content, which you can <a href="https://rstudio.github.io/crosstalk/using.html#keys">use as a key</a> when creating your <code>SharedData</code> object (e.g <code>key = ~ guid</code>).</li>
+<li>The <code><a href="../reference/content.html">content()</a></code> tibble contains a globally unique
+identifier (GUID) for each piece of content, which you can <a href="https://rstudio.github.io/crosstalk/using.html#keys" class="external-link">use as a
+key</a> when creating your <code>SharedData</code> object (e.g
+<code>key = ~ guid</code>).</li>
 </ul>
 </li>
 <li>
 <code>group</code>
 <ul>
-<li>Specifying a <a href="https://rstudio.github.io/crosstalk/using.html#grouping">group name</a> when creating the <code>SharedData</code> object gives you control over which widgets are grouped together (e.g. <code>group = "xfilter"</code>).</li>
+<li>Specifying a <a href="https://rstudio.github.io/crosstalk/using.html#grouping" class="external-link">group
+name</a> when creating the <code>SharedData</code> object gives you
+control over which widgets are grouped together
+(e.g. <code>group = "xfilter"</code>).</li>
 </ul>
 </li>
 </ul>
-<p>Since the <code>some_content</code> tibble contains all the GUIDs, passing it to the Search and Filter components will enable you to search across each of the subset tibbles created by <code><a href="https://dplyr.tidyverse.org/reference/group_nest.html">dplyr::group_nest</a></code>:</p>
+<p>Since the <code>some_content</code> tibble contains all the GUIDs,
+passing it to the Search and Filter components will enable you to search
+across each of the subset tibbles created by
+<code><a href="https://dplyr.tidyverse.org/reference/group_nest.html" class="external-link">dplyr::group_nest</a></code>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">some_content_xfilter</span> <span class="op">&lt;-</span> <span class="fu">crosstalk</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/crosstalk/man/SharedData.html">SharedData</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span>
-  <span class="va">some_content</span>,
-  key <span class="op">=</span> <span class="op">~</span> <span class="va">guid</span>,
-  group <span class="op">=</span> <span class="st">"xfilter"</span>
-  <span class="op">)</span>
-
-<span class="va">rsc_content_shared</span> <span class="op">&lt;-</span>
-  <span class="va">some_content</span> <span class="op">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_nest.html">group_nest</a></span><span class="op">(</span><span class="va">owner_username</span>, .key <span class="op">=</span> <span class="st">"content_df"</span>, keep <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-
-<span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/builder.html">div</a></span><span class="op">(</span>
-  <span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/builder.html">h3</a></span><span class="op">(</span><span class="st">"Grouped Grids by Owner"</span>, class <span class="op">=</span> <span class="st">"text-center"</span><span class="op">)</span>,
-  <span class="fu"><a href="../reference/rsc_cols.html">rsc_cols</a></span><span class="op">(</span><span class="fu"><a href="../reference/rsc_search.html">rsc_search</a></span><span class="op">(</span><span class="va">some_content_xfilter</span><span class="op">)</span>, <span class="fu"><a href="../reference/rsc_filter.html">rsc_filter</a></span><span class="op">(</span><span class="va">some_content_xfilter</span><span class="op">)</span><span class="op">)</span>,
-  <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/map2.html">pmap</a></span><span class="op">(</span>
-    <span class="va">rsc_content_shared</span>,
-    <span class="op">{</span>
-      <span class="op">~</span> <span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/tag.html">tagList</a></span><span class="op">(</span>
-        <span class="fu"><a href="https://rdrr.io/pkg/htmltools/man/builder.html">h4</a></span><span class="op">(</span><span class="va">..1</span><span class="op">)</span>,
-        <span class="fu"><a href="../reference/rsc_grid.html">rsc_grid</a></span><span class="op">(</span><span class="fu">crosstalk</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/crosstalk/man/SharedData.html">SharedData</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">..2</span>, key <span class="op">=</span> <span class="op">~</span> <span class="va">guid</span>, group <span class="op">=</span> <span class="st">"xfilter"</span><span class="op">)</span><span class="op">)</span>
-      <span class="op">)</span>
-    <span class="op">}</span>
-  <span class="op">)</span>
-<span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">some_content_xfilter</span> <span class="op">&lt;-</span> <span class="fu">crosstalk</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/crosstalk/man/SharedData.html" class="external-link">SharedData</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
+<span>  <span class="va">some_content</span>,</span>
+<span>  key <span class="op">=</span> <span class="op">~</span> <span class="va">guid</span>,</span>
+<span>  group <span class="op">=</span> <span class="st">"xfilter"</span></span>
+<span>  <span class="op">)</span></span>
+<span></span>
+<span><span class="va">rsc_content_shared</span> <span class="op">&lt;-</span></span>
+<span>  <span class="va">some_content</span> <span class="op"><a href="../reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_nest.html" class="external-link">group_nest</a></span><span class="op">(</span><span class="va">owner_username</span>, .key <span class="op">=</span> <span class="st">"content_df"</span>, keep <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rstudio.github.io/htmltools/reference/builder.html" class="external-link">div</a></span><span class="op">(</span></span>
+<span>  <span class="fu"><a href="https://rstudio.github.io/htmltools/reference/builder.html" class="external-link">h3</a></span><span class="op">(</span><span class="st">"Grouped Grids by Owner"</span>, class <span class="op">=</span> <span class="st">"text-center"</span><span class="op">)</span>,</span>
+<span>  <span class="fu"><a href="../reference/rsc_cols.html">rsc_cols</a></span><span class="op">(</span><span class="fu"><a href="../reference/rsc_search.html">rsc_search</a></span><span class="op">(</span><span class="va">some_content_xfilter</span><span class="op">)</span>, <span class="fu"><a href="../reference/rsc_filter.html">rsc_filter</a></span><span class="op">(</span><span class="va">some_content_xfilter</span><span class="op">)</span><span class="op">)</span>,</span>
+<span>  <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/pmap.html" class="external-link">pmap</a></span><span class="op">(</span></span>
+<span>    <span class="va">rsc_content_shared</span>,</span>
+<span>    <span class="op">{</span></span>
+<span>      <span class="op">~</span> <span class="fu"><a href="https://rstudio.github.io/htmltools/reference/tagList.html" class="external-link">tagList</a></span><span class="op">(</span></span>
+<span>        <span class="fu"><a href="https://rstudio.github.io/htmltools/reference/builder.html" class="external-link">h4</a></span><span class="op">(</span><span class="va">..1</span><span class="op">)</span>,</span>
+<span>        <span class="fu"><a href="../reference/rsc_grid.html">rsc_grid</a></span><span class="op">(</span><span class="fu">crosstalk</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/crosstalk/man/SharedData.html" class="external-link">SharedData</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="va">..2</span>, key <span class="op">=</span> <span class="op">~</span> <span class="va">guid</span>, group <span class="op">=</span> <span class="st">"xfilter"</span><span class="op">)</span><span class="op">)</span></span>
+<span>      <span class="op">)</span></span>
+<span>    <span class="op">}</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
 </div>
   </div>
 
@@ -181,11 +194,13 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Brian Smith, Marcos Navarro.</p>
+  <p></p>
+<p>Developed by Brian Smith, Marcos Navarro.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>
@@ -193,6 +208,8 @@
 
   
 
+
+  
 
   </body>
 </html>

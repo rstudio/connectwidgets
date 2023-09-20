@@ -1,7 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://rstudio.github.io/connectwidgets/404.html</loc>
+  </url>
+  <url>
+    <loc>https://rstudio.github.io/connectwidgets/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>https://rstudio.github.io/connectwidgets/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>https://rstudio.github.io/connectwidgets/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>https://rstudio.github.io/connectwidgets/articles/publishing.html</loc>
+  </url>
+  <url>
+    <loc>https://rstudio.github.io/connectwidgets/articles/using-crosstalk.html</loc>
+  </url>
+  <url>
+    <loc>https://rstudio.github.io/connectwidgets/authors.html</loc>
+  </url>
+  <url>
     <loc>https://rstudio.github.io/connectwidgets/index.html</loc>
+  </url>
+  <url>
+    <loc>https://rstudio.github.io/connectwidgets/news/index.html</loc>
   </url>
   <url>
     <loc>https://rstudio.github.io/connectwidgets/reference/Client.html</loc>
@@ -38,6 +62,9 @@
   </url>
   <url>
     <loc>https://rstudio.github.io/connectwidgets/reference/get_user_provided_theme.html</loc>
+  </url>
+  <url>
+    <loc>https://rstudio.github.io/connectwidgets/reference/index.html</loc>
   </url>
   <url>
     <loc>https://rstudio.github.io/connectwidgets/reference/pipe.html</loc>
@@ -83,11 +110,5 @@
   </url>
   <url>
     <loc>https://rstudio.github.io/connectwidgets/reference/warning_widget_input.html</loc>
-  </url>
-  <url>
-    <loc>https://rstudio.github.io/connectwidgets/articles/publishing.html</loc>
-  </url>
-  <url>
-    <loc>https://rstudio.github.io/connectwidgets/articles/using-crosstalk.html</loc>
   </url>
 </urlset>
