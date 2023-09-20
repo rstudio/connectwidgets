@@ -1,6 +1,6 @@
 Package: connectwidgets
 Title: Organize and Curate Your Content Within 'Posit Connect'
-Version: 0.2.0
+Version: 0.2.1
 Authors@R: c(
     person("Brian", "Smith", email = "brian@rstudio.com", role = c("aut", "cre")),
     person("Marcos", "Navarro", email = "marcos@rstudio.com", role = "aut"),
