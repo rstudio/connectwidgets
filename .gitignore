@@ -8,5 +8,6 @@ docs
 pkgdown
 node_modules
 inst/doc
+revdep/
 connectwidgets_*.tar.gz
 connectwidgets.Rcheck/

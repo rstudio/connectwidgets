@@ -1,4 +1,4 @@
-# UNRELEASED
+# connectwidgets 0.2.1
 
 * Fixed broken grid view with bslib >= 0.4.x (#72)
 * Development versions of Connect no longer generate warnings when using

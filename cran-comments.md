@@ -1,22 +1,24 @@
 ## Test environments
 
-* local: Ubuntu 20.04.5; R 4.2.2
+* local: Ubuntu 23.04; R 4.2.2
 * GH Actions:
   - windows-latest; release
   - macOS-latest; release
-  - ubuntu-20.04; release, devel
-* win-builder: devel and release
+  - ubuntu-latest; release, devel
+* devtools::check_win_devel()
 
 ## R CMD check results
 
 There were no ERRORs or WARNINGs.
 
-There was 1 NOTE:
+1 NOTE
 
-* New submission
-  Package was archived on CRAN
-  CRAN repository db overrides:
-  X-CRAN-Comment: Archived on 2023-01-10 as issues were not corrected in time.
+* ❯ checking installed package size ... NOTE
+     installed size is  5.0Mb
+     sub-directories of 1Mb or more:
+       htmlwidgets   3.9Mb
+
+This is expected since we ship a number of browser assets (including .js.map files)
 
 ## revdevcheck
 

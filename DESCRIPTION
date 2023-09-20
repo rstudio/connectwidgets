@@ -16,6 +16,7 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
+Depends: R (>= 3.6.0)
 Suggests: 
     knitr,
     lintr,
@@ -45,3 +46,4 @@ URL:
     https://rstudio.github.io/connectwidgets/,
     https://github.com/rstudio/connectwidgets
 VignetteBuilder: knitr
+BugReports: https://github.com/rstudio/connectwidgets/issues

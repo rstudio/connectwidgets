@@ -34,6 +34,7 @@ Useful links:
 \itemize{
   \item \url{https://rstudio.github.io/connectwidgets/}
   \item \url{https://github.com/rstudio/connectwidgets}
+  \item Report bugs at \url{https://github.com/rstudio/connectwidgets/issues}
 }
 
 }

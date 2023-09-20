@@ -19,3 +19,4 @@
 ^srcjs$
 ^webpack\.config\.js$
 ^cran-comments.md
+^revdep$
