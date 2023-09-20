@@ -20,3 +20,4 @@
 ^webpack\.config\.js$
 ^cran-comments.md
 ^revdep$
+^CRAN-SUBMISSION$

@@ -1,3 +1,5 @@
+# connectwidgets (development version)
+
 # connectwidgets 0.2.1
 
 * Fixed broken grid view with bslib >= 0.4.x (#72)
