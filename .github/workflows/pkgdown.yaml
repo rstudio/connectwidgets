@@ -6,6 +6,11 @@ on:
   release:
     types: [published]
   workflow_dispatch:
+    inputs:
+      deploy:
+        description: "Deploy to GitHub pages"
+        required: true
+        type: boolean
 
 name: pkgdown
 
@@ -33,7 +38,7 @@ jobs:
         shell: Rscript {0}
 
       - name: Deploy to GitHub pages 🚀
-        if: github.event_name == 'release'
+        if: ${{ github.event_name == 'release' || (github.event_name == 'workflow_dispatch' && inputs.deploy) }}
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
