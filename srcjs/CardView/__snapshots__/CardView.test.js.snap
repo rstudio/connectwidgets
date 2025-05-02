@@ -14,7 +14,7 @@ Array [
       >
         <ContentImage
           contentUrl="https://connect.tester.net/content/991f16c5-dc7e-4403-89d0-c54d10968460/"
-          imageUrl="https://connect.tester.net/__api__/applications/991f16c5-dc7e-4403-89d0-c54d10968460/image?strict=1"
+          imageUrl="https://connect.tester.net/content/991f16c5-dc7e-4403-89d0-c54d10968460/__thumbnail__"
         />
       </div>
       <div
@@ -66,7 +66,7 @@ Array [
       >
         <ContentImage
           contentUrl="https://connect.tester.net/content/c2bd6807-cb2f-4683-865b-107cf37eddf6/"
-          imageUrl="https://connect.tester.net/__api__/applications/c2bd6807-cb2f-4683-865b-107cf37eddf6/image?strict=1"
+          imageUrl="https://connect.tester.net/content/c2bd6807-cb2f-4683-865b-107cf37eddf6/__thumbnail__"
         />
       </div>
       <div
@@ -118,7 +118,7 @@ Array [
       >
         <ContentImage
           contentUrl="https://connect.tester.net/content/ea731b93-458f-4552-becf-b2e0ce552e3d/"
-          imageUrl="https://connect.tester.net/__api__/applications/ea731b93-458f-4552-becf-b2e0ce552e3d/image?strict=1"
+          imageUrl="https://connect.tester.net/content/ea731b93-458f-4552-becf-b2e0ce552e3d/__thumbnail__"
         />
       </div>
       <div
@@ -174,7 +174,7 @@ exports[`<CardView /> single item render properly 1`] = `
     >
       <ContentImage
         contentUrl="https://connect.tester.net/content/991f16c5-dc7e-4403-89d0-c54d10968460/"
-        imageUrl="https://connect.tester.net/__api__/applications/991f16c5-dc7e-4403-89d0-c54d10968460/image?strict=1"
+        imageUrl="https://connect.tester.net/content/991f16c5-dc7e-4403-89d0-c54d10968460/__thumbnail__"
       />
     </div>
     <div

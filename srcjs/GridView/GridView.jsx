@@ -68,7 +68,7 @@ class GridView extends React.Component {
       currentPage: 1,
     });
   }
-  
+
   reset() {
     this.setState({
       data: cloneDeep(this.state.originalData),
@@ -81,7 +81,7 @@ class GridView extends React.Component {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const items = this.state.data.slice(startIndex, startIndex + itemsPerPage);
     return items.map(item => {
-      const imgUrl = contentImgSrc(item.url, item.guid);
+      const imgUrl = contentImgSrc(item.url);
       return (
         <div
         className="rscgrid-item card"
@@ -134,7 +134,7 @@ class GridView extends React.Component {
           }
         </div>
         {
-          this.showPagination() ? 
+          this.showPagination() ?
           <GridPagination
           total={this.state.data.length}
           perPage={this.state.itemsPerPage}
@@ -155,4 +155,3 @@ GridView.propTypes = {
 }
 
 export default GridView;
- 

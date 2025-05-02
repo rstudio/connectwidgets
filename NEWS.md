@@ -1,5 +1,7 @@
 # connectwidgets (development version)
 
+* Update to use public API for thumbnail images, added in Posit Connect 2024.09.0.
+
 # connectwidgets 0.2.1
 
 * Fixed broken grid view with bslib >= 0.4.x (#72)

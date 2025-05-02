@@ -21,6 +21,7 @@ export function debounce(delay, fn) {
  * @param {string} guid  content GUID
  * @returns Image src url
  */
-export function contentImgSrc(contentUrl, guid) {
-  return `${contentUrl.split('/content/')[0]}/__api__/applications/${guid}/image?strict=1`;
+export function contentImgSrc(contentUrl) {
+  // Just append __thumbnail__ to the content url
+  return contentUrl + '__thumbnail__';
 }
