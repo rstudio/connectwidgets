@@ -6,17 +6,12 @@ jobs:
   ui:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: extractions/setup-just@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/checkout@v4
 
       - name: Env
-        uses: actions/setup-node@v2
-        with:
-          node-version: '12'
+        uses: actions/setup-node@v4
 
       - name: Test Unit
         run: |
-          just deps
-          just test-ui
+          npm install
+          npm run test
