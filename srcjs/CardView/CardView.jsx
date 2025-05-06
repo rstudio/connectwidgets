@@ -14,7 +14,7 @@ function Card({ data }) {
   const content = HTMLWidgets.dataframeToD3(data);
 
   return content.map((item, index) => {
-    const imgUrl = contentImgSrc(item.url, item.guid);
+    const imgUrl = contentImgSrc(item.url);
     return (
       <div
         key={index}
