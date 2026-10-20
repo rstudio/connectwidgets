@@ -13,6 +13,15 @@ Curate your content on Posit Connect
 [![lint](https://github.com/rstudio/connectwidgets/actions/workflows/lint.yaml/badge.svg)](https://github.com/rstudio/connectwidgets/actions/workflows/lint.yaml)
 <!-- badges: end -->
 
+> **connectwidgets is deprecated and no longer maintained.** This repository is archived.
+>
+> To build a curated view of content on Posit Connect, start from one of these examples in the Connect Gallery:
+>
+> - [Custom Landing Page](https://github.com/posit-dev/connect-extensions/tree/main/extensions/shiny-landing-page): a Shiny app that organizes content by tags and shows each viewer only the content they can access.
+> - [Quarto: Content Hub](https://github.com/posit-dev/connect-extensions/tree/main/extensions/quarto-website): a static page with featured content cards and a searchable table of everything the publisher can see.
+>
+> Both use [connectapi](https://posit-dev.github.io/connectapi/) and [bslib](https://rstudio.github.io/bslib/), and you can adapt them to organize content however you like.
+
 `connectwidgets` is an R package that can be used to query a Posit
 Connect server for a subset of your existing content items, then
 organize them within `htmlwidget` components in an R Markdown document
