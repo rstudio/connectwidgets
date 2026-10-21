@@ -48,17 +48,6 @@ rsc_table <- function(content) {
       window.open(rowInfo.row.url, '_blank')
     }"),
     columns = list(
-      id = reactable::colDef(show = FALSE),
-      guid = reactable::colDef(show = FALSE),
-      title = reactable::colDef(show = FALSE),
-      description = reactable::colDef(show = FALSE),
-      content_category = reactable::colDef(show = FALSE),
-      url = reactable::colDef(show = FALSE),
-      created_time = reactable::colDef(show = FALSE),
-      owner_guid = reactable::colDef(show = FALSE),
-      owner_first_name = reactable::colDef(show = FALSE),
-      owner_last_name = reactable::colDef(show = FALSE),
-      tags = reactable::colDef(show = FALSE),
       name = reactable::colDef(
         name = "Name",
         cell = function(value, index) {
@@ -104,6 +93,7 @@ rsc_table <- function(content) {
         maxWidth = 175
       )
     ),
+    defaultColDef = reactable::colDef(show = FALSE),
     language = reactable::reactableLang(
       searchPlaceholder = "Search",
       noData = "No content found",
